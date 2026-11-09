@@ -1,0 +1,112 @@
+<title>Tunnel Vision #1: Mum</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one phone-width column — the vertical video first, then save buttons, then post copy. Single dark look (a screening room), set explicitly. */
+:root{
+  --bg:#17120f; --panel:#221b17; --line:#3a2f29; --fg:#f6ece2; --muted:#b3a497; --accent:#0a84ff; --warm:#f0c27e;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 var(--sans);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:520px;margin:0 auto;display:grid;gap:20px}
+.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--warm)}
+h1{font:700 30px/1.15 var(--sans);margin:6px 0 0;text-wrap:balance;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:6px 0 0}
+video{display:block;width:100%;max-width:100%;aspect-ratio:9/16;background:#000;border-radius:14px;border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+button{font:600 15px/1 var(--sans);padding:14px 18px;border-radius:12px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.ghost{background:transparent;border-color:var(--line);color:var(--fg)}
+button:focus-visible{outline:2px solid var(--warm);outline-offset:2px}
+button:disabled{opacity:.5;cursor:default}
+.note{color:var(--muted);font-size:14px;margin:0}
+.note a{color:var(--fg)}
+section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:12px;min-width:0}
+h2{font:600 13px/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0}
+.copy{display:grid;gap:6px}
+.copy .lab{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:600;font-size:14px}
+.copy .lab button{padding:6px 10px;font-size:13px;border-radius:8px}
+.copy p{margin:0;overflow-wrap:anywhere;color:var(--fg)}
+ol{margin:0;padding-left:20px;display:grid;gap:4px}
+.beats{display:grid;gap:8px;font-size:15px}
+.beat{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px}
+.beat span:first-child{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px;padding-top:2px}
+.checks{display:grid;gap:6px;font-size:14px}
+.checks div::before{content:"✓ ";color:#6fd39b;font-weight:700}
+#status{min-height:1.2em}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Tunnel Vision · Video 1 of 10</div>
+    <h1>Mum — "Did you eat?"</h1>
+    <p class="sub">20 s · 1080×1920 · loops back into Mum's first text</p>
+  </header>
+
+  <video id="vid" src="/_blob/7a9b59fa717e3a6aa7c7ba8437283d3d" poster="/_blob/76f672c160ed68f242ab334ca0eec5f3" controls playsinline loop preload="metadata"></video>
+
+  <div class="btns">
+    <button id="saveVid" type="button">Save video (MP4)</button>
+    <button id="saveThumb" type="button" class="ghost">Save thumbnail</button>
+  </div>
+  <p class="note" id="status">If the save button doesn't respond, <a href="/_blob/7a9b59fa717e3a6aa7c7ba8437283d3d" target="_blank" rel="noopener">open the MP4 directly</a> and use your phone's share or save option.</p>
+
+  <section>
+    <h2>Post copy</h2>
+    <div class="copy"><div class="lab">Title <button class="ghost" data-copy="t1">Copy</button></div><p id="t1">Why Mum always asks "did you eat?"</p></div>
+    <div class="copy"><div class="lab">Caption <button class="ghost" data-copy="t2">Copy</button></div><p id="t2">It was never really about food. #tunnelvision</p></div>
+    <div class="copy"><div class="lab">YouTube Shorts · 12:00–15:00 or 19:00–21:00 <button class="ghost" data-copy="h1">Copy</button></div><p id="h1">#shorts #mum #family #textmessages #perspective</p></div>
+    <div class="copy"><div class="lab">TikTok · 18:00–22:00 <button class="ghost" data-copy="h2">Copy</button></div><p id="h2">#mum #mumtok #textmessage #family #perspective #fyp</p></div>
+    <div class="copy"><div class="lab">Instagram Reels · 11:00–13:00 or 19:00–21:00 <button class="ghost" data-copy="h3">Copy</button></div><p id="h3">#mum #family #textmessages #perspective #reels</p></div>
+    <div class="copy"><div class="lab">Facebook Reels · 13:00–16:00 <button class="ghost" data-copy="h4">Copy</button></div><p id="h4">#mum #family #perspective</p></div>
+  </section>
+
+  <section>
+    <h2>Timeline</h2>
+    <div class="beats">
+      <div class="beat"><span>0.0–9.0s</span><span>Phone thread. Mum: "did you eat today?" · You type "why do you always ask that" · Read 9:42 PM · Mum types, stops, types… "just checking" · she starts typing again, then gives up.</span></div>
+      <div class="beat"><span>9.0–18s</span><span>Cut to Mum alone at the kitchen table, phone glow on her face, a covered plate saved beside the empty chair. Clock reads 9:42. Music drops to one soft piano note. "She asks because it's the one question she knows you'll answer." → "Anything deeper and you go quiet."</span></div>
+      <div class="beat"><span>18–20s</span><span>"So every day she checks / the only way you let her…" crossfades straight back into Mum's first text.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Checks passed</h2>
+    <div class="checks">
+      <div>ffprobe: 1080×1920 H.264 + AAC audio, 20.0 s, full decode with no errors</div>
+      <div>Loop seam: the last frames fade into frame 1, and the music fades back in under it</div>
+      <div>Free tools only: Chromium/Playwright, hand-drawn SVG, NumPy-synthesized audio, FFmpeg</div>
+      <div>SHA-256 6ebbf531c4fab733543f7175d325fa60c9b5b04d21833a7090bd790a732b76d8</div>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  const VIDEO = "/_blob/7a9b59fa717e3a6aa7c7ba8437283d3d", THUMB = "/_blob/76f672c160ed68f242ab334ca0eec5f3";
+  const status = document.getElementById("status");
+  let dl = null;
+  if (window.claude && window.claude.use) window.claude.use("downloads").then(d => { dl = d; }).catch(() => {});
+  async function save(url, filename, btn) {
+    if (!dl) { status.innerHTML = 'Saving isn\'t available in this view. <a href="' + url + '" target="_blank" rel="noopener">Open the file directly</a> and save it from there.'; return; }
+    btn.disabled = true; status.textContent = "Preparing " + filename + "…";
+    try {
+      const blob = await (await fetch(url)).blob();
+      await dl.save({ filename, data: blob });
+      status.textContent = "Saved " + filename + ".";
+    } catch (e) {
+      status.textContent = e && e.code === "declined" ? "Save cancelled." : "Couldn't save just now. Try again, or open the file link and save it from there.";
+    } finally { btn.disabled = false; }
+  }
+  document.getElementById("saveVid").addEventListener("click", e => save(VIDEO, "tunnel-vision-01-mum-did-you-eat.mp4", e.currentTarget));
+  document.getElementById("saveThumb").addEventListener("click", e => save(THUMB, "tunnel-vision-01-mum-did-you-eat-thumb.jpg", e.currentTarget));
+  document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
+    const text = document.getElementById(b.dataset.copy).textContent;
+    navigator.clipboard.writeText(text).then(() => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1500); })
+      .catch(() => { const r = document.createRange(); r.selectNodeContents(document.getElementById(b.dataset.copy)); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+  }));
+})();
+</script>
