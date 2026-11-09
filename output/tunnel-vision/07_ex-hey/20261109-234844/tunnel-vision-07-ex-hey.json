@@ -1,0 +1,77 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 7,
+ "slug": "ex-hey",
+ "title": "Your ex texts “hey” at 1am",
+ "caption": "It's not about you. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#ex",
+   "#relationships",
+   "#textmessages",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#ex",
+   "#relationships",
+   "#textmessage",
+   "#3am",
+   "#fyp"
+  ],
+  "instagram": [
+   "#ex",
+   "#relationships",
+   "#textmessages",
+   "#reels"
+  ],
+  "facebook": [
+   "#relationships",
+   "#perspective"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "hey",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "what do you want",
+    "from": 2.2,
+    "to": 3.4
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "what do you want",
+    "at": 3.6
+   }
+  ],
+  "reveal": [
+   "Not always a game.",
+   "Sometimes they just heard a song you both liked",
+   "and missed who they were with you, not you.",
+   "It's not about you. It's about who they were back then.",
+   "That's all “hey” means…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 20.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

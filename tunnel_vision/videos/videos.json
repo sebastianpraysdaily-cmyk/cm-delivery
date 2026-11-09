@@ -1,0 +1,1277 @@
+[
+ {
+  "no": 2,
+  "slug": "sister-nvm",
+  "contact": "Sis",
+  "initial": "S",
+  "avatar": [
+   "#e7a7bd",
+   "#c27b93"
+  ],
+  "theme": "green",
+  "clock": "4:12",
+  "battery": 0.55,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 4:12 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "hey can I ask you something",
+    "at": 0.25
+   },
+   {
+    "t": "clock",
+    "at": 2.1,
+    "time": "6:47"
+   },
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 6:47 PM",
+    "at": 2.1
+   },
+   {
+    "t": "type",
+    "text": "what's up",
+    "from": 2.7,
+    "to": 3.5
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "what's up",
+    "at": 3.7
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 6:47 PM",
+    "at": 4.2
+   },
+   {
+    "t": "dots",
+    "from": 4.7,
+    "to": 5.6
+   },
+   {
+    "t": "dots",
+    "from": 6.0,
+    "to": 6.7,
+    "phase": 0.3
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "nvm",
+    "at": 6.7
+   }
+  ],
+  "cards": [
+   "She'd been working up to it all afternoon.",
+   "By the time you replied, the nerve was gone.",
+   "“nvm” doesn't mean nothing. It means she'll carry it alone now.",
+   "Next time she says…"
+  ],
+  "audio": {
+   "chimes": [
+    "pluck",
+    "glass"
+   ],
+   "send": [
+    420,
+    1150
+   ],
+   "piano": 196.0,
+   "music": {
+    "root": 220.0,
+    "bpm": 92,
+    "inst": "marimba",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ],
+     [
+      9,
+      12,
+      16,
+      21
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ]
+    ]
+   }
+  },
+  "meta": {
+   "title": "What “nvm” really means",
+   "caption": "She asked once. You took two hours. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#sister",
+     "#siblings",
+     "#textmessages",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#sister",
+     "#siblings",
+     "#textmessage",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#sister",
+     "#siblings",
+     "#textmessages",
+     "#reels"
+    ],
+    "facebook": [
+     "#sister",
+     "#family",
+     "#perspective"
+    ]
+   }
+  },
+  "thumb_t": 8.5
+ },
+ {
+  "no": 3,
+  "slug": "dad-ok",
+  "contact": "Dad",
+  "initial": "D",
+  "avatar": [
+   "#8fa7c9",
+   "#5f7aa3"
+  ],
+  "theme": "dark",
+  "clock": "11:03",
+  "battery": 0.9,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 11:02 AM",
+    "at": -1
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "got the job!!",
+    "at": -1
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 11:02 AM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "Ok.",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "wow ok then",
+    "from": 2.0,
+    "to": 3.0
+   },
+   {
+    "t": "erase",
+    "text": "wow ok then",
+    "count": 11,
+    "from": 3.7,
+    "to": 4.4
+   },
+   {
+    "t": "type",
+    "text": "that's it?",
+    "from": 5.1,
+    "to": 5.9
+   },
+   {
+    "t": "erase",
+    "text": "that's it?",
+    "count": 10,
+    "from": 6.6,
+    "to": 7.2
+   }
+  ],
+  "cards": [
+   "You read it as cold.",
+   "He read your text three times, told two coworkers,",
+   "then typed the only way he knows how to text.",
+   "The full stop isn't anger. It's just Dad.",
+   "And when he sends…"
+  ],
+  "audio": {
+   "chimes": [
+    "bell"
+   ],
+   "send": [
+    360,
+    980
+   ],
+   "piano": 261.63,
+   "music": {
+    "root": 196.0,
+    "bpm": 108,
+    "inst": "ks",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ],
+     [
+      9,
+      12,
+      16,
+      21
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ]
+    ]
+   }
+  },
+  "meta": {
+   "title": "Why Dad replies “Ok.”",
+   "caption": "The full stop isn't what you think. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#dad",
+     "#family",
+     "#textmessages",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#dad",
+     "#dadsoftiktok",
+     "#textmessage",
+     "#family",
+     "#fyp"
+    ],
+    "instagram": [
+     "#dad",
+     "#family",
+     "#textmessages",
+     "#reels"
+    ],
+    "facebook": [
+     "#dad",
+     "#family",
+     "#perspective"
+    ]
+   }
+  },
+  "thumb_t": 8.5
+ },
+ {
+  "no": 4,
+  "slug": "best-friend-cancels",
+  "contact": "Jess",
+  "initial": "J",
+  "avatar": [
+   "#f2c27a",
+   "#d9974a"
+  ],
+  "theme": "light",
+  "clock": "7:58",
+  "battery": 0.7,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 7:58 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "so sorry, can't make it tonight",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "wow. third time.",
+    "from": 1.9,
+    "to": 3.2
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "wow. third time.",
+    "at": 3.4
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 7:59 PM",
+    "at": 4.0
+   },
+   {
+    "t": "dots",
+    "from": 4.8,
+    "to": 6.0
+   },
+   {
+    "t": "dots",
+    "from": 6.6,
+    "to": 7.3,
+    "phase": 0.4
+   }
+  ],
+  "cards": [
+   "She's been cancelling because she can't afford it",
+   "and is too embarrassed to say.",
+   "She'd rather look flaky than broke.",
+   "So when she says…"
+  ],
+  "audio": {
+   "chimes": [
+    "soft2"
+   ],
+   "send": [
+    400,
+    1000
+   ],
+   "piano": 207.65,
+   "music": {
+    "root": 261.63,
+    "bpm": 96,
+    "inst": "epiano",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      9,
+      12,
+      16,
+      21
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ]
+    ]
+   }
+  },
+  "meta": {
+   "title": "Why she keeps cancelling",
+   "caption": "Flaky or broke? #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#bestfriend",
+     "#friendship",
+     "#textmessages",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#bestfriend",
+     "#friendship",
+     "#textmessage",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#bestfriend",
+     "#friendship",
+     "#textmessages",
+     "#reels"
+    ],
+    "facebook": [
+     "#friendship",
+     "#perspective"
+    ]
+   }
+  },
+  "thumb_t": 8.5
+ },
+ {
+  "no": 5,
+  "slug": "boss-talk-tomorrow",
+  "contact": "Mark Ellis",
+  "sub": "Head of Operations",
+  "initial": "ME",
+  "avatar": [
+   "#9b8cf0",
+   "#6a58d8"
+  ],
+  "theme": "work",
+  "clock": "9:04",
+  "battery": 0.4,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 9:04 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "can we talk tomorrow morning?",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "did I do something wrong?",
+    "from": 1.4,
+    "to": 2.9
+   },
+   {
+    "t": "erase",
+    "text": "did I do something wrong?",
+    "count": 25,
+    "from": 3.1,
+    "to": 3.8
+   },
+   {
+    "t": "type",
+    "text": "sure, what time?",
+    "from": 4.0,
+    "to": 5.0
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "sure, what time?",
+    "at": 5.2
+   },
+   {
+    "t": "dim",
+    "from": 5.8,
+    "to": 8.6,
+    "amount": 0.5
+   },
+   {
+    "t": "clock",
+    "at": 6.0,
+    "time": "11:52"
+   },
+   {
+    "t": "clock",
+    "at": 6.9,
+    "time": "1:37"
+   },
+   {
+    "t": "clock",
+    "at": 7.8,
+    "time": "3:12"
+   }
+  ],
+  "cards": [
+   "He wanted to ask if you'd lead the new project.",
+   "He sent it at 9pm because that's the only time he stops working.",
+   "You lost a night's sleep over a compliment.",
+   "Next time your boss texts…"
+  ],
+  "audio": {
+   "chimes": [
+    "wood2"
+   ],
+   "send": [
+    330,
+    900
+   ],
+   "piano": 246.94,
+   "music": {
+    "root": 174.61,
+    "bpm": 88,
+    "inst": "bell",
+    "prog": [
+     [
+      2,
+      5,
+      9,
+      14
+     ],
+     [
+      7,
+      11,
+      14,
+      17
+     ],
+     [
+      0,
+      4,
+      7,
+      11
+     ],
+     [
+      9,
+      12,
+      16,
+      19
+     ]
+    ]
+   }
+  },
+  "meta": {
+   "title": "“Can we talk tomorrow?”",
+   "caption": "You lost a night's sleep over this. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#work",
+     "#boss",
+     "#anxiety",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#work",
+     "#boss",
+     "#corporatelife",
+     "#anxiety",
+     "#fyp"
+    ],
+    "instagram": [
+     "#work",
+     "#boss",
+     "#overthinking",
+     "#reels"
+    ],
+    "facebook": [
+     "#work",
+     "#overthinking",
+     "#perspective"
+    ]
+   }
+  },
+  "thumb_t": 5.6
+ },
+ {
+  "no": 6,
+  "slug": "partner-im-fine",
+  "contact": "Sam",
+  "initial": "S",
+  "avatar": [
+   "#e8907a",
+   "#c76552"
+  ],
+  "theme": "dark",
+  "clock": "10:26",
+  "battery": 0.3,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 10:24 PM",
+    "at": -1
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "you ok?",
+    "at": -1
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 10:25 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "I'm fine",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "cool",
+    "from": 2.0,
+    "to": 2.5
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "cool",
+    "at": 2.8
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 10:26 PM",
+    "at": 3.4
+   },
+   {
+    "t": "dots",
+    "from": 4.2,
+    "to": 5.4
+   },
+   {
+    "t": "dots",
+    "from": 6.3,
+    "to": 6.9,
+    "phase": 0.2
+   }
+  ],
+  "cards": [
+   "They weren't fine.",
+   "They wanted you to ask twice,",
+   "because once feels polite and twice feels like you actually care.",
+   "You said “cool” and they stopped trying.",
+   "So if they ever say…"
+  ],
+  "audio": {
+   "chimes": [
+    "soft2"
+   ],
+   "send": [
+    450,
+    1200
+   ],
+   "piano": 185.0,
+   "music": {
+    "root": 233.08,
+    "bpm": 84,
+    "inst": "epiano",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      4,
+      7,
+      11,
+      16
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ]
+    ],
+    "shaker": false
+   }
+  },
+  "meta": {
+   "title": "“I'm fine”",
+   "caption": "Ask twice. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#relationships",
+     "#couples",
+     "#textmessages",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#relationships",
+     "#couples",
+     "#textmessage",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#relationships",
+     "#couples",
+     "#textmessages",
+     "#reels"
+    ],
+    "facebook": [
+     "#relationships",
+     "#perspective"
+    ]
+   }
+  },
+  "thumb_t": 8.5
+ },
+ {
+  "no": 7,
+  "slug": "ex-hey",
+  "contact": "Jordan",
+  "initial": "J",
+  "avatar": [
+   "#9ab7a0",
+   "#6c8f74"
+  ],
+  "theme": "light",
+  "clock": "1:14",
+  "battery": 0.2,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 1:14 AM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "hey",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "what do you want",
+    "from": 2.2,
+    "to": 3.4
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "what do you want",
+    "at": 3.6
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 1:14 AM",
+    "at": 4.2
+   },
+   {
+    "t": "dots",
+    "from": 5.0,
+    "to": 6.3
+   }
+  ],
+  "cards": [
+   "Not always a game.",
+   "Sometimes they just heard a song you both liked",
+   "and missed who they were with you, not you.",
+   "It's not about you. It's about who they were back then.",
+   "That's all “hey” means…"
+  ],
+  "audio": {
+   "chimes": [
+    "pluck"
+   ],
+   "send": [
+    380,
+    1050
+   ],
+   "piano": 233.08,
+   "music": {
+    "root": 207.65,
+    "bpm": 90,
+    "inst": "ks",
+    "prog": [
+     [
+      9,
+      12,
+      16,
+      21
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ],
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ]
+    ],
+    "shaker": false
+   }
+  },
+  "meta": {
+   "title": "Your ex texts “hey” at 1am",
+   "caption": "It's not about you. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#ex",
+     "#relationships",
+     "#textmessages",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#ex",
+     "#relationships",
+     "#textmessage",
+     "#3am",
+     "#fyp"
+    ],
+    "instagram": [
+     "#ex",
+     "#relationships",
+     "#textmessages",
+     "#reels"
+    ],
+    "facebook": [
+     "#relationships",
+     "#perspective"
+    ]
+   }
+  },
+  "thumb_t": 8.5
+ },
+ {
+  "no": 8,
+  "slug": "grandma-voice-note",
+  "contact": "Grandma",
+  "initial": "G",
+  "avatar": [
+   "#d9b38c",
+   "#b88b5f"
+  ],
+  "theme": "light",
+  "clock": "2:30",
+  "battery": 0.85,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 2:30 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "voice",
+    "side": "in",
+    "dur": "4:12",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "can't talk, busy",
+    "from": 2.4,
+    "to": 3.6
+   },
+   {
+    "t": "erase",
+    "text": "can't talk, busy",
+    "count": 16,
+    "from": 4.4,
+    "to": 5.1
+   }
+  ],
+  "cards": [
+   "That four minutes is her whole day.",
+   "She saves things up to tell you",
+   "because you're the only one she talks to this week.",
+   "One day you'll scroll back looking for that voice.",
+   "Listen to the next…"
+  ],
+  "audio": {
+   "chimes": [],
+   "send": [
+    400,
+    1000
+   ],
+   "piano": 293.66,
+   "music": {
+    "root": 293.66,
+    "bpm": 100,
+    "inst": "marimba",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ],
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ]
+    ]
+   }
+  },
+  "meta": {
+   "title": "Grandma's 4-minute voice note",
+   "caption": "Listen to the next one. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#grandma",
+     "#family",
+     "#voicenote",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#grandma",
+     "#family",
+     "#voicenote",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#grandma",
+     "#family",
+     "#voicenote",
+     "#reels"
+    ],
+    "facebook": [
+     "#grandma",
+     "#family",
+     "#perspective"
+    ]
+   }
+  },
+  "thumb_t": 8.5
+ },
+ {
+  "no": 9,
+  "slug": "coworker-thanks",
+  "contact": "Priya",
+  "sub": "Work",
+  "initial": "P",
+  "avatar": [
+   "#b6a0d9",
+   "#8a72b8"
+  ],
+  "theme": "light",
+  "clock": "4:55",
+  "battery": 0.6,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 4:41 PM",
+    "at": -1
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "great meeting today 😊",
+    "at": -1
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 4:52 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "thanks",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "did I say something wrong?",
+    "from": 2.2,
+    "to": 3.8
+   },
+   {
+    "t": "erase",
+    "text": "did I say something wrong?",
+    "count": 26,
+    "from": 4.6,
+    "to": 5.4
+   }
+  ],
+  "cards": [
+   "You thought they were annoyed.",
+   "They were in a car park, crying after a call from the hospital,",
+   "and “thanks” was all they could manage.",
+   "Most people's short replies have nothing to do with you.",
+   "When someone just says…"
+  ],
+  "audio": {
+   "chimes": [
+    "glass"
+   ],
+   "send": [
+    400,
+    1100
+   ],
+   "piano": 174.61,
+   "music": {
+    "root": 246.94,
+    "bpm": 104,
+    "inst": "bell",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ]
+    ]
+   }
+  },
+  "meta": {
+   "title": "When a coworker just says “thanks”",
+   "caption": "It had nothing to do with you. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#work",
+     "#coworkers",
+     "#kindness",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#work",
+     "#coworkers",
+     "#kindness",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#work",
+     "#kindness",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#kindness",
+     "#perspective"
+    ]
+   }
+  },
+  "thumb_t": 8.5
+ },
+ {
+  "no": 10,
+  "slug": "delivery-outside",
+  "contact": "Dev",
+  "sub": "Your driver · Order #4821",
+  "initial": "D",
+  "avatar": [
+   "#f6a36b",
+   "#e0743a"
+  ],
+  "theme": "delivery",
+  "clock": "8:47",
+  "battery": 0.75,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 8:47 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "outside",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "took 40 mins??",
+    "from": 1.6,
+    "to": 2.7
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "took 40 mins??",
+    "at": 2.9
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 8:47 PM",
+    "at": 3.4
+   },
+   {
+    "t": "rating",
+    "at": 4.3,
+    "tap": 5.5,
+    "submit": 6.5,
+    "stars": 1,
+    "title": "How was your delivery?",
+    "sub": "Rate Dev",
+    "done": "Thanks for your feedback"
+   }
+  ],
+  "cards": [
+   "He did six drops in the rain,",
+   "his app froze and his kid was ill at home.",
+   "Your one star cut his pay for the week.",
+   "One word on a screen, a whole life behind it.",
+   "Next time you get…"
+  ],
+  "audio": {
+   "chimes": [
+    "ping"
+   ],
+   "send": [
+    350,
+    950
+   ],
+   "piano": 164.81,
+   "music": {
+    "root": 185.0,
+    "bpm": 112,
+    "inst": "ks",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      9,
+      12,
+      16,
+      21
+     ],
+     [
+      2,
+      5,
+      9,
+      14
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ]
+    ]
+   }
+  },
+  "meta": {
+   "title": "One star for “outside”",
+   "caption": "One word, a whole life behind it. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#delivery",
+     "#kindness",
+     "#textmessages",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#delivery",
+     "#deliverydriver",
+     "#kindness",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#delivery",
+     "#kindness",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#kindness",
+     "#perspective"
+    ]
+   }
+  },
+  "thumb_t": 6.0
+ }
+]

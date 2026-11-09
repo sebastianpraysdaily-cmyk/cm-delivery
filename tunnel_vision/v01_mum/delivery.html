@@ -1,112 +1,84 @@
-<title>Tunnel Vision #1: Mum</title>
+<title>Tunnel Vision Shorts</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: one phone-width column — the vertical video first, then save buttons, then post copy. Single dark look (a screening room), set explicitly. */
-:root{
-  --bg:#17120f; --panel:#221b17; --line:#3a2f29; --fg:#f6ece2; --muted:#b3a497; --accent:#0a84ff; --warm:#f0c27e;
-  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
-  color-scheme:dark;
-}
+/* Layout: a screening-room list — one card per video (player left, post copy right; stacked on phones). Single dark look, set explicitly. */
+:root{--bg:#17120f;--panel:#221b17;--line:#3a2f29;--fg:#f6ece2;--muted:#b3a497;--accent:#0a84ff;--warm:#f0c27e;--ok:#6fd39b;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font:16px/1.5 var(--sans);
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
-.wrap{max-width:520px;margin:0 auto;display:grid;gap:20px}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 var(--sans);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:980px;margin:0 auto;display:grid;gap:22px}
 .eyebrow{font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--warm)}
-h1{font:700 30px/1.15 var(--sans);margin:6px 0 0;text-wrap:balance;letter-spacing:-.02em}
-.sub{color:var(--muted);margin:6px 0 0}
-video{display:block;width:100%;max-width:100%;aspect-ratio:9/16;background:#000;border-radius:14px;border:1px solid var(--line)}
-.btns{display:flex;flex-wrap:wrap;gap:10px}
-button{font:600 15px/1 var(--sans);padding:14px 18px;border-radius:12px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+h1{font:700 32px/1.15 var(--sans);margin:6px 0 0;letter-spacing:-.02em;text-wrap:balance}
+.sub{color:var(--muted);margin:6px 0 0;max-width:62ch}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:640px){.card{grid-template-columns:minmax(0,1fr)}}
+video{display:block;width:100%;max-width:100%;aspect-ratio:9/16;background:#000;border-radius:12px;border:1px solid var(--line)}
+.info{display:grid;gap:12px;min-width:0}
+.num{font:600 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+h2{font:700 22px/1.2 var(--sans);margin:4px 0 0;text-wrap:balance}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+button{font:600 14px/1 var(--sans);padding:12px 14px;border-radius:10px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
 button.ghost{background:transparent;border-color:var(--line);color:var(--fg)}
+button.sm{padding:6px 10px;font-size:13px;border-radius:8px}
 button:focus-visible{outline:2px solid var(--warm);outline-offset:2px}
-button:disabled{opacity:.5;cursor:default}
-.note{color:var(--muted);font-size:14px;margin:0}
-.note a{color:var(--fg)}
-section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:12px;min-width:0}
-h2{font:600 13px/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0}
-.copy{display:grid;gap:6px}
-.copy .lab{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:600;font-size:14px}
-.copy .lab button{padding:6px 10px;font-size:13px;border-radius:8px}
-.copy p{margin:0;overflow-wrap:anywhere;color:var(--fg)}
-ol{margin:0;padding-left:20px;display:grid;gap:4px}
-.beats{display:grid;gap:8px;font-size:15px}
-.beat{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px}
-.beat span:first-child{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px;padding-top:2px}
-.checks{display:grid;gap:6px;font-size:14px}
-.checks div::before{content:"✓ ";color:#6fd39b;font-weight:700}
-#status{min-height:1.2em}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+button:disabled{opacity:.5}
+.copy{display:grid;gap:4px;border-top:1px solid var(--line);padding-top:10px}
+.copy .lab{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:600;font-size:13px;color:var(--muted)}
+.copy p{margin:0;overflow-wrap:anywhere;font-size:15px}
+.status{color:var(--muted);font-size:13px;min-height:1.2em;margin:0}
+.status a{color:var(--fg)}
+.sha{font:12px/1.4 ui-monospace,Menlo,monospace;color:var(--muted);overflow-wrap:anywhere}
+.facts{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+.facts div::before{content:"✓ ";color:var(--ok);font-weight:700}
 </style>
-
 <div class="wrap">
   <header>
-    <div class="eyebrow">Tunnel Vision · Video 1 of 10</div>
-    <h1>Mum — "Did you eat?"</h1>
-    <p class="sub">20 s · 1080×1920 · loops back into Mum's first text</p>
+    <div class="eyebrow">Tunnel Vision · 10 text-message loops</div>
+    <h1>All 10 videos, ready to post</h1>
+    <p class="sub">Each is 20 seconds, 1080×1920, and loops back into its first text. Save the MP4, then copy the title, caption and hashtags for each platform.</p>
   </header>
-
-  <video id="vid" src="/_blob/7a9b59fa717e3a6aa7c7ba8437283d3d" poster="/_blob/76f672c160ed68f242ab334ca0eec5f3" controls playsinline loop preload="metadata"></video>
-
-  <div class="btns">
-    <button id="saveVid" type="button">Save video (MP4)</button>
-    <button id="saveThumb" type="button" class="ghost">Save thumbnail</button>
+  <div class="facts">
+    <div>Every file checked with ffprobe: picture and sound present, exactly 20.0 s, plays to the end without errors</div>
+    <div>Free tools only: hand-drawn SVG illustrations, Chromium/Playwright, NumPy-synthesized sound, FFmpeg</div>
+    <div>Suggested times (your local time): YouTube 12:00–15:00 or 19:00–21:00 · TikTok 18:00–22:00 · Instagram 11:00–13:00 or 19:00–21:00 · Facebook 13:00–16:00. Your rules cap it at 2 a day per platform.</div>
   </div>
-  <p class="note" id="status">If the save button doesn't respond, <a href="/_blob/7a9b59fa717e3a6aa7c7ba8437283d3d" target="_blank" rel="noopener">open the MP4 directly</a> and use your phone's share or save option.</p>
-
-  <section>
-    <h2>Post copy</h2>
-    <div class="copy"><div class="lab">Title <button class="ghost" data-copy="t1">Copy</button></div><p id="t1">Why Mum always asks "did you eat?"</p></div>
-    <div class="copy"><div class="lab">Caption <button class="ghost" data-copy="t2">Copy</button></div><p id="t2">It was never really about food. #tunnelvision</p></div>
-    <div class="copy"><div class="lab">YouTube Shorts · 12:00–15:00 or 19:00–21:00 <button class="ghost" data-copy="h1">Copy</button></div><p id="h1">#shorts #mum #family #textmessages #perspective</p></div>
-    <div class="copy"><div class="lab">TikTok · 18:00–22:00 <button class="ghost" data-copy="h2">Copy</button></div><p id="h2">#mum #mumtok #textmessage #family #perspective #fyp</p></div>
-    <div class="copy"><div class="lab">Instagram Reels · 11:00–13:00 or 19:00–21:00 <button class="ghost" data-copy="h3">Copy</button></div><p id="h3">#mum #family #textmessages #perspective #reels</p></div>
-    <div class="copy"><div class="lab">Facebook Reels · 13:00–16:00 <button class="ghost" data-copy="h4">Copy</button></div><p id="h4">#mum #family #perspective</p></div>
-  </section>
-
-  <section>
-    <h2>Timeline</h2>
-    <div class="beats">
-      <div class="beat"><span>0.0–9.0s</span><span>Phone thread. Mum: "did you eat today?" · You type "why do you always ask that" · Read 9:42 PM · Mum types, stops, types… "just checking" · she starts typing again, then gives up.</span></div>
-      <div class="beat"><span>9.0–18s</span><span>Cut to Mum alone at the kitchen table, phone glow on her face, a covered plate saved beside the empty chair. Clock reads 9:42. Music drops to one soft piano note. "She asks because it's the one question she knows you'll answer." → "Anything deeper and you go quiet."</span></div>
-      <div class="beat"><span>18–20s</span><span>"So every day she checks / the only way you let her…" crossfades straight back into Mum's first text.</span></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Checks passed</h2>
-    <div class="checks">
-      <div>ffprobe: 1080×1920 H.264 + AAC audio, 20.0 s, full decode with no errors</div>
-      <div>Loop seam: the last frames fade into frame 1, and the music fades back in under it</div>
-      <div>Free tools only: Chromium/Playwright, hand-drawn SVG, NumPy-synthesized audio, FFmpeg</div>
-      <div>SHA-256 6ebbf531c4fab733543f7175d325fa60c9b5b04d21833a7090bd790a732b76d8</div>
-    </div>
-  </section>
+  <div id="list"></div>
 </div>
-
 <script>
-(() => {
-  const VIDEO = "/_blob/7a9b59fa717e3a6aa7c7ba8437283d3d", THUMB = "/_blob/76f672c160ed68f242ab334ca0eec5f3";
-  const status = document.getElementById("status");
-  let dl = null;
-  if (window.claude && window.claude.use) window.claude.use("downloads").then(d => { dl = d; }).catch(() => {});
-  async function save(url, filename, btn) {
-    if (!dl) { status.innerHTML = 'Saving isn\'t available in this view. <a href="' + url + '" target="_blank" rel="noopener">Open the file directly</a> and save it from there.'; return; }
-    btn.disabled = true; status.textContent = "Preparing " + filename + "…";
-    try {
-      const blob = await (await fetch(url)).blob();
-      await dl.save({ filename, data: blob });
-      status.textContent = "Saved " + filename + ".";
-    } catch (e) {
-      status.textContent = e && e.code === "declined" ? "Save cancelled." : "Couldn't save just now. Try again, or open the file link and save it from there.";
-    } finally { btn.disabled = false; }
-  }
-  document.getElementById("saveVid").addEventListener("click", e => save(VIDEO, "tunnel-vision-01-mum-did-you-eat.mp4", e.currentTarget));
-  document.getElementById("saveThumb").addEventListener("click", e => save(THUMB, "tunnel-vision-01-mum-did-you-eat-thumb.jpg", e.currentTarget));
-  document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
-    const text = document.getElementById(b.dataset.copy).textContent;
-    navigator.clipboard.writeText(text).then(() => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1500); })
-      .catch(() => { const r = document.createRange(); r.selectNodeContents(document.getElementById(b.dataset.copy)); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
-  }));
-})();
+const DATA = [{"n": 1, "name": "tunnel-vision-01-mum-did-you-eat", "title": "Why Mum always asks \"did you eat?\"", "caption": "It was never really about food. #tunnelvision", "tags": {"youtube": "#shorts #mum #family #textmessages #perspective", "tiktok": "#mum #mumtok #textmessage #family #perspective #fyp", "instagram": "#mum #family #textmessages #perspective #reels", "facebook": "#mum #family #perspective"}, "video": "/_blob/7a9b59fa717e3a6aa7c7ba8437283d3d", "thumb": "/_blob/76f672c160ed68f242ab334ca0eec5f3", "sha": "6ebbf531c4fab733543f7175d325fa60c9b5b04d21833a7090bd790a732b76d8", "label": "Mum — “Did you eat?”"}, {"n": 2, "name": "tunnel-vision-02-sister-nvm", "title": "What “nvm” really means", "caption": "She asked once. You took two hours. #tunnelvision", "tags": {"youtube": "#shorts #sister #siblings #textmessages #perspective", "tiktok": "#sister #siblings #textmessage #perspective #fyp", "instagram": "#sister #siblings #textmessages #reels", "facebook": "#sister #family #perspective"}, "video": "/_blob/43be3f6ef9bbd5f2cf4de917cfd4200e", "thumb": "/_blob/12997c13bf1bbef0b5025f8c212a970e", "sha": "fc44c61cea66e386b6ae8b49872e1e231b9077da0acd8c58840c477d7065ed55", "label": "Sister — “nvm”"}, {"n": 3, "name": "tunnel-vision-03-dad-ok", "title": "Why Dad replies “Ok.”", "caption": "The full stop isn't what you think. #tunnelvision", "tags": {"youtube": "#shorts #dad #family #textmessages #perspective", "tiktok": "#dad #dadsoftiktok #textmessage #family #fyp", "instagram": "#dad #family #textmessages #reels", "facebook": "#dad #family #perspective"}, "video": "/_blob/c7562e666e05849998a116accb720f75", "thumb": "/_blob/56e79de6cf5116cfc14320808e0e8c3b", "sha": "70728a4ed91d17613e2aa8a30f9f8cc3be6165aa35c64e98e290d2e430b6a0eb", "label": "Dad — “Ok.”"}, {"n": 4, "name": "tunnel-vision-04-best-friend-cancels", "title": "Why she keeps cancelling", "caption": "Flaky or broke? #tunnelvision", "tags": {"youtube": "#shorts #bestfriend #friendship #textmessages #perspective", "tiktok": "#bestfriend #friendship #textmessage #perspective #fyp", "instagram": "#bestfriend #friendship #textmessages #reels", "facebook": "#friendship #perspective"}, "video": "/_blob/ae0d2602ad7f2c83b2f715011bedc3fc", "thumb": "/_blob/676d4ef0ef56d8f369d121dcee4bf16c", "sha": "227f84a1743125b483e07e2a90b5acf1b4a39525ff27afcb6b1f4bb085104267", "label": "Best friend — cancels again"}, {"n": 5, "name": "tunnel-vision-05-boss-talk-tomorrow", "title": "“Can we talk tomorrow?”", "caption": "You lost a night's sleep over this. #tunnelvision", "tags": {"youtube": "#shorts #work #boss #anxiety #perspective", "tiktok": "#work #boss #corporatelife #anxiety #fyp", "instagram": "#work #boss #overthinking #reels", "facebook": "#work #overthinking #perspective"}, "video": "/_blob/f86be0a55e771fa5199b7b61eb105d61", "thumb": "/_blob/166d1c6691be3b4ccee1b4e4f0316b25", "sha": "60d53f2ab95df69c7efd139cd47c8c0ed9405a07c27b493ecaaef95a125deb8d", "label": "Boss — “Can we talk tomorrow?”"}, {"n": 6, "name": "tunnel-vision-06-partner-im-fine", "title": "“I'm fine”", "caption": "Ask twice. #tunnelvision", "tags": {"youtube": "#shorts #relationships #couples #textmessages #perspective", "tiktok": "#relationships #couples #textmessage #perspective #fyp", "instagram": "#relationships #couples #textmessages #reels", "facebook": "#relationships #perspective"}, "video": "/_blob/8bcd0197718ae6eb620f75d247477306", "thumb": "/_blob/4a9ba1f45066815f4bdacebd4072b25d", "sha": "940a803c204ab4ee6eede8d5b50e299524c00123069e93d43fe3aa8d6f7dc789", "label": "Partner — “I'm fine”"}, {"n": 7, "name": "tunnel-vision-07-ex-hey", "title": "Your ex texts “hey” at 1am", "caption": "It's not about you. #tunnelvision", "tags": {"youtube": "#shorts #ex #relationships #textmessages #perspective", "tiktok": "#ex #relationships #textmessage #3am #fyp", "instagram": "#ex #relationships #textmessages #reels", "facebook": "#relationships #perspective"}, "video": "/_blob/c4b205e50c6483e5924080ca367ef9a3", "thumb": "/_blob/0a4db457a4dd74eafa4042d66a52c0d1", "sha": "a8849ad2967e7927a1618987e9a53b9cdb4beeeffbafaad4e7e6cbc823fea240", "label": "Ex — late-night “hey”"}, {"n": 8, "name": "tunnel-vision-08-grandma-voice-note", "title": "Grandma's 4-minute voice note", "caption": "Listen to the next one. #tunnelvision", "tags": {"youtube": "#shorts #grandma #family #voicenote #perspective", "tiktok": "#grandma #family #voicenote #perspective #fyp", "instagram": "#grandma #family #voicenote #reels", "facebook": "#grandma #family #perspective"}, "video": "/_blob/7d972c6124d51c8a6286a5ea98740e9b", "thumb": "/_blob/73fa4b2ee14538f87d0a92e5071cca5b", "sha": "891eb0841cede8a57bc2305af8684c2015bf7efabcf3ccd4cb3cd8ec58f19287", "label": "Grandma — long voice note"}, {"n": 9, "name": "tunnel-vision-09-coworker-thanks", "title": "When a coworker just says “thanks”", "caption": "It had nothing to do with you. #tunnelvision", "tags": {"youtube": "#shorts #work #coworkers #kindness #perspective", "tiktok": "#work #coworkers #kindness #perspective #fyp", "instagram": "#work #kindness #perspective #reels", "facebook": "#kindness #perspective"}, "video": "/_blob/b04abf2e6ba144c28e044be9660f521e", "thumb": "/_blob/161632bdf8aa096dee15379e099a69fa", "sha": "3973a8072b91b5ff16a0f656a73d9c8dd1665e8f76c50ca6dcf54c877b14387a", "label": "Coworker — no emoji"}, {"n": 10, "name": "tunnel-vision-10-delivery-outside", "title": "One star for “outside”", "caption": "One word, a whole life behind it. #tunnelvision", "tags": {"youtube": "#shorts #delivery #kindness #textmessages #perspective", "tiktok": "#delivery #deliverydriver #kindness #perspective #fyp", "instagram": "#delivery #kindness #perspective #reels", "facebook": "#kindness #perspective"}, "video": "/_blob/8bc4b3f10dc24f47a650f2ecac34f865", "thumb": "/_blob/ca61243eb54a7b7fa17b890c9a6c2c1e", "sha": "f4874c82ac14d9b76ff13ada9cdb70c7d5052e08f888ad8bf7be0467fbffa0f5", "label": "Delivery driver — “outside”"}];
+const PLAT = [["youtube","YouTube Shorts"],["tiktok","TikTok"],["instagram","Instagram Reels"],["facebook","Facebook Reels"]];
+let dl = null;
+if (window.claude && window.claude.use) window.claude.use("downloads").then(d => { dl = d; }).catch(() => {});
+const el = (tag, attrs = {}, ...kids) => { const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) { if (k === "text") n.textContent = v; else if (k.startsWith("on")) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v); }
+  kids.flat().forEach(c => c != null && n.append(c)); return n; };
+function copyBlock(label, text) {
+  const p = el("p", { text });
+  const b = el("button", { class: "ghost sm", type: "button", text: "Copy", onclick: () => navigator.clipboard.writeText(text)
+    .then(() => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1500); })
+    .catch(() => { const r = document.createRange(); r.selectNodeContents(p); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }) });
+  return el("div", { class: "copy" }, el("div", { class: "lab" }, el("span", { text: label }), b), p);
+}
+async function save(url, filename, btn, status) {
+  if (!dl) { status.innerHTML = ""; status.append("Saving isn't available in this view. ", el("a", { href: url, target: "_blank", rel: "noopener", text: "Open the file" }), " and save it from there."); return; }
+  btn.disabled = true; status.textContent = "Preparing " + filename + "…";
+  try { const blob = await (await fetch(url)).blob(); await dl.save({ filename, data: blob }); status.textContent = "Saved " + filename + "."; }
+  catch (e) { status.textContent = e && e.code === "declined" ? "Save cancelled." : "Couldn't save just now. Try again, or open the file link."; }
+  finally { btn.disabled = false; }
+}
+const list = document.getElementById("list"); list.style.display = "grid"; list.style.gap = "18px";
+for (const v of DATA) {
+  const status = el("p", { class: "status" });
+  const bv = el("button", { type: "button", text: "Save video (MP4)" }); bv.onclick = () => save(v.video, v.name + ".mp4", bv, status);
+  const bt = el("button", { type: "button", class: "ghost", text: "Save thumbnail" }); bt.onclick = () => save(v.thumb, v.name + "-thumb.jpg", bt, status);
+  list.append(el("article", { class: "card", id: "v" + v.n },
+    el("video", { src: v.video, poster: v.thumb, controls: "", playsinline: "", loop: "", preload: "none" }),
+    el("div", { class: "info" },
+      el("div", {}, el("div", { class: "num", text: "Video " + v.n + " of 10" }), el("h2", { text: v.label })),
+      el("div", { class: "btns" }, bv, bt), status,
+      copyBlock("Title", v.title), copyBlock("Caption", v.caption),
+      ...PLAT.map(([k, n]) => copyBlock(n + " hashtags", v.tags[k])),
+      el("div", { class: "sha", text: "sha256 " + v.sha }))));
+}
 </script>

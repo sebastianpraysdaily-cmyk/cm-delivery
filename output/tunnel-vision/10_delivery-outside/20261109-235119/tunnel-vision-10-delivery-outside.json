@@ -1,0 +1,87 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 10,
+ "slug": "delivery-outside",
+ "title": "One star for “outside”",
+ "caption": "One word, a whole life behind it. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#delivery",
+   "#kindness",
+   "#textmessages",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#delivery",
+   "#deliverydriver",
+   "#kindness",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#delivery",
+   "#kindness",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#kindness",
+   "#perspective"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "outside",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "took 40 mins??",
+    "from": 1.6,
+    "to": 2.7
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "took 40 mins??",
+    "at": 2.9
+   },
+   {
+    "t": "rating",
+    "at": 4.3,
+    "tap": 5.5,
+    "submit": 6.5,
+    "stars": 1,
+    "title": "How was your delivery?",
+    "sub": "Rate Dev",
+    "done": "Thanks for your feedback"
+   }
+  ],
+  "reveal": [
+   "He did six drops in the rain,",
+   "his app froze and his kid was ill at home.",
+   "Your one star cut his pay for the week.",
+   "One word on a screen, a whole life behind it.",
+   "Next time you get…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 20.0,
+  "loop": true,
+  "voiceover": false
+ }
+}
