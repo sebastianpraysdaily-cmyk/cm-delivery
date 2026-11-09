@@ -1,0 +1,353 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+body{font-family:"Inter",sans-serif;-webkit-font-smoothing:antialiased}
+.scene{position:absolute;inset:0;overflow:hidden}
+
+/* ---------- PHONE ---------- */
+#phone{background:#fff;color:#000}
+.status{position:absolute;top:0;left:0;right:0;height:140px;display:flex;align-items:center;justify-content:space-between;padding:30px 70px 0 110px;font-weight:600;font-size:48px;letter-spacing:-.5px}
+.status svg{display:block}
+.header{position:absolute;top:140px;left:0;right:0;height:250px;background:rgba(247,247,247,.96);border-bottom:2px solid #dcdcdf;text-align:center}
+.back{position:absolute;left:34px;top:62px}
+.avatar{width:126px;height:126px;border-radius:50%;margin:22px auto 0;background:linear-gradient(#a6abb6,#868b96);color:#fff;font-weight:600;font-size:60px;display:flex;align-items:center;justify-content:center}
+.cname{margin-top:12px;font-size:34px;color:#111;font-weight:500}
+.cname span{color:#9a9aa0;font-size:30px;margin-left:6px}
+.video-ic{position:absolute;right:46px;top:84px}
+#thread{position:absolute;top:400px;left:0;right:0;height:690px;padding:0 44px;display:flex;flex-direction:column;justify-content:flex-start}
+.stamp{text-align:center;color:#8e8e93;font-size:32px;font-weight:500;margin:4px 0 18px}
+.stamp b{font-weight:600}
+.row{display:flex;width:100%;margin-bottom:10px}
+.row.in{justify-content:flex-start}
+.row.out{justify-content:flex-end}
+.bubble{position:relative;max-width:78%;padding:26px 42px 28px;border-radius:50px;font-size:62px;line-height:1.2;letter-spacing:-.4px;will-change:transform}
+.in .bubble{background:#e9e9eb;color:#000;transform-origin:0% 100%}
+.out .bubble{background:#0a84ff;color:#fff;transform-origin:100% 100%}
+.in .bubble.tail:before{content:"";position:absolute;bottom:0;left:-18px;width:52px;height:64px;background:#e9e9eb;border-bottom-right-radius:42px 36px;z-index:0}
+.in .bubble.tail:after{content:"";position:absolute;bottom:0;left:-68px;width:68px;height:64px;background:#fff;border-bottom-right-radius:26px;z-index:1}
+.out .bubble.tail:before{content:"";position:absolute;bottom:0;right:-18px;width:52px;height:64px;background:#0a84ff;border-bottom-left-radius:42px 36px;z-index:0}
+.out .bubble.tail:after{content:"";position:absolute;bottom:0;right:-68px;width:68px;height:64px;background:#fff;border-bottom-left-radius:26px;z-index:1}
+.bubble span{position:relative;z-index:2}
+.receipt{text-align:right;color:#8e8e93;font-size:31px;font-weight:500;margin:-2px 14px 14px 0}
+.receipt b{font-weight:600}
+.dots{display:flex;gap:14px;align-items:center;padding:34px 40px}
+.dots i{display:block;width:24px;height:24px;border-radius:50%;background:#8e8e93}
+.typing .bubble:before{content:"";position:absolute;left:-6px;bottom:-4px;width:30px;height:30px;border-radius:50%;background:#e9e9eb}
+.typing .bubble:after{content:"";position:absolute;left:-22px;bottom:-22px;width:14px;height:14px;border-radius:50%;background:#e9e9eb}
+
+.inputbar{position:absolute;top:1104px;left:0;right:0;height:116px;display:flex;align-items:center;gap:22px;padding:0 34px;background:#fff}
+.plus{width:84px;height:84px;border-radius:50%;background:#efeff1;display:flex;align-items:center;justify-content:center;flex:none}
+.field{flex:1;height:90px;border:2.5px solid #d3d3d8;border-radius:46px;display:flex;align-items:center;padding:0 16px 0 36px;font-size:48px;color:#000;position:relative;white-space:nowrap;overflow:hidden}
+.field .ph{color:#b9b9be}
+.caret{display:inline-block;width:4px;height:56px;background:#0a84ff;margin-left:3px;vertical-align:middle}
+.send{position:absolute;right:10px;top:9px;width:68px;height:68px;border-radius:50%;background:#0a84ff;display:flex;align-items:center;justify-content:center}
+.mic{position:absolute;right:24px;top:16px}
+
+.kb{position:absolute;top:1226px;left:0;right:0;bottom:0;background:#d2d4da;padding:26px 8px 0}
+.krow{display:flex;justify-content:center;gap:15px;margin-bottom:31px}
+.key{height:126px;width:92px;border-radius:16px;background:#fff;box-shadow:0 3px 0 #898a8e;display:flex;align-items:center;justify-content:center;font-size:58px;color:#000;position:relative;font-weight:400}
+.key.dark{background:#abb0ba}
+.key.wide{width:136px}
+.key.space{width:500px;font-size:40px}
+.key.ret{width:220px;font-size:40px}
+.key.down{background:#c5c7cd}
+.pop{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);width:140px;height:200px;background:#fff;border-radius:22px;box-shadow:0 4px 12px rgba(0,0,0,.25);display:flex;align-items:flex-start;justify-content:center;padding-top:22px;font-size:84px;z-index:5}
+.home{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:390px;height:14px;border-radius:7px;background:#111}
+
+/* ---------- REVEAL ---------- */
+#reveal{background:#1b1514}
+#art{position:absolute;inset:0;transform-origin:540px 980px}
+#art svg{width:1080px;height:1920px;display:block}
+.rtext{position:absolute;left:70px;right:70px;top:250px;height:440px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff3e4;font-family:"Inter Display","Inter",sans-serif;font-weight:700;font-size:86px;line-height:1.14;letter-spacing:-1px;text-shadow:0 4px 30px rgba(0,0,0,.65),0 2px 6px rgba(0,0,0,.6);text-wrap:balance}
+#fade{position:absolute;inset:0;background:#000;opacity:0}
+</style></head>
+<body>
+
+<!-- PHONE SCENE -->
+<div id="phone" class="scene">
+  <div class="status">
+    <div>9:41</div>
+    <div style="display:flex;gap:18px;align-items:center">
+      <svg width="62" height="40" viewBox="0 0 62 40"><rect x="0" y="28" width="11" height="12" rx="3"/><rect x="17" y="20" width="11" height="20" rx="3"/><rect x="34" y="11" width="11" height="29" rx="3"/><rect x="51" y="2" width="11" height="38" rx="3"/></svg>
+      <svg width="56" height="40" viewBox="0 0 56 40"><path d="M28 38l8-9a12 12 0 00-16 0z"/><path d="M28 18c6 0 11 2 15 6l5-5C43 14 36 11 28 11s-15 3-20 8l5 5c4-4 9-6 15-6z"/><path d="M28 4c10 0 19 4 25 10l3-3C49 4 39 0 28 0S7 4 0 11l3 3C9 8 18 4 28 4z" opacity="1"/></svg>
+      <svg width="92" height="44" viewBox="0 0 92 44"><rect x="2" y="2" width="78" height="40" rx="12" fill="none" stroke="#000" stroke-width="3" opacity=".4"/><rect x="7" y="7" width="58" height="30" rx="8"/><path d="M85 15v14c4-1 6-4 6-7s-2-6-6-7z" opacity=".4"/></svg>
+    </div>
+  </div>
+  <div class="header">
+    <svg class="back" width="44" height="74" viewBox="0 0 44 74"><path d="M38 6L8 37l30 31" fill="none" stroke="#0a84ff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="avatar">M</div>
+    <div class="cname">Mum<span>›</span></div>
+    <svg class="video-ic" width="86" height="56" viewBox="0 0 86 56"><rect x="2" y="6" width="56" height="44" rx="12" fill="none" stroke="#0a84ff" stroke-width="6"/><path d="M62 22l20-12v36L62 34z" fill="#0a84ff"/></svg>
+  </div>
+  <div id="thread"></div>
+  <div class="inputbar">
+    <div class="plus"><svg width="40" height="40" viewBox="0 0 40 40"><path d="M20 4v32M4 20h32" stroke="#7d7d83" stroke-width="5" stroke-linecap="round"/></svg></div>
+    <div class="field" id="field"></div>
+  </div>
+  <div class="kb" id="kb"></div>
+</div>
+
+<!-- REVEAL SCENE -->
+<div id="reveal" class="scene" style="display:none">
+  <div id="art">
+<svg viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a201f"/><stop offset=".45" stop-color="#4a3a36"/><stop offset=".7" stop-color="#57443d"/><stop offset="1" stop-color="#3a2c28"/>
+    </linearGradient>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c2638"/><stop offset="1" stop-color="#34435c"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="820" cy="760" r="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f3c27e" stop-opacity=".30"/><stop offset="1" stop-color="#f3c27e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="540" cy="1120" r="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d6e6ff" stop-opacity=".42"/><stop offset=".45" stop-color="#b9d0f5" stop-opacity=".14"/><stop offset="1" stop-color="#b9d0f5" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tabletop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c5f4b"/><stop offset="1" stop-color="#9a785e"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9a6f6c"/><stop offset="1" stop-color="#7d5655"/>
+    </linearGradient>
+    <radialGradient id="vig" cx="540" cy="1020" r="1150" gradientUnits="userSpaceOnUse">
+      <stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".72"/>
+    </radialGradient>
+    <linearGradient id="topshade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#120d0c" stop-opacity=".85"/><stop offset=".33" stop-color="#120d0c" stop-opacity=".55"/><stop offset=".5" stop-color="#120d0c" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- wall -->
+  <rect width="1080" height="1920" fill="url(#wall)"/>
+  <!-- window -->
+  <rect x="58" y="640" width="320" height="440" rx="6" fill="#3b2f2c"/>
+  <rect x="78" y="660" width="280" height="400" fill="url(#night)"/>
+  <circle cx="300" cy="720" r="22" fill="#e9e4d4" opacity=".55"/>
+  <g fill="#e8e6dc" opacity=".55"><circle cx="130" cy="700" r="2.5"/><circle cx="200" cy="760" r="2"/><circle cx="250" cy="690" r="2"/><circle cx="160" cy="820" r="2"/><circle cx="330" cy="800" r="2"/></g>
+  <path d="M78 960 L118 960 L118 925 L170 925 L170 945 L225 945 L225 905 L270 905 L270 950 L320 950 L320 930 L358 930 L358 1060 L78 1060Z" fill="#151b28"/>
+  <g fill="#f0c879" opacity=".55"><rect x="135" y="940" width="10" height="12"/><rect x="240" y="920" width="10" height="12"/><rect x="290" y="965" width="10" height="12"/></g>
+  <rect x="214" y="660" width="8" height="400" fill="#3b2f2c"/>
+  <rect x="78" y="856" width="280" height="8" fill="#3b2f2c"/>
+  <rect x="44" y="1076" width="348" height="18" rx="4" fill="#4a3a35"/>
+  <!-- fridge edge + under-cabinet warm light right -->
+  <rect x="930" y="520" width="170" height="740" rx="18" fill="#6a5b54"/>
+  <rect x="944" y="760" width="10" height="120" rx="5" fill="#857670"/>
+  <rect width="1080" height="1920" fill="url(#warm)"/>
+  <!-- wall clock: 9:42 -->
+  <g transform="translate(790 760)">
+    <circle r="62" fill="#e6d9c4" opacity=".9"/><circle r="62" fill="none" stroke="#3b2c27" stroke-width="8"/>
+    <g stroke="#3b2c27" stroke-width="5" stroke-linecap="round">
+      <line x1="0" y1="-50" x2="0" y2="-42"/><line x1="50" y1="0" x2="42" y2="0"/><line x1="0" y1="50" x2="0" y2="42"/><line x1="-50" y1="0" x2="-42" y2="0"/>
+    </g>
+    <line x1="0" y1="0" x2="-26" y2="-10" stroke="#2b201c" stroke-width="7" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-38" y2="12" stroke="#2b201c" stroke-width="4.5" stroke-linecap="round"/>
+    <circle r="5" fill="#2b201c"/>
+  </g>
+
+  <!-- MUM: hair bun (behind head) -->
+  <circle cx="540" cy="786" r="44" fill="#5f4a3f"/>
+  <path d="M512 770 q28 -18 56 0" stroke="#8a7a70" stroke-width="4" fill="none" opacity=".6"/>
+  <!-- torso / cardigan with slumped, rounded shoulders -->
+  <path d="M506 1004 C468 1010 428 1030 404 1068 C384 1100 372 1148 366 1250 L714 1250 C708 1148 696 1100 676 1068 C652 1030 612 1010 574 1004 Z" fill="url(#card)"/>
+  <!-- inner top V -->
+  <path d="M514 1006 L540 1092 L566 1006 Z" fill="#cdb9a2"/>
+  <path d="M514 1006 L540 1092 L566 1006" fill="none" stroke="#6d4a49" stroke-width="5"/>
+  <!-- shoulder/arm shading: arms hang forward -->
+  <path d="M404 1068 C380 1104 368 1170 368 1250 L432 1250 C430 1186 436 1128 452 1092 Z" fill="#6f4b4a" opacity=".85"/>
+  <path d="M676 1068 C700 1104 712 1170 712 1250 L648 1250 C650 1186 644 1128 628 1092 Z" fill="#6f4b4a" opacity=".85"/>
+  <path d="M440 1036 C470 1056 490 1060 505 1060" stroke="#6d4a49" stroke-width="4" fill="none" opacity=".6"/>
+  <path d="M640 1036 C610 1056 590 1060 575 1060" stroke="#6d4a49" stroke-width="4" fill="none" opacity=".6"/>
+  <!-- neck (short: head bowed) -->
+  <path d="M516 982 L564 982 L566 1010 Q540 1022 514 1010 Z" fill="#b98670"/>
+  <!-- head -->
+  <ellipse cx="540" cy="912" rx="97" ry="112" fill="#d8a78b"/>
+  <!-- ears -->
+  <ellipse cx="444" cy="934" rx="13" ry="22" fill="#c99579"/>
+  <ellipse cx="636" cy="934" rx="13" ry="22" fill="#c99579"/>
+  <!-- hair cap: bowed head shows more of the top -->
+  <path d="M440 930 C430 840 472 792 540 790 C608 792 650 840 640 930 C632 902 620 884 600 876 C574 868 506 868 480 876 C460 884 448 902 440 930 Z" fill="#6a5245"/>
+  <path d="M540 792 C536 820 534 846 532 872" stroke="#4f3c33" stroke-width="4" fill="none"/>
+  <g stroke="#9c8d84" stroke-width="3" fill="none" opacity=".55">
+    <path d="M500 806 C478 826 466 852 462 884"/><path d="M580 806 C602 826 614 852 618 884"/><path d="M520 798 C505 820 498 846 496 872"/><path d="M560 798 C575 820 582 846 584 872"/>
+  </g>
+  <!-- face: sad brows (inner ends raised), downcast lids, frown -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M474 916 Q494 912 516 902" stroke="#6b5a52" stroke-width="7"/>
+    <path d="M606 916 Q586 912 564 902" stroke="#6b5a52" stroke-width="7"/>
+    <path d="M480 938 Q497 949 515 938" stroke="#3f2d28" stroke-width="5.5"/>
+    <path d="M600 938 Q583 949 565 938" stroke="#3f2d28" stroke-width="5.5"/>
+    <path d="M486 955 Q498 961 511 955" stroke="#a87660" stroke-width="3.5" opacity=".7"/>
+    <path d="M594 955 Q582 961 569 955" stroke="#a87660" stroke-width="3.5" opacity=".7"/>
+    <path d="M541 946 Q549 966 537 971" stroke="#b07a63" stroke-width="4.5"/>
+    <path d="M522 998 Q540 987 558 998" stroke="#8a5244" stroke-width="5.5"/>
+    <path d="M508 1003 Q512 990 518 984" stroke="#b98670" stroke-width="3" opacity=".25"/>
+    <path d="M572 1003 Q568 990 562 984" stroke="#b98670" stroke-width="3" opacity=".25"/>
+  </g>
+  <ellipse cx="490" cy="975" rx="20" ry="11" fill="#d07f6a" opacity=".18"/>
+  <ellipse cx="590" cy="975" rx="20" ry="11" fill="#d07f6a" opacity=".18"/>
+
+  <!-- table -->
+  <path d="M40 1238 L1040 1238 L1080 1350 L0 1350 Z" fill="url(#tabletop)"/>
+  <rect x="0" y="1350" width="1080" height="52" fill="#4f3b2f"/>
+  <rect x="0" y="1402" width="1080" height="518" fill="#2c211e"/>
+  <rect x="70" y="1402" width="38" height="518" fill="#3e2e26"/>
+  <rect x="972" y="1402" width="38" height="518" fill="#3e2e26"/>
+  <!-- her mug, gone cold -->
+  <path d="M226 1218 L290 1218 L284 1282 Q258 1292 232 1282 Z" fill="#c9b9a4"/>
+  <path d="M288 1232 q26 4 20 26 q-6 14 -24 12" fill="none" stroke="#c9b9a4" stroke-width="8"/>
+  <ellipse cx="258" cy="1218" rx="32" ry="7" fill="#6e5140"/>
+  <!-- the plate she saved for you, under cling film -->
+  <ellipse cx="806" cy="1294" rx="136" ry="36" fill="#e6ddcf"/>
+  <ellipse cx="806" cy="1290" rx="98" ry="24" fill="#d6cab8"/>
+  <path d="M736 1290 C740 1258 770 1246 800 1250 C830 1240 868 1256 874 1290 Z" fill="#b8784f"/>
+  <path d="M756 1286 C760 1270 778 1264 792 1268 C802 1262 818 1266 822 1280" fill="#d39a67"/>
+  <circle cx="842" cy="1272" r="10" fill="#6f8a4f"/><circle cx="824" cy="1262" r="8" fill="#7f9a5c"/>
+  <path d="M694 1292 C700 1226 760 1206 806 1206 C860 1206 912 1226 918 1292" fill="#ffffff" opacity=".10"/>
+  <path d="M724 1262 C744 1232 774 1222 800 1220" stroke="#fff" stroke-width="4" fill="none" opacity=".45"/>
+  <path d="M870 1236 l14 18" stroke="#fff" stroke-width="3" opacity=".4"/>
+  <rect x="948" y="1272" width="70" height="10" rx="5" fill="#b9b2a8" transform="rotate(-8 983 1277)"/>
+
+  <!-- forearms resting on table, hands cupping the phone -->
+  <path d="M366 1258 C404 1272 470 1266 516 1238 L522 1206 C472 1224 412 1232 368 1226 Z" fill="#8a5f5d"/>
+  <path d="M714 1258 C676 1272 610 1266 564 1238 L558 1206 C608 1224 668 1232 712 1226 Z" fill="#8a5f5d"/>
+  <rect x="507" y="1140" width="66" height="112" rx="11" fill="#1d1c21" transform="rotate(-6 540 1196)"/>
+  <rect x="514" y="1150" width="20" height="20" rx="6" fill="#2d2c33" transform="rotate(-6 540 1196)"/>
+  <ellipse cx="514" cy="1222" rx="30" ry="25" fill="#d3a085"/>
+  <ellipse cx="566" cy="1222" rx="30" ry="25" fill="#cf9c81"/>
+  <path d="M498 1208 q14 -6 28 0" stroke="#b98670" stroke-width="3" fill="none"/>
+  <path d="M552 1208 q14 -6 28 0" stroke="#b98670" stroke-width="3" fill="none"/>
+
+  <!-- phone glow lighting her face and hands -->
+  <rect width="1080" height="1920" fill="url(#glow)" style="mix-blend-mode:screen"/>
+
+  <!-- the empty chair, foreground -->
+  <g>
+    <path d="M664 1470 Q820 1438 978 1470 L978 1528 Q820 1498 664 1528 Z" fill="#3d2d27"/>
+    <path d="M664 1470 Q820 1438 978 1470" stroke="#a07a5f" stroke-width="5" fill="none" opacity=".9"/>
+    <rect x="684" y="1500" width="44" height="420" fill="#3d2d27"/>
+    <rect x="914" y="1500" width="44" height="420" fill="#3d2d27"/>
+    <path d="M728 1624 Q820 1608 914 1624 L914 1660 Q820 1644 728 1660 Z" fill="#3d2d27"/>
+    <rect x="684" y="1500" width="6" height="420" fill="#8a6650" opacity=".7"/><rect x="914" y="1500" width="5" height="420" fill="#8a6650" opacity=".5"/>
+  </g>
+
+  <rect width="1080" height="1920" fill="url(#vig)"/>
+  <rect width="1080" height="1920" fill="url(#topshade)"/>
+</svg>
+  </div>
+  <div class="rtext" id="rtext"></div>
+  <div id="fade"></div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const easeOut=x=>1-Math.pow(1-clamp(x),3);
+// pop: overshoot spring 0 -> 1
+function pop(dt){ if(dt<0) return null; const d=0.30; const x=clamp(dt/d);
+  const s = x<1 ? 0.55 + 0.45*easeOut(x) + 0.07*Math.sin(Math.PI*x) : 1; return {s, o:clamp(dt/0.10)}; }
+
+// ---------------- TIMELINE ----------------
+const T = {
+  mum1: 0.25,
+  typeStart: 1.25, typeEnd: 2.85, reply:"why do you always ask that",
+  send: 3.05, read: 3.75,
+  dotsA: [4.25, 5.05], dotsB: [5.35, 6.05], mum2: 6.05,
+  dotsC: [7.35, 8.45],
+  cut: 9.0,
+  cards: [
+    [9.55, 12.45, "She asks because it’s the one question she knows you’ll answer."],
+    [12.6, 15.0, "Anything deeper and you go quiet."],
+    [15.15, 17.75, "So every day she checks"],
+    [17.9, 20.0, "the only way you let her…"]
+  ],
+  xfade: 19.62, end: 20.0
+};
+window.T = T;
+
+// ---------------- KEYBOARD ----------------
+const ROWS=[["q","w","e","r","t","y","u","i","o","p"],["a","s","d","f","g","h","j","k","l"],["⇧","z","x","c","v","b","n","m","⌫"],["123","☺","space","return"]];
+function buildKB(){
+  const kb=$("#kb"); kb.innerHTML="";
+  ROWS.forEach((r,ri)=>{ const row=document.createElement("div"); row.className="krow";
+    r.forEach(k=>{ const d=document.createElement("div"); d.className="key"; d.dataset.k=k;
+      if(k==="⇧"||k==="⌫"){d.classList.add("dark","wide"); d.style.fontSize="50px";}
+      if(k==="123"||k==="☺"){d.classList.add("dark","wide"); d.style.fontSize= k==="☺"?"54px":"40px";}
+      if(k==="space"){d.classList.add("space");}
+      if(k==="return"){d.classList.add("dark","ret");}
+      d.textContent=k; row.appendChild(d); });
+    if(ri===2){ row.style.justifyContent="space-between"; row.style.padding="0 8px"; }
+    kb.appendChild(row); });
+  const h=document.createElement("div"); h.className="home"; kb.appendChild(h);
+}
+buildKB();
+
+function typedAt(t){ const n=T.reply.length; if(t<T.typeStart) return {n:0,key:null};
+  if(t>=T.send) return {n:0,key:null};
+  const per=(T.typeEnd-T.typeStart)/n; const i=Math.floor((t-T.typeStart)/per);
+  const cnt=Math.min(n,i+1); const within=(t-T.typeStart)-i*per;
+  const key = (i<n && within<per*0.8) ? T.reply[i] : null;
+  return {n:cnt,key}; }
+
+// ---------------- PHONE RENDER ----------------
+function bubble(side, text, p, tail=true){
+  const st = p ? `transform:scale(${p.s.toFixed(4)});opacity:${p.o.toFixed(3)}` : "";
+  return `<div class="row ${side}"><div class="bubble ${tail?'tail':''}" style="${st}"><span>${text}</span></div></div>`; }
+function dotsBubble(dt){
+  const p=pop(dt); let ds="";
+  for(let i=0;i<3;i++){ const ph=((dt*1000/1)%1200)/1200; const k=(ph*3 - i + 3)%3; const a = k<1 ? 0.45+0.55*Math.sin(Math.PI*k) : 0.45;
+    ds+=`<i style="opacity:${a.toFixed(3)};transform:translateY(${(-(a-0.45)*10).toFixed(2)}px)"></i>`; }
+  return `<div class="row in typing"><div class="bubble" style="padding:0;transform:scale(${p.s.toFixed(4)});opacity:${p.o.toFixed(3)}"><div class="dots">${ds}</div></div></div>`; }
+const inR=(t,[a,b])=>t>=a&&t<b;
+
+function renderPhone(t){
+  let h=`<div class="stamp"><b>Today</b> 9:41 PM</div>`;
+  if(t<T.mum1) h+=dotsBubble(t+0.6);
+  else h+=bubble("in","did you eat today?",pop(t-T.mum1));
+  if(t>=T.send){ h+=bubble("out","why do you always ask that",pop(t-T.send));
+    if(t>=T.read){ const o=clamp((t-T.read)/0.25); h+=`<div class="receipt" style="opacity:${o}"><b>Read</b> 9:42 PM</div>`; } }
+  if(inR(t,T.dotsA)) h+=dotsBubble(t-T.dotsA[0]);
+  if(inR(t,T.dotsB)) h+=dotsBubble(t-T.dotsB[0]);
+  if(t>=T.mum2) h+=bubble("in","just checking",pop(t-T.mum2));
+  if(inR(t,T.dotsC)) h+=dotsBubble(t-T.dotsC[0]);
+  $("#thread").innerHTML=h;
+
+  // input field
+  const ty=typedAt(t); const f=$("#field");
+  const caretOn = Math.floor(t*1.9)%2===0 || (t>=T.typeStart && t<T.send);
+  const caret = `<span class="caret" style="opacity:${caretOn?1:0}"></span>`;
+  if(ty.n>0){ f.innerHTML = `<span>${T.reply.slice(0,ty.n)}</span>${caret}<div class="send"><svg width="34" height="40" viewBox="0 0 34 40"><path d="M17 36V6M5 17L17 5l12 12" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+    const sd=f.querySelector(".send"); if(t>=T.send-0.12) sd.style.transform="scale(.86)"; }
+  else f.innerHTML = `${caret}<span class="ph">Message</span><svg class="mic" width="40" height="58" viewBox="0 0 40 58"><rect x="11" y="2" width="18" height="34" rx="9" fill="#b0b0b6"/><path d="M4 26a16 16 0 0032 0M20 42v12" stroke="#b0b0b6" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`;
+  // keys
+  document.querySelectorAll(".key").forEach(k=>{ k.classList.remove("down"); const p=k.querySelector(".pop"); if(p) p.remove(); });
+  if(ty.key){ const kk = ty.key===" " ? "space" : ty.key; const el=document.querySelector(`.key[data-k="${kk}"]`);
+    if(el){ el.classList.add("down"); if(kk!=="space"){ const p=document.createElement("div"); p.className="pop"; p.textContent=kk; el.appendChild(p);} } }
+}
+
+// ---------------- REVEAL RENDER ----------------
+function renderReveal(t){
+  const p=clamp((t-T.cut)/(T.end-T.cut));
+  const s=1.0+0.13*(p*p*(3-2*p))*0.5+0.065*p; // slow, steady push-in
+  $("#art").style.transform=`scale(${s.toFixed(5)})`;
+  let html="", op=0;
+  for(const [a,b,txt] of T.cards){ if(t>=a && t<b){ const fin=clamp((t-a)/0.35), fout = b>=T.end ? 1 : clamp((b-t)/0.25);
+      op=Math.min(fin,fout); const y=(1-easeOut(fin))*24; html=`<div style="opacity:${op.toFixed(3)};transform:translateY(${y.toFixed(2)}px)">${txt}</div>`; } }
+  $("#rtext").innerHTML=html;
+  $("#fade").style.opacity = t<T.cut+0.25 ? (1-clamp((t-T.cut)/0.25))*0.9 : 0;
+}
+
+// ---------------- MASTER ----------------
+window.render = function(t){
+  const phone=$("#phone"), rev=$("#reveal");
+  if(t < T.cut){ phone.style.display="block"; rev.style.display="none"; rev.style.opacity=1; renderPhone(t); }
+  else if(t < T.xfade){ phone.style.display="none"; rev.style.display="block"; rev.style.opacity=1; renderReveal(t); }
+  else { // crossfade into frame 0 so the loop is seamless
+    phone.style.display="block"; renderPhone(t - T.end); rev.style.display="block";
+    rev.style.opacity = (1-clamp((t-T.xfade)/(T.end-T.xfade))).toFixed(4); renderReveal(t); }
+};
+window.render(0);
+</script>
+</body></html>
