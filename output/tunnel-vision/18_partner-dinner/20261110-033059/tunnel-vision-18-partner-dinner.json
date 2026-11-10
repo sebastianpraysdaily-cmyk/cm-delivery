@@ -1,0 +1,84 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 18,
+ "slug": "partner-dinner",
+ "title": "“What do you want for dinner?”",
+ "caption": "Just pick for once. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#relationships",
+   "#couples",
+   "#textmessages",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#relationships",
+   "#couples",
+   "#textmessages",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#relationships",
+   "#couples",
+   "#textmessages",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#relationships",
+   "#couples",
+   "#textmessages"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "what do you want for dinner",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "idc",
+    "from": 1.3,
+    "to": 1.6
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "idc",
+    "at": 1.75
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "ok",
+    "at": 3.6
+   }
+  ],
+  "reveal": [
+   "They'd made decisions for other people all day.",
+   "They didn't need dinner ideas.",
+   "They needed one choice they didn't have to make.",
+   "So when they ask…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

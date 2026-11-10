@@ -1,0 +1,85 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 16,
+ "slug": "old-friend-thought-of-you",
+ "title": "“Saw this and thought of you”",
+ "caption": "It was never about the link. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#friendship",
+   "#oldfriends",
+   "#textmessages",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#friendship",
+   "#oldfriends",
+   "#textmessages",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#friendship",
+   "#oldfriends",
+   "#textmessages",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#friendship",
+   "#oldfriends",
+   "#textmessages"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "saw this and thought of you 😂",
+    "at": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "[link]",
+    "at": 0.9
+   },
+   {
+    "t": "type",
+    "text": "lol",
+    "from": 2.2,
+    "to": 2.5
+   },
+   {
+    "t": "erase",
+    "text": "lol",
+    "count": 3,
+    "from": 3.1,
+    "to": 3.4
+   }
+  ],
+  "reveal": [
+   "You haven't spoken in two years.",
+   "They typed that message six times before sending it.",
+   "It was never about the link.",
+   "If they ever send…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 12,
+ "slug": "dad-sent",
+ "title": "When Dad just replies “sent.”",
+ "caption": "He never asks what it's for. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#dad",
+   "#family",
+   "#textmessages",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#dad",
+   "#family",
+   "#textmessages",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#dad",
+   "#family",
+   "#textmessages",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#dad",
+   "#family",
+   "#textmessages"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "can you send me $50? I'll pay you back",
+    "at": -1
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "sent.",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "thanks",
+    "from": 1.3,
+    "to": 1.8
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "thanks",
+    "at": 1.95
+   }
+  ],
+  "reveal": [
+   "He didn't ask what it was for. He never does.",
+   "That $50 was this week's lunch money.",
+   "He'd rather go without than make you explain.",
+   "Next time he just says…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

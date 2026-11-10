@@ -1,0 +1,78 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 20,
+ "slug": "roommate-keep-it-down",
+ "title": "“Can you keep it down tonight?”",
+ "caption": "9pm is her midnight. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#roommates",
+   "#work",
+   "#textmessages",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#roommates",
+   "#work",
+   "#textmessages",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#roommates",
+   "#work",
+   "#textmessages",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#roommates",
+   "#work",
+   "#textmessages"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "can you keep it down tonight?",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "it's literally 9pm",
+    "from": 1.3,
+    "to": 2.3
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "it's literally 9pm",
+    "at": 2.45
+   }
+  ],
+  "reveal": [
+   "Her second job starts at 4am.",
+   "She's been too embarrassed to say she needs two.",
+   "9pm is her midnight.",
+   "When she asks…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

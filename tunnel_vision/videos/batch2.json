@@ -1,0 +1,1356 @@
+[
+ {
+  "no": 12,
+  "slug": "dad-sent",
+  "contact": "Dad",
+  "initial": "D",
+  "avatar": [
+   "#8fa7c9",
+   "#5f7aa3"
+  ],
+  "theme": "light",
+  "clock": "12:14",
+  "battery": 0.6,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 12:14 PM",
+    "at": -1
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "can you send me $50? I'll pay you back",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "sent.",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "thanks",
+    "from": 1.3,
+    "to": 1.8
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "thanks",
+    "at": 1.95
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 12:15 PM",
+    "at": 2.4
+   }
+  ],
+  "cards": [
+   "He didn't ask what it was for. He never does.",
+   "That $50 was this week's lunch money.",
+   "He'd rather go without than make you explain.",
+   "Next time he just says…"
+  ],
+  "audio": {
+   "chimes": [
+    "wood2"
+   ],
+   "send": [
+    360,
+    950
+   ],
+   "piano": 233.08,
+   "music": {
+    "root": 196.0,
+    "bpm": 100,
+    "inst": "ks",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      9,
+      12,
+      16,
+      21
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ]
+    ],
+    "shaker": false
+   }
+  },
+  "thumb_t": 2.6,
+  "meta": {
+   "title": "When Dad just replies “sent.”",
+   "caption": "He never asks what it's for. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#dad",
+     "#family",
+     "#textmessages",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#dad",
+     "#family",
+     "#textmessages",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#dad",
+     "#family",
+     "#textmessages",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#dad",
+     "#family",
+     "#textmessages"
+    ]
+   }
+  }
+ },
+ {
+  "no": 13,
+  "slug": "friend-late-birthday",
+  "contact": "Mia",
+  "initial": "M",
+  "avatar": [
+   "#e8a0b4",
+   "#c46e88"
+  ],
+  "theme": "dark",
+  "clock": "11:58",
+  "battery": 0.15,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 11:58 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "HAPPY BIRTHDAY!!! 🎂🎂",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "thought you forgot",
+    "from": 1.5,
+    "to": 2.5
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "thought you forgot",
+    "at": 2.65
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 11:59 PM",
+    "at": 3.1
+   },
+   {
+    "t": "dots",
+    "from": 3.6,
+    "to": 4.6
+   }
+  ],
+  "cards": [
+   "She was on hour eleven of a twelve-hour shift.",
+   "She set an alarm on her break just to make it before midnight.",
+   "Late isn't the same as forgotten.",
+   "When it finally says…"
+  ],
+  "audio": {
+   "chimes": [
+    "ping"
+   ],
+   "send": [
+    370,
+    965
+   ],
+   "piano": 261.63,
+   "music": {
+    "root": 220.0,
+    "bpm": 96,
+    "inst": "marimba",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ],
+     [
+      9,
+      12,
+      16,
+      21
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ]
+    ],
+    "shaker": true
+   }
+  },
+  "thumb_t": 3.3,
+  "meta": {
+   "title": "The 11:58pm birthday text",
+   "caption": "Late isn't forgotten. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#bestfriend",
+     "#friendship",
+     "#nurse",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#bestfriend",
+     "#friendship",
+     "#nurse",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#bestfriend",
+     "#friendship",
+     "#nurse",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#bestfriend",
+     "#friendship",
+     "#nurse"
+    ]
+   }
+  }
+ },
+ {
+  "no": 14,
+  "slug": "brother-come-over",
+  "contact": "Leo",
+  "initial": "L",
+  "avatar": [
+   "#9ab7a0",
+   "#6c8f74"
+  ],
+  "theme": "green",
+  "clock": "8:31",
+  "battery": 0.5,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 8:31 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "can I come over this weekend?",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "busy, maybe next time",
+    "from": 1.4,
+    "to": 2.6
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "busy, maybe next time",
+    "at": 2.8
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 8:32 PM",
+    "at": 3.3
+   },
+   {
+    "t": "dots",
+    "from": 3.8,
+    "to": 4.7
+   }
+  ],
+  "cards": [
+   "He wasn't asking to hang out.",
+   "Things at home were loud again.",
+   "He was asking for somewhere else to be.",
+   "Next time your little brother asks…"
+  ],
+  "audio": {
+   "chimes": [
+    "glass"
+   ],
+   "send": [
+    380,
+    980
+   ],
+   "piano": 196.0,
+   "music": {
+    "root": 207.65,
+    "bpm": 88,
+    "inst": "epiano",
+    "prog": [
+     [
+      2,
+      5,
+      9,
+      14
+     ],
+     [
+      7,
+      11,
+      14,
+      17
+     ],
+     [
+      0,
+      4,
+      7,
+      11
+     ],
+     [
+      9,
+      12,
+      16,
+      19
+     ]
+    ],
+    "shaker": true
+   }
+  },
+  "thumb_t": 3.5,
+  "meta": {
+   "title": "“Can I come over this weekend?”",
+   "caption": "He wasn't asking to hang out. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#siblings",
+     "#brother",
+     "#family",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#siblings",
+     "#brother",
+     "#family",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#siblings",
+     "#brother",
+     "#family",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#siblings",
+     "#brother",
+     "#family"
+    ]
+   }
+  }
+ },
+ {
+  "no": 15,
+  "slug": "mum-thumbs-up",
+  "contact": "Mum",
+  "initial": "M",
+  "avatar": [
+   "#a6abb6",
+   "#868b96"
+  ],
+  "theme": "light",
+  "clock": "6:05",
+  "battery": 0.8,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 6:05 PM",
+    "at": -1
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "got the flat!! moving in saturday",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "👍",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "just a thumbs up? wow",
+    "from": 1.3,
+    "to": 2.5
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "just a thumbs up? wow",
+    "at": 2.7
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 6:06 PM",
+    "at": 3.2
+   }
+  ],
+  "cards": [
+   "Your niece taught her the emoji keyboard that afternoon.",
+   "It took her ten minutes to find that thumbs up.",
+   "She was proud of it.",
+   "So when Mum sends…"
+  ],
+  "audio": {
+   "chimes": [
+    "soft2"
+   ],
+   "send": [
+    390,
+    995
+   ],
+   "piano": 293.66,
+   "music": {
+    "root": 261.63,
+    "bpm": 104,
+    "inst": "bell",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ],
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ]
+    ],
+    "shaker": false
+   }
+  },
+  "thumb_t": 3.4,
+  "meta": {
+   "title": "Mum's first emoji",
+   "caption": "It took her ten minutes. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#mum",
+     "#family",
+     "#emoji",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#mum",
+     "#family",
+     "#emoji",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#mum",
+     "#family",
+     "#emoji",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#mum",
+     "#family",
+     "#emoji"
+    ]
+   }
+  }
+ },
+ {
+  "no": 16,
+  "slug": "old-friend-thought-of-you",
+  "contact": "Sam",
+  "initial": "S",
+  "avatar": [
+   "#b6a0d9",
+   "#8a72b8"
+  ],
+  "theme": "dark",
+  "clock": "1:02",
+  "battery": 0.25,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 1:02 AM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "saw this and thought of you 😂",
+    "at": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "[link]",
+    "at": 0.9
+   },
+   {
+    "t": "type",
+    "text": "lol",
+    "from": 2.2,
+    "to": 2.5
+   },
+   {
+    "t": "erase",
+    "text": "lol",
+    "count": 3,
+    "from": 3.1,
+    "to": 3.4
+   }
+  ],
+  "cards": [
+   "You haven't spoken in two years.",
+   "They typed that message six times before sending it.",
+   "It was never about the link.",
+   "If they ever send…"
+  ],
+  "audio": {
+   "chimes": [
+    "pluck"
+   ],
+   "send": [
+    400,
+    1010
+   ],
+   "piano": 185.0,
+   "music": {
+    "root": 233.08,
+    "bpm": 90,
+    "inst": "ks",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      9,
+      12,
+      16,
+      21
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ]
+    ],
+    "shaker": true
+   }
+  },
+  "thumb_t": 2.6,
+  "meta": {
+   "title": "“Saw this and thought of you”",
+   "caption": "It was never about the link. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#friendship",
+     "#oldfriends",
+     "#textmessages",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#friendship",
+     "#oldfriends",
+     "#textmessages",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#friendship",
+     "#oldfriends",
+     "#textmessages",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#friendship",
+     "#oldfriends",
+     "#textmessages"
+    ]
+   }
+  }
+ },
+ {
+  "no": 17,
+  "slug": "dad-car",
+  "contact": "Dad",
+  "initial": "D",
+  "avatar": [
+   "#8fa7c9",
+   "#5f7aa3"
+  ],
+  "theme": "dark",
+  "clock": "7:40",
+  "battery": 0.7,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 7:40 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "how's the car running?",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "fine why",
+    "from": 1.3,
+    "to": 1.9
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "fine why",
+    "at": 2.05
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 7:40 PM",
+    "at": 2.5
+   },
+   {
+    "t": "dots",
+    "from": 2.9,
+    "to": 3.8
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "no reason",
+    "at": 3.9
+   }
+  ],
+  "cards": [
+   "You don't need him for much anymore.",
+   "The car is the one thing he still knows how to fix for you.",
+   "Asking about it is how he asks if you still need him.",
+   "Next time Dad asks…"
+  ],
+  "audio": {
+   "chimes": [
+    "bell"
+   ],
+   "send": [
+    410,
+    1025
+   ],
+   "piano": 220.0,
+   "music": {
+    "root": 196.0,
+    "bpm": 98,
+    "inst": "marimba",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ],
+     [
+      9,
+      12,
+      16,
+      21
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ]
+    ],
+    "shaker": true
+   }
+  },
+  "thumb_t": 4.6,
+  "meta": {
+   "title": "“How's the car running?”",
+   "caption": "It's not about the car. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#dad",
+     "#family",
+     "#textmessages",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#dad",
+     "#family",
+     "#textmessages",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#dad",
+     "#family",
+     "#textmessages",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#dad",
+     "#family",
+     "#textmessages"
+    ]
+   }
+  }
+ },
+ {
+  "no": 18,
+  "slug": "partner-dinner",
+  "contact": "Alex",
+  "initial": "A",
+  "avatar": [
+   "#e8907a",
+   "#c76552"
+  ],
+  "theme": "light",
+  "clock": "6:47",
+  "battery": 0.4,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 6:47 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "what do you want for dinner",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "idc",
+    "from": 1.3,
+    "to": 1.6
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "idc",
+    "at": 1.75
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 6:47 PM",
+    "at": 2.2
+   },
+   {
+    "t": "dots",
+    "from": 2.6,
+    "to": 3.5
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "ok",
+    "at": 3.6
+   }
+  ],
+  "cards": [
+   "They'd made decisions for other people all day.",
+   "They didn't need dinner ideas.",
+   "They needed one choice they didn't have to make.",
+   "So when they ask…"
+  ],
+  "audio": {
+   "chimes": [
+    "marimba2"
+   ],
+   "send": [
+    420,
+    1040
+   ],
+   "piano": 246.94,
+   "music": {
+    "root": 174.61,
+    "bpm": 92,
+    "inst": "epiano",
+    "prog": [
+     [
+      2,
+      5,
+      9,
+      14
+     ],
+     [
+      7,
+      11,
+      14,
+      17
+     ],
+     [
+      0,
+      4,
+      7,
+      11
+     ],
+     [
+      9,
+      12,
+      16,
+      19
+     ]
+    ],
+    "shaker": false
+   }
+  },
+  "thumb_t": 4.2,
+  "meta": {
+   "title": "“What do you want for dinner?”",
+   "caption": "Just pick for once. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#relationships",
+     "#couples",
+     "#textmessages",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#relationships",
+     "#couples",
+     "#textmessages",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#relationships",
+     "#couples",
+     "#textmessages",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#relationships",
+     "#couples",
+     "#textmessages"
+    ]
+   }
+  }
+ },
+ {
+  "no": 19,
+  "slug": "grandpa-happy-sunday",
+  "contact": "Grandpa",
+  "initial": "G",
+  "avatar": [
+   "#d9b38c",
+   "#b88b5f"
+  ],
+  "theme": "green",
+  "clock": "9:03",
+  "battery": 0.9,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 9:03 AM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "Happy Sunday. Love, Grandpa",
+    "at": 0.25
+   },
+   {
+    "t": "receipt",
+    "text": "Delivered",
+    "at": 1.0
+   },
+   {
+    "t": "type",
+    "text": "👍",
+    "from": 2.0,
+    "to": 2.3
+   },
+   {
+    "t": "erase",
+    "text": "👍",
+    "count": 1,
+    "from": 3.2,
+    "to": 3.4
+   }
+  ],
+  "cards": [
+   "He sends that to all nine grandkids, one at a time.",
+   "It takes him most of the morning.",
+   "It's how he counts everyone he loves.",
+   "Next Sunday, when he sends…"
+  ],
+  "audio": {
+   "chimes": [
+    "soft2"
+   ],
+   "send": [
+    430,
+    1055
+   ],
+   "piano": 293.66,
+   "music": {
+    "root": 293.66,
+    "bpm": 100,
+    "inst": "bell",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ],
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ]
+    ],
+    "shaker": true
+   }
+  },
+  "thumb_t": 1.8,
+  "meta": {
+   "title": "Grandpa's Sunday text",
+   "caption": "Nine grandkids, one at a time. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#grandpa",
+     "#grandparents",
+     "#family",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#grandpa",
+     "#grandparents",
+     "#family",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#grandpa",
+     "#grandparents",
+     "#family",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#grandpa",
+     "#grandparents",
+     "#family"
+    ]
+   }
+  }
+ },
+ {
+  "no": 20,
+  "slug": "roommate-keep-it-down",
+  "contact": "Jade (roommate)",
+  "initial": "J",
+  "avatar": [
+   "#7fb3a3",
+   "#4f8f7c"
+  ],
+  "theme": "light",
+  "clock": "9:02",
+  "battery": 0.55,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 9:02 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "can you keep it down tonight?",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "it's literally 9pm",
+    "from": 1.3,
+    "to": 2.3
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "it's literally 9pm",
+    "at": 2.45
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 9:02 PM",
+    "at": 2.9
+   },
+   {
+    "t": "dots",
+    "from": 3.4,
+    "to": 4.4
+   }
+  ],
+  "cards": [
+   "Her second job starts at 4am.",
+   "She's been too embarrassed to say she needs two.",
+   "9pm is her midnight.",
+   "When she asks…"
+  ],
+  "audio": {
+   "chimes": [
+    "wood2"
+   ],
+   "send": [
+    440,
+    1070
+   ],
+   "piano": 207.65,
+   "music": {
+    "root": 246.94,
+    "bpm": 106,
+    "inst": "ks",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      9,
+      12,
+      16,
+      21
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ]
+    ],
+    "shaker": true
+   }
+  },
+  "thumb_t": 3.1,
+  "meta": {
+   "title": "“Can you keep it down tonight?”",
+   "caption": "9pm is her midnight. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#roommates",
+     "#work",
+     "#textmessages",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#roommates",
+     "#work",
+     "#textmessages",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#roommates",
+     "#work",
+     "#textmessages",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#roommates",
+     "#work",
+     "#textmessages"
+    ]
+   }
+  }
+ },
+ {
+  "no": 21,
+  "slug": "mum-christmas",
+  "contact": "Mum",
+  "initial": "M",
+  "avatar": [
+   "#a6abb6",
+   "#868b96"
+  ],
+  "theme": "dark",
+  "clock": "8:15",
+  "battery": 0.7,
+  "events": [
+   {
+    "t": "stamp",
+    "text": "<b>Today</b> 8:15 PM",
+    "at": -1
+   },
+   {
+    "t": "dots",
+    "from": -1,
+    "to": 0.25
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "are you coming home for christmas? 🎄",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "probably not this year",
+    "from": 1.4,
+    "to": 2.6
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "probably not this year",
+    "at": 2.8
+   },
+   {
+    "t": "receipt",
+    "text": "<b>Read</b> 8:15 PM",
+    "at": 3.3
+   },
+   {
+    "t": "dots",
+    "from": 3.8,
+    "to": 4.6
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "ok love x",
+    "at": 4.7
+   }
+  ],
+  "cards": [
+   "She already put up the tree.",
+   "Your ornament from when you were six is in her hand.",
+   "She asks in November so she has time to hope.",
+   "When she asks…"
+  ],
+  "audio": {
+   "chimes": [
+    "bell",
+    "glass"
+   ],
+   "send": [
+    450,
+    1085
+   ],
+   "piano": 220.0,
+   "music": {
+    "root": 220.0,
+    "bpm": 94,
+    "inst": "marimba",
+    "prog": [
+     [
+      0,
+      4,
+      7,
+      12
+     ],
+     [
+      7,
+      11,
+      14,
+      19
+     ],
+     [
+      9,
+      12,
+      16,
+      21
+     ],
+     [
+      5,
+      9,
+      12,
+      17
+     ]
+    ],
+    "shaker": false
+   }
+  },
+  "thumb_t": 5.2,
+  "meta": {
+   "title": "“Are you coming home for Christmas?”",
+   "caption": "She asks early so she has time to hope. #tunnelvision",
+   "hashtags": {
+    "youtube": [
+     "#shorts",
+     "#christmas",
+     "#mum",
+     "#family",
+     "#perspective"
+    ],
+    "tiktok": [
+     "#christmas",
+     "#mum",
+     "#family",
+     "#perspective",
+     "#fyp"
+    ],
+    "instagram": [
+     "#christmas",
+     "#mum",
+     "#family",
+     "#perspective",
+     "#reels"
+    ],
+    "facebook": [
+     "#christmas",
+     "#mum",
+     "#family"
+    ]
+   }
+  }
+ }
+]

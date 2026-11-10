@@ -1,0 +1,84 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 17,
+ "slug": "dad-car",
+ "title": "“How's the car running?”",
+ "caption": "It's not about the car. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#dad",
+   "#family",
+   "#textmessages",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#dad",
+   "#family",
+   "#textmessages",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#dad",
+   "#family",
+   "#textmessages",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#dad",
+   "#family",
+   "#textmessages"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "how's the car running?",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "fine why",
+    "from": 1.3,
+    "to": 1.9
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "fine why",
+    "at": 2.05
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "no reason",
+    "at": 3.9
+   }
+  ],
+  "reveal": [
+   "You don't need him for much anymore.",
+   "The car is the one thing he still knows how to fix for you.",
+   "Asking about it is how he asks if you still need him.",
+   "Next time Dad asks…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

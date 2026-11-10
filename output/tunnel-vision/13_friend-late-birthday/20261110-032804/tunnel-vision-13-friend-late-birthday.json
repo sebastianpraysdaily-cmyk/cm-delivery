@@ -1,0 +1,78 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 13,
+ "slug": "friend-late-birthday",
+ "title": "The 11:58pm birthday text",
+ "caption": "Late isn't forgotten. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#bestfriend",
+   "#friendship",
+   "#nurse",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#bestfriend",
+   "#friendship",
+   "#nurse",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#bestfriend",
+   "#friendship",
+   "#nurse",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#bestfriend",
+   "#friendship",
+   "#nurse"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "HAPPY BIRTHDAY!!! 🎂🎂",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "thought you forgot",
+    "from": 1.5,
+    "to": 2.5
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "thought you forgot",
+    "at": 2.65
+   }
+  ],
+  "reveal": [
+   "She was on hour eleven of a twelve-hour shift.",
+   "She set an alarm on her break just to make it before midnight.",
+   "Late isn't the same as forgotten.",
+   "When it finally says…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 19,
+ "slug": "grandpa-happy-sunday",
+ "title": "Grandpa's Sunday text",
+ "caption": "Nine grandkids, one at a time. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#grandpa",
+   "#grandparents",
+   "#family",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#grandpa",
+   "#grandparents",
+   "#family",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#grandpa",
+   "#grandparents",
+   "#family",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#grandpa",
+   "#grandparents",
+   "#family"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "Happy Sunday. Love, Grandpa",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "👍",
+    "from": 2.0,
+    "to": 2.3
+   },
+   {
+    "t": "erase",
+    "text": "👍",
+    "count": 1,
+    "from": 3.2,
+    "to": 3.4
+   }
+  ],
+  "reveal": [
+   "He sends that to all nine grandkids, one at a time.",
+   "It takes him most of the morning.",
+   "It's how he counts everyone he loves.",
+   "Next Sunday, when he sends…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

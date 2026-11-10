@@ -571,7 +571,187 @@ def scene11():  # STR host: kitchen counter at night, laptop says registration r
     return svg(defs + tdefs, b)
 
 
-SCENES = {1: scene1, 2: scene2, 3: scene3, 4: scene4, 5: scene5, 6: scene6, 7: scene7, 8: scene8, 9: scene9, 10: scene10, 11: scene11}
+# ------------------------------------------------------------------ batch 2 scenes (12-21)
+def bg(id_, a, b, c):
+    return lin(id_, [(0, a, None), (.5, b, None), (1, c, None)]), f'<rect width="1080" height="1920" fill="url(#{id_})"/>'
+
+
+def scene12():  # Dad, "sent.": works canteen, tiny lunch, kind tired smile
+    skin, hcol = "#b98463", "#5e554f"
+    d, b = bg("wall", "#232622", "#4c5246", "#3a3f36")
+    d += glow("pg", 540, 1150, 260, "#d8e8ff", .3) + rad("strip", 540, 620, 700, [(0, "#e8f0d8", .22), (1, "#e8f0d8", 0)])
+    b += '<rect width="1080" height="1920" fill="url(#strip)"/>'
+    b += '<rect x="40" y="640" width="1000" height="18" fill="#6e7466"/>' + "".join(f'<rect x="{60+i*170}" y="680" width="140" height="300" rx="6" fill="#5d6456"/><rect x="{70+i*170}" y="700" width="120" height="70" rx="4" fill="#7c8473"/>' for i in range(6))
+    fig = figure(skin, "short", hcol, "#6f7a8a", "kind", bow=False, slump=.5, collar="crew", beard="#5e554f", blush=.1)
+    fig += hands_phone(skin, "#5f6878")
+    b += g(fig)
+    td, tb = table(1238, ("#a7a59a", "#bdbbb0"), "#7d7b70", "#2a2b27", "tt12")
+    b += tb + '<ellipse cx="300" cy="1290" rx="90" ry="22" fill="#e8e4da"/><rect x="262" y="1262" width="76" height="26" rx="8" fill="#d9c29a"/>'
+    b += '<rect x="760" y="1240" width="60" height="60" rx="6" fill="#c9533c"/><text x="790" y="1278" font-family="Inter" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">$1</text>'
+    b += '<rect width="1080" height="1920" fill="url(#pg)" style="mix-blend-mode:screen"/>'
+    return svg(d + td, b)
+
+
+def scene13():  # Friend, late "happy birthday!!": nurse on a break in a hospital corridor, smiling
+    skin, hcol = "#8f5e45", "#1f1714"
+    d, b = bg("wall", "#1c2629", "#3e5559", "#2c3b3e")
+    d += glow("pg", 540, 1110, 280, "#d8e8ff", .4)
+    b += '<rect x="0" y="1180" width="1080" height="740" fill="#2a3436"/><rect x="0" y="1170" width="1080" height="14" fill="#5d7a7d"/>'
+    b += '<rect x="70" y="620" width="220" height="560" fill="#5d7a7d"/><rect x="90" y="640" width="180" height="250" fill="#86a6a8"/><rect x="250" y="900" width="14" height="60" rx="5" fill="#2f3d3f"/>'
+    b += '<rect x="780" y="660" width="220" height="80" rx="8" fill="#e8e1d2"/><text x="890" y="712" font-family="Inter" font-size="34" font-weight="800" fill="#2f6fb6" text-anchor="middle">WARD 4</text>'
+    b += '<g transform="translate(860 860)"><circle r="56" fill="#e6d9c4"/><circle r="56" fill="none" stroke="#2f3d3f" stroke-width="7"/><line x1="0" y1="0" x2="2" y2="-40" stroke="#222" stroke-width="5"/><line x1="0" y1="0" x2="-4" y2="-30" stroke="#222" stroke-width="7"/></g>'
+    fig = figure(skin, "bun", hcol, "#5aa5a0", "smile", bow=True, slump=.6, collar="v", inner="#5aa5a0", blush=.15)
+    fig += '<path d="M470 1000 Q540 1090 610 1000" stroke="#c9ced3" stroke-width="7" fill="none"/><circle cx="540" cy="1094" r="16" fill="#c9ced3"/>'
+    fig += hands_phone(skin, "#4c8f8a")
+    b += g(fig, ty=10)
+    b += '<rect x="300" y="1240" width="480" height="40" rx="10" fill="#4a5658"/><rect x="330" y="1280" width="20" height="200" fill="#3a4446"/><rect x="730" y="1280" width="20" height="200" fill="#3a4446"/>'
+    b += '<rect width="1080" height="1920" fill="url(#pg)" style="mix-blend-mode:screen"/>'
+    return svg(d, b)
+
+
+def scene14():  # Little brother, "can I come over": sitting on the stairs, headphones, raised voices downstairs
+    skin, hcol = "#e0b08f", "#4a3226"
+    d, b = bg("wall", "#191820", "#2f2c3a", "#24222d")
+    d += glow("pg", 540, 1120, 260, "#d8e8ff", .45) + rad("door", 860, 1500, 500, [(0, "#f2c27a", .28), (1, "#f2c27a", 0)])
+    for i in range(7):
+        b += f'<path d="M0 {1240+i*100} L1080 {1240+i*100} L1080 {1340+i*100} L0 {1340+i*100} Z" fill="{["#3b3546","#332e3d"][i%2]}"/>'
+    b += '<rect x="40" y="600" width="18" height="700" fill="#4a4357"/>' + "".join(f'<rect x="{60+i*90}" y="900" width="10" height="340" fill="#4a4357"/>' for i in range(3))
+    b += '<rect width="1080" height="1920" fill="url(#door)"/>'
+    b += '<g fill="#f2c27a" opacity=".55" font-family="Inter" font-weight="800"><text x="760" y="1560" font-size="44">!!</text><text x="880" y="1640" font-size="36">!</text></g>'
+    fig = figure(skin, "short", hcol, "#3e5a7a", "sad", bow=True, slump=.9, collar="hood")
+    fig += ('<path d="M430 930 C420 800 660 800 650 930" stroke="#d94f3d" stroke-width="16" fill="none"/>'
+            '<rect x="410" y="900" width="40" height="76" rx="18" fill="#e3624e"/><rect x="630" y="900" width="40" height="76" rx="18" fill="#e3624e"/>')
+    fig += hands_phone(skin, "#344d69")
+    b += g(fig, ty=20)
+    b += '<rect width="1080" height="1920" fill="url(#pg)" style="mix-blend-mode:screen"/>'
+    return svg(d, b)
+
+
+def scene15():  # Mum's first thumbs up: on the sofa with her granddaughter showing her the emoji keyboard
+    skin = "#dcae90"
+    d, b = bg("wall", "#2c231c", "#6b5644", "#55453a")
+    d += rad("lamp", 860, 760, 560, [(0, "#ffd99a", .35), (1, "#ffd99a", 0)])
+    b += '<rect width="1080" height="1920" fill="url(#lamp)"/>'
+    b += '<rect x="90" y="640" width="260" height="190" fill="#c9a86e"/><rect x="104" y="654" width="232" height="162" fill="#a9c3c9"/>'
+    b += '<path d="M60 1160 Q60 1040 160 1040 L920 1040 Q1020 1040 1020 1160 L1020 1500 L60 1500 Z" fill="#8a5a4a"/>'
+    mum = figure(skin, "bob", "#7a5f50", "#c47a6a", "talk", bow=False, slump=.3, collar="v", inner="#efe6d6", glasses=True, blush=.3)
+    kid = figure("#e7bb9b", "long", "#3a2721", "#e8c35a", "smile", bow=False, slump=0, collar="crew", blush=.3)
+    b += g(kid, tx=230, ty=170, s=.72) + g(mum, tx=-120, ty=40)
+    b += ('<g transform="rotate(-12 560 1180)"><rect x="500" y="1100" width="110" height="180" rx="16" fill="#16151a"/><rect x="508" y="1110" width="94" height="160" rx="10" fill="#f4f6fb"/>'
+          '<text x="555" y="1200" font-size="64" text-anchor="middle">👍</text></g>')
+    b += f'<ellipse cx="540" cy="1270" rx="34" ry="26" fill="{skin}"/><ellipse cx="640" cy="1250" rx="26" ry="20" fill="#e7bb9b"/>'
+    b += '<rect x="0" y="1500" width="1080" height="420" fill="#3d3024"/>'
+    return svg(d, b)
+
+
+def scene16():  # Old best friend, "saw this and thought of you": alone at a bus stop at night
+    skin, hcol = "#c48b6b", "#2a1d18"
+    d, b = bg("wall", "#0b1020", "#1c2540", "#141a2c")
+    d += glow("pg", 540, 1110, 280, "#d8e6ff", .45) + rad("lamp", 860, 600, 520, [(0, "#f2c46b", .3), (1, "#f2c46b", 0)])
+    b += "".join(f'<rect x="{x}" y="{1150-h}" width="90" height="{h}" fill="#151c30"/>' for x, h in [(0, 380), (110, 300), (230, 460), (360, 340), (700, 420), (820, 300), (950, 480)])
+    b += '<rect width="1080" height="1920" fill="url(#lamp)"/><rect x="850" y="560" width="10" height="700" fill="#2a3044"/><path d="M820 560 L900 560 L880 590 L840 590 Z" fill="#f2c46b"/>'
+    b += '<path d="M150 700 L930 700 L930 730 L150 730 Z" fill="#2c3550"/><rect x="160" y="730" width="10" height="560" fill="#2c3550"/><rect x="910" y="730" width="10" height="560" fill="#2c3550"/>'
+    b += '<rect x="180" y="760" width="200" height="300" rx="6" fill="#3a5a8a" opacity=".6"/><text x="280" y="900" font-family="Inter" font-size="40" font-weight="800" fill="#e8eefc" text-anchor="middle" opacity=".7">N 12</text>'
+    fig = figure(skin, "curly", hcol, "#7a4e5e", "wistful", bow=True, slump=.6, collar="crew")
+    fig += hands_phone(skin, "#6a4352")
+    b += g(fig)
+    b += '<rect x="250" y="1250" width="580" height="30" rx="8" fill="#3a4258"/><rect x="0" y="1290" width="1080" height="630" fill="#121726"/>'
+    b += '<rect width="1080" height="1920" fill="url(#pg)" style="mix-blend-mode:screen"/>'
+    return svg(d, b)
+
+
+def scene17():  # Dad, "how's the car running?": alone in the garage, tools on the wall
+    skin, hcol = "#c58c6d", "#8d8681"
+    d, b = bg("wall", "#1f1c18", "#45403a", "#36322c")
+    d += rad("bulb", 540, 600, 700, [(0, "#f6d08a", .3), (1, "#f6d08a", 0)]) + glow("pg", 540, 1110, 260, "#d8e8ff", .35)
+    b += '<rect width="1080" height="1920" fill="url(#bulb)"/><rect x="535" y="0" width="4" height="560" fill="#222"/><circle cx="537" cy="575" r="20" fill="#ffe1a0"/>'
+    b += '<rect x="60" y="640" width="960" height="320" fill="#5a4c3e"/>' + "".join(f'<circle cx="{90+i*40}" cy="{660+j*40}" r="5" fill="#3e342b"/>' for i in range(24) for j in range(7))
+    b += '<g stroke="#b9bdc4" stroke-width="12" stroke-linecap="round"><path d="M140 700 L140 880"/><path d="M220 690 L220 860"/><path d="M820 700 L900 860"/></g><circle cx="140" cy="690" r="22" fill="none" stroke="#b9bdc4" stroke-width="10"/>'
+    fig = figure(skin, "short", hcol, "#4f6b8a", "wistful", bow=True, slump=.7, collar="crew", beard="#8d8681")
+    fig += hands_phone(skin, "#435c78")
+    b += g(fig)
+    td, tb = table(1238, ("#6e5a46", "#86705a"), "#4a3c2e", "#1c1916", "tt17")
+    b += tb + '<rect x="200" y="1250" width="150" height="50" rx="6" fill="#c0392b"/><rect x="230" y="1236" width="90" height="16" rx="6" fill="#922d22"/>'
+    b += '<rect x="760" y="1260" width="120" height="24" rx="6" fill="#6b6f77"/>'
+    b += '<rect width="1080" height="1920" fill="url(#pg)" style="mix-blend-mode:screen"/>'
+    return svg(d + td, b)
+
+
+def scene18():  # Partner, "what do you want for dinner": kitchen counter after a brutal day, head on hand
+    skin, hcol = "#d8a78b", "#4b2e22"
+    d, b = bg("wall", "#1d1a1a", "#463c38", "#352d2a")
+    d += rad("lamp", 300, 620, 560, [(0, "#f6c886", .3), (1, "#f6c886", 0)])
+    b += '<rect width="1080" height="1920" fill="url(#lamp)"/>'
+    b += '<rect x="620" y="620" width="420" height="300" rx="8" fill="#5c4e47"/><rect x="640" y="640" width="180" height="260" fill="#6c5d55"/><rect x="840" y="640" width="180" height="260" fill="#6c5d55"/>'
+    fig = figure(skin, "long", hcol, "#3e4a5c", "tired", bow=True, slump=.85, collar="shirt", inner="#e9e6df")
+    fig += (f'<path d="M402 1080 C360 1060 380 960 440 920 L470 950 C430 990 420 1040 446 1080 Z" fill="#3e4a5c"/>'
+            f'<ellipse cx="452" cy="930" rx="34" ry="26" fill="{skin}" transform="rotate(-30 452 930)"/>'
+            f'<path d="M714 1258 C676 1272 610 1266 564 1238 L558 1206 C608 1224 668 1232 712 1226 Z" fill="#333e4e"/>'
+            + phone_back(520, 1150, rot=-10) + f'<ellipse cx="560" cy="1226" rx="30" ry="24" fill="{skin}"/>')
+    b += g(fig)
+    td, tb = table(1238, ("#8a8f96", "#a3a8ae"), "#5d6268", "#1c1b1c", "tt18")
+    b += tb + '<path d="M180 1180 L320 1180 L330 1300 L170 1300 Z" fill="#2a2d33"/><rect x="200" y="1160" width="100" height="24" rx="8" fill="#1f2226"/>'
+    b += '<rect x="760" y="1250" width="200" height="40" rx="6" fill="#e8e2d4"/><rect x="770" y="1242" width="180" height="10" fill="#c8c0b0"/>'
+    return svg(d + td, b)
+
+
+def scene19():  # Grandpa, "Happy Sunday": typing slowly with one finger, a list of nine names beside him
+    skin, hcol = "#e2b49a", "#eeeae5"
+    d, b = bg("wall", "#2a221b", "#5e4c3a", "#4a3c2f")
+    d += rad("win", 260, 820, 640, [(0, "#ffe3a0", .32), (1, "#ffe3a0", 0)])
+    b += window(70, 640, 320, 420, "sky19", "#5a4632") if False else ''
+    d += lin("sky19", [(0, "#cfe1e3", None), (1, "#f6e4b8", None)])
+    b += window(70, 650, 320, 400, "sky19", "#5a4632")
+    b += '<rect width="1080" height="1920" fill="url(#win)"/>'
+    b += '<rect x="760" y="660" width="200" height="140" fill="#c9a86e"/><rect x="772" y="672" width="176" height="116" fill="#b7cbd0"/>' + "".join(f'<circle cx="{790+i*18}" cy="730" r="7" fill="{["#e0b090","#a8745a","#e7bb9b"][i%3]}"/>' for i in range(9))
+    fig = figure(skin, "short", hcol, "#7a6a8a", "kind", bow=True, slump=.6, collar="v", inner="#ece4d4", glasses=True, beard="#eeeae5", blush=.25)
+    fig += hands_phone(skin, "#6a5b78")
+    b += g(fig)
+    td, tb = table(1238, ("#7c5f4b", "#9a785e"), "#4f3b2f", "#2c211e", "tt19")
+    b += tb + '<g transform="rotate(-4 780 1290)"><rect x="700" y="1250" width="170" height="90" fill="#f4eee2"/>' + "".join(f'<rect x="714" y="{1262+i*8}" width="{80+(i*37)%60}" height="4" fill="#9a8f80"/>' for i in range(9)) + '</g>'
+    b += '<rect x="230" y="1230" width="60" height="70" rx="8" fill="#e9dcc6"/>'
+    return svg(d + td, b)
+
+
+def scene20():  # Roommate, "can you keep it down": in uniform, setting a 3:30 alarm
+    skin, hcol = "#a8714f", "#1f1714"
+    d, b = bg("wall", "#14161d", "#2a2f3c", "#1e222c")
+    d += glow("clk", 760, 1180, 260, "#ff6b5a", .35)
+    b += '<rect x="80" y="660" width="260" height="360" fill="#232838"/><path d="M80 660 L340 1020" stroke="#2f3548" stroke-width="3"/>'
+    b += '<rect x="700" y="640" width="260" height="380" rx="8" fill="#3a3f4f"/><rect x="740" y="680" width="180" height="300" fill="#2a3040"/>'
+    b += '<path d="M770 700 L890 700 L900 940 L760 940 Z" fill="#2f6fb6"/><rect x="800" y="740" width="60" height="40" rx="4" fill="#e8eefc"/>'
+    fig = figure(skin, "bun", hcol, "#2f6fb6", "tired", bow=True, slump=.7, collar="v", inner="#e8eefc")
+    fig += '<rect x="580" y="1050" width="70" height="40" rx="4" fill="#e8eefc"/><rect x="590" y="1060" width="50" height="6" fill="#2f6fb6"/>'
+    fig += hands_phone(skin, "#2a5f9e")
+    b += g(fig)
+    td, tb = table(1238, ("#4a4f5c", "#5a5f6c"), "#33373f", "#121318", "tt20")
+    b += tb + '<rect x="680" y="1180" width="180" height="90" rx="14" fill="#1a1a1e"/><text x="770" y="1245" font-family="Inter" font-size="54" font-weight="700" fill="#ff6b5a" text-anchor="middle">3:30</text>'
+    b += '<rect width="1080" height="1920" fill="url(#clk)" style="mix-blend-mode:screen"/>'
+    return svg(d + td, b)
+
+
+def scene21():  # Mum, "are you coming home for Christmas?": decorating the tree alone, your ornament in her hand
+    skin, hcol = "#d9a88b", "#6a5245"
+    d, b = bg("wall", "#24170f", "#5a3e2c", "#452f22")
+    d += rad("fire", 540, 1300, 800, [(0, "#ffb866", .3), (1, "#ffb866", 0)])
+    b += '<rect width="1080" height="1920" fill="url(#fire)"/>'
+    tree = '<path d="M820 600 L1000 1000 L940 1000 L1040 1300 L600 1300 L700 1000 L640 1000 Z" fill="#2f5a3e"/>'
+    tree += "".join(f'<circle cx="{x}" cy="{y}" r="12" fill="{c}"/>' for x, y, c in [(760, 900, "#e5483a"), (880, 960, "#f2c46b"), (720, 1120, "#5aa5e0"), (900, 1180, "#e5483a"), (820, 1060, "#f2c46b"), (960, 1250, "#5aa5e0")])
+    tree += "".join(f'<circle cx="{650+i*45}" cy="{1000+((i*53)%260)}" r="5" fill="#ffe7a0"/>' for i in range(9))
+    b += tree + '<path d="M820 560 l12 26 28 4 -20 20 5 28 -25 -13 -25 13 5 -28 -20 -20 28 -4z" fill="#f2c46b"/>'
+    b += '<rect x="660" y="1300" width="320" height="40" rx="6" fill="#7a4e33"/>'
+    fig = figure(skin, "bun", hcol, "#9c4a4a", "wistful", bow=True, slump=.6, collar="v", inner="#efe6d6", blush=.25)
+    fig += (f'<path d="M640 1090 C700 1060 720 1000 700 960 L670 970 C680 1000 670 1040 620 1060 Z" fill="#7d3a3a"/>'
+            f'<ellipse cx="690" cy="955" rx="26" ry="22" fill="{skin}"/><circle cx="700" cy="920" r="26" fill="#e5483a"/><circle cx="700" cy="920" r="26" fill="none" stroke="#f2c46b" stroke-width="4"/>'
+            '<text x="700" y="928" font-family="Inter" font-size="18" font-weight="800" fill="#fff" text-anchor="middle">YOU</text>'
+            '<path d="M700 894 L700 880" stroke="#f2c46b" stroke-width="3"/>')
+    b += g(fig, tx=-120)
+    b += '<rect x="80" y="1340" width="300" height="200" rx="10" fill="#8a4f3a"/><rect x="0" y="1340" width="1080" height="580" fill="#2c1d14" opacity=".9"/>'
+    b += '<rect x="120" y="1260" width="80" height="80" fill="#c94a3a"/><rect x="150" y="1260" width="16" height="80" fill="#f2c46b"/><rect x="220" y="1290" width="60" height="50" fill="#3a7a5a"/>'
+    return svg(d, b)
+
+
+SCENES = {1: scene1, 2: scene2, 3: scene3, 4: scene4, 5: scene5, 6: scene6, 7: scene7, 8: scene8, 9: scene9, 10: scene10, 11: scene11, 12: scene12, 13: scene13, 14: scene14, 15: scene15, 16: scene16, 17: scene17, 18: scene18, 19: scene19, 20: scene20, 21: scene21}
 
 if __name__ == "__main__":
     n = int(sys.argv[1])

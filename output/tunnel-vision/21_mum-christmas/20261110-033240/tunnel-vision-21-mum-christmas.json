@@ -1,0 +1,84 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 21,
+ "slug": "mum-christmas",
+ "title": "“Are you coming home for Christmas?”",
+ "caption": "She asks early so she has time to hope. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#christmas",
+   "#mum",
+   "#family",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#christmas",
+   "#mum",
+   "#family",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#christmas",
+   "#mum",
+   "#family",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#christmas",
+   "#mum",
+   "#family"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "are you coming home for christmas? 🎄",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "probably not this year",
+    "from": 1.4,
+    "to": 2.6
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "probably not this year",
+    "at": 2.8
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "ok love x",
+    "at": 4.7
+   }
+  ],
+  "reveal": [
+   "She already put up the tree.",
+   "Your ornament from when you were six is in her hand.",
+   "She asks in November so she has time to hope.",
+   "When she asks…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 14,
+ "slug": "brother-come-over",
+ "title": "“Can I come over this weekend?”",
+ "caption": "He wasn't asking to hang out. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#siblings",
+   "#brother",
+   "#family",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#siblings",
+   "#brother",
+   "#family",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#siblings",
+   "#brother",
+   "#family",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#siblings",
+   "#brother",
+   "#family"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "can I come over this weekend?",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "busy, maybe next time",
+    "from": 1.4,
+    "to": 2.6
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "busy, maybe next time",
+    "at": 2.8
+   }
+  ],
+  "reveal": [
+   "He wasn't asking to hang out.",
+   "Things at home were loud again.",
+   "He was asking for somewhere else to be.",
+   "Next time your little brother asks…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}
