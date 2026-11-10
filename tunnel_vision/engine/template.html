@@ -127,7 +127,7 @@ const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const easeOut=x=>1-Math.pow(1-clamp(x),3);
 function pop(dt){ if(dt<0) return null; const x=clamp(dt/0.30);
   return {s: x<1 ? 0.55+0.45*easeOut(x)+0.07*Math.sin(Math.PI*x) : 1, o: clamp(dt/0.10)}; }
-const END=20.0, XF=19.62, CUT=CFG.cut||9.0;
+const END=CFG.end||20.0, XF=END-0.38, CUT=CFG.cut||9.0;
 
 // header
 const ph=$("#phone"); if(CFG.theme && CFG.theme!=="light") ph.classList.add(CFG.theme);

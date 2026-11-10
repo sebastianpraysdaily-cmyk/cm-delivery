@@ -1,0 +1,85 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 1,
+ "slug": "mum-did-you-eat",
+ "title": "Why Mum always asks “did you eat?”",
+ "caption": "It was never really about food. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#mum",
+   "#family",
+   "#textmessages",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#mum",
+   "#mumtok",
+   "#textmessage",
+   "#family",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#mum",
+   "#family",
+   "#textmessages",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#mum",
+   "#family",
+   "#perspective"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "did you eat today?",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "why do you always ask that",
+    "from": 1.0,
+    "to": 2.4
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "why do you always ask that",
+    "at": 2.55
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "just checking",
+    "at": 4.3
+   }
+  ],
+  "reveal": [
+   "She asks because it’s the one question she knows you’ll answer.",
+   "Anything deeper and you go quiet.",
+   "So every day she checks",
+   "the only way you let her…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

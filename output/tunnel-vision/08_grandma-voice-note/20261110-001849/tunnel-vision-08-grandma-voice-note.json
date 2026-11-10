@@ -1,0 +1,79 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 8,
+ "slug": "grandma-voice-note",
+ "title": "Grandma's 4-minute voice note",
+ "caption": "Listen to the next one. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#grandma",
+   "#family",
+   "#voicenote",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#grandma",
+   "#family",
+   "#voicenote",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#grandma",
+   "#family",
+   "#voicenote",
+   "#reels"
+  ],
+  "facebook": [
+   "#grandma",
+   "#family",
+   "#perspective"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "voice",
+    "side": "in",
+    "dur": "4:12",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "can't talk, busy",
+    "from": 1.6,
+    "to": 2.6
+   },
+   {
+    "t": "erase",
+    "text": "can't talk, busy",
+    "count": 16,
+    "from": 3.4,
+    "to": 4.0
+   }
+  ],
+  "reveal": [
+   "That four minutes is her whole day.",
+   "She saves things up to tell you",
+   "because you're the only one she talks to this week.",
+   "One day you'll scroll back looking for that voice.",
+   "Listen to the next…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

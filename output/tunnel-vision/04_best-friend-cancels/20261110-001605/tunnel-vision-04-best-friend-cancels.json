@@ -1,0 +1,76 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 4,
+ "slug": "best-friend-cancels",
+ "title": "Why she keeps cancelling",
+ "caption": "Flaky or broke? #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#bestfriend",
+   "#friendship",
+   "#textmessages",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#bestfriend",
+   "#friendship",
+   "#textmessage",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#bestfriend",
+   "#friendship",
+   "#textmessages",
+   "#reels"
+  ],
+  "facebook": [
+   "#friendship",
+   "#perspective"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "so sorry, can't make it tonight",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "wow. third time.",
+    "from": 1.2,
+    "to": 2.3
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "wow. third time.",
+    "at": 2.5
+   }
+  ],
+  "reveal": [
+   "She's been cancelling because she can't afford it",
+   "and is too embarrassed to say.",
+   "She'd rather look flaky than broke.",
+   "So when she says…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

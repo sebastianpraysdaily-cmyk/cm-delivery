@@ -23,10 +23,10 @@ import audio  # noqa: E402
 END = 20.0
 
 
-def card_times(texts, start=9.55, gap=0.15):
+def card_times(texts, start=9.55, end=20.0, gap=0.15):
     words = [len(t.split()) for t in texts]
     last = max(2.1, 0.3 * words[-1] + 0.9)
-    last_start = END - last
+    last_start = end - last
     weights = [0.3 * w + 0.8 for w in words[:-1]]
     avail = last_start - start - gap * len(weights)
     out, t = [], start
@@ -34,7 +34,7 @@ def card_times(texts, start=9.55, gap=0.15):
         d = avail * w / sum(weights)
         out.append([round(t, 3), round(t + d, 3), texts[len(out)]])
         t += d + gap
-    out.append([round(last_start, 3), END, texts[-1]])
+    out.append([round(last_start, 3), end, texts[-1]])
     return out
 
 
@@ -42,7 +42,9 @@ def load(no):
     for v in json.load(open(os.path.join(TV, "videos", "videos.json"))):
         if v["no"] == no:
             v = dict(v)
-            v["cards"] = card_times(v["cards"])
+            v.setdefault("cut", 5.5)
+            v.setdefault("end", 15.0)
+            v["cards"] = card_times(v["cards"], v["cut"] + 0.5, v["end"])
             return v
     raise SystemExit(f"no video {no}")
 
@@ -76,7 +78,7 @@ def render(no):
     wav = os.path.join(d, "mix.wav")
     audio.build(cfg, wav)
     mp4 = os.path.join(out, name + ".mp4")
-    sh("node", os.path.join(HERE, "render.js"), os.path.join(d, "page.html"), wav, mp4, "30")
+    sh("node", os.path.join(HERE, "render.js"), os.path.join(d, "page.html"), wav, mp4, "30", str(cfg["end"]))
     sh("ffmpeg", "-v", "error", "-y", "-ss", str(cfg.get("thumb_t", 8.5)), "-i", mp4, "-frames:v", "1", "-q:v", "2",
        os.path.join(out, name + "-thumb.jpg"))
     meta = {"channel": "Tunnel Vision", "series_no": no, "slug": cfg["slug"], **cfg["meta"],
@@ -85,14 +87,14 @@ def render(no):
             "script": {"thread": [e for e in cfg["events"] if e["t"] in ("msg", "voice", "type", "erase", "rating")],
                        "reveal": [c[2] for c in cfg["cards"]]},
             "claims": [],
-            "format": {"resolution": "1080x1920", "aspect": "9:16", "fps": 30, "duration_s": END, "loop": True, "voiceover": False}}
+            "format": {"resolution": "1080x1920", "aspect": "9:16", "fps": 30, "duration_s": cfg["end"], "loop": True, "voiceover": False}}
     json.dump(meta, open(os.path.join(out, name + ".json"), "w"), indent=1, ensure_ascii=False)
 
     # done only if ffprobe verifies size, both streams, full duration, and a clean decode
     assert probe(mp4, "-select_streams", "v:0", "-show_entries", "stream=width,height") == "1080,1920"
     assert probe(mp4, "-select_streams", "a:0", "-show_entries", "stream=codec_type") == "audio"
     dur = float(probe(mp4, "-show_entries", "format=duration"))
-    assert 19.9 <= dur <= 20.1, dur
+    assert abs(dur - cfg["end"]) <= 0.1, dur
     sh("ffmpeg", "-v", "error", "-i", mp4, "-f", "null", "-")
     sha = hashlib.sha256(open(mp4, "rb").read()).hexdigest()
     man = os.path.join(ROOT, "output", "tunnel-vision", "MANIFEST.csv")

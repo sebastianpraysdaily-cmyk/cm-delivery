@@ -1,0 +1,90 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 5,
+ "slug": "boss-talk-tomorrow",
+ "title": "“Can we talk tomorrow?”",
+ "caption": "You lost a night's sleep over this. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#work",
+   "#boss",
+   "#anxiety",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#work",
+   "#boss",
+   "#corporatelife",
+   "#anxiety",
+   "#fyp"
+  ],
+  "instagram": [
+   "#work",
+   "#boss",
+   "#overthinking",
+   "#reels"
+  ],
+  "facebook": [
+   "#work",
+   "#overthinking",
+   "#perspective"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "can we talk tomorrow morning?",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "did I do something wrong?",
+    "from": 1.0,
+    "to": 2.2
+   },
+   {
+    "t": "erase",
+    "text": "did I do something wrong?",
+    "count": 25,
+    "from": 2.35,
+    "to": 2.85
+   },
+   {
+    "t": "type",
+    "text": "sure, what time?",
+    "from": 3.0,
+    "to": 3.7
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "sure, what time?",
+    "at": 3.85
+   }
+  ],
+  "reveal": [
+   "He wanted to ask if you'd lead the new project.",
+   "He sent it at 9pm because that's the only time he stops working.",
+   "You lost a night's sleep over a compliment.",
+   "Next time your boss texts…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

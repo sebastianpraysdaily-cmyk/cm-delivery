@@ -1,0 +1,84 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 9,
+ "slug": "coworker-thanks",
+ "title": "When a coworker just says “thanks”",
+ "caption": "It had nothing to do with you. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#work",
+   "#coworkers",
+   "#kindness",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#work",
+   "#coworkers",
+   "#kindness",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#work",
+   "#kindness",
+   "#perspective",
+   "#reels"
+  ],
+  "facebook": [
+   "#kindness",
+   "#perspective"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "great meeting today 😊",
+    "at": -1
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "thanks",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "did I say something wrong?",
+    "from": 1.4,
+    "to": 2.8
+   },
+   {
+    "t": "erase",
+    "text": "did I say something wrong?",
+    "count": 26,
+    "from": 3.6,
+    "to": 4.3
+   }
+  ],
+  "reveal": [
+   "You thought they were annoyed.",
+   "They were in a car park, crying after a call from the hospital,",
+   "and “thanks” was all they could manage.",
+   "Most people's short replies have nothing to do with you.",
+   "When someone just says…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

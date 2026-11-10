@@ -1,0 +1,83 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 2,
+ "slug": "sister-nvm",
+ "title": "What “nvm” really means",
+ "caption": "She asked once. You took two hours. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#sister",
+   "#siblings",
+   "#textmessages",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#sister",
+   "#siblings",
+   "#textmessage",
+   "#perspective",
+   "#fyp"
+  ],
+  "instagram": [
+   "#sister",
+   "#siblings",
+   "#textmessages",
+   "#reels"
+  ],
+  "facebook": [
+   "#sister",
+   "#family",
+   "#perspective"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "hey can I ask you something",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "what's up",
+    "from": 1.8,
+    "to": 2.4
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "what's up",
+    "at": 2.55
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "nvm",
+    "at": 4.4
+   }
+  ],
+  "reveal": [
+   "She'd been working up to it all afternoon.",
+   "By the time you replied, the nerve was gone.",
+   "“nvm” doesn't mean nothing. It means she'll carry it alone now.",
+   "Next time she says…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}

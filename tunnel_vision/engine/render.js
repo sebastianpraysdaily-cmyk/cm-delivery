@@ -4,8 +4,8 @@ const { chromium } = require('playwright');
 const { spawn } = require('child_process');
 const path = require('path');
 (async () => {
-  const [page, wav, out, fpsArg] = process.argv.slice(2);
-  const fps = +(fpsArg || 30), dur = 20.0, frames = Math.round(dur * fps);
+  const [page, wav, out, fpsArg, durArg] = process.argv.slice(2);
+  const fps = +(fpsArg || 30), dur = +(durArg || 20), frames = Math.round(dur * fps);
   const ff = spawn('ffmpeg', ['-y', '-hide_banner', '-loglevel', 'error',
     '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
     '-i', wav,

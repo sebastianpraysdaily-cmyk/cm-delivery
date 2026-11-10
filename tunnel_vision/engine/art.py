@@ -535,7 +535,14 @@ def scene10():  # Delivery driver, "outside": soaked at your door in the rain, a
     return svg(defs, b)
 
 
-SCENES = {2: scene2, 3: scene3, 4: scene4, 5: scene5, 6: scene6, 7: scene7, 8: scene8, 9: scene9, 10: scene10}
+def scene1():  # Mum: the original video-1 illustration, reused as-is
+    import os
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'v01_mum', 'scene.html')).read()
+    i = src.index('<svg viewBox="0 0 1080 1920"')
+    return src[i:src.index('</svg>', i) + 6]
+
+
+SCENES = {1: scene1, 2: scene2, 3: scene3, 4: scene4, 5: scene5, 6: scene6, 7: scene7, 8: scene8, 9: scene9, 10: scene10}
 
 if __name__ == "__main__":
     n = int(sys.argv[1])

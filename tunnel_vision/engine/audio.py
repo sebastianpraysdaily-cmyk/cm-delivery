@@ -209,6 +209,9 @@ class Synth:
 
 
 def build(cfg, path):
+    global DUR, N
+    DUR = cfg.get("end", 20.0)
+    N = int(SR * DUR)
     A = cfg["audio"]
     sy = Synth(cfg["no"] * 101)
     mix = np.zeros((N, 2))
@@ -220,7 +223,7 @@ def build(cfg, path):
     k = int(.05 * SR)
     m[-k:] *= np.linspace(1, 0, k)[:, None]
     mix[:len(m)] += m * .55
-    m2 = sy.music(A["music"], DUR - 19.37)
+    m2 = sy.music(A["music"], 0.63)
     mix[N - len(m2):] += m2 * (np.linspace(0, 1, len(m2)) ** 2)[:, None] * .55
 
     chimes = A["chimes"]

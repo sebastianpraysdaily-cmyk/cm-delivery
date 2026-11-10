@@ -1,0 +1,98 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 3,
+ "slug": "dad-ok",
+ "title": "Why Dad replies “Ok.”",
+ "caption": "The full stop isn't what you think. #tunnelvision",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#dad",
+   "#family",
+   "#textmessages",
+   "#perspective"
+  ],
+  "tiktok": [
+   "#dad",
+   "#dadsoftiktok",
+   "#textmessage",
+   "#family",
+   "#fyp"
+  ],
+  "instagram": [
+   "#dad",
+   "#family",
+   "#textmessages",
+   "#reels"
+  ],
+  "facebook": [
+   "#dad",
+   "#family",
+   "#perspective"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "got the job!!",
+    "at": -1
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "Ok.",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "wow ok then",
+    "from": 1.2,
+    "to": 2.1
+   },
+   {
+    "t": "erase",
+    "text": "wow ok then",
+    "count": 11,
+    "from": 2.7,
+    "to": 3.3
+   },
+   {
+    "t": "type",
+    "text": "that's it?",
+    "from": 3.7,
+    "to": 4.4
+   },
+   {
+    "t": "erase",
+    "text": "that's it?",
+    "count": 10,
+    "from": 4.9,
+    "to": 5.4
+   }
+  ],
+  "reveal": [
+   "You read it as cold.",
+   "He read your text three times, told two coworkers,",
+   "then typed the only way he knows how to text.",
+   "The full stop isn't anger. It's just Dad.",
+   "And when he sends…"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}
