@@ -1,0 +1,179 @@
+<title>Tunnel Vision Keepsakes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a keepsake shop on paper — the film first, then a live "type your thread" preview, three tiers, real sample prints, FAQ. Accent is the message-bubble blue the whole product is built on. */
+:root{
+  --paper:#f4ede3; --card:#fffdf9; --ink:#2b2420; --muted:#7c6f64; --line:#e3d8ca; --accent:#0a84ff; --bubble:#e9e9eb; --warm:#b4532a;
+  --serif:"Newsreader","Charter","Georgia",serif; --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#1b1715;--card:#25201d;--ink:#f3ebe1;--muted:#b3a597;--line:#3a322d;--accent:#3d9bff;--bubble:#3a3a3c;--warm:#e3895f;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#1b1715;--card:#25201d;--ink:#f3ebe1;--muted:#b3a597;--line:#3a322d;--accent:#3d9bff;--bubble:#3a3a3c;--warm:#e3895f;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:17px/1.55 var(--sans);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:1040px;margin:0 auto;display:grid;gap:72px}
+.draft{background:var(--warm);color:#fff;font:600 13px/1.3 var(--sans);letter-spacing:.04em;padding:10px 14px;border-radius:0 0 10px 10px;text-align:center}
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center;padding-top:40px}
+@media (max-width:760px){.hero{grid-template-columns:minmax(0,1fr)}}
+.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font:500 clamp(40px,6vw,64px)/1.02 var(--serif);letter-spacing:-.02em;margin:14px 0 18px;text-wrap:balance}
+h1 em{font-style:italic;color:var(--accent)}
+h2{font:500 clamp(30px,4vw,40px)/1.1 var(--serif);letter-spacing:-.01em;margin:0 0 8px;text-wrap:balance}
+p{margin:0}
+.lead{font-size:19px;color:var(--muted);max-width:52ch}
+.cta{display:inline-flex;align-items:center;gap:8px;margin-top:26px;background:var(--accent);color:#fff;font:600 16px/1 var(--sans);padding:16px 22px;border-radius:999px;text-decoration:none}
+.cta:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+.note{font-size:14px;color:var(--muted);margin-top:12px}
+video{display:block;width:100%;max-width:360px;aspect-ratio:9/16;margin:0 auto;border-radius:28px;background:#000;box-shadow:0 30px 60px rgba(40,25,10,.25)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:24px}
+@media (max-width:760px){.steps{grid-template-columns:minmax(0,1fr)}}
+.step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:6px}
+.step b{font:600 13px/1 var(--sans);color:var(--accent);letter-spacing:.06em}
+.step h3{font:600 18px/1.3 var(--sans);margin:0}
+.step p{color:var(--muted);font-size:15px}
+.builder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px}
+@media (max-width:760px){.builder{grid-template-columns:minmax(0,1fr);padding:18px}}
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;font:600 14px/1.2 var(--sans)}
+input,select,textarea{font:16px/1.4 var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px;width:100%}
+.msgrow{display:grid;grid-template-columns:110px minmax(0,1fr);gap:8px}
+.phone{background:#fff;border-radius:34px;border:1px solid var(--line);padding:22px 18px;display:flex;flex-direction:column;gap:8px;min-height:340px;color:#000}
+.phone .hdr{text-align:center;font:500 12px/1.3 var(--sans);color:#8e8e93;margin-bottom:8px}
+.phone .hdr strong{display:block;font:600 15px/1.2 var(--sans);color:#111}
+.b{max-width:80%;padding:9px 14px;border-radius:18px;font:400 16px/1.3 var(--sans);overflow-wrap:anywhere}
+.b.them{background:#e9e9eb;align-self:flex-start}
+.b.you{background:#0a84ff;color:#fff;align-self:flex-end}
+.reveal{margin-top:auto;padding-top:14px;border-top:1px dashed #ddd;font:italic 400 19px/1.3 var(--serif);text-align:center;color:#2b2420}
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:24px;align-items:start}
+@media (max-width:860px){.tiers{grid-template-columns:minmax(0,1fr)}}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;display:grid;gap:14px}
+.tier.main{border:2px solid var(--accent)}
+.tier .tag{font:600 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.tier h3{font:500 28px/1.1 var(--serif);margin:0}
+.price{font:600 40px/1 var(--sans);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tier ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px}
+.tier button{font:600 15px/1 var(--sans);padding:14px;border-radius:999px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:not-allowed;opacity:.6}
+.tier .small{font-size:13px;color:var(--muted)}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}
+@media (max-width:760px){.gallery{grid-template-columns:minmax(0,1fr)}}
+.gallery figure{margin:0;display:grid;gap:8px}
+.gallery img{width:100%;max-width:100%;border-radius:14px;border:1px solid var(--line);box-shadow:0 14px 30px rgba(40,25,10,.12)}
+.gallery figcaption{font-size:14px;color:var(--muted)}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+details+details{margin-top:10px}
+summary{font-weight:600;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+footer{font-size:13px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="draft">DRAFT FOR REVIEW · not public · checkout is not connected yet · samples are made from example texts</div>
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Tunnel Vision Keepsakes</div>
+      <h1>Your real texts, turned into a keepsake <em>they'll keep.</em></h1>
+      <p class="lead">Type the thread you both know by heart, add what you've never quite said, and get a 15-second film and a print to frame. Made for Mum, Dad and Grandma.</p>
+      <a class="cta" href="#tiers">Choose your keepsake</a>
+      <p class="note">Digital files by email, usually within 30 minutes. Nothing shipped.</p>
+    </div>
+    <video id="hero" src="/_blob/0b9b8e88c1b227ca2f565933b89c08e6" poster="/_blob/3162e0ab822f4217faab4fc17d8083bf" controls playsinline loop muted preload="metadata"></video>
+  </section>
+
+  <section>
+    <div class="eyebrow">How it works</div>
+    <h2>Three minutes from you. The rest is automatic.</h2>
+    <div class="steps">
+      <div class="step"><b>1</b><h3>Pick who it's for</h3><p>Mum, Dad or Grandma. Each has its own hand-drawn scene and music.</p></div>
+      <div class="step"><b>2</b><h3>Type your thread</h3><p>Up to four real messages, then one to three lines of what you want them to know.</p></div>
+      <div class="step"><b>3</b><h3>Open your email</h3><p>Your print and film arrive ready to send, post or frame.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Try it</div>
+    <h2>See yours before you buy</h2>
+    <div class="builder">
+      <form id="f" onsubmit="return false">
+        <label for="who">Who it's for
+          <select id="who"><option value="Mum">Mum</option><option value="Dad">Dad</option><option value="Nana">Grandma</option></select></label>
+        <div class="msgrow"><select id="f1" aria-label="Message 1 sender"><option value="them">Them</option><option value="you">You</option></select><input id="m1" maxlength="90" value="did you eat today?" aria-label="Message 1"></div>
+        <div class="msgrow"><select id="f2" aria-label="Message 2 sender"><option value="you">You</option><option value="them">Them</option></select><input id="m2" maxlength="90" value="yes mum" aria-label="Message 2"></div>
+        <div class="msgrow"><select id="f3" aria-label="Message 3 sender"><option value="them">Them</option><option value="you">You</option></select><input id="m3" maxlength="90" value="good. proud of you x" aria-label="Message 3"></div>
+        <label for="rv">What you want them to know (up to 3 short lines)
+          <textarea id="rv" rows="3" maxlength="210">I know why you always ask.
+I'm okay, Mum. Because of you.</textarea></label>
+        <p class="note">This preview is only on your screen. Nothing is sent until checkout opens.</p>
+      </form>
+      <div class="phone" id="ph" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="tiers">
+    <div class="eyebrow">Choose your keepsake</div>
+    <h2>One thread, three ways to keep it</h2>
+    <div class="tiers">
+      <div class="tier">
+        <div class="tag">Entry</div><h3>Keepsake Print</h3><div class="price">$9</div>
+        <ul><li>Illustrated 8×10 print, 300 dpi</li><li>Phone-size version to share</li><li>Your words, exactly as typed</li></ul>
+        <button type="button" disabled>Checkout opens at launch</button>
+        <p class="small">Add the film at checkout for $18.</p>
+      </div>
+      <div class="tier main">
+        <div class="tag">Most complete for one person</div><h3>Keepsake Film</h3><div class="price">$27</div>
+        <ul><li>Everything in the Print</li><li>15-second film of your thread</li><li>Vertical and square versions</li><li>Original music made for it</li></ul>
+        <button type="button" disabled>Checkout opens at launch</button>
+        <p class="small">After checkout, add two more people for $52.</p>
+      </div>
+      <div class="tier">
+        <div class="tag">For the whole family</div><h3>Family Collection</h3><div class="price">$79</div>
+        <ul><li>3 films and 3 prints</li><li>Mum, Dad and Grandma, or any mix</li><li>"The texts we kept" keepsake book (PDF)</li></ul>
+        <button type="button" disabled>Checkout opens at launch</button>
+        <p class="small">Less than three separate films ($81).</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Real samples</div>
+    <h2>What arrives in your inbox</h2>
+    <div class="gallery">
+      <figure><img src="/_blob/a3b85e156f9287541c3c278e3f75e458" alt="Keepsake print for Mum: the 'did you eat today?' thread above an illustration of Mum at the kitchen table"><figcaption>Keepsake Film order: the print (sample texts)</figcaption></figure>
+      <figure><img src="/_blob/9eb5a81a18321fcc3eecec310effa8ed" alt="Keepsake print for Dad: 'I passed my driving test!!' and 'Good.' above Dad showing coworkers his phone"><figcaption>Keepsake Print (sample texts)</figcaption></figure>
+      <figure><img src="/_blob/5b5fd5d71d8833f58d47eddf0ecdbf0c" alt="Keepsake print for Nana: a voice note and 'listening now x' above Nana recording a message in her armchair"><figcaption>From a Family Collection (sample texts)</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Questions</div>
+    <h2>Before you order</h2>
+    <details><summary>Does a person read my messages?</summary><p>No. The system builds your files automatically. Someone only looks if you ask us to fix something.</p></details>
+    <details><summary>How fast is it?</summary><p>Usually under 30 minutes for a Print or Film, under an hour for a Collection.</p></details>
+    <details><summary>What if I make a typo?</summary><p>Reply within 14 days and we'll redo it, or refund you in full.</p></details>
+    <details><summary>Is anything shipped?</summary><p>No. You get files to print, frame, send or post.</p></details>
+    <details><summary>Is it AI?</summary><p>The scenes are hand-drawn, the music is composed for your film, and every word is yours. Automation puts it together quickly.</p></details>
+    <details><summary>Who can I make one for?</summary><p>Mum, Dad and Grandma now. Partner, sister and friend versions are next.</p></details>
+  </section>
+
+  <footer>Tunnel Vision Keepsakes · draft sales page · prices and terms subject to your approval before launch</footer>
+</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  function draw() {
+    const ph = $("ph"); ph.replaceChildren();
+    const hdr = document.createElement("div"); hdr.className = "hdr";
+    const nm = document.createElement("strong"); nm.textContent = $("who").value; hdr.append(nm, "Today 9:41 PM"); ph.append(hdr);
+    [["f1","m1"],["f2","m2"],["f3","m3"]].forEach(([f, m]) => {
+      const t = $(m).value.trim(); if (!t) return;
+      const b = document.createElement("div"); b.className = "b " + $(f).value; b.textContent = t; ph.append(b);
+    });
+    const r = document.createElement("div"); r.className = "reveal";
+    r.textContent = $("rv").value.split("\n").map(s => s.trim()).filter(Boolean).slice(0, 3).join(" ");
+    ph.append(r);
+  }
+  $("f").addEventListener("input", draw);
+  draw();
+})();
+</script>

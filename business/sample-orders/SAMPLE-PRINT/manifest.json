@@ -1,0 +1,17 @@
+{
+ "order_id": "SAMPLE-PRINT",
+ "tier": "print",
+ "created_utc": "2026-11-10T02:29:25+00:00",
+ "files": [
+  {
+   "name": "SAMPLE-PRINT-1-dad-print-8x10.png",
+   "bytes": 996852,
+   "sha256": "20b585494bed3afb6b291c30ce1b7dd5d9ac3bac89ac7ccd869cdd26298dadbc"
+  },
+  {
+   "name": "SAMPLE-PRINT-1-dad-print-4x5-phone.jpg",
+   "bytes": 133551,
+   "sha256": "cff208e6c9136dc0f17d9bfac54b1efa2a2d8ebc7d1b1ba067fa4c6028c2d830"
+  }
+ ]
+}

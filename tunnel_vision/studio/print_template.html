@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Keepsake print, 8x10 in at 300 dpi (2400x3000 px). Paper, a phone card with the real thread, the scene, then the message. */
+:root{--paper:#f4ede3;--ink:#2b2420;--muted:#8a7d72;--line:#e2d7c9;--in:#e9e9eb;--out:#0a84ff;--serif:"Newsreader","Charter","Georgia",serif;--sans:"Inter","Helvetica",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:2400px;height:3000px;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.page{position:absolute;inset:0;padding:170px 190px 150px;display:flex;flex-direction:column;align-items:center}
+.for{font:italic 400 92px/1 var(--serif);color:var(--muted);letter-spacing:-.5px}
+.name{font:500 210px/1 var(--serif);letter-spacing:-4px;margin-top:22px}
+.row{display:flex;flex-direction:column;gap:70px;margin-top:90px;width:100%;flex:1;min-height:0}
+.phone{background:#fff;border-radius:70px;border:3px solid var(--line);padding:70px 56px 60px;display:flex;flex-direction:column;gap:22px;box-shadow:0 30px 80px rgba(60,40,20,.10)}
+.hdr{text-align:center;font:500 40px/1 var(--sans);color:#8e8e93;margin-bottom:22px}
+.hdr b{display:block;font:600 50px/1 var(--sans);color:#111;margin-bottom:12px}
+.b{max-width:80%;padding:30px 46px;border-radius:56px;font:400 64px/1.22 var(--sans);letter-spacing:-.3px}
+.b.them{background:var(--in);color:#000;align-self:flex-start}
+.b.you{background:var(--out);color:#fff;align-self:flex-end}
+.receipt{align-self:flex-end;font:500 34px/1 var(--sans);color:#8e8e93;margin:-6px 14px 0 0}
+.art{flex:1;min-height:700px;border-radius:70px;overflow:hidden;border:3px solid var(--line);background:#1b1514;position:relative}
+.art svg{position:absolute;left:0;top:50%;width:100%;height:auto;transform:translateY(-49%)}
+.msg{margin-top:90px;font:italic 400 104px/1.24 var(--serif);text-align:center;max-width:1900px;text-wrap:balance;letter-spacing:-.8px}
+.foot{margin-top:70px;display:flex;justify-content:space-between;width:100%;font:500 36px/1 var(--sans);color:var(--muted);letter-spacing:4px;text-transform:uppercase}
+</style></head><body>
+<div class="page">
+  <div class="for">for</div>
+  <div class="name" id="name"></div>
+  <div class="row">
+    <div class="phone" id="phone"></div>
+    <div class="art">__SVG__</div>
+  </div>
+  <div class="msg" id="msg"></div>
+  <div class="foot"><span id="date"></span><span>Tunnel Vision</span></div>
+</div>
+<script>
+const O = __ORDER__;
+document.getElementById("name").textContent = O.name;
+document.getElementById("date").textContent = O.date;
+const ph = document.getElementById("phone");
+ph.insertAdjacentHTML("beforeend", `<div class="hdr"><b></b>${O.stamp}</div>`);
+ph.querySelector(".hdr b").textContent = O.name;
+let lastYou = -1; O.messages.forEach((m, i) => { if (m.from === "you") lastYou = i; });
+O.messages.forEach((m, i) => {
+  const d = document.createElement("div"); d.className = "b " + (m.from === "you" ? "you" : "them"); d.textContent = m.text; ph.appendChild(d);
+  if (i === lastYou && O.receipt) { const r = document.createElement("div"); r.className = "receipt"; r.innerHTML = "<b>Read</b> " + O.receipt; ph.appendChild(r); }
+});
+document.getElementById("msg").textContent = O.reveal.join(" ");
+</script>
+</body></html>

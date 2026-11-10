@@ -1,0 +1,4 @@
+{"order_id":"SAMPLE-COLLECTION","tier":"collection","items":[
+ {"relationship":"mum","name":"Mum","messages":[{"from":"them","text":"home safe?"},{"from":"you","text":"yes!"}],"reveal":["Twenty-six years of 'home safe?'","I always was. Because you asked."]},
+ {"relationship":"dad","name":"Dad","messages":[{"from":"you","text":"got the job!!"},{"from":"them","text":"Ok."}],"reveal":["He read it three times.","Then he told the whole warehouse."]},
+ {"relationship":"grandma","name":"Nana","messages":[{"from":"them","text":"[voice note 4:12]"},{"from":"you","text":"listening now x"}],"reveal":["Four minutes of your whole week.","I'll listen to every one, Nana."]}]}

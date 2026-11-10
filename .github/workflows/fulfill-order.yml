@@ -1,0 +1,39 @@
+# Renders one Tunnel Vision Keepsakes order. Started by the store's webhook (via a tiny relay)
+# or by hand from the Actions tab. Not active until the repo owner enables Actions and adds the
+# delivery secrets listed at the bottom.
+name: Fulfil keepsake order
+on:
+  workflow_dispatch:
+    inputs:
+      order:
+        description: "Order JSON (see tunnel_vision/studio/fulfill.py)"
+        required: true
+        type: string
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Install tools
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg fonts-noto-color-emoji fonts-inter
+          npm install playwright@1 && npx playwright install --with-deps chromium
+          pip install numpy reportlab
+      - name: Write order file
+        env: { ORDER: "${{ inputs.order }}" }
+        run: printf '%s' "$ORDER" > order.json
+      - name: Render and verify
+        run: python3 tunnel_vision/studio/fulfill.py order.json orders
+      - uses: actions/upload-artifact@v4
+        with:
+          name: keepsake-order
+          path: orders/
+          retention-days: 30
+      # Delivery (needs the owner's accounts, so it is off until secrets exist):
+      # - upload orders/<id>/ to storage the buyer can download from
+      # - email the link using the store's or an email provider's API

@@ -1,0 +1,72 @@
+{
+ "order_id": "SAMPLE-COLLECTION",
+ "tier": "collection",
+ "created_utc": "2026-11-10T02:32:58+00:00",
+ "files": [
+  {
+   "name": "SAMPLE-COLLECTION-1-mum-print-8x10.png",
+   "bytes": 1238823,
+   "sha256": "74dfff56e7ae22c362c3dc5cd002c20b70138ef883cd87de15fe7f91db24f128"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-1-mum-print-4x5-phone.jpg",
+   "bytes": 101693,
+   "sha256": "6068ad0177f5dd3e212de0287717628a104bdc2edb6002339921bb3afac9c5af"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-1-mum-film-vertical.mp4",
+   "bytes": 3762328,
+   "sha256": "4bb00ed6de0f97b815f68e06e8421db08bc33bf59dd6cb8c5c773633e9886d7b"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-1-mum-film-square.mp4",
+   "bytes": 1453069,
+   "sha256": "ecc8b9d917fbb42ba9ee0ccc19fccc7b18694ede78411abd41c1a17b66efcd9b"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-2-dad-print-8x10.png",
+   "bytes": 979425,
+   "sha256": "0fca44f42a4e245821f5f21d88399b906340f13ce9d8f825927677bc14bf3e37"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-2-dad-print-4x5-phone.jpg",
+   "bytes": 121384,
+   "sha256": "1ef3d82e78872e62792dcd470890741e6a65b3dc10c223645ea79fc33deb8faa"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-2-dad-film-vertical.mp4",
+   "bytes": 3803866,
+   "sha256": "8b0904f5a41536f464f823b642c439cc2808ebc9f74259c9b8b5c3f5c619290b"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-2-dad-film-square.mp4",
+   "bytes": 1560230,
+   "sha256": "9814cf68eb5f8083a9bd4cc7227fcc49760c268b3799fe9c323363c135c2f19c"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-3-grandma-print-8x10.png",
+   "bytes": 1012507,
+   "sha256": "324f416c9e596cda2b221fa7e47a7e72d71b46c5e6503ae679f329235a218832"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-3-grandma-print-4x5-phone.jpg",
+   "bytes": 121713,
+   "sha256": "25291b2cf1c63f8c72c7ac043fb6bd148115a57fe0a243dfaeb302b3d7a008d4"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-3-grandma-film-vertical.mp4",
+   "bytes": 3670614,
+   "sha256": "bdd86b70c6f7daf3c378c3f031f906f9dfca3c966ad8101eb5778fbfbe585f48"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-3-grandma-film-square.mp4",
+   "bytes": 1471281,
+   "sha256": "bdde7007a9f280592ab0f5e9ab810e68908109b10e7b2cae347bff0bb9a4d6ee"
+  },
+  {
+   "name": "SAMPLE-COLLECTION-keepsake-book.pdf",
+   "bytes": 3516359,
+   "sha256": "321c0c400962a31298ca9f45db053c73f02fc9cca4a27c944f0796374907f696"
+  }
+ ]
+}
