@@ -542,7 +542,36 @@ def scene1():  # Mum: the original video-1 illustration, reused as-is
     return src[i:src.index('</svg>', i) + 6]
 
 
-SCENES = {1: scene1, 2: scene2, 3: scene3, 4: scene4, 5: scene5, 6: scene6, 7: scene7, 8: scene8, 9: scene9, 10: scene10}
+def scene11():  # STR host: kitchen counter at night, laptop says registration required, worried
+    skin, top, hcol = "#c8916f", "#5a6b7d", "#3a2a22"
+    defs = (lin("wall", [(0, "#1a1d24", None), (.5, "#343a46", None), (1, "#262b35", None)])
+            + glow("lap", 540, 1150, 360, "#d6e6ff", .45)
+            + rad("pend", 820, 640, 520, [(0, "#f4c27c", .25), (1, "#f4c27c", 0)]))
+    b = '<rect width="1080" height="1920" fill="url(#wall)"/>'
+    b += '<rect width="1080" height="1920" fill="url(#pend)"/>'
+    b += '<rect x="60" y="660" width="330" height="200" rx="8" fill="#2b3140"/><rect x="80" y="680" width="290" height="160" fill="#3d4658"/>'
+    b += '<path d="M120 840 L120 760 L200 710 L280 760 L280 840 Z" fill="#c9a36d" opacity=".8"/><rect x="185" y="790" width="30" height="50" fill="#8a6a45"/>'
+    b += '<text x="225" y="705" font-family="Inter" font-size="22" font-weight="700" fill="#f2e6d2" text-anchor="middle" opacity=".85">WELCOME GUESTS</text>'
+    b += '<path d="M800 600 L840 600 L870 660 L770 660 Z" fill="#c9a36d"/><rect x="818" y="520" width="4" height="80" fill="#222"/>'
+    fig = figure(skin, "short", hcol, top, "sad", bow=True, slump=.75, collar="crew", blush=.12)
+    fig += hands_phone(skin, shade(top, .9), phone=False)
+    b += g(fig, ty=-10)
+    tdefs, tb = table(1238, ("#6d5a4b", "#86705d"), "#463a30", "#1d1916", id_="tt11")
+    b += tb
+    b += ('<g transform="translate(400 1060)"><path d="M0 200 L280 200 L300 230 L-20 230 Z" fill="#9aa3ad"/>'
+          '<rect x="10" y="0" width="260" height="190" rx="10" fill="#1c1f26"/><rect x="22" y="12" width="236" height="166" rx="4" fill="#f4f6fb"/>'
+          '<rect x="22" y="12" width="236" height="30" fill="#c0392b"/>'
+          '<text x="140" y="33" font-family="Inter" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">ACTION REQUIRED</text>'
+          '<text x="140" y="90" font-family="Inter" font-size="22" font-weight="800" fill="#1d1d24" text-anchor="middle">Short-term rental</text>'
+          '<text x="140" y="118" font-family="Inter" font-size="22" font-weight="800" fill="#1d1d24" text-anchor="middle">registration</text>'
+          '<rect x="60" y="138" width="160" height="26" rx="13" fill="#0a84ff"/><text x="140" y="156" font-family="Inter" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">Register now</text></g>')
+    b += '<g transform="translate(780 1270)"><circle r="16" fill="none" stroke="#c9a24e" stroke-width="6"/><rect x="12" y="-4" width="50" height="8" rx="3" fill="#c9a24e"/><rect x="50" y="4" width="6" height="10" fill="#c9a24e"/></g>'
+    b += '<rect x="180" y="1180" width="70" height="90" rx="8" fill="#e9dcc6"/><rect x="190" y="1196" width="50" height="6" fill="#b5a68f"/><rect x="190" y="1210" width="40" height="6" fill="#b5a68f"/>'
+    b += '<rect width="1080" height="1920" fill="url(#lap)" style="mix-blend-mode:screen"/>'
+    return svg(defs + tdefs, b)
+
+
+SCENES = {1: scene1, 2: scene2, 3: scene3, 4: scene4, 5: scene5, 6: scene6, 7: scene7, 8: scene8, 9: scene9, 10: scene10, 11: scene11}
 
 if __name__ == "__main__":
     n = int(sys.argv[1])

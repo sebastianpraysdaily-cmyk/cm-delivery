@@ -39,7 +39,9 @@ def card_times(texts, start=9.55, end=20.0, gap=0.15):
 
 
 def load(no):
-    for v in json.load(open(os.path.join(TV, "videos", "videos.json"))):
+    import glob
+    allv = [v for f in sorted(glob.glob(os.path.join(TV, "videos", "*.json"))) for v in json.load(open(f))]
+    for v in allv:
         if v["no"] == no:
             v = dict(v)
             v.setdefault("cut", 5.5)

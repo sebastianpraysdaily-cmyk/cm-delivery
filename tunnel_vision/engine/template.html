@@ -188,7 +188,7 @@ function renderPhone(t){
     else if(e.t==="receipt"){ if(e.at<=t) h+=`<div class="receipt" style="opacity:${e.at<0?1:clamp((t-e.at)/0.25)}">${e.text}</div>`; }
     else if(e.t==="clock"){ if(e.at<=t) clock=e.time; }
   }
-  $("#thread").innerHTML=h; $("#clock").textContent=clock;
+  const th=$("#thread"); th.innerHTML=h; th.scrollTop=th.scrollHeight; $("#clock").textContent=clock;
   // dim (night spiral)
   let dim=0; for(const e of EV) if(e.t==="dim" && t>=e.from) dim=e.amount*clamp((t-e.from)/(e.to-e.from)); $("#dim").style.opacity=dim;
   // input

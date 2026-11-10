@@ -1,0 +1,92 @@
+{
+ "channel": "Tunnel Vision",
+ "series_no": 11,
+ "slug": "str-houston-register",
+ "title": "Houston Airbnb hosts: did you register?",
+ "caption": "$275 per property per year. Free checklist in bio. Source: City of Houston ARA. #houstonairbnb #airbnbhost #shorttermrental",
+ "hashtags": {
+  "youtube": [
+   "#shorts",
+   "#airbnbhost",
+   "#houston",
+   "#shorttermrental"
+  ],
+  "tiktok": [
+   "#airbnbhost",
+   "#houston",
+   "#shorttermrental",
+   "#vrbo"
+  ],
+  "instagram": [
+   "#airbnbhost",
+   "#houston",
+   "#shorttermrental",
+   "#reels"
+  ],
+  "facebook": [
+   "#airbnbhost",
+   "#houston"
+  ]
+ },
+ "suggested_post_times_local": {
+  "youtube": "12:00-15:00 or 19:00-21:00",
+  "tiktok": "18:00-22:00",
+  "instagram": "11:00-13:00 or 19:00-21:00",
+  "facebook": "13:00-16:00"
+ },
+ "script": {
+  "thread": [
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "did you register the house with the city yet??",
+    "at": 0.25
+   },
+   {
+    "t": "type",
+    "text": "register what",
+    "from": 1.2,
+    "to": 1.9
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "register what",
+    "at": 2.05
+   },
+   {
+    "t": "msg",
+    "side": "in",
+    "text": "houston. every short-term rental. $275 a year",
+    "at": 3.4
+   },
+   {
+    "t": "type",
+    "text": "since when",
+    "from": 4.3,
+    "to": 4.9
+   },
+   {
+    "t": "msg",
+    "side": "out",
+    "text": "since when",
+    "at": 5.05
+   }
+  ],
+  "reveal": [
+   "Houston now requires every short-term rental to register with the city.",
+   "$275 per property, every year.",
+   "Enforcement started in 2026.",
+   "Free Houston checklist: link in bio"
+  ]
+ },
+ "claims": [],
+ "format": {
+  "resolution": "1080x1920",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_s": 15.0,
+  "loop": true,
+  "voiceover": false
+ }
+}
