@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Layout: one phone-width game column on a dark ink stage; candy colors carry state (gold = filled, purple = mystery, mint = done) */
+:root{--bg:#1f1b2e;--fg:#ffffff;color-scheme:dark}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+#root{min-height:100%;padding-left:max(0px,env(safe-area-inset-left,0px));padding-right:max(0px,env(safe-area-inset-right,0px))}
+@keyframes shine{from{transform:translateX(-120%)}to{transform:translateX(320%)}}
+button{touch-action:manipulation}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
