@@ -76,3 +76,9 @@ Read this first every session. Update at the end of every session.
 | 2026-11-11 | Sales proof: Serper search + ~46 Etsy listing scrapes + name check | $0.033 | Confirmed (approx., scrape run timed out client-side but completed) |
 | 2026-11-11 | Format + market research: Serper + Apify (83 videos, covers) | $0.086 | Confirmed |
 | **Total** | | **$0.52 confirmed, ≤$0.92 worst case** | Remaining approved research budget: ≥$0.28 |
+
+## 2026-11-11: HyperFrames / Perplexity check
+- HyperFrames (HeyGen, Apache-2.0, npm `hyperframes` 0.9.33): installs and renders locally for free. Verified: test render content/hyperframes-test/test.mp4 (9s, 1080x1920, with audio, about 15s to render).
+- Its `check` command caught real problems (blank first frame used as thumbnail, silent audio, last line too short). Keep it as a QA step. The paid parts (Pro templates, reverse-any-video) were not used.
+- Perplexity: available through Composio but not connected; needs a Perplexity API key (paid). Not connected; ask before any spend.
+- "Prompt Motion": no tool by that name found (unverified). Closest is Motion (paid video agent).
