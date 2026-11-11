@@ -51,3 +51,42 @@ Rebuild with `tools/build_intro.sh clips intro_vertical_1080x1920.mp4`. Set the 
 - **No transcript.** No speech-to-text model was available offline, and the network blocked the model download. Dialogue was judged from the burned-in captions, the visuals and the audio energy only.
 - **Burned-in profanity and slurs.** Clip 02's captions include profanity and a slur, and they are part of the source picture. The intro uses the 1.90–3.55 window, which shows only "HEY / WHAT / YOU / LET'S / GO / FUCKING". Clip 02 outside that window shows the slur, and it can't be removed without the uncaptioned original.
 - **Platform rules.** Some platforms may flag the profanity in the remaining captions.
+
+---
+
+# v2 — Full professional edit (connected tools)
+
+## Transcript (Fish Audio speech-to-text, pro model, word timestamps)
+| Source time | Speaker | Line | Lands in clip |
+|---|---|---|---|
+| 1.04 | A | "Hello?" | 01 |
+| 1.28–3.44 | A | "[slur], get the fuck out!" | 01/02 |
+| 3.92–4.56 | B | "Hey, what are you…" | 02 |
+| 4.96–7.04 | A/B | "Let's go! Let's fucking go! Let's fucking go then! Let's go!" | 02 |
+| 7.44–8.64 | A | "Come on! Come on, motherfucker, come on!" | 02 |
+| 8.96–9.60 | B | "Stupid hoe." | 03 |
+| 10.72–12.64 | B | "Fuck with me. I'll leave this gun on the porch." | 03 |
+| 12.96–14.32 | A | "Hit my audio right!" | 03/04 |
+| 15.92–18.56 | A | "Are you gonna, [slur]?" | 05 |
+
+The audio is a shouted meme/skit soundtrack, and clip 02's burned-in captions follow it.
+
+## Tools used
+- **Fish Audio:** speech-to-text with word timestamps, used to time the on-screen dialogue (940 credits).
+- **21st.dev video editor:** builds the timeline, adds the motion graphics and renders the edit. Project `7b4eeada-7792-4ecb-a121-f710239f96e3`, editable in the 21st editor.
+  - "Kinetic Title" (punchy) hook: *wait for it…*
+  - "Logo Bug": @mcbobistein in the top-left corner throughout
+  - Dialogue pop-titles timed to the transcript: *Stupid hoe.* / *Fuck with me. I'll leave this gun on the porch.*
+  - "Whip Phrases" end card: phone store. → zero chill. → follow → **@mcbobistein**
+  - Original audio synced on the timeline as a voice track
+- **ffmpeg** (`tools/prep_edit_assets.sh`): prepares the clean 1080×1920 shots and the synced audio track, and does the final sound-design mix (whooshes, sub hits, riser).
+
+## v2 timeline (30 fps, 15.8 s)
+| Frames | Time | Shot | Graphics |
+|---|---|---|---|
+| 0–46 | 0.00–1.57 | Dumbbell lift | "wait for it…" hook, handle bug |
+| 47–96 | 1.57–3.20 | Hype walk-up (burned-in captions) | handle bug |
+| 97–160 | 3.23–5.33 | Sprint and laugh | handle bug |
+| 161–298 | 5.37–9.93 | Stare, then lean-in point | dialogue pop-titles |
+| 299–382 | 9.97–12.73 | Hooded slump (punchline) | sub hit on the cut |
+| 383–473 | 12.77–15.80 | End card | whip phrases ending on @mcbobistein, with riser and sub hit |
