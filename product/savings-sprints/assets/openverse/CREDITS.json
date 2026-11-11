@@ -1,0 +1,61 @@
+[
+ {
+  "file": "photo_0.jpg",
+  "title": "Journal Pen",
+  "creator": "Kristin Hardwick",
+  "license": "cc0",
+  "source": "https://stocksnap.io/photo/journal-pen-4HPYA3C8HE"
+ },
+ {
+  "file": "photo_1.jpg",
+  "title": "Desk Top",
+  "creator": "Design by Matt",
+  "license": "cc0",
+  "source": "https://stocksnap.io/photo/desk-top-EUZYJIZY8X"
+ },
+ {
+  "file": "photo_2.jpg",
+  "title": "Desk Top",
+  "creator": "Flat Lay Photos",
+  "license": "cc0",
+  "source": "https://stocksnap.io/photo/desk-top-MQIBW4VOSY"
+ },
+ {
+  "file": "photo_5.jpg",
+  "title": "Free workspace flat lay phone",
+  "creator": null,
+  "license": "cc0",
+  "source": "https://www.rawpixel.com/image/5914480/image-background-phone-public-domain"
+ },
+ {
+  "file": "photo_6.jpg",
+  "title": "Free workspace flat lay laptop",
+  "creator": null,
+  "license": "cc0",
+  "source": "https://www.rawpixel.com/image/5912771/photo-image-background-public-domain-technology"
+ },
+ {
+  "file": "music_blue_sky_mp3.mp3",
+  "title": "Blue Sky.mp3",
+  "creator": "Sergmusic",
+  "license": "cc0",
+  "source": "https://freesound.org/people/Sergmusic/sounds/639933",
+  "duration_ms": 94380
+ },
+ {
+  "file": "music_upbeat_loop.mp3",
+  "title": "Upbeat loop",
+  "creator": "mistermender",
+  "license": "cc0",
+  "source": "https://freesound.org/people/mistermender/sounds/512340",
+  "duration_ms": 57640
+ },
+ {
+  "file": "music_chill_lofi_melody_loop_95_bpm_wav.mp3",
+  "title": "Chill Lofi Melody Loop 95 BPM.wav",
+  "creator": "holizna",
+  "license": "cc0",
+  "source": "https://freesound.org/people/holizna/sounds/629147",
+  "duration_ms": 40421
+ }
+]
