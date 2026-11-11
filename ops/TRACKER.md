@@ -5,6 +5,9 @@ Read this first every session. Update at the end of every session.
 **Budget:** $20 hard cap · **Spent:** $0.52 confirmed (worst case $0.92, see spend log) · **Approved:** $1.20 for research
 
 ## Done
+- 2026-11-11 · Openverse connected via Composio sandbox (container blocked). CC0 desk photos + CC0 music pulled, credits in `product/savings-sprints/assets/openverse/CREDITS.json`.
+- 2026-11-11 · 6 listing images (real pages on CC0 desk photos) → `product/savings-sprints/listing/out/`
+- 2026-11-11 · Video v004: motion graphics in Remotion (cells fill on real pages, counters, 63-page explosion, app in phone), CC0 music → `content/v004/video.mp4`, source `content/motion/`
 - 2026-11-11 · **Mega bundle built**: 63 challenges / 70 pages (sprints, $100–$10k, 26-paycheck, 52-week, envelopes, 18 goal funds, 12 monthly, no-spend, log, sinking funds, DIY), exact sums asserted, Letter + A6 PDFs → `product/savings-sprints/bundle/`. AI line-art header icons (Gemini, no charge reported).
 - 2026-11-11 · Demand check on 149 Etsy listings (`ops/step2d-what-people-buy.md`): #1 = 47-page savings challenge mega bundle, 7,002 favorites / 871 reviews / $12.95. Purpose + coverage beats aesthetics. Decision: rebuild as 60+ challenge mega bundle + app bonus.
 - 2026-11-11 · Constraint: **Sebastian will not film anything.** All video must be produced without his footage (screen recordings, AI-generated scenes, animated real product pages).
@@ -36,6 +39,7 @@ Read this first every session. Update at the end of every session.
 - **Waiting on Sebastian:** approve package (https://claude.ai/artifact/89kbpDdSedFoVH5nwBTtzj) + OK to host the app publicly (free) so he can test tilt/haptics on his phone
 
 ## Next
+0. Landing page rebuild around the mega bundle; A6 4-per-sheet print file; price $9.99 launch
 1. Step 2 proof package: product + name + description, 1 short video, landing page, shop listing copy, all on matching wording
 3. Hand over one approval package with one link per item
 4. After approval: Sebastian creates shop account (prep sheet will make it about 10 min)

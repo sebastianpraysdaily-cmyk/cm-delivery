@@ -1,0 +1,15 @@
+{
+ "title": "Save $4,000 in 26 paychecks (motion graphics)",
+ "product": "Savings Challenges Mega Bundle",
+ "voice": "af_heart",
+ "speed": 1.1,
+ "beats": [
+  {"id":"p1","text":"Save four thousand dollars in twenty six paychecks.","scene":"paycheck",
+   "why":"Specific money outcome hook copied as a pattern from the #1 video in our pull (@thebudgetingprincess 'Save $4,000 in 26 paychecks', 4.5M views, 117k saves)."},
+  {"id":"p2","text":"Or a thousand by Christmas.","scene":"christmas","why":"Seasonal (video posts in Nov-Dec): Christmas pages are a top theme by favorites (median 55, top 324)."},
+  {"id":"p3","text":"Or ten thousand by next year.","scene":"tenk","why":"Escalation: bigger number keeps attention."},
+  {"id":"p4","text":"Sixty three savings challenges in one bundle. Every goal, every amount.","scene":"fan","why":"Volume is what buyers pay for: #1 Etsy listing = 47-page mega bundle, 7,002 favorites."},
+  {"id":"p5","text":"Print them for your cash binder, or play them in the game app.","scene":"formats","why":"A6 cash binder is a top format (median 83 favorites); the app is our unique edge."},
+  {"id":"p6","text":"It's called Savings Sprints. Link in bio.","scene":"end","why":"Exact name + CTA."}
+ ]
+}
