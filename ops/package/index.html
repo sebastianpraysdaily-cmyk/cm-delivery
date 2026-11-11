@@ -1,135 +1,121 @@
-<title>Forget-Proof Money Approval</title>
+<title>Savings Sprints Approval</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fredoka:wght@600;700&display=swap">
 <style>
-/* Layout: one review column; each approval item is a numbered section in the order Sebastian should review it */
-:root{--bg:#f6f4ee;--fg:#1d2440;--soft:#565e7c;--panel:#ffffff;--line:#e2ddd0;--mint:#1f9e74;--mint-l:#dff5ec;--coral:#e0613f;--coral-l:#ffe6de;--amber:#a86a00;--amber-l:#fff1d6;
---display:"Space Grotesk",Inter,system-ui,sans-serif;--body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#12162a;--fg:#eef0f8;--soft:#aeb5d0;--panel:#1b2140;--line:#2c3460;--mint:#3fd3a2;--mint-l:#173a33;--coral:#ff8a6a;--coral-l:#3d2622;--amber:#f2b94b;--amber-l:#3a2f17;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#12162a;--fg:#eef0f8;--soft:#aeb5d0;--panel:#1b2140;--line:#2c3460;--mint:#3fd3a2;--mint-l:#173a33;--coral:#ff8a6a;--coral-l:#3d2622;--amber:#f2b94b;--amber-l:#3a2f17;color-scheme:dark}
+/* Layout: one review column; each approval item is a numbered section in the order to review it */
+:root{--bg:#fff8f0;--fg:#1f1b2e;--soft:#5b5670;--panel:#ffffff;--line:#1f1b2e;--pink:#ff5fa2;--sun:#ffd23f;--mint:#3ddc97;--sky:#4cc9f0;
+--ok:#167a52;--ok-l:#dcf7ea;--mid:#8a5a00;--mid-l:#fff0c9;--no:#b23a26;--no-l:#ffe2da;
+--display:Fredoka,Inter,system-ui,sans-serif;--body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#17141f;--fg:#f6f2ff;--soft:#bdb6d3;--panel:#221e2e;--line:#4a4460;--ok:#5fe0a8;--ok-l:#173a2c;--mid:#f2c14b;--mid-l:#3a2f17;--no:#ff8a72;--no-l:#3d2622;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17141f;--fg:#f6f2ff;--soft:#bdb6d3;--panel:#221e2e;--line:#4a4460;--ok:#5fe0a8;--ok-l:#173a2c;--mid:#f2c14b;--mid-l:#3a2f17;--no:#ff8a72;--no-l:#3d2622;color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
-.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;display:grid;gap:28px}
-h1,h2,h3{font-family:var(--display);line-height:1.12;margin:0;text-wrap:balance}
-h1{font-size:clamp(30px,6vw,44px)}
-h2{font-size:24px;display:flex;gap:12px;align-items:baseline}
-h2 .n{font-size:14px;color:var(--soft);font-weight:700}
-h3{font-size:17px;margin-top:6px}
+.wrap{max-width:880px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;display:grid;gap:26px}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance}
+h1{font-size:clamp(32px,6vw,48px)}
+h2{font-size:26px;display:flex;gap:12px;align-items:center}
+h2 .n{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--sun);color:#1f1b2e;font-size:17px;border:2.5px solid #1f1b2e;flex:0 0 auto}
+h3{font-size:18px;margin-top:4px}
 p{margin:0}
-.kick{font-family:var(--display);text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:700;color:var(--mint)}
-section{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:14px;min-width:0}
+section{background:var(--panel);border:3px solid var(--line);border-radius:22px;padding:24px;display:grid;gap:14px;min-width:0;box-shadow:5px 5px 0 var(--line)}
 .muted{color:var(--soft)}
 .tag{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:2px 9px;white-space:nowrap}
-.v{background:var(--mint-l);color:var(--mint)}.pv{background:var(--amber-l);color:var(--amber)}.u{background:var(--coral-l);color:var(--coral)}
+.v{background:var(--ok-l);color:var(--ok)}.pv{background:var(--mid-l);color:var(--mid)}.u{background:var(--no-l);color:var(--no)}
 .tbl{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
-th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-family:var(--display);font-size:13px;color:var(--soft)}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--line) 25%,transparent);vertical-align:top}
+th{font-family:var(--display);font-size:14px;color:var(--soft)}
 .row2{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:22px;align-items:start}
-video{width:100%;max-width:300px;border-radius:14px;background:#000;aspect-ratio:9/16}
+video{width:100%;max-width:300px;border-radius:16px;background:#000;aspect-ratio:9/16;border:3px solid var(--line)}
 .pages{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px}
-.pages img{width:170px;flex:0 0 auto;border-radius:8px;border:1px solid var(--line)}
-a{color:var(--mint);font-weight:600}
-.decide{background:var(--amber-l);border-color:transparent}
-ul{margin:0;padding-left:20px}
-li{margin:4px 0}
-.big{font-family:var(--display);font-size:20px;font-weight:700}
+.pages img{width:170px;flex:0 0 auto;border-radius:10px;border:2.5px solid var(--line)}
+a{color:var(--fg);font-weight:700;text-decoration-color:var(--pink);text-decoration-thickness:3px}
+.big{font-family:var(--display);font-size:22px;font-weight:700}
+.cta{display:inline-block;background:var(--sun);color:#1f1b2e;border:3px solid #1f1b2e;border-radius:99px;padding:10px 20px;font-family:var(--display);font-weight:700;text-decoration:none;box-shadow:3px 3px 0 #1f1b2e}
+ul{margin:0;padding-left:20px}li{margin:4px 0}
 @media (max-width:640px){.row2{grid-template-columns:1fr}video{max-width:100%}}
 </style>
 
 <div class="wrap">
   <header style="display:grid;gap:10px">
-    <div class="kick">Step 2 · Proof package · 2026-11-11</div>
-    <h1>Forget-Proof Money: ready for your approval</h1>
-    <p class="muted">Everything uses the same name and wording: product, video, landing page and shop listing. Nothing has been posted, created or paid for. Spend so far: <b>$0.21 confirmed</b> (worst case $0.61) of the $1.20 research budget you approved.</p>
-    <p><span class="tag v">verified</span> checked against live data · <span class="tag pv">partly verified</span> one credible source · <span class="tag u">unverified</span> claim not yet checked</p>
+    <p style="font-family:var(--display);font-weight:700;color:var(--pink);letter-spacing:2px;text-transform:uppercase;font-size:13px">Step 2 · Proof package v2 · 2026-11-11</p>
+    <h1>Savings Sprints: ready for your approval</h1>
+    <p class="muted">New product, because Forget-Proof Money didn't grab attention. Same name and wording everywhere: product, video, landing page, listing. Nothing has been posted, created or paid for. Research spend so far: <b>$0.43 confirmed</b> (worst case $0.83) of the $1.20 you approved.</p>
+    <p><span class="tag v">verified</span> checked on live data · <span class="tag pv">partly verified</span> one credible source · <span class="tag u">unverified</span></p>
   </header>
 
   <section>
-    <h2><span class="n">1</span>Research summary</h2>
-    <p><b>Niche: ADHD money.</b> 193 real TikTok videos scraped across 26 search terms. <span class="tag v">verified</span></p>
+    <h2><span class="n">1</span>Proof that people buy this</h2>
     <div class="tbl"><table>
-      <tr><th>Search term</th><th>Median views</th><th>Median save rate</th></tr>
-      <tr><td><b>adhd money</b></td><td>175,200</td><td>2.46%</td></tr>
-      <tr><td>budget with me (generic money)</td><td>6,631</td><td>0.44%</td></tr>
-      <tr><td>coloring book asmr</td><td>58,950</td><td>0.17%</td></tr>
-      <tr><td>psychology facts</td><td>114,100</td><td>0.79%</td></tr>
+      <tr><th>Live Etsy listing</th><th>Reviews</th><th>Shop sales</th><th>Price</th></tr>
+      <tr><td>Savings Challenge Bundle</td><td>2,376</td><td>n/a</td><td>$3.00</td></tr>
+      <tr><td>2.5K Savings Challenge Tracker Bundle</td><td>2,286</td><td>6.1k</td><td>$11.13</td></tr>
+      <tr><td>Ultimate <b>Coloring</b> Savings Challenge Bundle (A6)</td><td>1,049</td><td>6k</td><td>$5.22</td></tr>
+      <tr><td>No Spend Challenge tracker</td><td>679</td><td>n/a</td><td>$3.00</td></tr>
+      <tr><td><i>ADHD-specific savings challenges</i></td><td><i>8–14</i></td><td>n/a</td><td>$1–6</td></tr>
     </table></div>
-    <p>Money content framed for ADHD gets about <b>26× the views and 5× the saves</b> of generic budgeting content. Within ADHD money, "system" content wins: <i>"three types of bank accounts every human with ADHD needs"</i> got 154,600 views and 10,657 saves (6.9%). "ADHD tax", subscriptions and paycheck content saves at only 0.3–0.6%. <span class="tag v">verified</span></p>
-    <p><b>Competition:</b> dozens of ADHD budget planners already sell on Etsy, Payhip and Stan for $9–44. Most are ordinary budget planners with "ADHD" in the title. Stage: growing and peaking, not early. <span class="tag pv">partly verified</span></p>
-    <p class="muted">Full write-up: <code>ops/step1-research.md</code> · raw data: <code>ops/data/</code> on branch <code>claude/digital-products-seed-v3-58hxnj</code></p>
+    <p><span class="tag pv">partly verified</span> Scraped from Etsy listing pages. Some review counts are probably shop-wide, not per listing. Either way, these are real purchases. The format sells in the thousands; the ADHD version barely exists yet, and that's our angle.</p>
+    <p>TikTok attention <span class="tag v">verified</span>: "100 envelope challenge" video 2.8M views, 22.5k saves · "Color an icon each time you save" 202.5k views · "ADHD money" content gets 26× the views of generic budgeting.</p>
   </section>
 
   <section>
-    <h2><span class="n">2</span>Sample product</h2>
-    <p class="big">Forget-Proof Money · $12 launch (regular $17)</p>
-    <p>A 14-page printable PDF guide plus a spreadsheet that does the maths. Setup takes four 15-minute sessions, then 10 minutes a week. Files: <code>product/forget-proof-money/dist/</code>.</p>
+    <h2><span class="n">2</span>The product</h2>
+    <p class="big">Savings Sprints · $9 launch (regular $14)</p>
+    <p>12 color-in money challenges for ADHD brains: 7, 14 or 30 days, $0 to $1,000. Each tracker is a picture that fills up as you save. The bubbles add up exactly to the goal, and the build checks this automatically for every tracker.</p>
     <div class="pages">
-      <img src="img/page01.jpg" alt="Page 1"><img src="img/page02.jpg" alt="Page 2"><img src="img/page03.jpg" alt="Page 3"><img src="img/page05.jpg" alt="Page 5"><img src="img/page06.jpg" alt="Page 6"><img src="img/page07.jpg" alt="Page 7"><img src="img/page08.jpg" alt="Page 8"><img src="img/page09.jpg" alt="Page 9"><img src="img/page10.jpg" alt="Page 10"><img src="img/page11.jpg" alt="Page 11"><img src="img/page12.jpg" alt="Page 12"><img src="img/page13.jpg" alt="Page 13"><img src="img/page14.jpg" alt="Page 14">
+      <img src="img2/p01.jpg" alt="Cover"><img src="img2/p04.jpg" alt="Weekend Warm-Up"><img src="img2/p05.jpg" alt="Boba Fund"><img src="img2/p07.jpg" alt="Payday to Payday"><img src="img2/p08.jpg" alt="Level Up"><img src="img2/p09.jpg" alt="Holiday Gift Fund"><img src="img2/p11.jpg" alt="Grow It"><img src="img2/p13.jpg" alt="Mixtape"><img src="img2/p15.jpg" alt="Emergency Starter">
     </div>
-    <h3>Why it's built this way</h3>
     <div class="tbl"><table>
-      <tr><th>Choice</th><th>Evidence</th></tr>
-      <tr><td><b>Name: "Forget-Proof Money"</b></td><td>Built from the two most-saved phrases: "Stop trusting your memory" (24,673 saves) and "ADHD-proof money system" (18,840 saves). Zero existing uses found on Google. "Autopilot" and "Money Map" names were already taken. <span class="tag v">verified</span></td></tr>
-      <tr><td>A system you set up once, not a planner</td><td>System and bank-account content saves at 2–7%. "adhd planner" saves at 0.66%, and a planner-fatigue video ("99 unused planners") got 125,600 views. <span class="tag v">verified</span></td></tr>
-      <tr><td>4 accounts, one job each</td><td>Highest save rate in the sample (6.9%) was the bank-accounts structure video. <span class="tag v">verified</span></td></tr>
-      <tr><td>Short 15-min sessions, treat first</td><td>Temptation bundling (pairing a chore with a reward) is a documented habit technique. ADHD audiences repeatedly ask for short-attention formats ("break this into 4 one-minute videos"). <span class="tag pv">partly verified</span></td></tr>
-      <tr><td>Spreadsheet included</td><td>"build a paycheck budget with me" Google Sheets tutorial: 88,800 views, 5.5% saves. Formulas tested with the guide's worked example (bills $1,950 → $945 per paycheck). <span class="tag v">verified</span></td></tr>
-      <tr><td>$12 launch price</td><td>Comparable ADHD money products sell for $9–24; the nearest match is $17. <span class="tag pv">partly verified</span></td></tr>
+      <tr><th>Choice</th><th>Why</th></tr>
+      <tr><td><b>Name: "Savings Sprints"</b></td><td>Says the ADHD angle (short bursts, not a 52-week marathon). No product uses it; "Tiny Wins", "Color Your Savings" and "Dopamine Savings" were taken or crowded. <span class="tag v">verified</span></td></tr>
+      <tr><td>Color-in pictures</td><td>The top-selling format above is a <i>coloring</i> savings bundle (1,049 reviews). Color-in videos get 200k+ views. <span class="tag v">verified</span></td></tr>
+      <tr><td>7/14/30-day sprints</td><td>52-week challenges get dropped; ADHD audiences ask for short formats. A 14-day sprint fits a 2-week paycheck. <span class="tag pv">partly verified</span></td></tr>
+      <tr><td>A6 + Letter + spreadsheet</td><td>A6 is the cash-binder size bestsellers use. Spreadsheet demos get the highest save rates (1.87% median). Spreadsheet formulas tested. <span class="tag v">verified</span></td></tr>
+      <tr><td>$9</td><td>Proven bundles sell at $3–11. Ours has more formats, so it prices near the top. <span class="tag pv">partly verified</span></td></tr>
     </table></div>
+    <p class="muted">Files: <code>product/savings-sprints/dist/</code> (Letter PDF 17 pages, A6 PDF, spreadsheet).</p>
   </section>
 
   <section>
-    <h2><span class="n">3</span>Sample video (40s, vertical)</h2>
+    <h2><span class="n">3</span>The video (32s, vertical)</h2>
     <div class="row2">
       <video src="video.mp4" controls playsinline preload="metadata"></video>
       <div style="display:grid;gap:10px;min-width:0">
         <div class="tbl"><table>
           <tr><th>Beat</th><th>Line</th><th>Proven pattern</th></tr>
-          <tr><td>Hook 0s</td><td>"Your ADHD brain isn't bad with money. It's bad at remembering."</td><td>Reassure + reframe. Text on screen from frame 1 (403k views, 4.7% saves)</td></tr>
-          <tr><td>Relate 4s</td><td>"Payday hits, and five minutes later you've found three new hobbies."</td><td>Payday-dopamine joke (407k views, 10.7k shares)</td></tr>
-          <tr><td>Re-hook 7s</td><td>"So stop making your brain remember. Make your bank do it."</td><td>Promise of a fix keeps viewers past 8s</td></tr>
-          <tr><td>List 10–25s</td><td>"Four accounts. One job each." Bills, Spend, Buffer, Goals</td><td>Numbered account list (6.9% saves)</td></tr>
-          <tr><td>Intensifier 25s</td><td>"It keeps working on the weeks you forget it exists."</td><td>Removes the "I always fall off" objection</td></tr>
-          <tr><td>Product 29s</td><td>"It's a printable guide with four fifteen-minute setup sessions, plus a spreadsheet that does the maths for you." Real guide pages flip in, then the real spreadsheet splits $1,400 into $945 Bills / $400 Spend</td><td>Show the actual product before the ask: Google Sheets budget build-along (88.8k views, 5.5% saves), creator showing her own planner (855.8k views)</td></tr>
-          <tr><td>CTA 35s</td><td>"Save this for payday. The full setup is called Forget-Proof Money."</td><td>Save prompt (saves = intent) + exact product name</td></tr>
+          <tr><td>Hook 0s</td><td>"If you have ADHD, stop doing fifty-two week savings challenges." <i>52-week</i> gets struck through, then <i>7-day</i> pops in</td><td>"Stop…" hook (24.7k saves) + strike-the-old-way</td></tr>
+          <tr><td>Relate 4s</td><td>"You're obsessed for one week. By week three, the tracker is lost in a drawer."</td><td>Planner fatigue (125.6k views)</td></tr>
+          <tr><td>Re-hook 8s</td><td>"Do a sprint instead. Seven, fourteen, or thirty days."</td><td>The fix, in three numbers</td></tr>
+          <tr><td>Fill 12s</td><td>The Boba Fund fills bubble by bubble, $0 to $100</td><td>Watch-it-fill (2.8M views)</td></tr>
+          <tr><td>Range 15s</td><td>Real tracker pages fan in: "twelve, from $50 to $1,000"</td><td>Show the whole product</td></tr>
+          <tr><td>Formats 21s</td><td>Print, iPad, live spreadsheet</td><td>Handles "how do I use it?"</td></tr>
+          <tr><td>CTA 26s</td><td>"Save this, and start the fifty dollar one this weekend."</td><td>Save prompt + tiny first step</td></tr>
         </table></div>
-        <p class="muted">Made for $0: free AI voice (Kokoro, Apache 2.0 licence), animation rendered locally. Patterns were learned from competitors; no wording was copied. File: <code>content/v001/video.mp4</code>.</p>
-        <p class="muted"><b>Known limits:</b> AI voice, not a human. No music yet: add a quiet sound from TikTok's commercial library when posting. Faceless format (an animated ADHD video in the data got 486k views).</p>
+        <p class="muted">Free to make (AI voice: Kokoro, Apache 2.0). Faceless. Add a quiet trending sound in TikTok when posting, and switch on TikTok's AI-content label.</p>
       </div>
     </div>
   </section>
 
   <section>
     <h2><span class="n">4</span>Landing page (draft)</h2>
-    <p>The page the video's bio link goes to. Built from five adapted 21st.dev components: tilting account-card hero, a bento of working mini-tools (including a live Safe-to-Spend calculator), scroll-stacked setup sessions, a pricing card and an animated FAQ. Same wording as the video and guide. The pricing card's fake customer count was removed, and checkout stays off until you approve.</p>
-    <p><a href="https://claude.ai/artifact/415P38hxrArrtUcnKNrnEE" target="_blank" rel="noopener">Open the landing page draft →</a></p>
+    <p>Built from five adapted 21st.dev components. The main feature is a live tracker visitors can tap to color in, so they feel the product before buying. No fake reviews, and checkout stays off until you approve.</p>
+    <p><a class="cta" href="https://claude.ai/artifact/BChDiB5kFLLMhJwSNkHu1G" target="_blank" rel="noopener">Open the landing page →</a></p>
   </section>
 
   <section>
-    <h2><span class="n">5</span>Shop listing copy</h2>
-    <p><b>Title:</b> Forget-Proof Money: The ADHD Money System You Set Up Once</p>
-    <p><b>One-liner:</b> You're not bad with money. You've been using systems that need a perfect memory. This one moves the remembering out of your head and into your bank.</p>
-    <p class="muted">Full description, Etsy title, 13 Etsy tags and TikTok bio: <code>product/forget-proof-money/listing.md</code></p>
+    <h2><span class="n">5</span>Shop listing</h2>
+    <p><b>Title:</b> Savings Sprints: 12 Color-In Money Challenges for ADHD Brains</p>
+    <p><b>One-liner:</b> 52-week challenges are a marathon. Your brain wants a sprint. Pick a 7, 14 or 30-day goal, save, and color a bubble. Watch it fill up.</p>
+    <p class="muted">Etsy title, 13 tags, full description and TikTok bio: <code>product/savings-sprints/listing.md</code></p>
   </section>
 
   <section>
     <h2><span class="n">6</span>Legal basics</h2>
     <ul>
-      <li><b>Claims:</b> educational only, no medical or financial-advice claims. A disclaimer is on the last page of the guide and the landing page.</li>
-      <li><b>Licensing:</b> all writing and design are original. Fonts (Inter, Space Grotesk, Kalam) are SIL Open Font License, so embedding them in a sold PDF is allowed. The Kokoro voice model is Apache 2.0, so commercial use is allowed. <span class="tag pv">partly verified</span></li>
-      <li><b>TikTok AI label:</b> turn on the "AI-generated content" toggle when posting, because the voice is synthetic. Sources agree disclosure applies to realistic synthetic audio. <span class="tag pv">partly verified</span></li>
-      <li><b>TikTok bio link:</b> a free Business account reliably unlocks the website link. Sources disagree on whether personal accounts still need 1,000 followers. <span class="tag pv">partly verified</span></li>
-      <li><b>Taxes:</b> sales are taxable income where you live. Gumroad is reported to act as merchant of record (it collects and remits sales tax/VAT for you); Payhip's status is unclear. I'll confirm before recommending a shop. <span class="tag pv">partly verified</span></li>
-    </ul>
-  </section>
-
-  <section class="decide">
-    <h2><span class="n">7</span>What happens after you approve</h2>
-    <ul>
-      <li>I prepare a 10-minute setup sheet for the two accounts that need you personally: a shop (Gumroad, about 10% + $0.50 per sale with tax handled, or Payhip, 5% plus card fees) and TikTok.</li>
-      <li>I build the content pipeline: 1 script → video → post caption per day, ready for your yes/no.</li>
-      <li>Test rule (Step 4): 15 posts over about 2 weeks. If median views stay under 1,000 and there are zero sales, we change the angle; after a second failed round, we switch niche (psychology is next).</li>
+      <li><b>Claims:</b> motivational tool only; no financial, medical or ADHD-treatment claims. It tells buyers never to skip essentials to finish a sprint.</li>
+      <li><b>Licensing:</b> all art is original (drawn by code). Fredoka and Inter fonts use the SIL Open Font License, so embedding in a sold PDF is fine. Voice model: Apache 2.0. <span class="tag pv">partly verified</span></li>
+      <li><b>TikTok:</b> AI-content label on (synthetic voice). A free Business account reliably unlocks the bio link. <span class="tag pv">partly verified</span></li>
+      <li><b>Taxes:</b> sales are taxable income. Gumroad reportedly collects sales tax for you; Payhip's status is unclear. I'll confirm before the shop is set up. <span class="tag pv">partly verified</span></li>
     </ul>
   </section>
 </div>

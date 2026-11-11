@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Layout: candy-colored billboard hero with real tracker pages floating around the copy, a bento where the main card is a live tracker you can color in, stacked steps, one price card, FAQ */
+:root{--bg:#fff8f0;--fg:#1f1b2e;--soft:#5b5670;--panel:#ffffff;--panel2:#fff0e2;--line:#1f1b2e;color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#17141f;--fg:#f6f2ff;--soft:#bdb6d3;--panel:#221e2e;--panel2:#1c1927;--line:#4a4460;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17141f;--fg:#f6f2ff;--soft:#bdb6d3;--panel:#221e2e;--panel2:#1c1927;--line:#4a4460;color-scheme:dark}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;margin:0}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance}
+.chunky{border:3px solid var(--line);box-shadow:5px 5px 0 var(--line)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}

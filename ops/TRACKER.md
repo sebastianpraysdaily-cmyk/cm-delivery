@@ -2,9 +2,14 @@
 
 Read this first every session. Update at the end of every session.
 
-**Budget:** $20 hard cap · **Spent:** $0.40 confirmed (worst case $0.80, see spend log) · **Approved:** $1.20 for research
+**Budget:** $20 hard cap · **Spent:** $0.43 confirmed (worst case $0.83, see spend log) · **Approved:** $1.20 for research
 
 ## Done
+- 2026-11-11 · Sebastian: Forget-Proof Money not attention-grabbing → researched 5 options; GTA 6 checked twice (no fit)
+- 2026-11-11 · Sales proof: savings-challenge bundles 1,049–2,376 reviews on Etsy; ADHD versions rare (8–14 reviews)
+- 2026-11-11 · **New product: Savings Sprints** (12 color-in trackers, Letter + A6 PDF, spreadsheet with color-fill) → `product/savings-sprints/`
+- 2026-11-11 · Video v002 (32s) → `content/v002/` · renderer `content/render_v002.py`
+- 2026-11-11 · Landing page (21st.dev components, live tracker) → https://claude.ai/artifact/BChDiB5kFLLMhJwSNkHu1G
 - 2026-11-11 · Checked Composio connections, prices and limits → `ops/capabilities.md`
 - 2026-11-11 · Confirmed free local video stack exists in repo (Kokoro TTS, faster-whisper, fonts, ffmpeg) → $0 per video
 - 2026-11-11 · Step 1 pass 1: free desk research, provisional top-5 ranking → `ops/step1-research.md`
@@ -18,8 +23,7 @@ Read this first every session. Update at the end of every session.
 - 2026-11-11 · Approval package → https://claude.ai/artifact/89kbpDdSedFoVH5nwBTtzj
 
 ## In progress
-- Sebastian: current product doesn't grab attention → 5 options researched (`ops/step2-product-options.md`). **Waiting on his pick.** He asked about GTA 6 → checked (`ops/gta6-check.md`): high reach, low intent, high trademark risk. Follow-up: selling to GTA money-makers → no good product now (creator kits weak + free tools + policy grey; FiveM needs dev/testing, GTA 6 version ~2027).
-- **Next idea to revisit (2027):** FiveM scripts for GTA 6 RP once a PC version exists.
+- **Waiting on Sebastian:** approve the Savings Sprints package → https://claude.ai/artifact/89kbpDdSedFoVH5nwBTtzj
 
 ## Next
 1. Step 2 proof package: product + name + description, 1 short video, landing page, shop listing copy, all on matching wording
@@ -28,6 +32,7 @@ Read this first every session. Update at the end of every session.
 
 ## Open flags / drift
 - Kokoro voice model (350MB) downloads from GitHub each new session; not committed.
+- 21st.dev video blocks (Remotion) need the 21st.dev registry host + API key; this container can't reach it. Built v002 in own renderer instead.
 - Drift caught: v1 landing page skipped 21st.dev despite the brief. Fixed in v2. Rule: check named tools (21st.dev, Composio) before building anything.
 - Container cannot open most sites directly (Etsy, TikTok, data blogs return 403/blocked). Research runs through web search summaries, which are weaker evidence. Paid Composio scrapers fill the gap for cents.
 - Arena skill is **not installed**. High-stakes picks are not bracket-tested until it is added.
@@ -54,4 +59,5 @@ Read this first every session. Update at the end of every session.
 | 2026-11-11 | Apify TikTok video stats (73 videos, 10 formats) | $0.073 | Confirmed |
 | 2026-11-11 | GTA 6 check: Serper + Apify (55 videos) | $0.058 | Confirmed |
 | 2026-11-11 | GTA creator-market check: Serper + Apify (38 videos) | $0.041 | Confirmed |
-| **Total** | | **$0.40 confirmed, ≤$0.80 worst case** | Remaining approved research budget: ≥$0.40 |
+| 2026-11-11 | Sales proof: Serper search + ~46 Etsy listing scrapes + name check | $0.033 | Confirmed (approx., scrape run timed out client-side but completed) |
+| **Total** | | **$0.43 confirmed, ≤$0.83 worst case** | Remaining approved research budget: ≥$0.37 |
