@@ -2,7 +2,7 @@
 
 Read this first every session. Update at the end of every session.
 
-**Budget:** $20 hard cap · **Spent:** $0.30 confirmed (worst case $0.70, see spend log) · **Approved:** $1.20 for research
+**Budget:** $20 hard cap · **Spent:** $0.36 confirmed (worst case $0.76, see spend log) · **Approved:** $1.20 for research
 
 ## Done
 - 2026-11-11 · Checked Composio connections, prices and limits → `ops/capabilities.md`
@@ -18,7 +18,7 @@ Read this first every session. Update at the end of every session.
 - 2026-11-11 · Approval package → https://claude.ai/artifact/89kbpDdSedFoVH5nwBTtzj
 
 ## In progress
-- Sebastian: current product doesn't grab attention → 5 options researched (`ops/step2-product-options.md`). **Waiting on his pick.**
+- Sebastian: current product doesn't grab attention → 5 options researched (`ops/step2-product-options.md`). **Waiting on his pick.** He asked about GTA 6 → checked (`ops/gta6-check.md`): high reach, low intent, high trademark risk.
 
 ## Next
 1. Step 2 proof package: product + name + description, 1 short video, landing page, shop listing copy, all on matching wording
@@ -51,4 +51,5 @@ Read this first every session. Update at the end of every session.
 | 2026-11-11 | Apify TikTok video stats (55 videos) | $0.055 | Confirmed |
 | 2026-11-11 | Serper search + 6 Etsy page scrapes + format search | $0.010 | Confirmed |
 | 2026-11-11 | Apify TikTok video stats (73 videos, 10 formats) | $0.073 | Confirmed |
-| **Total** | | **$0.30 confirmed, ≤$0.70 worst case** | Remaining approved research budget: ≥$0.50 |
+| 2026-11-11 | GTA 6 check: Serper + Apify (55 videos) | $0.058 | Confirmed |
+| **Total** | | **$0.36 confirmed, ≤$0.76 worst case** | Remaining approved research budget: ≥$0.44 |
