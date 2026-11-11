@@ -2,7 +2,7 @@
 
 Read this first every session. Update at the end of every session.
 
-**Budget:** $20 hard cap · **Spent:** $0.21 confirmed (worst case $0.61, see spend log) · **Approved:** $1.20 for research
+**Budget:** $20 hard cap · **Spent:** $0.30 confirmed (worst case $0.70, see spend log) · **Approved:** $1.20 for research
 
 ## Done
 - 2026-11-11 · Checked Composio connections, prices and limits → `ops/capabilities.md`
@@ -18,7 +18,7 @@ Read this first every session. Update at the end of every session.
 - 2026-11-11 · Approval package → https://claude.ai/artifact/89kbpDdSedFoVH5nwBTtzj
 
 ## In progress
-- **Waiting on Sebastian:** approve the Step 2 package (product, video, landing page, listing)
+- Sebastian: current product doesn't grab attention → 5 options researched (`ops/step2-product-options.md`). **Waiting on his pick.**
 
 ## Next
 1. Step 2 proof package: product + name + description, 1 short video, landing page, shop listing copy, all on matching wording
@@ -49,4 +49,6 @@ Read this first every session. Update at the end of every session.
 | 2026-11-11 | Apify video batch that timed out | $0.00–0.08 | Charge not shown |
 | 2026-11-11 | Serper: sub-angle search + 2 name checks | $0.009 | Confirmed |
 | 2026-11-11 | Apify TikTok video stats (55 videos) | $0.055 | Confirmed |
-| **Total** | | **$0.21 confirmed, ≤$0.61 worst case** | Remaining approved research budget: ≥$0.59 |
+| 2026-11-11 | Serper search + 6 Etsy page scrapes + format search | $0.010 | Confirmed |
+| 2026-11-11 | Apify TikTok video stats (73 videos, 10 formats) | $0.073 | Confirmed |
+| **Total** | | **$0.30 confirmed, ≤$0.70 worst case** | Remaining approved research budget: ≥$0.50 |
