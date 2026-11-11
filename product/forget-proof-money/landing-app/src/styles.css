@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Layout: billboard hero with the 4 account cards floating around the copy (the product's core idea), then bento of working mini-tools, stacked setup sessions, one price card, FAQ */
+:root{--bg:#fbf7ef;--fg:#1d2440;--soft:#565e7c;--panel:#ffffff;--panel2:#f3eee3;--line:#e3ddcf;--mint-l:#dff5ec;--coral-l:#ffe6de;color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#11152a;--fg:#eef0f8;--soft:#aab2cf;--panel:#1a2040;--panel2:#141936;--line:#2b3360;--mint-l:#163a33;--coral-l:#3d2622;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#11152a;--fg:#eef0f8;--soft:#aab2cf;--panel:#1a2040;--panel2:#141936;--line:#2b3360;--mint-l:#163a33;--coral-l:#3d2622;color-scheme:dark}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;margin:0}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+input[type=range]{accent-color:#2fbf8f}
