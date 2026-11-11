@@ -76,11 +76,19 @@
    "dur": 3.354
   },
   {
+   "id": "product",
+   "text": "It's a printable guide with four fifteen-minute setup sessions, plus a spreadsheet that does the maths for you.",
+   "scene": "product",
+   "why": "Product demo before the CTA so viewers see exactly what they get. Pattern: @tuliproad Google Sheets budget build-along (88.8k views, 5.5% saves), @nataliesoutlet showing her own planner (855.8k views), @matchabudgets showing her binders (207k views).",
+   "start": 29.042,
+   "dur": 5.624
+  },
+  {
    "id": "cta",
    "text": "Save this for payday. The full setup is called Forget-Proof Money. It's in my bio.",
    "scene": "cta",
    "why": "Save prompt (saves are the intent signal we optimise for) + soft product CTA with the exact product name.",
-   "start": 29.042,
+   "start": 34.846,
    "dur": 4.702
   }
  ]

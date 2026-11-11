@@ -50,6 +50,46 @@ def wrap(s, font, maxw, d):
     out.append(cur); return out
 
 cover = Image.open(f"{D}/assets/cover.png").convert("RGBA") if os.path.exists(f"{D}/assets/cover.png") else None
+PAGES = [Image.open(f"{D}/assets/page{n:02d}.png").convert("RGBA") for n in (3, 5, 7, 9, 13) if os.path.exists(f"{D}/assets/page{n:02d}.png")]
+SHEET = Image.open(f"{D}/assets/sheet_split.png").convert("RGBA") if os.path.exists(f"{D}/assets/sheet_split.png") else None
+
+def shadowed(img, page, x, y, rot=0, blur=16, alpha=80):
+    pg = page.rotate(rot, expand=True, resample=Image.BICUBIC) if rot else page
+    sh = Image.new("RGBA", pg.size, (0, 0, 0, 0)); ImageDraw.Draw(sh).rectangle((8, 8, pg.size[0] - 1, pg.size[1] - 1), fill=(0, 0, 0, alpha))
+    sh = sh.filter(ImageFilter.GaussianBlur(blur)); img.paste(sh, (int(x + 14), int(y + 20)), sh); img.paste(pg, (int(x), int(y)), pg)
+
+def product_scene(t):
+    """guide pages flip in, then the spreadsheet on a laptop doing the split maths"""
+    img = bg(CREAM); d = ImageDraw.Draw(img); b = B["product"]; lt = t - b["start"]; half = b["dur"] * 0.5
+    text_c(d, (W / 2, 190), "Forget-Proof Money", F("black", 76), INK)
+    if lt < half:  # guide pages
+        text_c(d, (W / 2, 290), "14-page printable guide", F("bold", 44), MINT)
+        n = len(PAGES); pw = 640; ph = int(pw * 1056 / 816)
+        for k, pg in enumerate(PAGES):
+            e = ease((lt - k * half / n * 0.9) / 0.28)
+            if e <= 0: continue
+            im = pg.resize((pw, ph), Image.LANCZOS)
+            rot = (k - n / 2) * 2.2; x = W / 2 - pw / 2 + (k - n / 2) * 14 + (1 - e) * 700; y = 400 + k * 10
+            shadowed(img, im, x, y, rot)
+    else:  # spreadsheet on laptop
+        text_c(d, (W / 2, 290), "+ a spreadsheet that does the maths", F("bold", 44), MINT)
+        e = ease((lt - half) / 0.35)
+        lx, ly, lw, lh = 60, 520 + (1 - e) * 120, W - 120, 420
+        rrect(d, (lx, ly, lx + lw, ly + lh), 34, (30, 32, 44))
+        rrect(d, (lx + 22, ly + 22, lx + lw - 22, ly + lh - 22), 14, WHITE)
+        d.polygon([(lx - 50, ly + lh), (lx + lw + 50, ly + lh), (lx + lw + 10, ly + lh + 46), (lx - 10, ly + lh + 46)], fill=(52, 55, 72))
+        if SHEET is not None:
+            sw = lw - 60; shh = int(SHEET.height * sw / SHEET.width)
+            if shh > lh - 60: shh = lh - 60; sw = int(SHEET.width * shh / SHEET.height)
+            sim = SHEET.resize((sw, shh), Image.LANCZOS); sx = lx + (lw - sw) // 2; sy = int(ly + (lh - shh) / 2)
+            img.paste(sim, (sx, sy), sim)
+            # highlight the two answers the viewer cares about (BILLS + SPEND rows), after a beat
+            if lt - half > 0.9:
+                for fy, col in ((0.46, MINT), (0.86, CORAL)):  # BILLS row, SPEND row in the zoomed table
+                    yy = sy + int(shh * fy); d.rounded_rectangle((sx + int(sw * 0.62), yy - 22, sx + sw + 8, yy + 22), 10, outline=col, width=6)
+        text_c(d, (W / 2, 1290), "4 setup sessions × 15 min", F("black", 54), INK)
+    captions(img, t, ["product"])
+    return img
 
 def bg(color=INK):
     return Image.new("RGB", (W, H), color)
@@ -60,8 +100,10 @@ def captions(img, t, ids):
     act = [i for i, w in enumerate(cur) if w[2] <= t < w[3] + 0.25]
     if not act: return
     i = act[-1]; start = (i // 3) * 3; chunk = cur[start:start + 3]
-    d = ImageDraw.Draw(img); f = F("black", 76)
+    d = ImageDraw.Draw(img); size = 76; f = F("black", size)
     parts = [w[1] for w in chunk]; widths = [d.textlength(p + " ", font=f) for p in parts]
+    while sum(widths) > W - 90 and size > 40:  # shrink long chunks so they never run off screen
+        size -= 4; f = F("black", size); widths = [d.textlength(p + " ", font=f) for p in parts]
     x = (W - sum(widths)) / 2; y = 1430
     for k, (p, wd) in enumerate(zip(parts, widths)):
         on = chunk[k][2] <= t
@@ -168,7 +210,7 @@ def frame(n):
             text_c(d, (W / 2, 460), "1 job each.", F("black", 110), MINT)
             card_grid(img, t, focus=(i, t - B[aid]["start"]))
             captions(img, t, [aid]); return img
-    if t < B["cta"]["start"] - 0.09:  # WEEKS
+    if t < B["product"]["start"] - 0.09:  # WEEKS
         img = bg(INK); d = ImageDraw.Draw(img); lt = t - B["intens"]["start"]
         text_c(d, (W / 2, 360), "Even the weeks", F("black", 96), WHITE)
         text_c(d, (W / 2, 475), "you forget it exists:", F("black", 96), WHITE)
@@ -182,6 +224,8 @@ def frame(n):
             d.text((x + 40, y + 88), "you: " + st, font=F("semi", 30), fill=MINT if me else CORAL)
             d.text((W - 150, y + 40), "Bills paid ✓", font=F("black", 44), fill=MINT, anchor="ra")
         captions(img, t, ["intens"]); return img
+    if t < B["cta"]["start"] - 0.09:  # PRODUCT
+        return product_scene(t)
     # CTA
     img = bg(CREAM); d = ImageDraw.Draw(img); lt = t - B["cta"]["start"]
     if cover is not None:
@@ -202,7 +246,7 @@ if __name__ == "__main__":
     p = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
                           "-i", f"{D}/vo.wav", "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p",
                           "-c:a", "aac", "-b:a", "160k", "-af", "apad", "-t", f"{TOTAL:.2f}", "-movflags", "+faststart", out], stdin=subprocess.PIPE)
-    snaps = {int(x * FPS) for x in [0.1, 2.5, 6.5, 9.5, 11.8, 13.5, 20, 27.5, 31.5]}
+    snaps = {int(x * FPS) for x in [0.1, 6.5, 11.8, 27.5, 30.5, 32.0, 33.5, 37.0]}
     for n in range(NF):
         im = frame(n)
         if n in snaps: im.save(f"{D}/assets/snap_{n:04d}.png")
