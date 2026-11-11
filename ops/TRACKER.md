@@ -5,6 +5,7 @@ Read this first every session. Update at the end of every session.
 **Budget:** $20 hard cap · **Spent:** $0.52 confirmed (worst case $0.92, see spend log) · **Approved:** $1.20 for research
 
 ## Done
+- 2026-11-11 · Demand check on 149 Etsy listings (`ops/step2d-what-people-buy.md`): #1 = 47-page savings challenge mega bundle, 7,002 favorites / 871 reviews / $12.95. Purpose + coverage beats aesthetics. Decision: rebuild as 60+ challenge mega bundle + app bonus.
 - 2026-11-11 · Constraint: **Sebastian will not film anything.** All video must be produced without his footage (screen recordings, AI-generated scenes, animated real product pages).
 - 2026-11-11 · Art redesign prototype (AI line-art units you color in, bestseller pattern) → `product/savings-sprints/v2/`. Waiting on his OK for the direction.
 - 2026-11-11 · Format + market check (`ops/step2c-format-and-market.md`): winners are real hands+paper footage and talking heads; animated graphics 1/24. Broad savings-challenge audience has the bigger ceiling (4.5M top, 8.7M sample views) vs ADHD niche (0.49M top).
