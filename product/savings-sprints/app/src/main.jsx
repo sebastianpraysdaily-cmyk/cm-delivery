@@ -3,11 +3,12 @@ import { createRoot } from "react-dom/client";
 import { motion, AnimatePresence, animate, useMotionValue, useTransform } from "framer-motion";
 import { ArrowLeft, Lock, Flame, Snowflake, Trophy, Settings, Volume2, VolumeX, Smartphone, Vibrate, Sparkles, X } from "lucide-react";
 import { SPRINTS, LEVELS, BADGES, xpFor, levelOf, load, save, fresh, toggle, unlockedCount, savedIn, totalSaved, pctOf, mysteryIndex } from "./game.js";
-import { haptic, sfx, settings, enableTilt, pointerTilt, mountCanvas, burst, confetti, shake } from "./juice.js";
+import { haptic, sfx, settings, enableTilt, pointerTilt, mountCanvas, burst, confetti, shake, coins, shockwave, flames, tilt, onShake } from "./juice.js";
 
 const INK = "#1f1b2e";
 const cx = (...c) => c.filter(Boolean).join(" ");
 const money = (n) => "$" + n.toLocaleString("en-US");
+const fillFor = (sp) => (sp.color.toLowerCase() === "#ffd23f" ? "#ff5fa2" : "#ffd23f"); // filled bubbles must contrast with the shape
 
 function Count({ value, prefix = "", className }) {
   const mv = useMotionValue(value); const txt = useTransform(mv, (v) => prefix + Math.round(v).toLocaleString("en-US"));
@@ -48,7 +49,7 @@ function MiniArt({ sp, s }) {
   if (sp.kind === "days") return <DaysRing sp={sp} done={done} mini />;
   return (
     <svg viewBox="0 0 1000 1000" className="h-full w-full"><g dangerouslySetInnerHTML={{ __html: sp.svg }} />
-      {sp.pts.map(([x, y], i) => <circle key={i} cx={x} cy={y} r={sp.r} fill={done.has(i) ? "#ffd23f" : "#fff"} stroke={INK} strokeWidth={sp.r * 0.12} />)}</svg>
+      {sp.pts.map(([x, y], i) => <circle key={i} cx={x} cy={y} r={sp.r} fill={done.has(i) ? fillFor(sp) : "#fff"} stroke={INK} strokeWidth={sp.r * 0.12} />)}</svg>
   );
 }
 
@@ -116,9 +117,43 @@ function Floaters({ items }) {
     </AnimatePresence></div>;
 }
 
-function Sprint({ s, sp, onTap, back }) {
+function useTiltMV() {
+  const tx = useMotionValue(0), ty = useMotionValue(0);
+  useEffect(() => { let r; const f = () => { tx.set(tx.get() + (tilt.x - tx.get()) * 0.12); ty.set(ty.get() + (tilt.y - ty.get()) * 0.12); r = requestAnimationFrame(f); }; r = requestAnimationFrame(f); return () => cancelAnimationFrame(r); }, []);
+  return [tx, ty];
+}
+
+// Holographic foil: the card leans and a rainbow sheen slides across it as the phone tilts
+function HoloCard({ children, className, strength = 1 }) {
+  const [tx, ty] = useTiltMV();
+  const rotateY = useTransform(tx, (v) => v * 14 * strength), rotateX = useTransform(ty, (v) => v * -10 * strength);
+  const bgPos = useTransform(tx, (v) => `${50 + v * 45}% ${50}%`);
+  return (
+    <div style={{ perspective: 900 }} className={className}>
+      <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }} className="relative h-full w-full">
+        {children}
+        <motion.div aria-hidden className="pointer-events-none absolute inset-0 rounded-[inherit]" style={{ backgroundImage: "linear-gradient(115deg, transparent 18%, rgba(255,255,255,.65) 38%, rgba(255,95,162,.45) 46%, rgba(76,201,240,.45) 54%, rgba(61,220,151,.4) 60%, transparent 78%)", backgroundSize: "250% 250%", backgroundPosition: bgPos, mixBlendMode: "overlay", borderRadius: "inherit" }} />
+      </motion.div>
+    </div>
+  );
+}
+
+function Sprint({ s, sp, onTap, back, bump }) {
   const done = new Set(s.filled[sp.id] || []), saved = savedIn(s, sp), pct = pctOf(s, sp), mi = mysteryIndex(sp);
   const combo = Date.now() - s.comboAt < 8000 ? s.combo : 0;
+  const [tx, ty] = useTiltMV();
+  const rotY = useTransform(tx, (v) => v * 9), rotX = useTransform(ty, (v) => v * -7);
+  const backX = useTransform(tx, (v) => v * -18), frontX = useTransform(tx, (v) => v * 12), frontY = useTransform(ty, (v) => v * 8);
+  // Mystery Sprint: shake the phone (or press Roll) and a slot-machine highlight picks your next bubble
+  const [hot, setHot] = useState(-1), [pick, setPick] = useState(-1), rolling = useRef(false);
+  const roll = useCallback(() => {
+    if (rolling.current) return; const free = sp.pts.map((_, i) => i).filter((i) => !(s.filled[sp.id] || []).includes(i)); if (!free.length) return;
+    rolling.current = true; setPick(-1); let n = 0; const steps = 14 + Math.floor(Math.random() * 6);
+    const hop = () => { const i = free[Math.floor(Math.random() * free.length)]; setHot(i); sfx.tick(); haptic("tap"); n++;
+      if (n < steps) setTimeout(hop, 50 + n * n * 1.6); else { setPick(i); setHot(-1); rolling.current = false; sfx.milestone(); haptic("combo"); } };
+    hop();
+  }, [s, sp]);
+  useEffect(() => sp.id === "s07" ? onShake(roll) : undefined, [roll, sp.id]);
   return (
     <div className="flex flex-col gap-3 px-4 pb-10 pt-2">
       <div className="flex items-center gap-3">
@@ -127,8 +162,8 @@ function Sprint({ s, sp, onTap, back }) {
       </div>
       <div className="rounded-[22px] border-[3px] border-ink bg-white p-4 text-ink">
         <div className="flex items-end justify-between">
-          <div className="font-display text-4xl font-bold tabular-nums">{sp.kind === "days" ? <>{done.size}<span className="text-lg"> / 7 days</span></> : <><Count value={saved} prefix="$" /><span className="text-lg text-ink/50"> / {money(sp.goal)}</span></>}</div>
-          <AnimatePresence>{combo >= 2 && <motion.div key={combo} initial={{ scale: 1.6, rotate: -12, opacity: 0 }} animate={{ scale: 1, rotate: -6, opacity: 1 }} exit={{ opacity: 0 }} className="rounded-xl border-[3px] border-ink bg-tang px-2.5 py-1 font-display text-lg font-bold">COMBO x{combo}</motion.div>}</AnimatePresence>
+          <motion.div key={bump} id="saved-target" initial={{ scale: bump ? 1.18 : 1 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 500, damping: 12 }} className="origin-left font-display text-4xl font-bold tabular-nums">{sp.kind === "days" ? <>{done.size}<span className="text-lg"> / 7 days</span></> : <><Count value={saved} prefix="$" /><span className="text-lg text-ink/50"> / {money(sp.goal)}</span></>}</motion.div>
+          <AnimatePresence>{combo >= 2 && <motion.div key={combo} initial={{ scale: 1.6, rotate: -12, opacity: 0 }} animate={{ scale: 1, rotate: -6, opacity: 1 }} exit={{ opacity: 0 }} className={cx("rounded-xl border-[3px] border-ink px-2.5 py-1 font-display text-lg font-bold", combo >= 5 ? "bg-[#ee3448] text-white" : "bg-tang")}>COMBO x{combo}</motion.div>}</AnimatePresence>
         </div>
         <div className="relative mt-3 h-5 overflow-hidden rounded-full border-[3px] border-ink bg-[#f3eee6]">
           <motion.div className="relative h-full overflow-hidden" style={{ background: sp.color }} animate={{ width: pct + "%" }} transition={{ type: "spring", stiffness: 160, damping: 22 }}>
@@ -137,32 +172,38 @@ function Sprint({ s, sp, onTap, back }) {
         </div>
         <div className="mt-1 flex justify-between text-[11px] font-bold text-ink/60"><span>25%</span><span>50%</span><span>75%</span><span>🏁</span></div>
       </div>
-      <div className="relative mx-auto w-full max-w-[420px]">
+      <div className="relative mx-auto w-full max-w-[420px]" style={{ perspective: 900 }}>
         {sp.kind === "days" ? <DaysRing sp={sp} done={done} onTap={(i, e) => onTap(sp, i, e)} /> : (
-          <svg viewBox="0 0 1000 1000" className="w-full touch-manipulation select-none">
-            <g dangerouslySetInnerHTML={{ __html: sp.svg }} />
+          <motion.svg viewBox="0 0 1000 1000" className="w-full touch-manipulation select-none overflow-visible" style={{ rotateX: rotX, rotateY: rotY }}>
+            <motion.g style={{ x: backX }} dangerouslySetInnerHTML={{ __html: sp.svg }} />
+            <motion.g style={{ x: frontX, y: frontY }}>
             {sp.pts.map(([x, y], i) => {
-              const on = done.has(i), myst = i === mi && !on;
+              const on = done.has(i), myst = i === mi && !on, isHot = hot === i, isPick = pick === i && !on;
               return (
-                <motion.g key={i} onPointerDown={(e) => onTap(sp, i, e)} style={{ cursor: "pointer", transformOrigin: `${x}px ${y}px`, transformBox: "view-box" }}
-                  animate={on ? { scale: [1.35, 0.9, 1] } : { scale: 1 }} transition={{ duration: 0.35 }}>
-                  <circle cx={x} cy={y} r={sp.r * 1.05} fill={on ? "#ffd23f" : myst ? "#7b61ff" : "#fff"} stroke={INK} strokeWidth={sp.r * 0.13} />
-                  <text x={x} y={y + sp.r * 0.33} textAnchor="middle" fontFamily="Fredoka,Inter" fontWeight="700" fontSize={sp.r * (myst ? 1.0 : 0.85)} fill={myst ? "#fff" : INK}>{myst ? "?" : sp.amounts[i]}</text>
+                <motion.g key={i} onPointerDown={(e) => { if (isPick) setPick(-1); onTap(sp, i, e); }} style={{ cursor: "pointer", transformOrigin: `${x}px ${y}px`, transformBox: "view-box" }}
+                  animate={on ? { scale: [1.35, 0.9, 1] } : isHot ? { scale: 1.22 } : isPick ? { scale: [1, 1.2, 1] } : { scale: 1 }} transition={isPick ? { duration: 0.8, repeat: Infinity } : { duration: isHot ? 0.08 : 0.35 }}>
+                  
+                  <circle className={!on ? "breathe" : ""} style={{ animationDelay: `${(i % 7) * 0.31}s` }} cx={x} cy={y} r={sp.r * 1.05} fill={on ? fillFor(sp) : isHot || isPick ? INK : myst ? "#7b61ff" : "#fff"} stroke={isPick ? "#ff5fa2" : INK} strokeWidth={sp.r * (isPick ? 0.3 : 0.13)} />
+                  <text x={x} y={y + sp.r * 0.33} textAnchor="middle" fontFamily="Fredoka,Inter" fontWeight="700" fontSize={sp.r * (myst ? 1.0 : 0.85)} fill={myst || isHot || isPick ? "#fff" : INK} style={{ pointerEvents: "none" }}>{myst && !isHot && !isPick ? "?" : sp.amounts[i]}</text>
                 </motion.g>
               );
             })}
-          </svg>)}
+            </motion.g>
+          </motion.svg>)}
       </div>
-      <p className="text-center text-sm text-white/75">{sp.kind === "days" ? "Tap a day each time you buy nothing extra." : "Saved that amount? Tap the bubble. Purple “?” bubbles hide bonus XP."}</p>
+      {sp.id === "s07" && <button onClick={roll} className="mx-auto flex items-center gap-2 rounded-full border-[3px] border-ink bg-sun px-5 py-3 font-display text-lg font-bold text-ink shadow-[4px_4px_0_#000] active:translate-y-0.5">🎲 Roll my next bubble <span className="text-sm font-semibold opacity-70">or shake your phone</span></button>}
+      <p className="text-center text-sm text-white/75">{sp.kind === "days" ? "Tap a day each time you buy nothing extra." : "Saved that amount? Tap the bubble. Purple “?” bubbles hide loot."}</p>
     </div>
   );
 }
 
 function Badges({ s, close }) {
   return <Sheet title="Badges" close={close}>
+    <p className="mb-3 text-xs text-white/60">Tilt your phone: earned badges are holographic.</p>
     <div className="grid grid-cols-3 gap-3">{Object.entries(BADGES).map(([k, b]) => { const got = !!s.badges[k];
-      return <div key={k} className={cx("flex flex-col items-center gap-1 rounded-2xl border-[3px] border-ink p-3 text-center", got ? "bg-sun" : "bg-white/10 text-white")}>
-        <div className={cx("text-3xl", !got && "opacity-30 grayscale")}>{b.icon}</div><div className="font-display text-[13px] font-bold leading-tight">{b.name}</div><div className="text-[10.5px] leading-tight opacity-80">{b.desc}</div></div>; })}</div>
+      const card = <div className={cx("flex h-full flex-col items-center gap-1 rounded-2xl border-[3px] border-ink p-3 text-center", got ? "bg-sun text-ink" : "bg-white/10 text-white")}>
+        <div className={cx("text-3xl", !got && "opacity-30 grayscale")}>{b.icon}</div><div className="font-display text-[13px] font-bold leading-tight">{b.name}</div><div className="text-[10.5px] leading-tight opacity-80">{b.desc}</div></div>;
+      return got ? <HoloCard key={k} className="rounded-2xl" strength={0.8}>{card}</HoloCard> : <div key={k}>{card}</div>; })}</div>
   </Sheet>;
 }
 
@@ -188,15 +229,43 @@ function Sheet({ title, close, children }) {
 }
 
 function Celebration({ c, close }) {
+  if (c.type === "loot") return <LootReveal c={c} close={close} />;
   return <motion.div className="fixed inset-0 z-50 grid place-items-center bg-black/55 p-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={close}>
-    <motion.div initial={{ scale: 0.4, rotate: -8 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", stiffness: 300, damping: 14 }}
-      className="w-full max-w-[360px] rounded-[30px] border-[3px] border-ink bg-sun p-7 text-center text-ink shadow-[8px_8px_0_#000]">
-      <div className="text-6xl">{c.icon}</div>
-      <div className="mt-2 font-display text-[13px] font-bold uppercase tracking-[.2em]">{c.kicker}</div>
-      <div className="font-display text-4xl font-bold leading-tight">{c.title}</div>
-      <p className="mt-2 font-semibold">{c.body}</p>
-      <button onClick={close} className="mt-5 w-full rounded-full border-[3px] border-ink bg-pink py-3 font-display text-xl font-bold shadow-[4px_4px_0_#1f1b2e]">Keep going</button>
+    <motion.div initial={{ scale: 0.4, rotate: -8 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", stiffness: 300, damping: 14 }} className="w-full max-w-[360px]">
+      <HoloCard className="rounded-[30px]">
+        <div className="rounded-[30px] border-[3px] border-ink bg-sun p-7 text-center text-ink shadow-[8px_8px_0_#000]">
+          <div className="text-6xl">{c.icon}</div>
+          <div className="mt-2 font-display text-[13px] font-bold uppercase tracking-[.2em]">{c.kicker}</div>
+          <div className="font-display text-4xl font-bold leading-tight">{c.title}</div>
+          <p className="mt-2 font-semibold">{c.body}</p>
+          <button onClick={close} className="mt-5 w-full rounded-full border-[3px] border-ink bg-pink py-3 font-display text-xl font-bold shadow-[4px_4px_0_#1f1b2e]">Keep going</button>
+        </div>
+      </HoloCard>
     </motion.div></motion.div>;
+}
+
+// Loot: a gift shakes harder and harder, bursts open behind spinning light rays, then reveals the reward
+const REWARD_IDEAS = ["20 minutes of guilt-free scrolling", "Your favourite snack, already in the cupboard", "A long shower with the good playlist", "One episode, zero guilt", "A walk to somewhere you like", "Tell someone you're winning at money"];
+function LootReveal({ c, close }) {
+  const [open, setOpen] = useState(false);
+  useEffect(() => { const t = setTimeout(() => { setOpen(true); sfx.win(); haptic("level"); confetti(120); shockwave(window.innerWidth / 2, window.innerHeight * 0.42, "#7b61ff", 1.3); }, 1100); return () => clearTimeout(t); }, []);
+  const idea = useRef(REWARD_IDEAS[Math.floor(Math.random() * REWARD_IDEAS.length)]).current;
+  return <motion.div className="fixed inset-0 z-50 grid place-items-center overflow-hidden bg-black/70 p-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => open && close()}>
+    <motion.div aria-hidden className="absolute left-1/2 top-[42%] size-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full" style={{ background: "repeating-conic-gradient(from 0deg, rgba(255,210,63,.35) 0deg 10deg, transparent 10deg 24deg)" }}
+      initial={{ scale: 0, opacity: 0 }} animate={open ? { scale: 1, opacity: 1, rotate: 360 } : { scale: 0.3, opacity: 0.3, rotate: 90 }} transition={open ? { rotate: { duration: 12, repeat: Infinity, ease: "linear" }, scale: { type: "spring", stiffness: 120, damping: 14 } } : { duration: 1 }} />
+    <div className="relative flex flex-col items-center text-center">
+      <AnimatePresence mode="wait">
+        {!open ? <motion.div key="box" className="text-[120px] leading-none" animate={{ rotate: [0, -8, 8, -12, 12, -16, 16, -20, 20, 0], scale: [1, 1, 1.05, 1.05, 1.1, 1.1, 1.15, 1.15, 1.2, 1.25] }} transition={{ duration: 1.1 }} exit={{ scale: 2.2, opacity: 0, transition: { duration: 0.2 } }}>🎁</motion.div>
+          : <motion.div key="reward" initial={{ scale: 0.3, y: 40, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} transition={{ type: "spring", stiffness: 320, damping: 14 }} className="w-full max-w-[340px]">
+            <HoloCard className="rounded-[28px]"><div className="rounded-[28px] border-[3px] border-ink bg-grape p-6 text-white shadow-[8px_8px_0_#000]">
+              <div className="font-display text-[13px] font-bold uppercase tracking-[.2em] text-sun">Loot found</div>
+              <div className="font-display text-5xl font-bold">+50 XP</div>
+              <p className="mt-3 text-sm font-semibold text-white/85">Reward idea for later:</p>
+              <p className="font-display text-xl font-bold">{idea}</p>
+              <button onClick={close} className="mt-5 w-full rounded-full border-[3px] border-ink bg-sun py-3 font-display text-xl font-bold text-ink shadow-[4px_4px_0_#1f1b2e]">Claim</button>
+            </div></HoloCard></motion.div>}
+      </AnimatePresence>
+    </div></motion.div>;
 }
 
 function Onboarding({ done, onEnableTilt }) {
@@ -234,6 +303,8 @@ function App() {
   useEffect(() => { Object.assign(settings, prefs); try { localStorage.setItem("ss-prefs", JSON.stringify(prefs)); } catch (e) {} }, [prefs]);
   const enableTiltNow = async () => { const ok = await enableTilt(); setTilt(ok); if (ok) { haptic("milestone"); sfx.unlock(); } return ok; };
   const float = (x, y, text, color) => { const id = ++fid.current; setFloaters((f) => [...f, { id, x, y, text, color }]); setTimeout(() => setFloaters((f) => f.filter((z) => z.id !== id)), 750); };
+  const [bump, setBump] = useState(0), [heat, setHeat] = useState(0), [onFire, setOnFire] = useState(0), [flash, setFlash] = useState(0);
+  useEffect(() => { if (!heat) return; const t = setTimeout(() => setHeat(0), 8000); return () => clearTimeout(t); }, [heat]);  // combo window closes -> glow fades
   // toast queue: at most 2 on screen, each ~1.6s, so wins read one at a time instead of piling up
   const toast = (t) => { const id = ++fid.current; setToasts((q) => [...q, { id, ...t }]); };
   useEffect(() => {
@@ -250,16 +321,23 @@ function App() {
         let delay = 0;
         for (const ev of events) {
           if (ev.t === "undo") { sfx.undo(); haptic("tap"); float(x, y, "undo", "#ffffff"); }
-          if (ev.t === "pop") { sfx.pop(ev.combo); haptic(ev.combo >= 3 ? "combo" : "pop"); burst(x, y, sp.color, 18 + ev.combo * 2); float(x, y - 10, `+${ev.gain} XP${ev.mult > 1 ? ` x${ev.mult}` : ""}`, ev.mult > 1 ? "#ff8c42" : "#ffd23f"); }
+          if (ev.t === "pop") {
+            sfx.pop(ev.combo); haptic(ev.combo >= 3 ? "combo" : "pop"); burst(x, y, sp.color, 18 + ev.combo * 2);
+            float(x, y - 10, `+${ev.gain} XP${ev.mult > 1 ? ` x${ev.mult}` : ""}`, ev.mult > 1 ? "#ff8c42" : "#ffd23f");
+            coins(x, y, document.getElementById("saved-target"), Math.min(8, 2 + ev.combo), () => { setBump((b) => b + 1); sfx.tick(); });
+            setHeat(Math.min(1, (ev.combo - 1) / 9));
+            if (ev.combo >= 5) flames(4 + ev.combo * 2);
+            if (ev.combo === 10) setTimeout(() => { setOnFire((n) => n + 1); sfx.level(); haptic("level"); shockwave(window.innerWidth / 2, window.innerHeight / 2, "#ff8c42", 1.4); flames(60); }, 150);
+          }
           if (ev.t === "quest") setTimeout(() => { sfx.coin(); toast({ icon: "🎯", text: "Daily quest done · +25 XP" }); }, (delay += 250));
           if (ev.t === "streak") setTimeout(() => toast({ icon: "🔥", text: `${ev.n}-day streak!` }), (delay += 250));
           if (ev.t === "freeze") setTimeout(() => toast({ icon: "❄️", text: "Streak freeze used. Your streak is safe." }), (delay += 250));
-          if (ev.t === "loot") setTimeout(() => { sfx.coin(); haptic("combo"); burst(x, y, "#7b61ff", 40); float(x, y - 50, "LOOT! +50 XP", "#7b61ff"); }, 120);
+          if (ev.t === "loot") { setTimeout(() => { sfx.coin(); haptic("combo"); burst(x, y, "#7b61ff", 40); }, 120); setTimeout(() => setCelebs((c) => [{ type: "loot" }, ...c]), 450); }
           if (ev.t === "milestone") setTimeout(() => { sfx.milestone(); haptic("milestone"); confetti(60); toast({ icon: "🎉", text: `${ev.m}% there! +25 XP` }); }, (delay += 300));
           if (ev.t === "badge") setTimeout(() => { sfx.unlock(); toast({ icon: ev.icon, text: `Badge: ${ev.name}` }); }, (delay += 400));
           if (ev.t === "unlock") setTimeout(() => toast({ icon: "🔓", text: `Unlocked: ${ev.sp}` }), (delay += 400));
           if (ev.t === "complete") setTimeout(() => { sfx.win(); haptic("win"); confetti(220); shake(rootRef.current, 10); setCelebs((c) => [...c, { icon: "🏁", kicker: "Sprint complete", title: sp.name, body: sp.kind === "days" ? "A whole week of buying nothing extra." : `You saved ${money(sp.goal)}. +100 XP` }]); }, (delay += 500));
-          if (ev.t === "level") setTimeout(() => { sfx.level(); haptic("level"); confetti(180); shake(rootRef.current, 12); setCelebs((c) => [...c, { icon: "⭐", kicker: `Level ${ev.lvl}`, title: ev.title, body: "New sprint unlocked on your home screen." }]); }, (delay += 600));
+          if (ev.t === "level") setTimeout(() => { sfx.level(); haptic("level"); confetti(180); shake(rootRef.current, 12); setFlash((f) => f + 1); shockwave(window.innerWidth / 2, window.innerHeight / 2, "#ffd23f", 1.6); setCelebs((c) => [...c, { icon: "⭐", kicker: `Level ${ev.lvl}`, title: ev.title, body: "New sprint unlocked on your home screen." }]); }, (delay += 600));
         }
       });
       return state;
@@ -273,10 +351,14 @@ function App() {
       <TopBar s={s} onBadges={() => setSheet("badges")} onSettings={() => setSheet("settings")} />
       <AnimatePresence mode="wait">
         <motion.div key={view.name + (view.id || "")} initial={{ opacity: 0, x: view.name === "sprint" ? 40 : -40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
-          {sp ? <Sprint s={s} sp={sp} onTap={onTap} back={() => setView({ name: "home" })} />
+          {sp ? <Sprint s={s} sp={sp} onTap={onTap} bump={bump} back={() => setView({ name: "home" })} />
             : <Home s={s} tilt={tilt} onEnableTilt={enableTiltNow} open={(id) => { haptic("tap"); setView({ name: "sprint", id }); }} />}
         </motion.div>
       </AnimatePresence>
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-[45] transition-[box-shadow] duration-500" style={{ boxShadow: heat ? `inset 0 0 ${40 + heat * 90}px ${heat * 26}px rgba(255,${Math.round(140 - heat * 90)},66,${0.25 + heat * 0.45})` : "none" }} />
+      <AnimatePresence>{onFire > 0 && <motion.div key={onFire} className="pointer-events-none fixed inset-0 z-[58] grid place-items-center" initial={{ opacity: 1 }} animate={{ opacity: 0 }} transition={{ delay: 1.1, duration: 0.4 }} onAnimationComplete={() => setOnFire(0)}>
+        <motion.div initial={{ scale: 3, rotate: -20 }} animate={{ scale: 1, rotate: -8 }} transition={{ type: "spring", stiffness: 400, damping: 12 }} className="rounded-3xl border-[4px] border-ink bg-[#ee3448] px-6 py-3 font-display text-5xl font-bold text-white shadow-[6px_6px_0_#000]">ON FIRE 🔥</motion.div></motion.div>}</AnimatePresence>
+      <AnimatePresence>{flash > 0 && <motion.div key={flash} className="pointer-events-none fixed inset-0 z-[59] bg-white" initial={{ opacity: 0.85 }} animate={{ opacity: 0 }} transition={{ duration: 0.45 }} />}</AnimatePresence>
       <Floaters items={floaters} />
       <div className="pointer-events-none fixed inset-x-0 z-[55] flex flex-col items-center gap-2 px-4" style={{ top: "calc(env(safe-area-inset-top,0px) + 76px)" }}>
         <AnimatePresence>{(celebs.length ? [] : toasts.slice(0, 2)).map((t) => <motion.div key={t.id} initial={{ y: -30, opacity: 0, scale: 0.9 }} animate={{ y: 0, opacity: 1, scale: 1 }} exit={{ opacity: 0, y: -20 }}

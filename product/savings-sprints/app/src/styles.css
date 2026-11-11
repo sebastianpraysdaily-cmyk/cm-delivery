@@ -8,3 +8,5 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:
 @keyframes shine{from{transform:translateX(-120%)}to{transform:translateX(320%)}}
 button{touch-action:manipulation}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+.breathe{transform-box:fill-box;transform-origin:center;animation:breathe 2.6s ease-in-out infinite}

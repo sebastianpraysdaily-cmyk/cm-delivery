@@ -44,6 +44,7 @@ export const sfx = {
   milestone() { [523, 659, 784].forEach((f, i) => tone(f, 0.18, "triangle", 0.16, i * 0.09)); },
   level() { [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.25, "square", 0.09, i * 0.1)); tone(1568, 0.5, "triangle", 0.12, 0.42); },
   win() { [392, 523, 659, 784, 1047, 1319].forEach((f, i) => tone(f, 0.3, "triangle", 0.15, i * 0.08)); },
+  tick() { tone(1700 + Math.random() * 300, 0.035, "sine", 0.05); },
   unlock() { tone(440, 0.1, "sine", 0.15); tone(880, 0.3, "sine", 0.15, 0.1, 1.5); },
 };
 export const settings = { sound: true, haptics: true };
@@ -56,21 +57,35 @@ function onOrient(e) {
   const g = Math.max(-60, Math.min(60, e.gamma || 0)) / 60;   // left/right
   const b = Math.max(-30, Math.min(90, e.beta ?? 60));          // front/back
   gravity.x = g * 1.1; gravity.y = 0.35 + Math.max(0, Math.min(1, b / 70)) * 0.75;
+  tilt.x = g; tilt.y = Math.max(-1, Math.min(1, (b - 45) / 45));
+}
+// normalized tilt (-1..1) for parallax + holographic shine; read every frame by the UI
+export const tilt = { x: 0, y: 0 };
+const shakeFns = new Set();
+export function onShake(fn) { shakeFns.add(fn); return () => shakeFns.delete(fn); }
+let lastShake = 0;
+function onMotion(e) {
+  const a = e.accelerationIncludingGravity || e.acceleration; if (!a) return;
+  const m = Math.sqrt((a.x || 0) ** 2 + (a.y || 0) ** 2 + (a.z || 0) ** 2);
+  if (m > 24 && Date.now() - lastShake > 1200) { lastShake = Date.now(); shakeFns.forEach((f) => f()); }
 }
 export async function enableTilt() {
   if (tiltOn) return true;
   try {
-    const D = window.DeviceOrientationEvent;
+    const D = window.DeviceOrientationEvent, M = window.DeviceMotionEvent;
     if (D && typeof D.requestPermission === "function") {
       const r = await D.requestPermission(); if (r !== "granted") return false;
     }
+    if (M && typeof M.requestPermission === "function") { try { await M.requestPermission(); } catch (e) {} }
+    if (M) window.addEventListener("devicemotion", onMotion);
     if (D) { window.addEventListener("deviceorientation", onOrient); tiltOn = true; return true; }
   } catch (e) {}
   return false;
 }
 export function pointerTilt(e) { // desktop stand-in
   if (tiltOn) return;
-  const x = (e.clientX / window.innerWidth) * 2 - 1; gravity.x = x * 0.9; gravity.y = 1;
+  const x = (e.clientX / window.innerWidth) * 2 - 1, y = (e.clientY / window.innerHeight) * 2 - 1;
+  gravity.x = x * 0.9; gravity.y = 1; tilt.x = x; tilt.y = y;
 }
 
 /* ---------------- particles + confetti (one canvas over everything) ---------------- */
@@ -91,6 +106,29 @@ function loop() {
   const gx = gravity.x * 0.32 * SC(), gy = gravity.y * 0.32 * SC();
   parts = parts.filter((p) => p.life > 0);
   for (const p of parts) {
+    if (p.kind === "coin") { // flies along an arc into the total counter, then pings it
+      if (p.t < 0) { p.t += p.speed; continue; }
+      p.t = Math.min(1, p.t + p.speed); const e = 1 - Math.pow(1 - p.t, 3);
+      const mx = (p.sx + p.tx) / 2 + p.bend, my = Math.min(p.sy, p.ty) - 120 * SC();
+      const x = (1 - e) * (1 - e) * p.sx + 2 * (1 - e) * e * mx + e * e * p.tx, y = (1 - e) * (1 - e) * p.sy + 2 * (1 - e) * e * my + e * e * p.ty;
+      const r = (9 + 3 * Math.sin(p.t * Math.PI)) * SC();
+      cx2.save(); cx2.translate(x, y); cx2.scale(Math.cos(p.t * 12 + p.seed), 1);
+      cx2.fillStyle = "#ffd23f"; cx2.strokeStyle = "#1f1b2e"; cx2.lineWidth = 2.5 * SC();
+      cx2.beginPath(); cx2.arc(0, 0, r, 0, Math.PI * 2); cx2.fill(); cx2.stroke();
+      cx2.fillStyle = "#1f1b2e"; cx2.font = `700 ${Math.round(r * 1.2)}px Fredoka, Inter, sans-serif`; cx2.textAlign = "center"; cx2.textBaseline = "middle"; cx2.fillText("$", 0, 1);
+      cx2.restore();
+      if (p.t >= 1) { p.life = 0; if (p.onArrive) p.onArrive(); }
+      continue;
+    }
+    if (p.kind === "ring") { // shockwave
+      p.r += p.vr; p.life -= 1; cx2.save(); cx2.globalAlpha = Math.max(0, p.life / p.max); cx2.strokeStyle = p.c; cx2.lineWidth = p.lw * (p.life / p.max) + 1;
+      cx2.beginPath(); cx2.arc(p.x, p.y, p.r, 0, Math.PI * 2); cx2.stroke(); cx2.restore(); continue;
+    }
+    if (p.kind === "fire") { // combo flames rising from the bottom edge
+      p.vy -= 0.06 * SC(); p.vx += (Math.random() - 0.5) * 0.3 * SC(); p.x += p.vx; p.y += p.vy; p.life -= 1;
+      const k = p.life / p.max, c = k > 0.66 ? "#fff3b0" : k > 0.33 ? "#ffd23f" : "#ff8c42";
+      cx2.save(); cx2.globalAlpha = Math.min(1, k * 1.4); cx2.fillStyle = c; cx2.beginPath(); cx2.arc(p.x, p.y, p.w * (0.4 + k * 0.6), 0, Math.PI * 2); cx2.fill(); cx2.restore(); continue;
+    }
     if (p.kind === "burst") { p.vy += 0.18 * SC(); p.vx *= 0.96; p.vy *= 0.96; p.life -= 1; }
     else { // confetti: gravity follows phone tilt, piles up on the edge it's tipped toward
       p.vx += gx + Math.sin(p.t * 0.08 + p.seed) * 0.04; p.vy += gy; p.vx *= 0.985; p.vy *= 0.985; p.t++;
@@ -129,6 +167,25 @@ export function confetti(n = 160) {
       w: (7 + Math.random() * 7) * SC(), h: (10 + Math.random() * 10) * SC(), c: COLORS[(Math.random() * COLORS.length) | 0], shape: Math.random() < 0.25 ? "c" : "r",
       rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.3, life: 220, t: 0, seed: Math.random() * 10, rest: 0 });
   }
+  kick();
+}
+
+// coins fly from a tap into a target element (the total counter); onEach fires as each lands
+export function coins(x, y, target, n = 5, onEach) {
+  if (reduce() || !target) { if (onEach) for (let i = 0; i < n; i++) onEach(); return; }
+  const r = target.getBoundingClientRect(), tx = r.left + r.width / 2, ty = r.top + r.height / 2;
+  for (let i = 0; i < n; i++) parts.push({ kind: "coin", sx: x, sy: y, tx, ty, t: -i * 0.06, speed: 0.032 + Math.random() * 0.008, bend: (Math.random() - 0.5) * 220 * SC(), seed: Math.random() * 6, life: 1, onArrive: onEach });
+  kick();
+}
+export function shockwave(x, y, color = "#ffd23f", big = 1) {
+  if (reduce()) return;
+  for (let i = 0; i < 2; i++) parts.push({ kind: "ring", x, y, r: 10, vr: (14 + i * 6) * SC() * big, c: i ? "#ffffff" : color, lw: 14 * SC(), life: 34 - i * 6, max: 34 - i * 6 });
+  kick();
+}
+export function flames(n = 10) {
+  if (reduce()) return;
+  const W = window.innerWidth, H = window.innerHeight;
+  for (let i = 0; i < n; i++) { const max = 40 + Math.random() * 30; parts.push({ kind: "fire", x: Math.random() * W, y: H + 10, vx: 0, vy: -(2 + Math.random() * 3) * SC(), w: (8 + Math.random() * 10) * SC(), life: max, max }); }
   kick();
 }
 
