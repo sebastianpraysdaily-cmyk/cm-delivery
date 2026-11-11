@@ -2,7 +2,7 @@
 
 Read this first every session. Update at the end of every session.
 
-**Budget:** $20 hard cap · **Spent:** $0.15 confirmed (worst case $0.55, see spend log) · **Approved:** $1.20 for research
+**Budget:** $20 hard cap · **Spent:** $0.21 confirmed (worst case $0.61, see spend log) · **Approved:** $1.20 for research
 
 ## Done
 - 2026-11-11 · Checked Composio connections, prices and limits → `ops/capabilities.md`
@@ -11,8 +11,14 @@ Read this first every session. Update at the end of every session.
 
 - 2026-11-11 · Step 1 pass 2: 138 real TikTok videos scraped and analyzed → **pick: ADHD money** (`ops/step1-research.md`, data in `ops/data/`)
 
+- 2026-11-11 · Step 2 sub-angle data (55 more videos): "system / bank accounts" beats "ADHD tax / subscriptions"
+- 2026-11-11 · Step 2 product built: **Forget-Proof Money** (14pp PDF + tested spreadsheet) → `product/forget-proof-money/`
+- 2026-11-11 · Step 2 video v001 rendered (34s, free stack) → `content/v001/` · renderer `content/render.py`
+- 2026-11-11 · Landing page draft → https://claude.ai/artifact/415P38hxrArrtUcnKNrnEE
+- 2026-11-11 · Approval package → https://claude.ai/artifact/89kbpDdSedFoVH5nwBTtzj
+
 ## In progress
-- Step 2 proof package: product concept research (what ADHD money buyers complain about, competitor gaps)
+- **Waiting on Sebastian:** approve the Step 2 package (product, video, landing page, listing)
 
 ## Next
 1. Step 2 proof package: product + name + description, 1 short video, landing page, shop listing copy, all on matching wording
@@ -20,6 +26,7 @@ Read this first every session. Update at the end of every session.
 4. After approval: Sebastian creates shop account (prep sheet will make it about 10 min)
 
 ## Open flags / drift
+- Kokoro voice model (350MB) downloads from GitHub each new session; not committed.
 - Container cannot open most sites directly (Etsy, TikTok, data blogs return 403/blocked). Research runs through web search summaries, which are weaker evidence. Paid Composio scrapers fill the gap for cents.
 - Arena skill is **not installed**. High-stakes picks are not bracket-tested until it is added.
 - Repo also holds assets from an earlier psychology-video project (voiceovers, clips, reference sheets). Kept, not used yet.
@@ -39,4 +46,6 @@ Read this first every session. Update at the end of every session.
 | 2026-11-11 | Serper Google searches ×3 batches | $0.009 | Confirmed charges |
 | 2026-11-11 | Apify TikTok video stats (138 videos) | $0.141 | Confirmed charges |
 | 2026-11-11 | Apify video batch that timed out | $0.00–0.08 | Charge not shown |
-| **Total** | | **$0.15 confirmed, ≤$0.55 worst case** | Remaining approved research budget: ≥$0.65 |
+| 2026-11-11 | Serper: sub-angle search + 2 name checks | $0.009 | Confirmed |
+| 2026-11-11 | Apify TikTok video stats (55 videos) | $0.055 | Confirmed |
+| **Total** | | **$0.21 confirmed, ≤$0.61 worst case** | Remaining approved research budget: ≥$0.59 |
