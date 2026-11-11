@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Forget-Proof Money</title>
+<style>
+@font-face{font-family:"SG";src:url("../../../build/font/SpaceGrotesk.ttf")}
+@font-face{font-family:"Hand";src:url("../../../build/font/Kalam-Bold.ttf")}
+@page{size:Letter;margin:0}
+:root{--ink:#1d2440;--soft:#4a5272;--cream:#fbf7ef;--mint:#2fbf8f;--mint-l:#dff5ec;--coral:#ff7a59;--coral-l:#ffe6de;--line:#d9d3c5;--sky:#e8eefc}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Inter,"Noto Sans",sans-serif;color:var(--ink);font-size:11.5pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:8.5in;height:11in;padding:.7in .75in .6in;background:var(--cream);position:relative;page-break-after:always;overflow:hidden}
+.page:last-child{page-break-after:auto}
+h1,h2,h3{font-family:"SG",Inter,sans-serif;line-height:1.1;margin:0 0 .18in}
+h1{font-size:40pt;letter-spacing:-1px}
+h2{font-size:24pt;letter-spacing:-.5px}
+h3{font-size:13.5pt;margin:.18in 0 .08in}
+p{margin:0 0 .12in}
+.kicker{font-family:"SG";text-transform:uppercase;letter-spacing:2px;font-size:9pt;color:var(--mint);font-weight:700;margin-bottom:.08in}
+.hand{font-family:"Hand";color:var(--coral)}
+.foot{position:absolute;bottom:.35in;left:.75in;right:.75in;display:flex;justify-content:space-between;font-size:8pt;color:var(--soft)}
+.box{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:.16in .2in;margin:.12in 0}
+.mint{background:var(--mint-l);border-color:#bfe9d8}
+.coral{background:var(--coral-l);border-color:#ffc9b8}
+.sky{background:var(--sky);border-color:#cdd9f5}
+.timer{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:9pt;font-weight:700;font-family:"SG"}
+ul.check{list-style:none;padding:0;margin:.05in 0}
+ul.check li{padding-left:.3in;position:relative;margin:.07in 0}
+ul.check li:before{content:"";position:absolute;left:0;top:.03in;width:.16in;height:.16in;border:2px solid var(--ink);border-radius:4px;background:#fff}
+ol.steps{padding-left:.25in;margin:.05in 0}
+ol.steps li{margin:.07in 0}
+table{width:100%;border-collapse:collapse;font-size:10pt;background:#fff}
+th{font-family:"SG";text-align:left;background:var(--ink);color:#fff;padding:6px 7px;font-size:9pt}
+td{border:1px solid var(--line);height:.3in;padding:3px 7px}
+.fill{display:inline-block;border-bottom:1.5px solid var(--ink);min-width:1.3in;height:.24in;vertical-align:bottom}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.16in}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:.14in}
+.acct{border-radius:14px;padding:.14in .16in;color:#fff;min-height:1.45in}
+.acct b{font-family:"SG";font-size:14pt;display:block;margin-bottom:4px}
+.big{font-family:"SG";font-size:15pt;font-weight:700}
+.muted{color:var(--soft);font-size:10pt}
+.cover{background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:space-between}
+.cover h1{font-size:58pt;color:#fff;margin-top:.3in}
+.cover .sub{font-size:16pt;max-width:5.6in;color:#dfe3f3}
+.badge{display:inline-block;background:var(--mint);color:var(--ink);font-family:"SG";font-weight:700;border-radius:99px;padding:5px 14px;font-size:10pt;margin-right:6px}
+.flow{display:flex;align-items:center;gap:.08in;margin:.14in 0}
+.flow div{flex:1;text-align:center;border-radius:12px;padding:.1in .06in;font-size:9.5pt;font-weight:600}
+.arrow{flex:0 0 auto!important;font-size:16pt;color:var(--soft)}
+.quote{font-family:"Hand";font-size:17pt;color:var(--coral);line-height:1.25}
+.toc td{border:none;border-bottom:1px dashed var(--line);height:auto;padding:7px 4px;background:transparent}
+.toc{background:transparent}
+</style>
+</head>
+<body>
+
+<!-- 1 COVER -->
+<section class="page cover">
+  <div>
+    <div class="kicker" style="color:var(--mint)">The ADHD money system you set up once</div>
+    <h1>Forget-Proof<br>Money</h1>
+    <p class="sub">You're not bad with money. You've been using systems that need a perfect memory. This one moves the remembering out of your head and into your bank.</p>
+  </div>
+  <div>
+    <span class="badge">4 setup sessions × 15 min</span><span class="badge">10 min a week after</span>
+    <p class="hand" style="font-size:20pt;margin-top:.3in;color:var(--coral)">no willpower required ✦</p>
+  </div>
+</section>
+
+<!-- 2 START HERE -->
+<section class="page">
+  <div class="kicker">Start here · 2-minute read</div>
+  <h2>Why every budget you tried quit on you</h2>
+  <p>Most budgets assume you will <b>remember</b> to check your balance, <b>remember</b> what's due, and <b>resist</b> the 11pm checkout button using pure willpower. Every single day.</p>
+  <p>ADHD is widely described as affecting executive functions: working memory, time management, and getting started on boring tasks. A system that depends on those exact things is a system designed to fail you. That's not a character flaw. It's a design flaw.</p>
+  <div class="box mint">
+    <h3 style="margin-top:0">Forget-Proof Money runs on 3 rules</h3>
+    <ol class="steps">
+      <li><b>Automate it.</b> If a task has to happen every month, a bank does it, not you.</li>
+      <li><b>Shrink it to one number.</b> You only ever look at one account and one number: your <b>Safe-to-Spend</b>.</li>
+      <li><b>Check in for 10 minutes.</b> Once a week, with a timer and a reward. That's the whole job.</li>
+    </ol>
+  </div>
+  <h3>How to use this kit</h3>
+  <ul class="check">
+    <li>Do the 4 setup sessions. Each one is 15 minutes. Do one a day, or all in one sitting if you're feeling it.</li>
+    <li>Fill in the pages in pen, or use the spreadsheet (it does the maths for you).</li>
+    <li>Stick the one-page Cheat Sheet (page 13) on your fridge or phone lock screen.</li>
+    <li>Fall off? Go to the 15-Minute Restart (page 12). No starting over, no shame.</li>
+  </ul>
+  <table class="toc" style="margin-top:.15in">
+    <tr><td>Session 1 · The Bill Dump</td><td style="text-align:right">3</td></tr>
+    <tr><td>Session 2 · The 4 Accounts</td><td style="text-align:right">5</td></tr>
+    <tr><td>Session 3 · Your Safe-to-Spend Number</td><td style="text-align:right">7</td></tr>
+    <tr><td>Session 4 · Autopay Everything</td><td style="text-align:right">8</td></tr>
+    <tr><td>The 10-Minute Money Date · Impulse Parking Lot · Subscription Sweep · Late-Fee Script · Restart · Cheat Sheet</td><td style="text-align:right">9–13</td></tr>
+  </table>
+  <div class="foot"><span>Forget-Proof Money</span><span>2</span></div>
+</section>
+
+<!-- 3 SESSION 1 -->
+<section class="page">
+  <div class="kicker">Session 1 <span class="timer">⏱ 15 min</span></div>
+  <h2>The Bill Dump</h2>
+  <p>Get every regular payment out of your head and onto paper. Don't organise yet. Just dump. Open your banking app and scroll the last 60 days if your memory goes blank (it will, that's normal).</p>
+  <div class="box sky">
+    <b>Prompt list: tick each one you pay</b>
+    <div class="grid2" style="margin-top:.06in">
+      <ul class="check" style="margin:0">
+        <li>Rent / mortgage</li><li>Electric, gas, water</li><li>Phone</li><li>Internet</li><li>Car payment / transport pass</li><li>Car or renter's insurance</li>
+      </ul>
+      <ul class="check" style="margin:0">
+        <li>Loan / credit card minimums</li><li>Streaming &amp; app subscriptions</li><li>Gym / memberships</li><li>Medication / prescriptions</li><li>Childcare / pet costs</li><li>Yearly ones (domain, Amazon Prime, car tax)</li>
+      </ul>
+    </div>
+  </div>
+  <table>
+    <tr><th style="width:34%">Bill</th><th>Amount</th><th>Due day</th><th>How often</th><th>Autopay?</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <p class="muted" style="margin-top:.1in">More bills? Use the next page. Yearly bills: divide by 12 and write the monthly amount in brackets.</p>
+  <div class="foot"><span>Forget-Proof Money</span><span>3</span></div>
+</section>
+
+<!-- 4 SESSION 1 cont -->
+<section class="page">
+  <div class="kicker">Session 1 · continued</div>
+  <h2>Bill Dump, page 2 + your total</h2>
+  <table>
+    <tr><th style="width:34%">Bill</th><th>Amount</th><th>Due day</th><th>How often</th><th>Autopay?</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <div class="box mint" style="margin-top:.2in">
+    <p class="big" style="margin:0">Total monthly bills: $<span class="fill"></span></p>
+    <p class="muted" style="margin:.06in 0 0">Add up the monthly amounts (including yearly bills ÷ 12). This number powers everything else.</p>
+  </div>
+  <div class="box coral">
+    <b>Done with Session 1?</b> Reward yourself now, not later. Pick one: snack, a song, 10 minutes of whatever you were avoiding this for. Pairing a boring task with something you enjoy is a documented habit technique (researchers call it "temptation bundling"). Use it every session.
+  </div>
+  <p class="quote" style="margin-top:.25in">You just did the part most people never do. ✦</p>
+  <div class="foot"><span>Forget-Proof Money</span><span>4</span></div>
+</section>
+
+<!-- 5 SESSION 2 -->
+<section class="page">
+  <div class="kicker">Session 2 <span class="timer">⏱ 15 min</span></div>
+  <h2>The 4 Accounts</h2>
+  <p>One account for everything means one big number that lies to you. You see $900, you feel rich, and rent is due Friday. Split it so every account has <b>one job</b>.</p>
+  <div class="grid4">
+    <div class="acct" style="background:var(--ink)"><b>1 · Bills</b>Gets the bill money every payday. Autopay pulls from here. <u>You never look at it or carry its card.</u></div>
+    <div class="acct" style="background:var(--mint);color:var(--ink)"><b>2 · Spend</b>Your everyday debit card. Groceries, coffee, fun. <u>The only balance you check.</u></div>
+    <div class="acct" style="background:#6b7bd6"><b>3 · Buffer</b>Your "oops" money for surprise costs, so a vet bill doesn't break the whole system. Aim for one month of bills over time.</div>
+    <div class="acct" style="background:var(--coral)"><b>4 · Goals</b>Holiday, debt payoff, new laptop. Money with a name on it is harder to impulse-spend.</div>
+  </div>
+  <div class="flow">
+    <div style="background:#fff;border:1.5px solid var(--line)">💸 Payday</div><div class="arrow">→</div>
+    <div style="background:var(--ink);color:#fff">Bills</div><div style="background:#6b7bd6;color:#fff">Buffer</div><div style="background:var(--coral);color:#fff">Goals</div><div class="arrow">→</div>
+    <div style="background:var(--mint)">What's left = Spend</div>
+  </div>
+  <h3>How to set it up</h3>
+  <ul class="check">
+    <li>Check whether your bank lets you open extra accounts or "pots/buckets" for free in the app. Many do. If not, a second free bank works fine.</li>
+    <li>Name them exactly: <b>BILLS – don't touch</b>, <b>SPEND</b>, <b>BUFFER</b>, <b>GOALS – [your goal]</b>. Names do a lot of the willpower for you.</li>
+    <li>Ask your employer (HR or payroll portal) whether you can split your direct deposit across accounts. If you can, money lands in the right place before you ever see it.</li>
+    <li>If you can't split it, set <b>scheduled automatic transfers</b> for the day after payday.</li>
+  </ul>
+  <div class="foot"><span>Forget-Proof Money</span><span>5</span></div>
+</section>
+
+<!-- 6 SESSION 2 worksheet -->
+<section class="page">
+  <div class="kicker">Session 2 · worksheet</div>
+  <h2>Your payday split</h2>
+  <div class="box">
+    <p>I get paid: ☐ weekly &nbsp; ☐ every 2 weeks &nbsp; ☐ twice a month &nbsp; ☐ monthly &nbsp; ☐ it's irregular</p>
+    <p>Take-home pay per paycheck: $<span class="fill"></span></p>
+    <p>Paychecks per month: <span class="fill" style="min-width:.6in"></span> <span class="muted">(weekly ≈ 4.33 · every 2 weeks ≈ 2.17 · twice a month = 2 · monthly = 1)</span></p>
+  </div>
+  <table>
+    <tr><th>Account</th><th>Per paycheck</th><th>How to work it out</th><th>Auto-transfer set? </th></tr>
+    <tr><td><b>Bills</b></td><td>$</td><td class="muted">Total monthly bills ÷ paychecks per month, then add 5% for safety</td><td>☐</td></tr>
+    <tr><td><b>Buffer</b></td><td>$</td><td class="muted">Start small: $10–25 is fine. Consistency beats size.</td><td>☐</td></tr>
+    <tr><td><b>Goals</b></td><td>$</td><td class="muted">Anything you like, even $5. You can raise it later.</td><td>☐</td></tr>
+    <tr><td><b>Spend</b></td><td>$</td><td class="muted">Pay − Bills − Buffer − Goals</td><td>(stays)</td></tr>
+  </table>
+  <div class="box sky" style="margin-top:.18in">
+    <b>Worked example</b><br>
+    Sam is paid $1,400 every 2 weeks. Monthly bills: $1,950.<br>
+    Bills: $1,950 ÷ 2.17 ≈ $900 → add 5% = <b>$945</b> · Buffer <b>$25</b> · Goals <b>$30</b><br>
+    Spend: $1,400 − $945 − $25 − $30 = <b>$400 per paycheck</b>
+  </div>
+  <div class="box coral">
+    <b>Irregular income?</b> Use your lowest month from the last 6 months as "pay". Anything above it goes straight to Buffer until Buffer holds one month of bills.
+  </div>
+  <div class="foot"><span>Forget-Proof Money</span><span>6</span></div>
+</section>
+
+<!-- 7 SESSION 3 -->
+<section class="page">
+  <div class="kicker">Session 3 <span class="timer">⏱ 15 min</span></div>
+  <h2>Your Safe-to-Spend number</h2>
+  <p>This is the only number you need to remember between paydays. If you're under it, you're fine. No categories, no tracking every coffee.</p>
+  <div class="box mint">
+    <p class="big" style="margin-bottom:.08in">Safe-to-Spend per day =</p>
+    <p style="font-size:13pt;margin:0">Money in SPEND ÷ days until next payday</p>
+  </div>
+  <div class="grid2">
+    <div class="box"><b>Sam's example</b><br>$400 in Spend · 14 days to payday<br>$400 ÷ 14 ≈ <b>$28.50 a day</b><br><span class="muted">or about $200 a week</span></div>
+    <div class="box"><b>Yours</b><br>$<span class="fill" style="min-width:.8in"></span> ÷ <span class="fill" style="min-width:.5in"></span> days<br>= $<span class="fill" style="min-width:.8in"></span> a day<br>= $<span class="fill" style="min-width:.8in"></span> a week</div>
+  </div>
+  <h3>Make it impossible to forget</h3>
+  <ul class="check">
+    <li>Write your weekly number on a sticky note on your card, or snap a photo of the filled-in box on page 13 and make it your lock screen.</li>
+    <li>Turn on your bank's balance alerts for the <b>SPEND</b> account only. Turn off alerts for everything else; less noise means you'll actually read them.</li>
+    <li>Overspent one day? Don't fix the past. Just divide what's left by the days left. The number updates; the system keeps going.</li>
+  </ul>
+  <p class="quote" style="margin-top:.2in">One account. One number. That's it. ✦</p>
+  <div class="foot"><span>Forget-Proof Money</span><span>7</span></div>
+</section>
+
+<!-- 8 SESSION 4 -->
+<section class="page">
+  <div class="kicker">Session 4 <span class="timer">⏱ 15 min</span></div>
+  <h2>Autopay everything</h2>
+  <p>Late fees, missed payments and forgotten renewals are what the ADHD community calls the "ADHD tax". This session is where you stop paying it.</p>
+  <ul class="check">
+    <li>Go down your Bill Dump. For each bill without autopay, switch it on, paying <b>from the BILLS account</b>.</li>
+    <li>Credit cards: set autopay to at least the <b>minimum payment</b>, so you never get a late fee even in a chaotic month.</li>
+    <li><b>Bill-day trick:</b> many providers let you change your due date if you ask. Move as many as you can to 2–5 days after payday. Script: <i>"Hi, can I change my payment due date to the [day] of each month?"</i></li>
+    <li>Add one repeating calendar alert, the day after payday: <b>"Check the transfers went through ✓"</b>. Two minutes. That's the only bill job left for you.</li>
+    <li>Can't autopay something (e.g., paying a landlord in cash)? Put it in the calendar with <b>two alerts</b>: 3 days before and on the day.</li>
+  </ul>
+  <div class="box mint">
+    <b>Setup complete.</b> From now on, your bills pay themselves from an account you never touch, your savings move automatically, and you only watch one number. Everything after this page is maintenance: 10 minutes a week.
+  </div>
+  <div class="foot"><span>Forget-Proof Money</span><span>8</span></div>
+</section>
+
+<!-- 9 MONEY DATE -->
+<section class="page">
+  <div class="kicker">Every week <span class="timer">⏱ 10 min</span></div>
+  <h2>The 10-Minute Money Date</h2>
+  <p>Same day, same time, same treat. Set a phone timer for 10 minutes. When it rings, you're allowed to stop, even mid-step.</p>
+  <ol class="steps">
+    <li><b>Treat first.</b> Coffee, snack, a favourite playlist. This is a date, not a punishment.</li>
+    <li><b>Check SPEND.</b> Balance ÷ days to payday = your new Safe-to-Spend. Write it down.</li>
+    <li><b>Glance at BILLS.</b> Did autopays go out? Anything weird? (Just look. Don't fix yet.)</li>
+    <li><b>Visit the Parking Lot</b> (next page). Anything unlocked that you still want?</li>
+    <li><b>One win.</b> Write one thing that went right this week, even "I opened the app".</li>
+  </ol>
+  <table style="margin-top:.12in">
+    <tr><th>Date</th><th>Safe-to-Spend</th><th>Bills OK?</th><th>One win</th></tr>
+    <tr><td></td><td></td><td>☐</td><td></td></tr><tr><td></td><td></td><td>☐</td><td></td></tr>
+    <tr><td></td><td></td><td>☐</td><td></td></tr><tr><td></td><td></td><td>☐</td><td></td></tr>
+    <tr><td></td><td></td><td>☐</td><td></td></tr><tr><td></td><td></td><td>☐</td><td></td></tr>
+    <tr><td></td><td></td><td>☐</td><td></td></tr><tr><td></td><td></td><td>☐</td><td></td></tr>
+  </table>
+  <p class="muted" style="margin-top:.08in">My Money Date is every <span class="fill" style="min-width:1in"></span> at <span class="fill" style="min-width:.8in"></span> with <span class="fill" style="min-width:1.2in"></span> (treat).</p>
+  <div class="foot"><span>Forget-Proof Money</span><span>9</span></div>
+</section>
+
+<!-- 10 PARKING LOT + SUBSCRIPTIONS -->
+<section class="page">
+  <div class="kicker">When the urge hits</div>
+  <h2>The Impulse Parking Lot</h2>
+  <p>You don't need more self-control. You need a gap between "I want it" and "I bought it". Don't say no. Say <b>"not yet"</b>: park it for 72 hours.</p>
+  <table>
+    <tr><th style="width:36%">I want…</th><th>Price</th><th>Parked on</th><th>Unlocks on (+3 days)</th><th>Still want it?</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td>☐ yes ☐ no</td></tr><tr><td></td><td></td><td></td><td></td><td>☐ yes ☐ no</td></tr>
+    <tr><td></td><td></td><td></td><td></td><td>☐ yes ☐ no</td></tr><tr><td></td><td></td><td></td><td></td><td>☐ yes ☐ no</td></tr>
+    <tr><td></td><td></td><td></td><td></td><td>☐ yes ☐ no</td></tr><tr><td></td><td></td><td></td><td></td><td>☐ yes ☐ no</td></tr>
+  </table>
+  <div class="box sky"><b>Unlocked and still want it?</b> Buy it with zero guilt, if it fits your Safe-to-Spend or your Goals account. The point isn't to stop buying. It's to only buy what you still want on day 3.</div>
+  <ul class="check">
+    <li>Delete saved cards from the 2 shops you impulse-buy from most.</li>
+    <li>Log out of shopping apps on your phone. The extra 30 seconds is a speed bump.</li>
+  </ul>
+  <h3 style="margin-top:.2in">Monthly Subscription Sweep <span class="timer">⏱ 5 min</span></h3>
+  <ul class="check">
+    <li>Search your bank app for the last month's recurring charges.</li>
+    <li>For each one, ask: did I use this in the last 30 days?</li>
+    <li>Cancel one you didn't use. Do it now, while you're looking at it.</li>
+    <li>Free trial? Cancel it the same day you start it. Most still give you the full trial.</li>
+  </ul>
+  <div class="foot"><span>Forget-Proof Money</span><span>10</span></div>
+</section>
+
+<!-- 11 LATE FEE SCRIPT -->
+<section class="page">
+  <div class="kicker">Get your "ADHD tax" back</div>
+  <h2>The late-fee call script</h2>
+  <p>Many companies will remove a one-off late fee if you ask politely, especially if you're usually on time. It's not guaranteed, but asking costs you nothing but a few minutes. Read this word for word if your brain freezes.</p>
+  <div class="box">
+    <p><b>You:</b> "Hi, I noticed a late fee of $<span class="fill" style="min-width:.6in"></span> on my account. I've set up autopay now so it won't happen again. Is there any way you could waive this one as a courtesy?"</p>
+    <p><b>If they say no:</b> "I understand. Could you note on my account that I asked, and is there anyone else who could review it?"</p>
+    <p style="margin:0"><b>If they say yes:</b> "Thank you so much, I really appreciate it." Then write it below. 🎉</p>
+  </div>
+  <table>
+    <tr><th>Company</th><th>Fee</th><th>Date called</th><th>Waived?</th></tr>
+    <tr><td></td><td></td><td></td><td>☐</td></tr><tr><td></td><td></td><td></td><td>☐</td></tr><tr><td></td><td></td><td></td><td>☐</td></tr>
+  </table>
+  <div class="box coral" style="margin-top:.18in">
+    <b>Prefer not to call?</b> Most banking and utility apps have chat. Paste the script in. Same words, no phone anxiety.
+  </div>
+  <div class="foot"><span>Forget-Proof Money</span><span>11</span></div>
+</section>
+
+<!-- 12 RESTART -->
+<section class="page">
+  <div class="kicker">Fell off? Start here</div>
+  <h2>The 15-Minute Restart</h2>
+  <p>You missed three Money Dates. You haven't opened your bank app in a month. <b>Good news: the system kept running without you.</b> That's the whole point of it. Bills still paid, savings still moved. You're not starting over. You're just checking in.</p>
+  <ol class="steps">
+    <li><b>Treat + timer.</b> 15 minutes, then you're allowed to stop.</li>
+    <li><b>Check BILLS.</b> Is there enough for the next bills? If not, move money from Buffer. That's literally what Buffer is for.</li>
+    <li><b>New Safe-to-Spend.</b> Money in SPEND ÷ days to payday. Forget what happened before today.</li>
+    <li><b>Any late fees?</b> Use the script on page 11.</li>
+    <li><b>Book your next Money Date</b> in your calendar right now, before you close this page.</li>
+  </ol>
+  <div class="box mint">
+    <p class="quote" style="margin:0">Missing a week doesn't break the system. Quitting the system does. You're here, so you didn't quit. ✦</p>
+  </div>
+  <div class="foot"><span>Forget-Proof Money</span><span>12</span></div>
+</section>
+
+<!-- 13 CHEAT SHEET -->
+<section class="page">
+  <div class="kicker">Print me · stick me on the fridge</div>
+  <h2>Forget-Proof Money: cheat sheet</h2>
+  <div class="grid4">
+    <div class="acct" style="background:var(--ink);min-height:1.1in"><b>BILLS</b>Autopay only. Never look.</div>
+    <div class="acct" style="background:var(--mint);color:var(--ink);min-height:1.1in"><b>SPEND</b>My card. My one number.</div>
+    <div class="acct" style="background:#6b7bd6;min-height:1.1in"><b>BUFFER</b>For "oops". Refill when used.</div>
+    <div class="acct" style="background:var(--coral);min-height:1.1in"><b>GOALS</b>Money with a name on it.</div>
+  </div>
+  <div class="box" style="text-align:center">
+    <p class="muted" style="margin:0">My Safe-to-Spend this week</p>
+    <p style="font-family:'SG';font-size:44pt;margin:0">$<span class="fill" style="min-width:2in;height:.6in"></span></p>
+  </div>
+  <div class="grid2">
+    <div class="box sky"><b>Every payday</b><br>✓ Transfers went through? (2 min)</div>
+    <div class="box sky"><b>Every week</b><br>✓ 10-Minute Money Date + treat</div>
+    <div class="box sky"><b>Every month</b><br>✓ Subscription Sweep (5 min)</div>
+    <div class="box sky"><b>Want something?</b><br>✓ Park it for 72 hours</div>
+  </div>
+  <p class="quote" style="text-align:center;margin-top:.15in">Not "no". Just "not yet". ✦</p>
+  <div class="foot"><span>Forget-Proof Money</span><span>13</span></div>
+</section>
+
+<!-- 14 LEGAL -->
+<section class="page">
+  <div class="kicker">The small print</div>
+  <h2>Please read</h2>
+  <p><b>Educational only.</b> Forget-Proof Money is general educational material about organising personal money. It is not financial, tax, legal or medical advice, and it doesn't consider your individual situation. For advice about debt, investments or taxes, speak to a qualified professional.</p>
+  <p><b>Not a treatment.</b> This kit doesn't diagnose or treat ADHD or any other condition. If you're struggling, a doctor or licensed mental-health professional can help.</p>
+  <p><b>Banks differ.</b> Features like extra accounts, split direct deposit, alerts, fee waivers and due-date changes depend on your bank, employer and providers. Check their terms and any fees before setting anything up.</p>
+  <p><b>Licence.</b> Personal use only. You may print as many copies as you need for yourself and your household. Please don't resell, share or redistribute the files.</p>
+  <p class="muted" style="margin-top:.3in">© 2026 Forget-Proof Money. All rights reserved.</p>
+  <div class="foot"><span>Forget-Proof Money</span><span>14</span></div>
+</section>
+
+</body>
+</html>
