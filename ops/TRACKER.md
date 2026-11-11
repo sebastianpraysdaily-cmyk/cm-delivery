@@ -2,9 +2,10 @@
 
 Read this first every session. Update at the end of every session.
 
-**Budget:** $20 hard cap · **Spent:** $0.43 confirmed (worst case $0.83, see spend log) · **Approved:** $1.20 for research
+**Budget:** $20 hard cap · **Spent:** $0.52 confirmed (worst case $0.92, see spend log) · **Approved:** $1.20 for research
 
 ## Done
+- 2026-11-11 · Format + market check (`ops/step2c-format-and-market.md`): winners are real hands+paper footage and talking heads; animated graphics 1/24. Broad savings-challenge audience has the bigger ceiling (4.5M top, 8.7M sample views) vs ADHD niche (0.49M top).
 - 2026-11-11 · More juice (Sebastian: "stuff like that"): coins fly into total, combo heat glow + flames, ON FIRE banner at x10, loot chest reveal with light rays, holographic tilt cards (badges + celebrations), 3D tilt parallax tracker + breathing bubbles, shake-to-roll on Mystery Sprint, level-up flash + shockwave. Contrast fix for filled bubbles on yellow trackers. Video v003 re-recorded with the new effects.
 - 2026-11-11 · Decided: web app (PWA) not native (App Store $99/yr + Play $25 > budget). Haptics: Android yes, iPhone limited (Safari has no Vibration API; switch-trick may be patched in iOS 26.5, unverified). Tilt works (iPhone asks once).
 - 2026-11-11 · **Savings Sprints app** built: XP, levels, combos, streak freeze, loot, milestones, 12 badges, unlocks; haptics, WebAudio, tilt-reactive confetti → `product/savings-sprints/app/` · preview https://claude.ai/artifact/XURVPhf94hM6LFxG3qLQkf
@@ -65,4 +66,5 @@ Read this first every session. Update at the end of every session.
 | 2026-11-11 | GTA 6 check: Serper + Apify (55 videos) | $0.058 | Confirmed |
 | 2026-11-11 | GTA creator-market check: Serper + Apify (38 videos) | $0.041 | Confirmed |
 | 2026-11-11 | Sales proof: Serper search + ~46 Etsy listing scrapes + name check | $0.033 | Confirmed (approx., scrape run timed out client-side but completed) |
-| **Total** | | **$0.43 confirmed, ≤$0.83 worst case** | Remaining approved research budget: ≥$0.37 |
+| 2026-11-11 | Format + market research: Serper + Apify (83 videos, covers) | $0.086 | Confirmed |
+| **Total** | | **$0.52 confirmed, ≤$0.92 worst case** | Remaining approved research budget: ≥$0.28 |
