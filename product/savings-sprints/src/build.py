@@ -103,6 +103,7 @@ def tracker_svg(s, w=640, h=640):
     step,pts=bubbles(s["shape"],s["n"])
     amts=split_amount(s["goal"],len(pts),seed=s["id"],unit=s["unit"])
     assert sum(amts)==s["goal"], (s["id"],sum(amts))
+    s["geom"]={"step":step,"pts":[[round(x,1),round(y,1)] for x,y in pts]}
     r=step*0.43; fs=max(18,int(r*0.66))
     out=[f'<svg viewBox="0 0 1000 1000" width="{w}" height="{h}" xmlns="http://www.w3.org/2000/svg">']
     out.append(shape_svg(s["shape"], col, INK, 14))
@@ -133,5 +134,5 @@ def build(size):
     html=f'<!doctype html><html><head><meta charset="utf-8"><title>Savings Sprints</title><style>{CSS}</style><style>@page{{size:{"Letter" if size=="letter" else "105mm 148mm"};margin:0}}</style></head><body class="{size}">{intro}{trackers}{open("src/outro.html").read()}</body></html>'
     open(f"src/sprints{'' if size=='letter' else '_a6'}.html","w").write(html)
 build("letter"); build("a6")
-json.dump([{k:v for k,v in s.items() if k!="shape"} for s in SPRINTS],open("src/sprints.json","w"),indent=1)
+json.dump([dict(s) for s in SPRINTS],open("src/sprints.json","w"),indent=1)
 print("ok", [(s["id"],s.get("cells"),sum(s.get("amounts",[0]))) for s in SPRINTS])

@@ -1,0 +1,18 @@
+{
+ "title": "Stop doing 52-week savings challenges",
+ "product": "Savings Sprints",
+ "voice": "af_heart",
+ "speed": 1.1,
+ "beats": [
+  {"id":"hook","text":"If you have ADHD, stop doing fifty-two week savings challenges.","scene":"strike",
+   "why":"'Stop…' imperative + strike-the-old-way. @adhd_chatter_podcast 'Stop trusting your memory' 383.8k views, 24.7k saves (6.4%). Names the exact product category buyers already pay for (savings challenges: 2,376 / 2,286 / 1,049 review listings)."},
+  {"id":"relate","text":"You're obsessed for one week. By week three, the tracker is lost in a drawer.","scene":"fail",
+   "why":"Planner-fatigue relatability. @moveswithmaci '99 unused planners' 125.6k views."},
+  {"id":"turn","text":"Do a sprint instead. Seven, fourteen, or thirty days.","scene":"sprints","why":"Re-hook at ~7s: the fix, in three numbers."},
+  {"id":"fill","text":"Save the amount on any bubble, color it in, and watch it fill up.","scene":"fill",
+   "why":"Watch-it-fill format: '100 envelope challenge' 2.8M views, 22.5k saves; 'Color an icon each time you save' 202.5k views."},
+  {"id":"range","text":"There are twelve, from a fifty dollar weekend warm up, to your first thousand dollar emergency fund.","scene":"fan","why":"Show the whole product: real tracker pages."},
+  {"id":"intens","text":"Every bubble adds up exactly to the goal. Print it, use it on your iPad, or in the spreadsheet.","scene":"formats","why":"Intensifier + objection handling (format). Spreadsheet demos save at 1.87% median, 9.5% top."},
+  {"id":"cta","text":"Save this, and start the fifty dollar one this weekend. It's called Savings Sprints. It's in my bio.","scene":"cta","why":"Save prompt + tiny first step + exact product name."}
+ ]
+}
