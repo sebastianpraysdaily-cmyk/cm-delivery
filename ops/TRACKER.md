@@ -5,6 +5,10 @@ Read this first every session. Update at the end of every session.
 **Budget:** $20 hard cap · **Spent:** $0.43 confirmed (worst case $0.83, see spend log) · **Approved:** $1.20 for research
 
 ## Done
+- 2026-11-11 · Decided: web app (PWA) not native (App Store $99/yr + Play $25 > budget). Haptics: Android yes, iPhone limited (Safari has no Vibration API; switch-trick may be patched in iOS 26.5, unverified). Tilt works (iPhone asks once).
+- 2026-11-11 · **Savings Sprints app** built: XP, levels, combos, streak freeze, loot, milestones, 12 badges, unlocks; haptics, WebAudio, tilt-reactive confetti → `product/savings-sprints/app/` · preview https://claude.ai/artifact/XURVPhf94hM6LFxG3qLQkf
+- 2026-11-11 · Video v003 (30s): 'rigged' controversy hook + real app screen recording → `content/v003/` · `content/record_app.js`, `content/compose_v003.py`
+- 2026-11-11 · Landing v3: rigged hook, app video in phone frame, playable sprint (same engine) → https://claude.ai/artifact/BChDiB5kFLLMhJwSNkHu1G
 - 2026-11-11 · Sebastian: Forget-Proof Money not attention-grabbing → researched 5 options; GTA 6 checked twice (no fit)
 - 2026-11-11 · Sales proof: savings-challenge bundles 1,049–2,376 reviews on Etsy; ADHD versions rare (8–14 reviews)
 - 2026-11-11 · **New product: Savings Sprints** (12 color-in trackers, Letter + A6 PDF, spreadsheet with color-fill) → `product/savings-sprints/`
@@ -23,7 +27,7 @@ Read this first every session. Update at the end of every session.
 - 2026-11-11 · Approval package → https://claude.ai/artifact/89kbpDdSedFoVH5nwBTtzj
 
 ## In progress
-- **Waiting on Sebastian:** approve the Savings Sprints package → https://claude.ai/artifact/89kbpDdSedFoVH5nwBTtzj
+- **Waiting on Sebastian:** approve package (https://claude.ai/artifact/89kbpDdSedFoVH5nwBTtzj) + OK to host the app publicly (free) so he can test tilt/haptics on his phone
 
 ## Next
 1. Step 2 proof package: product + name + description, 1 short video, landing page, shop listing copy, all on matching wording
