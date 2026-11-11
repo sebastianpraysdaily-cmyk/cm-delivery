@@ -1,0 +1,182 @@
+<title>Forget-Proof Money</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Forget-Proof Money: the ADHD money system you set up once. 4 setup sessions of 15 minutes, then 10 minutes a week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Kalam:wght@700&display=swap">
+<style>
+/* Layout: one narrow reading column; the 4 account cards are the visual thesis, same as the video and guide */
+:root{
+  --ink:#1d2440; --fg:#1d2440; --soft:#4a5272; --bg:#fbf7ef; --panel:#ffffff; --line:#e3ddcf;
+  --mint:#2fbf8f; --mint-l:#dff5ec; --coral:#ff7a59; --coral-l:#ffe6de; --peri:#6b7bd6; --bills:#3a467c;
+  --on-dark:#ffffff; --hero:#1d2440; --hero-fg:#ffffff; --hero-soft:#c9cfe6;
+  --display:"Space Grotesk",Inter,system-ui,sans-serif; --body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif; --hand:Kalam,"Comic Sans MS",cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --fg:#eef0f8; --soft:#aeb5d0; --bg:#12162a; --panel:#1b2140; --line:#2c3460; --mint-l:#173a33; --coral-l:#3d2622;
+  --hero:#0b0e1d; --hero-fg:#ffffff; --hero-soft:#aeb5d0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --fg:#eef0f8; --soft:#aeb5d0; --bg:#12162a; --panel:#1b2140; --line:#2c3460; --mint-l:#173a33; --coral-l:#3d2622;
+  --hero:#0b0e1d; --hero-fg:#ffffff; --hero-soft:#aeb5d0; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.08;text-wrap:balance;margin:0}
+h2{font-size:clamp(28px,5vw,38px);letter-spacing:-.5px}
+h3{font-size:20px}
+p{margin:0}
+.draft{background:var(--coral);color:#fff;text-align:center;font-weight:700;font-size:13px;padding:8px 16px;letter-spacing:.3px}
+.hero{background:var(--hero);color:var(--hero-fg)}
+.hero .wrap{padding-block:56px 48px;display:grid;gap:20px}
+.kicker{font-family:var(--display);text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:700;color:var(--mint)}
+.hero h1{font-size:clamp(46px,11vw,84px);letter-spacing:-2px}
+.hero .sub{font-size:20px;color:var(--hero-soft);max-width:34ch}
+.hand{font-family:var(--hand);color:var(--coral);font-size:24px}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--mint);color:#13261f;font-weight:800;font-size:19px;border:0;border-radius:999px;padding:18px 30px;cursor:pointer;text-decoration:none;font-family:var(--body)}
+.cta:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.cta small{font-weight:600;opacity:.75}
+.price{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.price .was{color:var(--hero-soft);text-decoration:line-through}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+section.block .wrap{padding-block:56px;display:grid;gap:22px}
+.lead{font-size:19px;color:var(--soft)}
+.accts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.acct{border-radius:22px;padding:22px;color:var(--on-dark);display:grid;gap:6px;min-width:0}
+.acct b{font-family:var(--display);font-size:24px}
+.acct span{font-size:15px;line-height:1.45}
+.a1{background:var(--bills)}.a2{background:var(--mint);color:#13261f}.a3{background:var(--peri)}.a4{background:var(--coral)}
+.steps{display:grid;gap:12px;counter-reset:s;padding:0;margin:0;list-style:none}
+.steps li{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.steps li:before{counter-increment:s;content:counter(s);font-family:var(--display);font-weight:700;font-size:20px;width:40px;height:40px;border-radius:50%;background:var(--fg);color:var(--bg);display:grid;place-items:center}
+.steps .t{font-weight:700}
+.steps .m{color:var(--soft);font-size:15px}
+.time{font-family:var(--display);font-weight:700;font-size:13px;color:var(--mint);margin-left:6px}
+.pages{display:flex;gap:14px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory}
+.pages img{width:220px;max-width:62vw;border-radius:10px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(20,24,50,.12);scroll-snap-align:start;flex:0 0 auto}
+.inside{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;padding:0;margin:0;list-style:none}
+.inside li{padding-left:28px;position:relative;min-width:0}
+.inside li:before{content:"✓";position:absolute;left:0;color:var(--mint);font-weight:800}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fit div{border-radius:18px;padding:20px;min-width:0}
+.yes{background:var(--mint-l)}.no{background:var(--coral-l)}
+.fit ul{margin:10px 0 0;padding-left:20px;font-size:15.5px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 20px}
+details summary{font-weight:700;cursor:pointer}
+details p{margin-top:10px;color:var(--soft);font-size:15.5px}
+.final{background:var(--hero);color:var(--hero-fg)}
+.final .wrap{padding-block:56px;display:grid;gap:18px;justify-items:start}
+.small{font-size:13px;color:var(--soft)}
+.legal .wrap{padding-block:28px 48px}
+@media (max-width:560px){.accts,.inside,.fit{grid-template-columns:1fr}.hero .wrap{padding-block:40px}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+
+<div class="draft">DRAFT FOR APPROVAL · not live · checkout not connected yet</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">The ADHD money system you set up once</div>
+    <h1>Forget-Proof Money</h1>
+    <p class="sub">You're not bad with money. You've been using systems that need a perfect memory. This one moves the remembering out of your head and into your bank.</p>
+    <div class="pills"><span class="pill">4 setup sessions × 15 min</span><span class="pill">10 min a week after</span><span class="pill">PDF guide + spreadsheet</span></div>
+    <div class="price">
+      <button class="cta" id="buy-top" type="button">Get Forget-Proof Money · $12 <small>launch price</small></button>
+      <span class="was">$17</span>
+    </div>
+    <p class="hand">no willpower required ✦</p>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <h2>4 accounts. 1 job each.</h2>
+    <p class="lead">One account for everything means one big number that lies to you. You see $900, you feel rich, and rent is due Friday. Forget-Proof Money splits your pay so every account does one job, automatically, on payday.</p>
+    <div class="accts">
+      <div class="acct a1"><b>Bills</b><span>Autopay pulls from it. You never even look at it.</span></div>
+      <div class="acct a2"><b>Spend</b><span>Your card, and the only balance you ever check.</span></div>
+      <div class="acct a3"><b>Buffer</b><span>Oops money, so one surprise doesn't wreck everything.</span></div>
+      <div class="acct a4"><b>Goals</b><span>Money with a name on it is way harder to impulse spend.</span></div>
+    </div>
+    <p>And the best part: it keeps working on the weeks you forget it exists. Bills still get paid. Savings still move.</p>
+  </div>
+</section>
+
+<section class="block" style="background:var(--panel)">
+  <div class="wrap">
+    <h2>Set it up in four 15-minute sessions</h2>
+    <ol class="steps">
+      <li><div><div class="t">The Bill Dump <span class="time">15 MIN</span></div><div class="m">Get every bill out of your head and onto one page, with a prompt list for the ones you always forget.</div></div></li>
+      <li><div><div class="t">The 4 Accounts <span class="time">15 MIN</span></div><div class="m">Open your Bills, Spend, Buffer and Goals accounts and work out your payday split. Worked example included.</div></div></li>
+      <li><div><div class="t">Your Safe-to-Spend number <span class="time">15 MIN</span></div><div class="m">One number to remember between paydays. Under it? You're fine. No categories, no tracking every coffee.</div></div></li>
+      <li><div><div class="t">Autopay everything <span class="time">15 MIN</span></div><div class="m">Stop paying the "ADHD tax": late fees, missed payments, surprise renewals.</div></div></li>
+    </ol>
+    <p class="lead">After that, it's a 10-Minute Money Date once a week. Treat first, timer on, done.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>What's inside</h2>
+    <div class="pages" aria-label="Preview pages from the guide">
+      <img src="img/page01.jpg" alt="Cover: Forget-Proof Money">
+      <img src="img/page05.jpg" alt="The 4 Accounts page">
+      <img src="img/page07.jpg" alt="Your Safe-to-Spend number page">
+      <img src="img/page09.jpg" alt="The 10-Minute Money Date page">
+      <img src="img/page10.jpg" alt="The Impulse Parking Lot page">
+      <img src="img/page13.jpg" alt="One-page cheat sheet">
+    </div>
+    <ul class="inside">
+      <li>14-page printable PDF guide + worksheets</li>
+      <li>Spreadsheet that does the maths (Google Sheets, Excel, Numbers)</li>
+      <li>Payday Split calculator</li>
+      <li>Safe-to-Spend calculator</li>
+      <li>The 10-Minute Money Date</li>
+      <li>The Impulse Parking Lot (72-hour rule)</li>
+      <li>Monthly Subscription Sweep</li>
+      <li>Late-fee call script</li>
+      <li>The 15-Minute Restart for off weeks</li>
+      <li>Fridge cheat sheet</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" style="background:var(--panel)">
+  <div class="wrap">
+    <h2>Is it for you?</h2>
+    <div class="fit">
+      <div class="yes"><h3>Yes, if you…</h3><ul><li>have tried budget apps and planners and quit them all</li><li>get late fees for bills you could afford</li><li>feel rich on payday and broke by Thursday</li><li>want something you set up once, not a daily habit</li></ul></div>
+      <div class="no"><h3>Not for you if you…</h3><ul><li>want investing or debt-strategy advice</li><li>enjoy tracking every purchase in categories</li><li>need help with a business's money</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Questions</h2>
+    <details><summary>Do I need to switch banks?</summary><p>Usually not. Many banks let you open extra accounts or "pots" for free in the app. If yours doesn't, a second free bank account works. The guide shows both routes.</p></details>
+    <details><summary>My income is irregular. Does this still work?</summary><p>Yes. You build the split around your lowest month from the last six months, and anything above it goes to your Buffer first. There's a section on this.</p></details>
+    <details><summary>Do I need Google Sheets or Excel?</summary><p>No. The PDF works on paper or in any PDF app. The spreadsheet is a bonus that does the maths for you, and it opens in Google Sheets, Excel or Numbers.</p></details>
+    <details><summary>How do I get it?</summary><p>Instant download after checkout: one PDF and one spreadsheet file.</p></details>
+    <details><summary>Is this financial advice?</summary><p>No. It's an educational system for organising your own money. It doesn't consider your personal situation and it isn't medical advice or ADHD treatment.</p></details>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Stop making your brain remember. Make your bank do it.</h2>
+    <button class="cta" id="buy-bottom" type="button">Get Forget-Proof Money · $12</button>
+    <p class="hand" style="font-size:22px">Not "no". Just "not yet". ✦</p>
+  </div>
+</section>
+
+<footer class="legal">
+  <div class="wrap">
+    <p class="small">Forget-Proof Money is general educational material. It is not financial, tax, legal or medical advice and does not diagnose or treat ADHD. Bank features vary; check your providers' terms and fees. Personal-use licence: please don't share or resell the files. © 2026 Forget-Proof Money.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.cta').forEach(function(b){
+  b.addEventListener('click',function(){ b.textContent='Checkout opens after approval'; });
+});
+</script>

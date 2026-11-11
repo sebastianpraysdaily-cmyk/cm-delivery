@@ -1,0 +1,23 @@
+{
+ "title": "4 accounts, one job each",
+ "product": "Forget-Proof Money",
+ "voice": "af_heart",
+ "beats": [
+  {"id":"hook","text":"Your ADHD brain isn't bad with money. It's bad at remembering.","scene":"hook",
+   "why":"Reassure-and-reframe hook. Pattern from @yourmoneymatesarah ('You're not inherently bad with money…', 403.5k views, 4.7% saves) + @adhd_chatter_podcast ('Stop trusting your memory', 383.8k views, 6.4% saves). Text on screen from frame 1."},
+  {"id":"relate","text":"Payday hits, and five minutes later you've found three new hobbies.","scene":"payday",
+   "why":"Relatable payday-dopamine joke. Pattern from @inflow (407.4k views, 10.7k shares): humor drives shares."},
+  {"id":"turn","text":"So stop making your brain remember. Make your bank do it.","scene":"turn",
+   "why":"Re-hook at about 8s: promise of a solution, so viewers who related now stay."},
+  {"id":"promise","text":"Four accounts. One job each.","scene":"split",
+   "why":"Numbered-list promise. Pattern from @priceofavocadotoast ('three types of bank accounts every human with ADHD needs', 154.6k views, 6.9% saves, the highest save rate in the sample)."},
+  {"id":"a1","text":"Bills. Autopay pulls from it. You never even look at it.","scene":"acct1","why":"List payoff, one beat per item."},
+  {"id":"a2","text":"Spend. Your card, and the only balance you ever check.","scene":"acct2","why":"List payoff."},
+  {"id":"a3","text":"Buffer. Oops money, so one surprise doesn't wreck everything.","scene":"acct3","why":"List payoff."},
+  {"id":"a4","text":"Goals. Money with a name on it is way harder to impulse spend.","scene":"acct4","why":"List payoff + impulse-spend pain (adhd impulse spending is a documented sub-topic)."},
+  {"id":"intens","text":"And the best part? It keeps working on the weeks you forget it exists.","scene":"weeks",
+   "why":"Intensifier: removes the biggest objection (I always fall off). Mirrors the product promise."},
+  {"id":"cta","text":"Save this for payday. The full setup is called Forget-Proof Money. It's in my bio.","scene":"cta",
+   "why":"Save prompt (saves are the intent signal we optimise for) + soft product CTA with the exact product name."}
+ ]
+}
