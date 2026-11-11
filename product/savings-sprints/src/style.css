@@ -1,0 +1,50 @@
+@font-face{font-family:Fredoka;font-weight:400;src:url(../fonts/fredoka-latin-400-normal.woff2)}
+@font-face{font-family:Fredoka;font-weight:600;src:url(../fonts/fredoka-latin-600-normal.woff2)}
+@font-face{font-family:Fredoka;font-weight:700;src:url(../fonts/fredoka-latin-700-normal.woff2)}
+:root{--ink:#1f1b2e;--cream:#fff8f0;--pink:#ff5fa2;--sun:#ffd23f;--mint:#3ddc97;--sky:#4cc9f0;--grape:#7b61ff;--tang:#ff8c42;--soft:#5b5670}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:Inter,"Noto Sans",sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:8.5in;height:11in;background:var(--cream);position:relative;overflow:hidden;page-break-after:always;padding:.6in .7in .5in;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+h1,h2,h3{font-family:Fredoka,Inter,sans-serif;margin:0;line-height:1.02}
+h2{font-size:46pt;font-weight:700}
+.tracker header{display:flex;justify-content:space-between;align-items:center}
+.num{font-family:Fredoka;font-weight:700;font-size:13pt;letter-spacing:2px;text-transform:uppercase;color:var(--c)}
+.tag{background:var(--c);color:var(--ink);font-weight:700;font-size:10.5pt;border-radius:99px;padding:5px 14px;border:2.5px solid var(--ink)}
+.tracker h2{margin-top:.1in}
+.meta{display:flex;gap:10px;margin:.12in 0 0;flex-wrap:wrap}
+.meta>*{border:2.5px solid var(--ink);border-radius:12px;padding:4px 12px;font-size:12pt;background:#fff}
+.meta b{background:var(--c);font-family:Fredoka;font-size:14pt}
+.art{flex:1;display:flex;align-items:center;justify-content:center;min-height:0}
+.art svg{width:6.9in;height:6.9in}
+.note{font-size:12.5pt;margin:0 0 .1in;text-align:center;color:var(--soft)}
+.rows{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:11pt;font-weight:600}
+.rows div{display:flex;gap:8px;align-items:flex-end}
+.rows div:last-child{grid-column:1/-1}
+.rows i{flex:1;border-bottom:2px solid var(--ink);height:16px}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:.14in}
+.ladder span{border:2px dashed var(--ink);border-radius:10px;padding:6px 4px;text-align:center;font-size:9.5pt;font-weight:700}
+footer{position:absolute;bottom:.25in;left:0;right:0;text-align:center;font-size:8.5pt;color:var(--soft)}
+/* cover + info pages */
+.cover{background:var(--ink);color:#fff;justify-content:space-between}
+.cover h1{font-size:82pt;font-weight:700;color:#fff;margin-top:.2in}
+.cover .sub{font-size:19pt;max-width:5.8in;color:#e9e4ff;margin-top:.18in;line-height:1.35}
+.blobs{display:flex;flex-wrap:wrap;gap:12px;max-width:6.6in}
+.blob{width:.9in;height:.9in;border-radius:50%;border:4px solid #fff;display:grid;place-items:center;font-family:Fredoka;font-weight:700;font-size:20pt;color:var(--ink)}
+.chip{display:inline-block;background:var(--sun);color:var(--ink);border-radius:99px;padding:6px 16px;font-weight:800;font-size:12pt;margin:0 8px 8px 0}
+.info h2{font-size:38pt;margin-bottom:.15in}
+.info p{font-size:12.5pt;line-height:1.55;margin:0 0 .12in}
+.steps{display:grid;gap:12px;margin:.1in 0}
+.step{display:grid;grid-template-columns:.62in 1fr;gap:14px;align-items:center;background:#fff;border:3px solid var(--ink);border-radius:20px;padding:14px 18px}
+.step b{font-family:Fredoka;font-size:30pt;width:.62in;height:.62in;border-radius:50%;display:grid;place-items:center;border:3px solid var(--ink)}
+.step span{font-size:12.5pt;line-height:1.45}
+.grid12{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mini{border:3px solid var(--ink);border-radius:16px;padding:10px 12px;background:#fff}
+.mini b{font-family:Fredoka;font-size:14pt;display:block}
+.mini span{font-size:10pt;color:var(--soft)}
+table{width:100%;border-collapse:collapse;background:#fff;font-size:11pt}
+th{font-family:Fredoka;background:var(--ink);color:#fff;text-align:left;padding:8px}
+td{border:2px solid var(--ink);height:.34in;padding:4px 8px}
+.small{font-size:10pt;color:var(--soft);line-height:1.5}
+/* A6 cash-binder version: same pages scaled to 105x148mm */
+body.a6 .page{zoom:.4877;}
