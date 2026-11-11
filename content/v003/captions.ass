@@ -1,0 +1,86 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,Fredoka,86,&H00FFFFFF,&H00FFFFFF,&H002E1B1F,&H00000000,-1,0,0,0,100,100,0,0,1,9,0,2,60,60,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.69,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}Unpopular{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}opinion.{\alpha&H00&} {\alpha&H70&}Savings{\alpha&H00&}
+Dialogue: 0,0:00:00.69,0:00:01.31,Cap,,0,0,0,,Unpopular {\c&H3FD2FF&\fscx108\fscy108}opinion.{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}Savings{\alpha&H00&}
+Dialogue: 0,0:00:01.31,0:00:01.87,Cap,,0,0,0,,Unpopular opinion. {\c&H3FD2FF&\fscx108\fscy108}Savings{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:01.87,0:00:02.62,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}challenges{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}are{\alpha&H00&} {\alpha&H70&}rigged{\alpha&H00&}
+Dialogue: 0,0:00:02.62,0:00:02.93,Cap,,0,0,0,,challenges {\c&H3FD2FF&\fscx108\fscy108}are{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}rigged{\alpha&H00&}
+Dialogue: 0,0:00:02.93,0:00:03.43,Cap,,0,0,0,,challenges are {\c&H3FD2FF&\fscx108\fscy108}rigged{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:03.43,0:00:03.99,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}against{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}ADHD{\alpha&H00&} {\alpha&H70&}brains.{\alpha&H00&}
+Dialogue: 0,0:00:03.99,0:00:04.37,Cap,,0,0,0,,against {\c&H3FD2FF&\fscx108\fscy108}ADHD{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}brains.{\alpha&H00&}
+Dialogue: 0,0:00:04.37,0:00:05.08,Cap,,0,0,0,,against ADHD {\c&H3FD2FF&\fscx108\fscy108}brains.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:05.11,0:00:05.43,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}Fifty{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}two{\alpha&H00&} {\alpha&H70&}weeks,{\alpha&H00&}
+Dialogue: 0,0:00:05.43,0:00:05.66,Cap,,0,0,0,,Fifty {\c&H3FD2FF&\fscx108\fscy108}two{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}weeks,{\alpha&H00&}
+Dialogue: 0,0:00:05.66,0:00:06.03,Cap,,0,0,0,,Fifty two {\c&H3FD2FF&\fscx108\fscy108}weeks,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:06.03,0:00:06.26,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}and{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}zero{\alpha&H00&} {\alpha&H70&}reward{\alpha&H00&}
+Dialogue: 0,0:00:06.26,0:00:06.53,Cap,,0,0,0,,and {\c&H3FD2FF&\fscx108\fscy108}zero{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}reward{\alpha&H00&}
+Dialogue: 0,0:00:06.53,0:00:06.90,Cap,,0,0,0,,and zero {\c&H3FD2FF&\fscx108\fscy108}reward{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:06.90,0:00:07.22,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}until{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}the{\alpha&H00&} {\alpha&H70&}very{\alpha&H00&}
+Dialogue: 0,0:00:07.22,0:00:07.45,Cap,,0,0,0,,until {\c&H3FD2FF&\fscx108\fscy108}the{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}very{\alpha&H00&}
+Dialogue: 0,0:00:07.45,0:00:07.73,Cap,,0,0,0,,until the {\c&H3FD2FF&\fscx108\fscy108}very{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:07.73,0:00:08.01,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}end.{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}Of{\alpha&H00&} {\alpha&H70&}course{\alpha&H00&}
+Dialogue: 0,0:00:08.01,0:00:08.19,Cap,,0,0,0,,end. {\c&H3FD2FF&\fscx108\fscy108}Of{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}course{\alpha&H00&}
+Dialogue: 0,0:00:08.19,0:00:08.56,Cap,,0,0,0,,end. Of {\c&H3FD2FF&\fscx108\fscy108}course{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:08.56,0:00:08.79,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}you{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}quit{\alpha&H00&} {\alpha&H70&}by{\alpha&H00&}
+Dialogue: 0,0:00:08.79,0:00:09.06,Cap,,0,0,0,,you {\c&H3FD2FF&\fscx108\fscy108}quit{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}by{\alpha&H00&}
+Dialogue: 0,0:00:09.06,0:00:09.25,Cap,,0,0,0,,you quit {\c&H3FD2FF&\fscx108\fscy108}by{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:09.25,0:00:09.52,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}week{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}three.{\alpha&H00&}
+Dialogue: 0,0:00:09.52,0:00:10.04,Cap,,0,0,0,,week {\c&H3FD2FF&\fscx108\fscy108}three.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:10.07,0:00:10.24,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}So{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}we{\alpha&H00&} {\alpha&H70&}turned{\alpha&H00&}
+Dialogue: 0,0:00:10.24,0:00:10.41,Cap,,0,0,0,,So {\c&H3FD2FF&\fscx108\fscy108}we{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}turned{\alpha&H00&}
+Dialogue: 0,0:00:10.41,0:00:10.75,Cap,,0,0,0,,So we {\c&H3FD2FF&\fscx108\fscy108}turned{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:10.75,0:00:11.09,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}saving{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}into{\alpha&H00&} {\alpha&H70&}a{\alpha&H00&}
+Dialogue: 0,0:00:11.09,0:00:11.34,Cap,,0,0,0,,saving {\c&H3FD2FF&\fscx108\fscy108}into{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}a{\alpha&H00&}
+Dialogue: 0,0:00:11.34,0:00:11.47,Cap,,0,0,0,,saving into {\c&H3FD2FF&\fscx108\fscy108}a{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:11.47,0:00:11.91,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}game.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:11.94,0:00:12.25,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}Every{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}time{\alpha&H00&} {\alpha&H70&}you{\alpha&H00&}
+Dialogue: 0,0:00:12.25,0:00:12.51,Cap,,0,0,0,,Every {\c&H3FD2FF&\fscx108\fscy108}time{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}you{\alpha&H00&}
+Dialogue: 0,0:00:12.51,0:00:12.73,Cap,,0,0,0,,Every time {\c&H3FD2FF&\fscx108\fscy108}you{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:12.73,0:00:13.03,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}save,{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}you{\alpha&H00&} {\alpha&H70&}pop{\alpha&H00&}
+Dialogue: 0,0:00:13.03,0:00:13.25,Cap,,0,0,0,,save, {\c&H3FD2FF&\fscx108\fscy108}you{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}pop{\alpha&H00&}
+Dialogue: 0,0:00:13.25,0:00:13.47,Cap,,0,0,0,,save, you {\c&H3FD2FF&\fscx108\fscy108}pop{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:13.47,0:00:13.60,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}a{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}bubble.{\alpha&H00&} {\alpha&H70&}Chain{\alpha&H00&}
+Dialogue: 0,0:00:13.60,0:00:13.99,Cap,,0,0,0,,a {\c&H3FD2FF&\fscx108\fscy108}bubble.{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}Chain{\alpha&H00&}
+Dialogue: 0,0:00:13.99,0:00:14.30,Cap,,0,0,0,,a bubble. {\c&H3FD2FF&\fscx108\fscy108}Chain{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:14.30,0:00:14.60,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}them,{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}and{\alpha&H00&} {\alpha&H70&}you{\alpha&H00&}
+Dialogue: 0,0:00:14.60,0:00:14.82,Cap,,0,0,0,,them, {\c&H3FD2FF&\fscx108\fscy108}and{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}you{\alpha&H00&}
+Dialogue: 0,0:00:14.82,0:00:15.04,Cap,,0,0,0,,them, and {\c&H3FD2FF&\fscx108\fscy108}you{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:15.04,0:00:15.25,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}get{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}combos.{\alpha&H00&}
+Dialogue: 0,0:00:15.25,0:00:15.80,Cap,,0,0,0,,get {\c&H3FD2FF&\fscx108\fscy108}combos.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:15.83,0:00:16.20,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}Hidden{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}loot.{\alpha&H00&} {\alpha&H70&}Streaks{\alpha&H00&}
+Dialogue: 0,0:00:16.20,0:00:16.52,Cap,,0,0,0,,Hidden {\c&H3FD2FF&\fscx108\fscy108}loot.{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}Streaks{\alpha&H00&}
+Dialogue: 0,0:00:16.52,0:00:16.94,Cap,,0,0,0,,Hidden loot. {\c&H3FD2FF&\fscx108\fscy108}Streaks{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:16.94,0:00:17.22,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}that{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}forgive{\alpha&H00&} {\alpha&H70&}a{\alpha&H00&}
+Dialogue: 0,0:00:17.22,0:00:17.63,Cap,,0,0,0,,that {\c&H3FD2FF&\fscx108\fscy108}forgive{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}a{\alpha&H00&}
+Dialogue: 0,0:00:17.63,0:00:17.77,Cap,,0,0,0,,that forgive {\c&H3FD2FF&\fscx108\fscy108}a{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:17.77,0:00:18.01,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}bad{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}day.{\alpha&H00&} {\alpha&H70&}Levels{\alpha&H00&}
+Dialogue: 0,0:00:18.01,0:00:18.28,Cap,,0,0,0,,bad {\c&H3FD2FF&\fscx108\fscy108}day.{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}Levels{\alpha&H00&}
+Dialogue: 0,0:00:18.28,0:00:18.65,Cap,,0,0,0,,bad day. {\c&H3FD2FF&\fscx108\fscy108}Levels{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:18.65,0:00:18.93,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}that{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}unlock{\alpha&H00&} {\alpha&H70&}new{\alpha&H00&}
+Dialogue: 0,0:00:18.93,0:00:19.30,Cap,,0,0,0,,that {\c&H3FD2FF&\fscx108\fscy108}unlock{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}new{\alpha&H00&}
+Dialogue: 0,0:00:19.30,0:00:19.53,Cap,,0,0,0,,that unlock {\c&H3FD2FF&\fscx108\fscy108}new{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:19.53,0:00:20.15,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}sprints.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:20.18,0:00:20.39,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}And{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}when{\alpha&H00&} {\alpha&H70&}you{\alpha&H00&}
+Dialogue: 0,0:00:20.39,0:00:20.65,Cap,,0,0,0,,And {\c&H3FD2FF&\fscx108\fscy108}when{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}you{\alpha&H00&}
+Dialogue: 0,0:00:20.65,0:00:20.87,Cap,,0,0,0,,And when {\c&H3FD2FF&\fscx108\fscy108}you{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:20.87,0:00:21.21,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}finish{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}one,{\alpha&H00&} {\alpha&H70&}it{\alpha&H00&}
+Dialogue: 0,0:00:21.21,0:00:21.47,Cap,,0,0,0,,finish {\c&H3FD2FF&\fscx108\fscy108}one,{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}it{\alpha&H00&}
+Dialogue: 0,0:00:21.47,0:00:21.64,Cap,,0,0,0,,finish one, {\c&H3FD2FF&\fscx108\fscy108}it{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:21.64,0:00:21.94,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}rains{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}confetti.{\alpha&H00&} {\alpha&H70&}Tilt{\alpha&H00&}
+Dialogue: 0,0:00:21.94,0:00:22.42,Cap,,0,0,0,,rains {\c&H3FD2FF&\fscx108\fscy108}confetti.{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}Tilt{\alpha&H00&}
+Dialogue: 0,0:00:22.42,0:00:22.67,Cap,,0,0,0,,rains confetti. {\c&H3FD2FF&\fscx108\fscy108}Tilt{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:22.67,0:00:22.93,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}your{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}phone,{\alpha&H00&} {\alpha&H70&}and{\alpha&H00&}
+Dialogue: 0,0:00:22.93,0:00:23.28,Cap,,0,0,0,,your {\c&H3FD2FF&\fscx108\fscy108}phone,{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}and{\alpha&H00&}
+Dialogue: 0,0:00:23.28,0:00:23.49,Cap,,0,0,0,,your phone, {\c&H3FD2FF&\fscx108\fscy108}and{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 0,0:00:23.49,0:00:23.66,Cap,,0,0,0,,{\c&H3FD2FF&\fscx108\fscy108}it{\c&HFFFFFF&\fscx100\fscy100} {\alpha&H70&}slides.{\alpha&H00&}
+Dialogue: 0,0:00:23.66,0:00:24.20,Cap,,0,0,0,,it {\c&H3FD2FF&\fscx108\fscy108}slides.{\c&HFFFFFF&\fscx100\fscy100}

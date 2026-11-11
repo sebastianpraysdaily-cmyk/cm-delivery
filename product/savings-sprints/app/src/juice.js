@@ -74,6 +74,7 @@ export function pointerTilt(e) { // desktop stand-in
 }
 
 /* ---------------- particles + confetti (one canvas over everything) ---------------- */
+const SC = () => (typeof window !== "undefined" && window.__juiceScale) || 1; // recordings render at 2.5x
 const COLORS = ["#ff5fa2", "#ffd23f", "#3ddc97", "#4cc9f0", "#7b61ff", "#ff8c42", "#ffffff"];
 let cv = null, cx2 = null, parts = [], raf = 0, dpr = 1;
 export function mountCanvas(canvas) {
@@ -87,10 +88,10 @@ function loop() {
   if (!cx2) return;
   const W = cv.width / dpr, H = cv.height / dpr;
   cx2.setTransform(dpr, 0, 0, dpr, 0, 0); cx2.clearRect(0, 0, W, H);
-  const gx = gravity.x * 0.32, gy = gravity.y * 0.32;
+  const gx = gravity.x * 0.32 * SC(), gy = gravity.y * 0.32 * SC();
   parts = parts.filter((p) => p.life > 0);
   for (const p of parts) {
-    if (p.kind === "burst") { p.vy += 0.18; p.vx *= 0.96; p.vy *= 0.96; p.life -= 1; }
+    if (p.kind === "burst") { p.vy += 0.18 * SC(); p.vx *= 0.96; p.vy *= 0.96; p.life -= 1; }
     else { // confetti: gravity follows phone tilt, piles up on the edge it's tipped toward
       p.vx += gx + Math.sin(p.t * 0.08 + p.seed) * 0.04; p.vy += gy; p.vx *= 0.985; p.vy *= 0.985; p.t++;
       if (p.y > H - p.h / 2) { p.y = H - p.h / 2; p.vy *= -0.25; p.vx *= 0.8; p.rest++; }
@@ -114,8 +115,8 @@ const reduce = () => window.matchMedia && window.matchMedia("(prefers-reduced-mo
 export function burst(x, y, color, n = 16) {
   if (reduce()) return;
   for (let i = 0; i < n; i++) {
-    const a = Math.random() * Math.PI * 2, s = 2 + Math.random() * 5;
-    parts.push({ kind: "burst", x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s - 2, w: 5 + Math.random() * 5, h: 5, c: Math.random() < 0.7 ? color : "#ffffff", shape: "c", rot: 0, vr: 0, life: 40 + Math.random() * 20, t: 0, seed: 0, rest: 0 });
+    const a = Math.random() * Math.PI * 2, s = (2 + Math.random() * 5) * SC();
+    parts.push({ kind: "burst", x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s - 2 * SC(), w: (5 + Math.random() * 5) * SC(), h: 5 * SC(), c: Math.random() < 0.7 ? color : "#ffffff", shape: "c", rot: 0, vr: 0, life: 40 + Math.random() * 20, t: 0, seed: 0, rest: 0 });
   }
   kick();
 }
@@ -124,8 +125,8 @@ export function confetti(n = 160) {
   if (reduce()) return;
   const W = window.innerWidth;
   for (let i = 0; i < n; i++) {
-    parts.push({ kind: "conf", x: Math.random() * W, y: -20 - Math.random() * 500, vx: (Math.random() - 0.5) * 3, vy: 2 + Math.random() * 4,
-      w: 7 + Math.random() * 7, h: 10 + Math.random() * 10, c: COLORS[(Math.random() * COLORS.length) | 0], shape: Math.random() < 0.25 ? "c" : "r",
+    parts.push({ kind: "conf", x: Math.random() * W, y: -20 - Math.random() * 500, vx: (Math.random() - 0.5) * 3 * SC(), vy: (2 + Math.random() * 4) * SC(),
+      w: (7 + Math.random() * 7) * SC(), h: (10 + Math.random() * 10) * SC(), c: COLORS[(Math.random() * COLORS.length) | 0], shape: Math.random() < 0.25 ? "c" : "r",
       rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.3, life: 220, t: 0, seed: Math.random() * 10, rest: 0 });
   }
   kick();

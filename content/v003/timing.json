@@ -1,0 +1,64 @@
+{
+ "title": "Savings challenges are rigged against ADHD brains",
+ "product": "Savings Sprints",
+ "voice": "af_heart",
+ "speed": 1.1,
+ "beats": [
+  {
+   "id": "hook",
+   "text": "Unpopular opinion. Savings challenges are rigged against ADHD brains.",
+   "scene": "rigged",
+   "why": "Controversy hook: 'Unpopular opinion' + a strong claim invites comments and stitches (debate drives distribution; pattern widely used, \u26aa not measured by us). Names the exact category buyers already pay for (savings challenges: 1,049\u20132,376 review listings).",
+   "start": 0,
+   "dur": 4.93
+  },
+  {
+   "id": "relate",
+   "text": "Fifty two weeks, and zero reward until the very end. Of course you quit by week three.",
+   "scene": "grid",
+   "why": "Backs the claim with the mechanism (delayed reward) + planner-fatigue relatability (@moveswithmaci 125.6k views).",
+   "start": 5.11,
+   "dur": 4.78
+  },
+  {
+   "id": "turn",
+   "text": "So we turned saving into a game.",
+   "scene": "turn",
+   "why": "Re-hook at ~9s: the twist.",
+   "start": 10.069,
+   "dur": 1.694
+  },
+  {
+   "id": "demo1",
+   "text": "Every time you save, you pop a bubble. Chain them, and you get combos.",
+   "scene": "app",
+   "why": "Real app screen recording. Watch-it-fill format: '100 envelope challenge' 2.8M views; 'color an icon' 202.5k.",
+   "start": 11.943,
+   "dur": 3.704
+  },
+  {
+   "id": "demo2",
+   "text": "Hidden loot. Streaks that forgive a bad day. Levels that unlock new sprints.",
+   "scene": "app",
+   "why": "Gamification list: variable reward, forgiving streaks, progression.",
+   "start": 15.827,
+   "dur": 4.171
+  },
+  {
+   "id": "win",
+   "text": "And when you finish one, it rains confetti. Tilt your phone, and it slides.",
+   "scene": "app",
+   "why": "Payoff moment: big celebration, tilt-reactive confetti (novel, demo-able).",
+   "start": 20.177,
+   "dur": 3.875
+  },
+  {
+   "id": "cta",
+   "text": "Twelve sprints, the app, and printable trackers. It's called Savings Sprints. Link in bio.",
+   "scene": "cta",
+   "why": "What you get + exact product name.",
+   "start": 24.233,
+   "dur": 5.098
+  }
+ ]
+}
