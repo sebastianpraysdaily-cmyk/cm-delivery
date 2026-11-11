@@ -14,7 +14,7 @@ Read this first every session. Update at the end of every session.
 - 2026-11-11 · Step 2 sub-angle data (55 more videos): "system / bank accounts" beats "ADHD tax / subscriptions"
 - 2026-11-11 · Step 2 product built: **Forget-Proof Money** (14pp PDF + tested spreadsheet) → `product/forget-proof-money/`
 - 2026-11-11 · Step 2 video v001 rendered (34s, free stack) → `content/v001/` · renderer `content/render.py`
-- 2026-11-11 · Landing page draft → https://claude.ai/artifact/415P38hxrArrtUcnKNrnEE
+- 2026-11-11 · Landing page v2: rebuilt from 5 adapted 21st.dev components (source `product/forget-proof-money/landing-app/`, `npm i && npm run build`) → https://claude.ai/artifact/415P38hxrArrtUcnKNrnEE
 - 2026-11-11 · Approval package → https://claude.ai/artifact/89kbpDdSedFoVH5nwBTtzj
 
 ## In progress
@@ -27,6 +27,7 @@ Read this first every session. Update at the end of every session.
 
 ## Open flags / drift
 - Kokoro voice model (350MB) downloads from GitHub each new session; not committed.
+- Drift caught: v1 landing page skipped 21st.dev despite the brief. Fixed in v2. Rule: check named tools (21st.dev, Composio) before building anything.
 - Container cannot open most sites directly (Etsy, TikTok, data blogs return 403/blocked). Research runs through web search summaries, which are weaker evidence. Paid Composio scrapers fill the gap for cents.
 - Arena skill is **not installed**. High-stakes picks are not bracket-tested until it is added.
 - Repo also holds assets from an earlier psychology-video project (voiceovers, clips, reference sheets). Kept, not used yet.
