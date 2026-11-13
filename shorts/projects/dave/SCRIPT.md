@@ -1,0 +1,21 @@
+# "One More Week" — draft script v1 (2026-11-13), funnier take on the Eleven Years premise
+Facts: US median tenure with current employer 3.9 years (BLS, Employee Tenure, Jan 2024) -> 11 / 3.9 = 2.8 ("almost his third").
+11 years x 52 = 572 weeks ("about five hundred and seventy times").
+
+## Voice
+Kevin found out his coworker had been at this company for eleven years, and decided to escape before lunch.
+The boss raised her mug and announced it. Dave got a cake shaped like his own chair.
+The average American stays at a job for about four years. Dave was almost on his third.
+Kevin quietly grabbed his jacket and speed-walked to the exit.
+Locked.
+He tried the window. It was a poster of a window.
+He tried the elevator. It had one button, and it said Monday.
+He tried the air vent. Dave was already in there, eating cake.
+He tried calling in sick. His boss picked up at the next desk and said, feel better.
+Then the lights went out.
+Every screen in the office turned on at once, and every screen was Dave.
+The whole team slowly turned around, holding paper plates, whispering, one more week.
+Luckily, Kevin found the fire exit.
+Unluckily, it opened straight into his performance review.
+You see, nobody plans to stay eleven years. You just say one more week, about five hundred and seventy times.
+Ten years later, Kevin is in the air vent, eating cake.
