@@ -12,7 +12,7 @@ export type LightPreset = {
   sunCol: string; sunI: number; sky: string; ground: string; hemiI: number;         // three lights (unpatched mats only)
   bias: number; normalBias: number;
 };
-export type Light = "office" | "dim" | "horror";
+export type Light = "office" | "dim" | "horror" | "dark";
 export const LIGHTS: Record<Light, LightPreset> = {
   // bright office morning: sun through the window wall, soft bluish shade (interiors bounce a lot of light)
   office: {
@@ -44,6 +44,16 @@ export const LIGHTS: Record<Light, LightPreset> = {
     sunCol: "#d0fff0", sunI: 2.0, sky: "#203040", ground: "#101418", hemiI: 0.3,
     bias: -0.0003, normalBias: 0.012,
   },
+  // lights out: only the monitors glow. Cold blue key from the screens, near-black shade, deep blue fog
+  dark: {
+    az: 0, el: 20,
+    lit: [0.34, 0.46, 0.78], shade: [0.04, 0.05, 0.1], lift: [0.015, 0.02, 0.05], lambert: 0.5, sideK: 0.8, term: 0.15,
+    charTint: [0.62, 0.74, 1.0], charShade: 0.78, charGrad: 0.16, bodyGrad: 0.32, sideTint: [0.6, 0.68, 0.95],
+    blob: [0.35, 0.38, 0.5], actorShadow: false,
+    top: "#05080f", hor: "#05080f", skyCurve: [0.0, 0.5, 0.6], fog: "#04070d", fogNear: 9, fogFar: 42, sunDisc: "#000000",
+    sunCol: "#a8c8ff", sunI: 1.6, sky: "#18243a", ground: "#06080c", hemiI: 0.25,
+    bias: -0.0003, normalBias: 0.012,
+  },
 };
 
 /** world-only look per light (sky stops by elevation in degrees, river colours, cloud palette). All colours are
@@ -59,4 +69,5 @@ export const LOOK: Record<Light, { bounce: C3; sat: number; window: string[] }> 
   office: { bounce: [0.02, 0.015, 0.0], sat: 1.06, window: ["#cfe4f7", "#9cc3ea", "#6a9fe0"] },
   dim: { bounce: [0, 0, 0], sat: 0.92, window: ["#8a9ab8", "#5a6a8a", "#33405a"] },
   horror: { bounce: [0, 0, 0], sat: 0.7, window: ["#0e1a24", "#0a141c", "#060c12"] },
+  dark: { bounce: [0, 0, 0], sat: 0.8, window: ["#0a1020", "#080c18", "#04060c"] },
 };

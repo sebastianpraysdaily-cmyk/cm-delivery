@@ -7,9 +7,11 @@ import { twoTone, TONE, CHAR, untone } from "./shade";
 import { LIGHTS, LOOK, Light } from "./lights";
 import { NOINK } from "./ink";
 import { CARD_K } from "./cardshade";
-import { Pool, Actor, Fx, stage } from "./cast";
+import { Pool, Actor, Fx, stage, DAVE } from "./cast";
+import { Pen, bodyFront } from "./toon";
 import {
-  FPS, SHOTS, CEIL, TABLE, OX, EXIT_Z, STAIR, ELEV, PRINTER, DESK, M1, M2, B, camAt, lightLevel, clamp01, smooth, V3,
+  FPS, SHOTS, CEIL, TABLE, OX, EXIT_Z, ELEV, PANEL, POSTER, VENT, FIRE, ROOM_TABLE, PRINTER, DESK, B, camAt, lightLevel,
+  screensDave, clamp01, smooth, V3,
 } from "./story";
 
 // ---------------- painted textures ----------------
@@ -92,6 +94,45 @@ const corkTex = ctex(256, 192, (g, r) => {
   g.strokeStyle = "#6a4a2a"; g.lineWidth = 10; g.strokeRect(0, 0, 256, 192);
 });
 
+/** the "window" poster: a painted window (frame, mullions, skyline) with a white paper border, a curling corner */
+const posterTex = ctex(512, 400, (g, r) => {
+  g.fillStyle = "#fbfaf4"; g.fillRect(0, 0, 512, 400);
+  const img = (skylineTex.image as HTMLCanvasElement);
+  g.drawImage(img, 0, 60, 512, 380, 30, 30, 452, 340);
+  g.fillStyle = "#f4f2ec"; g.fillRect(30, 30, 452, 16); g.fillRect(30, 354, 452, 16); g.fillRect(30, 30, 16, 340); g.fillRect(466, 30, 16, 340);
+  g.fillRect(248, 30, 16, 340); g.fillRect(30, 230, 452, 12);
+  g.strokeStyle = "rgba(40,40,60,0.55)"; g.lineWidth = 3; g.strokeRect(30, 30, 452, 340);
+  g.fillStyle = "rgba(255,255,255,0.18)"; g.beginPath(); g.moveTo(60, 60); g.lineTo(140, 60); g.lineTo(60, 200); g.fill();
+  g.fillStyle = "#d8d4c8"; g.beginPath(); g.moveTo(512, 340); g.lineTo(512, 400); g.lineTo(452, 400); g.closePath(); g.fill();
+  g.strokeStyle = "rgba(60,50,40,0.35)"; g.lineWidth = 4; g.strokeRect(2, 2, 508, 396);
+  for (const [x, y] of [[0, 0], [470, 0], [0, 358]]) { g.fillStyle = "rgba(240,236,210,0.9)"; g.fillRect(x, y, 42, 42); }
+}, 9);
+/** tape squares left on the wall behind the poster */
+const tapeTex = ctex(64, 64, (g) => { g.fillStyle = "rgba(245,240,215,0.95)"; g.fillRect(8, 8, 48, 48); g.strokeStyle = "rgba(120,110,80,0.4)"; g.lineWidth = 2; g.strokeRect(8, 8, 48, 48); });
+/** the review room whiteboard: a line chart that goes down, a down arrow, a frowny face (no text) */
+const boardTex = ctex(512, 320, (g) => {
+  g.fillStyle = "#fbfcfd"; g.fillRect(0, 0, 512, 320);
+  g.strokeStyle = "#2a2a30"; g.lineWidth = 5; g.beginPath(); g.moveTo(50, 30); g.lineTo(50, 280); g.lineTo(470, 280); g.stroke();
+  g.strokeStyle = "#d84a3a"; g.lineWidth = 9; g.lineJoin = "round"; g.beginPath();
+  [[60, 70], [130, 90], [190, 80], [250, 150], [310, 140], [370, 220], [440, 262]].forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y))); g.stroke();
+  g.fillStyle = "#d84a3a"; g.beginPath(); g.moveTo(458, 272); g.lineTo(428, 270); g.lineTo(450, 246); g.fill();
+  g.strokeStyle = "#3e7fd2"; g.lineWidth = 6; g.beginPath(); g.arc(400, 80, 36, 0, 7); g.stroke();
+  g.fillStyle = "#3e7fd2"; g.beginPath(); g.arc(388, 70, 5, 0, 7); g.arc(412, 70, 5, 0, 7); g.fill();
+  g.beginPath(); g.arc(400, 108, 16, 1.15 * Math.PI, 1.85 * Math.PI); g.stroke();
+  g.strokeStyle = "#9aa3ad"; g.lineWidth = 10; g.strokeRect(5, 5, 502, 310);
+});
+/** a monitor showing Dave: blue glow, his head cropped from the real character drawing */
+const daveScreen = (() => {
+  const c = document.createElement("canvas"); c.width = 600; c.height = 1000;
+  const g = c.getContext("2d")!;
+  const gr = g.createRadialGradient(300, 330, 40, 300, 330, 420); gr.addColorStop(0, "#cfe6ff"); gr.addColorStop(1, "#4f8fd6");
+  g.fillStyle = gr; g.fillRect(0, 0, 600, 1000);
+  bodyFront(new Pen(g), DAVE, { mode: "stand", expr: "creepy", seed: 2 });
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  t.repeat.set(0.8, 0.36); t.offset.set(0.1, 0.505);
+  return t;
+})();
+
 // ---------------- builders ----------------
 type MatOpts = { map?: THREE.Texture; liftK?: number };
 const mat = (color: string, o: MatOpts = {}) => twoTone(new THREE.MeshLambertMaterial({ color, map: o.map ?? null }), o.liftK ?? 1);
@@ -109,7 +150,12 @@ export class World {
   private panels: THREE.MeshBasicMaterial;
   private windowMat: THREE.MeshBasicMaterial;
   private exitSign: THREE.MeshBasicMaterial;
-  private stairDoor = new THREE.Group();
+  private poster = new THREE.Group();
+  private grate = new THREE.Group();
+  private fireDoor = new THREE.Group();
+  private spill!: THREE.MeshBasicMaterial;
+  private buttonMat!: THREE.MeshBasicMaterial;
+  private screens: THREE.MeshBasicMaterial[] = [];
   private elevL!: THREE.Mesh; private elevR!: THREE.Mesh;
   private exitDoor = new THREE.Group();
   private platePut!: THREE.Group;
@@ -146,17 +192,14 @@ export class World {
       fabric: mat("#ffffff", { map: fabricTex }), frame: mat("#c9c9c6"),
       desk: mat("#d9c8a4"), chair: mat("#3c3f52"),
       pot: mat("#c8693a"), leaf: mat("#4f9a4a"), leaf2: mat("#3f8a44"),
-      door: mat("#b8875a"), cake: mat("#fbf5ea"), icing: mat("#e8739a"), candle: mat("#7fb8f0"),
-      cork: mat("#ffffff", { map: corkTex }), red: mat("#e04848"), paper: mat("#f7f7f2"),
+      door: mat("#b8875a"), cake: mat("#fbf5ea"), chocolate: mat("#5a3424"), cakeChair: mat("#3c3f52"), fire: mat("#c0353a"), icing: mat("#e8739a"), candle: mat("#7fb8f0"),
+      cork: mat("#ffffff", { map: corkTex }), red: mat("#e04848"), paper: mat("#f7f7f2"), duct: mat("#c3c8ce"), ductIn: mat("#1a1c22"),
     };
     // floors (receive only)
     this.box(R, [0, -0.05, 0], [9.4, 0.1, 7.4], "vinyl", false, rep(vinylTex, 5, 4));
     this.box(R, [30, -0.05, -3], [24, 0.1, 32], "carpet", false, rep(carpetTex, 18, 24));
     this.breakRoom(R, [0, 0, 0], 1, true);
     this.office(R);
-    // break-room copies (rotated: their window wall faces back toward the lobby door)
-    const c1 = new THREE.Group(); c1.position.set(M1[0], 0, M1[2]); c1.rotation.y = -Math.PI / 2; R.add(c1); this.breakRoomCopy(c1);
-    const c2 = new THREE.Group(); c2.position.set(M2[0], 0, M2[2]); c2.rotation.y = Math.PI / 2; R.add(c2); this.breakRoomCopy(c2);
     R.traverse((o) => { if ((o as THREE.Mesh).isMesh && !o.userData.noShadow) { o.castShadow = !o.userData.noCast; o.receiveShadow = true; } });
   }
 
@@ -227,18 +270,20 @@ export class World {
     this.box(p, [c[0], c[1] - 0.03, c[2]], [2.2, 0.06, 1.0], "wood");
     for (const [dx, dz] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) this.box(p, [c[0] + dx * 0.98, (c[1] - 0.06) / 2, c[2] + dz * 0.4], [0.06, c[1] - 0.06, 0.06], "metalDark");
     if (!cake) return;
-    // sheet cake on a board, pink icing border, a missing corner, eleven candles
-    this.box(p, [c[0], c[1] + 0.01, c[2]], [0.78, 0.02, 0.52], "white");
-    this.box(p, [c[0] - 0.05, c[1] + 0.07, c[2]], [0.58, 0.1, 0.4], "cake");
-    this.box(p, [c[0] - 0.05, c[1] + 0.125, c[2] + 0.19], [0.58, 0.025, 0.03], "icing");
-    this.box(p, [c[0] - 0.05, c[1] + 0.125, c[2] - 0.19], [0.58, 0.025, 0.03], "icing");
-    this.box(p, [c[0] + 0.23, c[1] + 0.125, c[2]], [0.03, 0.025, 0.4], "icing");
-    this.box(p, [c[0] - 0.33, c[1] + 0.125, c[2]], [0.03, 0.025, 0.4], "icing");
+    // a cake shaped like Dave's office chair: star base, pole, seat, backrest, armrests, icing trim, eleven candles
+    this.box(p, [c[0], c[1] + 0.01, c[2]], [0.62, 0.02, 0.5], "white");
+    for (let i = 0; i < 5; i++) { const a = i * 1.2566; const leg = this.box(p, [c[0] + Math.cos(a) * 0.1, c[1] + 0.035, c[2] + Math.sin(a) * 0.1], [0.2, 0.03, 0.04], "chocolate"); leg.rotation.y = -a; }
+    this.cyl(p, [c[0], c[1] + 0.09, c[2]], 0.025, 0.1, "chocolate");
+    this.box(p, [c[0], c[1] + 0.16, c[2]], [0.3, 0.06, 0.28], "cakeChair");
+    this.box(p, [c[0], c[1] + 0.3, c[2] - 0.13], [0.3, 0.24, 0.05], "cakeChair");
+    this.box(p, [c[0], c[1] + 0.195, c[2]], [0.31, 0.015, 0.29], "icing");
+    this.box(p, [c[0], c[1] + 0.425, c[2] - 0.13], [0.31, 0.015, 0.06], "icing");
+    for (const sx of [-1, 1]) { this.box(p, [c[0] + sx * 0.16, c[1] + 0.23, c[2] + 0.01], [0.03, 0.02, 0.18], "chocolate"); this.box(p, [c[0] + sx * 0.16, c[1] + 0.205, c[2] + 0.06], [0.025, 0.05, 0.025], "chocolate"); }
     if (candles) for (let i = 0; i < 11; i++) {
-      const x = c[0] - 0.3 + (i % 6) * 0.1 + (i >= 6 ? 0.05 : 0), z = c[2] + (i >= 6 ? 0.07 : -0.07);
-      this.cyl(p, [x, c[1] + 0.17, z], 0.008, 0.08, "candle", false);
-      const fl = new THREE.Mesh(new THREE.SphereGeometry(0.014, 8, 6), new THREE.MeshBasicMaterial({ color: new THREE.Color(3.0, 1.8, 0.6) }));
-      fl.scale.set(1, 1.7, 1); fl.position.set(x, c[1] + 0.225, z); fl.userData.noShadow = true; p.add(fl); this.flames.push(fl);
+      const x = c[0] - 0.125 + (i % 6) * 0.05 + (i >= 6 ? 0.025 : 0), z = c[2] + (i >= 6 ? 0.06 : -0.04);
+      this.cyl(p, [x, c[1] + 0.225, z], 0.006, 0.06, "candle", false);
+      const fl = new THREE.Mesh(new THREE.SphereGeometry(0.011, 8, 6), new THREE.MeshBasicMaterial({ color: new THREE.Color(3.0, 1.8, 0.6) }));
+      fl.scale.set(1, 1.7, 1); fl.position.set(x, c[1] + 0.27, z); fl.userData.noShadow = true; p.add(fl); this.flames.push(fl);
     }
     // a stack of plates and a few paper cups
     for (let i = 0; i < 4; i++) this.cyl(p, [c[0] + 0.7, c[1] + 0.01 + i * 0.012, c[2] + 0.2], 0.1, 0.01, "white");
@@ -283,23 +328,6 @@ export class World {
       this.box(g, [5.6, -0.04, 1.5], [2.2, 0.08, 4], "carpet", false);
     }
   }
-  /** cheaper copy for behind the doors: window wall, table + cake, counter, fridge, lights */
-  private breakRoomCopy(g: THREE.Group) {
-    // local frame: copy room centred at the table, window wall at local z = -2.3 (faces the door when rotated)
-    this.box(g, [0, -0.022, 0], [4.6, 0.06, 6.6], "vinyl", false, rep(vinylTex, 3, 4));
-    this.wallX(g, -2.25, 2.25, -3.2, "mustard");
-    this.wallZ(g, -3.2, 3.2, -2.25, "wall");
-    this.wallZ(g, -3.2, 3.2, 2.25, "wall");
-    for (const x of [-1.2, 1.2]) this.windowOn(g, [x, 1.6, -3.12], 1.5, 1.3, 0);
-    this.ceiling(g, -2.3, 2.3, -3.3, 3.3, [[0, -1.5], [0, 1.5]]);
-    // table rotated so its long side faces the door
-    const t = new THREE.Group(); t.rotation.y = Math.PI / 2; g.add(t);
-    this.table(t, [0, TABLE[1], 0], true, true);
-    this.box(g, [-1.9, 0.95, -2.5], [0.7, 1.9, 0.7], "white");
-    this.box(g, [1.85, 0.45, -1.8], [0.6, 0.9, 1.8], "cab");
-    this.box(g, [1.83, 0.92, -1.8], [0.66, 0.05, 1.9], "top");
-  }
-
   private office(R: THREE.Object3D) {
     const g = new THREE.Group(); R.add(g);
     // outer walls of the floor
@@ -308,12 +336,12 @@ export class World {
     this.wallX(g, 24, 36, 12, "wall");
     for (const z of [-7.2, -3.6, 0, 3.6, 7.2, 10.4]) this.windowOn(g, [24.08, 1.62, z], 2.4, 1.4, Math.PI / 2);
     // lobby
-    this.wallX(g, 23.9, 27, -10, "wall"); this.wallX(g, 33, 36.1, -10, "wall");
+    this.wallX(g, 23.9, 27, -10, "wall"); this.wallX(g, 33, 36.1, -10, "wall", [[FIRE[0] - 0.5, FIRE[0] + 0.5, 2.1]]);
     this.wallZ(g, -14.1, -10, 27, "teal", [[ELEV[2] - 0.62, ELEV[2] + 0.62, 2.2]]);
-    this.wallZ(g, -14.1, -10, 33, "teal", [[STAIR[2] - 0.55, STAIR[2] + 0.55, 2.12]]);
+    this.wallZ(g, -14.1, -10, 33, "teal");
     this.wallX(g, 27, 33, EXIT_Z, "mustard", [[OX - 0.85, OX + 0.85, 2.2]]);
     this.ceiling(g, 24, 36, -14, 12, [[27, 9.6], [33, 9.6], [27, 6.4], [33, 6.4], [27, 3.2], [33, 3.2], [27, 0], [33, 0], [27, -3.2], [33, -3.2], [27, -6.4], [33, -6.4],
-      [30, 8], [30, 4.8], [30, 1.6], [30, -1.6], [30, -4.8], [30, -8], [30, -12]]);
+      [30, 8], [30, 4.8], [30, 1.6], [30, -1.6], [30, -4.8], [30, -8], [30, -12], [34.5, -12.2]]);
     // vestibule beyond the exit (dark), floor + walls
     this.box(g, [OX, -0.04, -16.2], [4.2, 0.08, 4.4], "dark", false);
     this.wallZ(g, -18.4, -14, 28, "dark"); this.wallZ(g, -18.4, -14, 32, "dark"); this.wallX(g, 28, 32, -18.4, "dark");
@@ -334,20 +362,62 @@ export class World {
     // a chain and padlock on the push bars (it is locked)
     this.box(ED, [0, 1.0, -0.1], [0.5, 0.03, 0.03], "metalDark");
     this.box(ED, [0, 0.92, -0.12], [0.1, 0.12, 0.05], "metal");
-    // stair door (hinged at its -z edge, opens into copy room 1) + stair pictogram plate
-    const SD = this.stairDoor; SD.position.set(STAIR[0], 0, STAIR[2] - 0.55); g.add(SD);
-    this.box(SD, [0, 1.06, 0.55], [0.05, 2.1, 1.08], "door");
-    this.box(SD, [-0.06, 1.0, 0.95], [0.06, 0.05, 0.14], "metal");
-    this.box(SD, [0, 1.55, 0.55], [0.06, 0.4, 0.3], this.M.black);
-    this.box(g, [STAIR[0] - 0.08, 2.35, STAIR[2] - 0.85], [0.02, 0.24, 0.24], "white");
+    // the "window" poster on the lobby's right wall (hinged at its bottom edge so it can fall off) + tape left behind
+    const tape = new THREE.MeshBasicMaterial({ map: tapeTex, transparent: true });
+    const tapeLit = twoTone(new THREE.MeshLambertMaterial({ map: tapeTex, transparent: true }));
+    void tape;
+    for (const [dy, dz] of [[0.52, -0.68], [0.52, 0.68], [-0.52, -0.68]]) this.quad(g, [POSTER[0] - 0.003, POSTER[1] + dy, POSTER[2] + dz], 0.09, 0.09, tapeLit, -Math.PI / 2);
+    const PG = this.poster; PG.position.set(POSTER[0] - 0.01, POSTER[1] - 0.56, POSTER[2]); g.add(PG);
+    const pf = twoTone(new THREE.MeshLambertMaterial({ map: posterTex }));
+    const pb = this.M.paper;
+    const front = new THREE.Mesh(new THREE.PlaneGeometry(1.42, 1.11), pf); front.position.set(0, 0.555, 0); front.rotation.y = -Math.PI / 2; PG.add(front);
+    const back = new THREE.Mesh(new THREE.PlaneGeometry(1.42, 1.11), pb); back.position.set(0.002, 0.555, 0); back.rotation.y = Math.PI / 2; PG.add(back);
+    // performance-review room behind the fire door: x 33..36, z -14..-10
+    this.wallX(g, 33, 36.1, EXIT_Z, "wall");
+    this.box(g, [ROOM_TABLE[0], ROOM_TABLE[1] - 0.03, ROOM_TABLE[2]], [1.9, 0.06, 0.9], "wood");
+    for (const [dx, dz] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) this.box(g, [ROOM_TABLE[0] + dx * 0.85, 0.35, ROOM_TABLE[2] + dz * 0.38], [0.06, 0.7, 0.06], "metalDark");
+    for (const [x, z, back] of [[ROOM_TABLE[0] - 0.45, -13.32, -1], [ROOM_TABLE[0] + 0.45, -13.32, -1], [ROOM_TABLE[0], -11.62, 1]] as const) {
+      this.box(g, [x, 0.46, z], [0.5, 0.06, 0.5], "chair");
+      this.box(g, [x, 0.8, z + back * 0.26], [0.5, 0.62, 0.06], "chair");
+      this.cyl(g, [x, 0.22, z], 0.03, 0.44, "metalDark");
+    }
+    this.box(g, [ROOM_TABLE[0], 1.55, EXIT_Z + 0.09], [1.7, 1.06, 0.04], "metal");
+    this.quad(g, [ROOM_TABLE[0], 1.55, EXIT_Z + 0.115], 1.6, 0.98, twoTone(new THREE.MeshLambertMaterial({ map: boardTex })));
+    this.plantAt(g, [35.5, 0, -13.5], 0.9);
+    this.box(g, [ROOM_TABLE[0] - 0.3, ROOM_TABLE[1] + 0.03, ROOM_TABLE[2] - 0.1], [0.32, 0.015, 0.24], "paper");
+    this.cyl(g, [ROOM_TABLE[0] + 0.55, ROOM_TABLE[1] + 0.05, ROOM_TABLE[2] - 0.15], 0.04, 0.1, "red");
+    // fire exit door (hinged at its +x edge, swings into the review room) + glowing exit pictogram above
+    const FD = this.fireDoor; FD.position.set(FIRE[0] + 0.48, 0, FIRE[2]); g.add(FD);
+    this.box(FD, [-0.48, 1.04, 0], [0.96, 2.08, 0.05], "fire");
+    this.box(FD, [-0.48, 1.0, 0.06], [0.7, 0.06, 0.05], "metal");
+    this.quad(g, [FIRE[0], 2.42, FIRE[2] + 0.11], 0.5, 0.25, this.exitSign);
+    this.box(g, [FIRE[0], 2.42, FIRE[2] + 0.07], [0.56, 0.31, 0.06], "white", false);
+    this.spill = new THREE.MeshBasicMaterial({ color: new THREE.Color(1.8, 1.75, 1.6), side: THREE.DoubleSide });
+    this.quad(g, [FIRE[0], 1.05, FIRE[2] - 0.12], 0.98, 2.08, this.spill);
+    // floor-level air vent housing on the far wall: duct box with an open front, dark inside, a grate that comes off
+    const vx = VENT[0], vz = VENT[2];
+    for (const sx of [-1, 1]) this.box(g, [vx + sx * 0.385, 0.29, vz + 0.25], [0.07, 0.58, 0.5], "duct");
+    this.box(g, [vx, 0.545, vz + 0.25], [0.84, 0.07, 0.5], "duct");
+    this.box(g, [vx, 0.03, vz + 0.25], [0.84, 0.06, 0.5], "duct");
+    this.box(g, [vx, 0.29, vz + 0.49], [0.7, 0.5, 0.02], "ductIn");
+    for (const sx of [-1, 1]) this.box(g, [vx + sx * 0.345, 0.29, vz + 0.25], [0.01, 0.46, 0.48], "ductIn");
+    this.box(g, [vx, 0.505, vz + 0.25], [0.68, 0.01, 0.48], "ductIn");
+    const GR = this.grate; GR.position.set(vx, 0.06, vz - 0.02); g.add(GR);
+    this.box(GR, [0, 0.22, 0], [0.7, 0.03, 0.025], "metal"); this.box(GR, [0, 0.0, 0], [0.7, 0.03, 0.025], "metal");
+    this.box(GR, [0, 0.44, 0], [0.7, 0.03, 0.025], "metal");
+    for (let i = 0; i < 8; i++) this.box(GR, [-0.3 + i * 0.086, 0.22, 0], [0.02, 0.44, 0.02], "metal");
+    for (const sx of [-1, 1]) this.box(GR, [sx * 0.34, 0.22, 0], [0.03, 0.47, 0.025], "metal");
     // elevator: brushed metal frame, two sliding panels, call buttons
     this.box(g, [ELEV[0] + 0.09, 1.15, ELEV[2] - 0.67], [0.06, 2.3, 0.1], "metalDark");
     this.box(g, [ELEV[0] + 0.09, 1.15, ELEV[2] + 0.67], [0.06, 2.3, 0.1], "metalDark");
     this.box(g, [ELEV[0] + 0.09, 2.25, ELEV[2]], [0.06, 0.1, 1.44], "metalDark");
     this.elevL = this.box(g, [ELEV[0] + 0.11, 1.1, ELEV[2] - 0.3], [0.04, 2.2, 0.6], "metal");
     this.elevR = this.box(g, [ELEV[0] + 0.11, 1.1, ELEV[2] + 0.3], [0.04, 2.2, 0.6], "metal");
-    this.box(g, [ELEV[0] + 0.1, 1.1, ELEV[2] + 0.95], [0.04, 0.3, 0.14], "metalDark");
-    for (const y of [1.04, 1.16]) this.box(g, [ELEV[0] + 0.13, y, ELEV[2] + 0.95], [0.02, 0.06, 0.06], "white");
+    this.box(g, [ELEV[0] + 0.1, 1.1, ELEV[2] + 0.95], [0.04, 0.3, 0.16], "metalDark");
+    this.buttonMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(0.85, 0.85, 0.82) });
+    const btn = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.02, 28), this.buttonMat);
+    btn.rotation.z = Math.PI / 2; btn.position.set(PANEL[0] + 0.005, PANEL[1], PANEL[2]); btn.userData.noShadow = true; g.add(btn);
+    this.cyl(g, [PANEL[0] - 0.004, PANEL[1], PANEL[2]], 0.045, 0.012, "metal").rotation.z = Math.PI / 2;
     this.box(g, [ELEV[0] + 0.09, 2.5, ELEV[2]], [0.03, 0.18, 0.5], this.M.black);
     // cubicles: dividers (fabric in a frame), desks with monitors, chairs, plants
     const cells = [9.6, 6.4, 3.2, 0, -3.2, -6.4];
@@ -367,12 +437,15 @@ export class World {
         const dz = zc + 1.15;
         this.box(g, [xm, 0.72, dz], [wx - 0.3, 0.05, 0.75], "desk");
         for (const x of [xa + 0.3, xb - 0.3]) this.box(g, [x, 0.36, dz], [0.05, 0.7, 0.65], "frame");
-        const mx = xm - side * 0.6;
-        this.box(g, [mx, 1.02, dz + 0.1], [0.62, 0.4, 0.04], "black");
-        this.quad(g, [mx, 1.02, dz + 0.075], 0.56, 0.34, new THREE.MeshBasicMaterial({ map: screenTex, color: new THREE.Color(1.15, 1.15, 1.15) }), Math.PI);
-        this.box(g, [mx, 0.82, dz + 0.12], [0.06, 0.18, 0.06], "black");
-        this.box(g, [mx + side * 0.7, 0.76, dz - 0.05], [0.42, 0.02, 0.16], "black");
-        if ((zc * 7 + side) % 3 === 0) this.cyl(g, [mx - side * 0.7, 0.8, dz], 0.04, 0.11, "red");
+        // monitors at the aisle end of each desk, turned to face the aisle (so "every screen" reads from it)
+        // (angled toward the lobby end: normal (+-0.6, 0, -0.8))
+        const mx = side < 0 ? xb - 0.5 : xa + 0.5, sx = side < 0 ? 1 : -1, yaw = Math.atan2(sx * 0.6, -0.8);
+        const mon = this.box(g, [mx, 1.02, dz], [0.62, 0.4, 0.04], "black"); mon.rotation.y = yaw;
+        const sm = new THREE.MeshBasicMaterial({ map: screenTex, color: new THREE.Color(1.15, 1.15, 1.15), fog: false }); this.screens.push(sm);
+        this.quad(g, [mx + sx * 0.6 * 0.025, 1.02, dz - 0.8 * 0.025], 0.56, 0.34, sm, yaw);
+        this.box(g, [mx - sx * 0.6 * 0.05, 0.79, dz + 0.8 * 0.05], [0.06, 0.12, 0.06], "black");
+        this.box(g, [xm, 0.76, dz - 0.05], [0.42, 0.02, 0.16], "black");
+        if ((zc * 7 + side) % 3 === 0) this.cyl(g, [xm - side * 0.9, 0.8, dz], 0.04, 0.11, "red");
         // chair for the empty desks, tucked toward the desk
         this.box(g, [xm + side * 0.5, 0.46, zc + 0.3], [0.5, 0.06, 0.5], "chair");
         this.box(g, [xm + side * 0.5, 0.76, zc - 0.0], [0.5, 0.56, 0.06], "chair");
@@ -418,11 +491,11 @@ export class World {
     cam.layers.enable(NOINK);
     const focus = new THREE.Vector3(...c.look);
     // ---- light: fixed world sun per set (through the windows), horror = overhead fluorescent ----
-    const sunDir = new THREE.Vector3(...((s.light === "horror" ? [0.15, 1, 0.1] : s.set === "break" ? [0.32, 0.72, -0.62] : [-0.66, 0.62, 0.22]) as V3)).normalize();
+    const sunDir = new THREE.Vector3(...((s.light === "horror" ? [0.15, 1, 0.1] : s.light === "dark" ? [0.05, 0.42, 1] : s.set === "break" ? [0.32, 0.72, -0.62] : [-0.66, 0.62, 0.22]) as V3)).normalize();
     let lvl = lightLevel(f);
     // time-lapse: days and nights flicker past from "one more week" to past "seventy times"
     let night = 0;
-    if (id === 21 && f >= B.week) { const ph = ((f - B.week) / 10) % 1; night = f < B.seventy + 30 ? (ph > 0.55 ? 1 : 0) : 0; }
+    if (id === 23 && f >= B.week) { const ph = ((f - B.week) / 10) % 1; night = f < B.seventy + 22 ? (ph > 0.55 ? 1 : 0) : 0; }
     if (night) lvl *= 0.35;
     this.sun.color.set(L.sunCol); this.sun.intensity = L.sunI * lvl;
     this.hemi.color.set(L.sky); this.hemi.groundColor.set(L.ground); this.hemi.intensity = L.hemiI;
@@ -443,24 +516,40 @@ export class World {
     untone(L.fog, this.fog.color); this.fog.near = L.fogNear; this.fog.far = L.fogFar;
     scene.fog = this.fog; scene.background = this.fog.color;
     // emissives follow the flicker
-    const pk = s.light === "horror" ? 0.9 : s.light === "dim" ? 1.2 : 1.7;
+    const pk = s.light === "horror" ? 0.9 : s.light === "dim" ? 1.2 : s.light === "dark" ? 0.0 : 1.7;
     this.panels.color.setRGB(pk * k, pk * k * (s.light === "horror" ? 1.12 : 1), pk * k * (s.light === "horror" ? 1.05 : 0.95));
-    const wv = s.light === "horror" ? 0.12 : s.light === "dim" ? 0.55 : night ? 0.18 : 1;
+    const wv = s.light === "horror" ? 0.12 : s.light === "dark" ? 0.07 : s.light === "dim" ? 0.55 : night ? 0.18 : lvl < 0.5 ? 0.25 : 1;
     this.windowMat.color.setRGB(wv * (night ? 0.6 : 1), wv * (night ? 0.7 : 1), wv);
     this.exitSign.color.setRGB(1.6, 1.6, 1.6);
     this.printerLed.color.setRGB(0.2, (Math.floor(f / 6) % 2 ? 2.2 : 0.6), 0.6);
     for (const fl of this.flames) fl.scale.set(1, 1.6 + 0.25 * Math.sin(f * 1.7 + fl.position.x * 40), 1);
     // ---- props posed by the story ----
-    this.platePut.visible = (id === 10 && f >= B.puts + 8) || id === 22 || id === 23;
-    const so = id === 13 ? smooth((f - (B.stairsOpen - 4)) / 10) : 0;
-    this.stairDoor.rotation.y = 1.75 * so;
-    const eo = id === 14 ? smooth((f - (B.elevOpen - 2)) / 14) : 0;
-    this.elevL.position.z = ELEV[2] - 0.3 - 0.58 * eo; this.elevR.position.z = ELEV[2] + 0.3 + 0.58 * eo;
-    const rattle = id === 12 && [B.locked - 2, B.locked + 8, B.locked + 18].some((q) => f >= q && f < q + 5);
-    this.exitDoor.position.z = EXIT_Z + (rattle ? (f % 2 ? 0.02 : -0.02) : 0);
-    const weeks = id === 21 ? clamp01((f - B.week) / (B.seventy + 30 - B.week)) : 0;
-    this.mugs.forEach((m, i) => { m.visible = id === 21 && i < Math.floor(weeks * 30 + 0.001); });
-    this.plant.scale.setScalar(id === 21 ? 1 + 2.2 * weeks : 1);
+    this.platePut.visible = id === 7 && f >= 409;
+    const hit = id === 9 ? f - (B.locked - 1) : -99;
+    this.exitDoor.position.z = EXIT_Z - (hit >= 0 && hit < 6 ? 0.03 * (1 - hit / 6) * (hit % 2 ? -1 : 1) : 0);
+    // the poster: peels forward off the wall about its bottom edge, then slides to the floor
+    const pu = id === 10 ? clamp01((f - (B.poster - 6)) / 13) : 0;
+    this.poster.rotation.z = (Math.PI / 2) * pu * pu; this.poster.position.y = POSTER[1] - 0.56 - (POSTER[1] - 0.56 - 0.01) * pu * pu * pu;
+    this.poster.position.x = POSTER[0] - 0.01 - 0.12 * pu;
+    // the vent grate: yanked off and dropped forward
+    const gu = id === 13 ? clamp01((f - (B.vent - 4)) / 9) : id === 24 ? clamp01((f - 1596) / 9) : id === 14 || id === 25 ? 1 : 0;
+    this.grate.rotation.x = -(Math.PI / 2) * gu * gu; this.grate.position.z = VENT[2] - 0.02 - 0.22 * gu; this.grate.position.x = VENT[0] + (id === 24 ? 0.18 : -0.18) * gu;
+    // fire door swings into the review room; light pours out
+    const fu = id === 21 ? smooth((f - (B.fireExit - 2)) / 8) : id === 22 ? 1 : 0;
+    this.fireDoor.rotation.y = -1.6 * fu;
+    this.spill.color.setRGB(1.8, 1.75, 1.6);
+    // the one elevator button lights up when pressed
+    const pressed = id === 12 && f >= B.monday - 3;
+    this.buttonMat.color.setRGB(pressed ? 2.4 : 0.85, pressed ? 1.9 : 0.85, pressed ? 0.7 : 0.82);
+    // every monitor turns on at once, and every monitor is Dave
+    const dv = screensDave(f) && (id >= 17 && id <= 21);
+    for (const m of this.screens) {
+      if (dv) { m.map = daveScreen; m.color.setRGB(2.5, 2.5, 2.6); }
+      else { m.map = screenTex; const on = s.light === "dark" || lvl < 0.5 ? 0.08 : 1.15; m.color.setRGB(on, on, on); }
+    }
+    const weeks = id === 23 ? clamp01((f - B.week) / (B.seventy + 22 - B.week)) : 0;
+    this.mugs.forEach((m, i) => { m.visible = id === 23 && i < Math.floor(weeks * 30 + 0.001); });
+    this.plant.scale.setScalar(id === 23 ? 1 + 2.2 * weeks : 1);
     // ---- cast + effects (as the bridge world) ----
     const right = new THREE.Vector3().setFromMatrixColumn(cam.matrixWorld, 0);
     const st = stage(id, f, { pos: cam.position, right, sun: sunDir });
@@ -476,7 +565,8 @@ export class World {
       a.mesh.visible = true;
       a.mesh.position.set(p.x, p.y, p.z);
       a.mesh.rotation.set(0, p.yaw ?? Math.atan2(cam.position.x - p.x, cam.position.z - p.z), p.roll ?? 0);
-      a.mesh.scale.set(p.mirror ? -sc2 : sc2, sc2, sc2);
+      const sy = (p.sy ?? 1) * (1 + 0.007 * Math.sin(f * 0.19 + ai * 1.7)), sx = (p.sx ?? 1) / Math.sqrt(1 + 0.007 * Math.sin(f * 0.19 + ai * 1.7));
+      a.mesh.scale.set((p.mirror ? -sc2 : sc2) * sx, sc2 * sy, sc2);
       a.mesh.castShadow = false;
       used.push(a);
     }

@@ -172,9 +172,9 @@ const GRADE_HORROR: GradeParams = {
   tintS: [0.03, -0.03], tintM: [0.01, -0.02], tintH: [0, 0],
   vig: [0.42, 0.3],
 };
-export type GradeKey = "office" | "dim" | "horror";
-export const GRADES: Record<GradeKey, GradeParams> = { office: GRADE_DAY2, dim: { ...GRADE_DAY2, sat: [0.92, 0.95, 0.95], vig: [0.25, 0.38] }, horror: GRADE_HORROR };
-export const GRADE_STRENGTH: Record<GradeKey, number> = { office: 1, dim: 1, horror: 1 };
+export type GradeKey = "office" | "dim" | "horror" | "dark";
+export const GRADES: Record<GradeKey, GradeParams> = { office: GRADE_DAY2, dim: { ...GRADE_DAY2, sat: [0.92, 0.95, 0.95], vig: [0.25, 0.38] }, horror: GRADE_HORROR, dark: { ...GRADE_HORROR } };
+export const GRADE_STRENGTH: Record<GradeKey, number> = { office: 1, dim: 1, horror: 1, dark: 1 };
 /** Apply the preset of a light to the effect (only touches uniforms when the light changes). */
 export function gradeFor(fx: GradeEffect, light: GradeKey) {
   const tag = fx as unknown as { _light?: string };

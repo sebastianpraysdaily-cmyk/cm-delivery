@@ -229,7 +229,7 @@ const DEF_LIGHT = rad(-120);
 
 // ---------------- faces ----------------
 export type Expr = "neutral" | "stern" | "grin" | "laugh" | "whistle" | "nervous" | "shock" | "relief" | "relief_open" | "dazed"
-  | "pained" | "smile" | "smile_closed" | "lick" | "creepy" | "stare" | "panic" | "fakecalm";
+  | "pained" | "smile" | "smile_closed" | "lick" | "creepy" | "stare" | "panic" | "fakecalm" | "whisper" | "chew";
 type EyeK = "dot" | "small" | "lid" | "slit" | "happy" | "dash" | "squeeze" | "shock" | "shockHalf" | "spiral";
 type MouthK = "dash" | "frown" | "smirk" | "smile" | "smileWide" | "grin" | "laugh" | "o" | "O" | "wave" | "teeth" | "lick";
 /** eyes [back, front], brows [inner, outer] offsets in u (+ = down), mouth kind */
@@ -252,6 +252,8 @@ const FACE: Record<Expr, { eye: [EyeK, EyeK]; brow: [number, number]; mouth: Mou
   stare: { eye: ["small", "small"], brow: [2, 0], mouth: "dash" },
   panic: { eye: ["shock", "shock"], brow: [-7, 3], mouth: "teeth" },
   fakecalm: { eye: ["small", "small"], brow: [-4, 3], mouth: "smile" },
+  whisper: { eye: ["dot", "dot"], brow: [-1, -2], mouth: "o" },
+  chew: { eye: ["dot", "dot"], brow: [-1, -2], mouth: "wave" },
 };
 const halfLid = (k: EyeK): EyeK => (k === "dot" || k === "small" ? "lid" : k === "lid" ? "slit" : k === "shock" ? "shockHalf" : k);
 const eyeKind = (k: EyeK, lid: number): EyeK =>
@@ -430,7 +432,7 @@ const hatOn = (p: Pen, o: Outfit, hp: P2[], H: Blob, cx: number, hc: number, lig
 // ---------------- bodies ----------------
 export type Arms = [P2[], P2[]];
 /** held prop; for the hammer the number is the strike 0 (raised) .. 1 (struck) */
-export type Prop = null | "icecream" | "shako" | ["hammer", number] | "plate" | "mug" | "mugUp" | "badge" | "jacket";
+export type Prop = null | "icecream" | "shako" | ["hammer", number] | "plate" | "mug" | "mugUp" | "badge" | "jacket" | "phone" | "fork" | "folder";
 export type ArmPose = "clap" | "clapOpen" | "reach" | "shrug" | "door";
 
 const BUILD: Record<Build, { a: number; torso: number; legs: number; tw: number }> = {
@@ -442,6 +444,8 @@ const BUILD: Record<Build, { a: number; torso: number; legs: number; tw: number 
 export type FrontOpts = {
   phase?: number; expr?: Expr; mode?: "march" | "stroll" | "stand" | "sit" | "fall"; look?: number; blink?: boolean | number; lift?: number;
   prop?: Prop; tilt?: number; headTilt?: number; wave?: number; arms?: ArmPose;
+  /** fork prop: 0 = hand at the chest, 1 = bite at the mouth */
+  bite?: number;
   /** canvas angle the key light comes FROM (painted crescent + thick outline side) */
   light?: number; facing?: -1 | 0 | 1; seed?: number;
 };
@@ -452,7 +456,7 @@ const footStroke = (p: Pen, a: P2, b: P2, w: number, col: string) => {
 };
 
 export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
-  const { phase = 0, expr = "neutral", mode = "march", look = 0, blink = false, lift = 60, prop = null, tilt = 0, headTilt = 0, wave, arms: armPose,
+  const { phase = 0, expr = "neutral", mode = "march", look = 0, blink = false, lift = 60, prop = null, tilt = 0, headTilt = 0, wave, arms: armPose, bite = 0,
     light = DEF_LIGHT, facing = 0, seed = 1 } = opts;
   const Bd = BUILD[o.build ?? "adult"], skin = o.skin ?? SKIN, two = Math.PI * 2, lid = lidOf(blink);
   const H = headBlob(seed, Bd.a, facing), W = 2 * H.a, HH = 2 * H.b, u = W / 100;
@@ -517,7 +521,7 @@ export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
   const rifle = !!o.rifle && (mode === "march" || mode === "stand" || mode === "stroll");
   type Arm = { pts: [P2, P2, P2]; front: boolean };
   const arms: Arm[] = [];
-  if (mode === "sit") for (const side of [-1, 1]) arms.push({ pts: [sh(side), [tcx + side * (1.1 * T.a + 6 * u), sh(side)[1] + 0.4 * HH], [tcx + side * (1.2 * T.a + 10 * u), torsoBot + 0.04 * HH]], front: false });
+  if (mode === "sit" && !prop) for (const side of [-1, 1]) arms.push({ pts: [sh(side), [tcx + side * (1.1 * T.a + 6 * u), sh(side)[1] + 0.4 * HH], [tcx + side * (1.2 * T.a + 10 * u), torsoBot + 0.04 * HH]], front: false });
   else if (mode === "fall") for (const side of [-1, 1]) arms.push({ pts: [sh(side), [tcx + side * (1.15 * T.a + 12 * u), sh(side)[1] - 0.25 * HH], [tcx + side * (1.3 * T.a + 24 * u), sh(side)[1] - 0.68 * HH]], front: false });
   else {
     const S0 = sh(-1), S1 = sh(1);
@@ -539,7 +543,14 @@ export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
     } else if (wave !== undefined) {
       const S = sh(1);
       arms.push({ pts: [S, [tcx + 1.1 * T.a + 10 * u + 3 * u * wave, S[1] - 0.22 * HH], [tcx + 1.18 * T.a + 16 * u + 12 * u * wave, S[1] - 0.6 * HH]], front: false });
-    } else if (prop === "plate" || prop === "mug" || prop === "badge") {
+    } else if (prop === "phone") {
+      const S = sh(1);
+      arms.push({ pts: [S, [tcx + 1.25 * T.a + 12 * u, S[1] + 0.1 * HH], [300 + 0.5 * W + 4 * u, chin - 0.32 * HH]], front: true });
+    } else if (prop === "fork") {
+      const S = sh(1), k = clamp(bite, 0, 1);
+      const Hd = lerp2([tcx + 0.45 * T.a, S[1] + 0.3 * HH], [300 + 16 * u + 7 * u * facing, chin - 0.18 * HH], k);
+      arms.push({ pts: [S, [tcx + 1.2 * T.a + 8 * u, S[1] + 0.3 * HH - 0.2 * HH * k], Hd], front: true });
+    } else if (prop === "plate" || prop === "mug" || prop === "badge" || prop === "folder") {
       const S = sh(1);
       arms.push({ pts: [S, [tcx + 1.1 * T.a + 6 * u, S[1] + 0.42 * HH], [tcx + 0.55 * T.a, S[1] + (prop === "badge" ? 0.1 : 0.42) * HH]], front: true });
     } else if (prop === "mugUp") {
@@ -622,6 +633,10 @@ export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
       p.poly([[hx - 10 * u, hy - 20 * u], [hx + 10 * u, hy - 20 * u], [hx + 9 * u, hy + 6 * u], [hx - 9 * u, hy + 6 * u]], "#e04848", 2.4 * u);
       p.arc(hx + 12 * u, hy - 7 * u, 6 * u, 7 * u, -90, 90, 2.6 * u);
       p.dot(hx - 9 * u, hy - 4 * u, 5.5 * u);
+    } else if (prop === "folder") {
+      p.poly([[hx - 30 * u, hy - 30 * u], [hx + 14 * u, hy - 34 * u], [hx + 16 * u, hy + 8 * u], [hx - 28 * u, hy + 10 * u]], "#e8c47a", 2.4 * u);
+      p.stroke([[hx - 22 * u, hy - 18 * u], [hx + 6 * u, hy - 20 * u]], 1.6 * u, "#a8843a");
+      p.dot(hx, hy, 5.5 * u);
     } else if (prop === "badge") {
       p.poly([[hx - 15 * u, hy - 44 * u], [hx + 15 * u, hy - 44 * u], [hx + 15 * u, hy - 4 * u], [hx - 15 * u, hy - 4 * u]], "#ffffff", 2.4 * u);
       p.poly([[hx - 15 * u, hy - 44 * u], [hx + 15 * u, hy - 44 * u], [hx + 15 * u, hy - 36 * u], [hx - 15 * u, hy - 36 * u]], "#3e7fd2", 1.6 * u);
@@ -665,6 +680,20 @@ export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
     const fx = 300 + 7 * u * facing;
     for (const sd of [-1, 1]) p.ell(fx + sd * 13 * u, hc, 11 * u, 9 * u, null, 2.6 * u);
     p.stroke([[fx - 2 * u, hc - u], [fx + 2 * u, hc - u]], 2.4 * u);
+  }
+  p.rot = A ? [rad(A), 300, hipY] : null;
+  const hand = arms.find((a) => a.front && (prop === "phone" || prop === "fork"));
+  if (hand && prop === "phone") {
+    const [hx, hy] = hand.pts[2], ex = 300 + 0.5 * W - 6 * u;
+    p.band([[ex + 2 * u, hc - 26 * u], [hx + 2 * u, hy + 30 * u]], "#2a2a30", 9 * u, 2 * u, "round");
+    p.dot(hx, hy, 5.5 * u);
+  }
+  if (hand && prop === "fork") {
+    const [hx, hy] = hand.pts[2], tx = hx - 14 * u, ty = hy - 12 * u;
+    p.stroke([[hx, hy], [tx, ty]], 2.6 * u, "#c9ccd2");
+    p.poly([[tx - 7 * u, ty - 9 * u], [tx + 6 * u, ty - 10 * u], [tx + 5 * u, ty + 1 * u], [tx - 6 * u, ty + 2 * u]], "#f7efe2", 1.8 * u);
+    p.poly([[tx - 7 * u, ty - 9 * u], [tx + 6 * u, ty - 10 * u], [tx + 6 * u, ty - 6 * u], [tx - 7 * u, ty - 5 * u]], "#e8739a", 1.2 * u);
+    p.dot(hx, hy, 5.5 * u);
   }
   p.rot = null;
 };
