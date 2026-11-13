@@ -9,3 +9,10 @@
 
 ## Changing timing
 Any change to story.ts beat frames → re-run `python3 projects/eleven/audio/soundtrack.py` (its beat table mirrors story.ts).
+
+## Final render (2026-11-13)
+- renders/eleven_years.mp4: 1080x1920, 30 fps, 2065 frames, 68.83 s, h264 CRF 16 + AAC 256k, -14.4 LUFS / -1.9 dBTP.
+- Rendered at 1080p, not 2K: CPU-only container (software GL), ~3 s/frame; 2K would be ~2x longer.
+  For 2K on a GPU machine: add `--scale 1.3333` to the render command.
+- QA (projects/eleven/QA.md): no unplanned black/white/frozen frames; pops are the shock kick (f101),
+  copy-room pull-back (f747) and the planned light flicker.
