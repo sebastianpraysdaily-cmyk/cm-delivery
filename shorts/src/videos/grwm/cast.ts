@@ -443,7 +443,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case 27: { // tossed out the door: an arc to the pavement
       const u = clamp01((f - 2106) / 10);
       if (f >= 2104) {
-        const x = SX - 0.3 + (LAND[0] - SX + 0.3) * u, z = 0.4 + (LAND[2] - 0.4) * u, y = 0.5 + 1.1 * Math.sin(Math.PI * u) * (1 - u * 0.3) - 0.38 * u;
+        const x = SX - 0.3 + (LAND[0] - SX + 0.3) * u, z = 0.4 + (LAND[2] - 0.4) * u, y = 0.5 + 1.1 * Math.sin(Math.PI * u) * (1 - u * 0.3) - 0.08 * u;
         put(out, cam, trev(TREVOR), x, z, t, { y, expr: "panic", roll: -1.57 * u - 0.6 * Math.sin(Math.PI * u), noBlob: true, pop: [B.land] });
       }
       if (f < 2122) for (const [o, dx] of [[g1, -0.7], [g2, 0.55]] as const) put(out, cam, o, SX + dx, 0.6, t, { expr: "stern", arms: "reach", y: 0.12 });
@@ -451,7 +451,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     }
     case 28: case 29: { // on the pavement. Then the sun comes out. Like and subscribe.
       const talkE = id === 29 ? talk(f, B.e1, B.e1E, "grin", "smile_closed") : "dazed";
-      put(out, cam, trev(TREVOR), LAND[0], LAND[2], t, { y: LAND[1] + 0.02, expr: f < B.song2 + 6 ? "dazed" : talkE, roll: -1.57, noBlob: true, pop: [B.song2 + 6, B.e1 - 2] });
+      put(out, cam, trev(TREVOR), LAND[0], LAND[2], t, { y: LAND[1] + 0.22, expr: f < B.song2 + 6 ? "dazed" : talkE, roll: -1.57, noBlob: true, pop: [B.song2 + 6, B.e1 - 2] });
       break;
     }
   }

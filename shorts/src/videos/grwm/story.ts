@@ -185,7 +185,7 @@ const CAMS: Record<number, Key[]> = {
   // 11: wide from the side over the sea: the hard right, the launch
   11: [{ f: 742, s: (f) => { const c = dreamCar(Math.min(f, 800)); return { pos: [-184, 3.5, 30], look: [c.pos[0] * 0.7 + -196 * 0.3, -2.5 + c.pos[1] * 0.5, c.pos[2] * 0.6 + 11 * 0.4], fov: 50, roll: -0.03 }; } }],
   // 12: chase: alongside the flying car, the island ahead
-  12: [{ f: 808, s: (f) => { const c = dreamCar(f); return { pos: add(c.pos, [-1.5, 1.6, 6.5]), look: add(c.pos, [3.0, 0.2, -0.5]), fov: 48, roll: 0.06 }; } }],
+  12: [{ f: 808, s: (f) => { const c = dreamCar(f); return { pos: add(c.pos, [-2.6, 1.9, 7.8]), look: add(c.pos, [0.0, 0.8, 0.3]), fov: 50, roll: 0.06 }; } }],
   // 13: the beach CU
   13: [{ f: 848, s: (f) => dolly(add(ISLAND, [0.6, 1.25, 2.6]), add(ISLAND, [0, 0.95, 0]), pushK(f, 848, 0.003), { fov: 42 }) }],
   // 14: back in the jam (the honk), Trevor turns to us
@@ -218,8 +218,8 @@ const CAMS: Record<number, Key[]> = {
   // 27: the front door from across the street; he flies out
   27: [{ f: 2105, s: (f) => dolly([82.5, 1.6, 10.5], [80.5, 1.2, 1.2], pushK(f, 2105, 0.002), { fov: 50 }) }],
   // 28-29: high over him on the pavement; the sun comes out, slow push
-  28: [{ f: 2128, s: (f) => dolly([81.75, 0.95, 5.4], [81.55, 0.4, 2.5], pushK(f, 2128, 0.0015), { fov: 44 }) }],
-  29: [{ f: 2141, s: (f) => dolly([81.75, 0.95, 5.4], [81.55, 0.4, 2.5], pushK(f, 2128, 0.0015) * pushK(f, 2160, 0.0012), { fov: 44 }) }],
+  28: [{ f: 2128, s: (f) => dolly([82.15, 0.95, 5.4], [81.95, 0.4, 2.5], pushK(f, 2128, 0.0015), { fov: 44 }) }],
+  29: [{ f: 2141, s: (f) => dolly([82.15, 0.95, 5.4], [81.95, 0.4, 2.5], pushK(f, 2128, 0.0015) * pushK(f, 2160, 0.0012), { fov: 44 }) }],
 };
 /** impact kicks: flip sign each frame, decay over 7 f */
 const KICKS: [number, number][] = [[B.freeze, 0.016], [B.splash, 0.01], [B.bite, 0.01], [B.sniff, 0.01], [B.launch, 0.012], [B.honk, 0.02], [B.door, 0.012],
