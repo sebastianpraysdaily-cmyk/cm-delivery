@@ -1,0 +1,11 @@
+node_modules/
+out/
+remotion-tmp/
+public/
+__pycache__/
+projects/*/audio/stem_*.wav
+projects/*/voice/t?.wav
+projects/*/voice/gap.wav
+projects/*/voice/lead.wav
+projects/*/voice/t?.wav
+projects/*/voice/tk.wav

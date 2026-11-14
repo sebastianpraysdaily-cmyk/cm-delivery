@@ -1,0 +1,20 @@
+{
+  "name": "shorts",
+  "private": true,
+  "type": "module",
+  "scripts": { "tsc": "tsc --noEmit" },
+  "dependencies": {
+    "@remotion/bundler": "4.0.543",
+    "@remotion/cli": "4.0.543",
+    "@remotion/renderer": "4.0.543",
+    "@remotion/three": "4.0.543",
+    "remotion": "4.0.543",
+    "@react-three/fiber": "9.3.0",
+    "@react-three/postprocessing": "3.0.4",
+    "postprocessing": "6.37.6",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "three": "0.178.0"
+  },
+  "devDependencies": { "@types/react": "19.1.10", "@types/three": "0.178.1", "typescript": "5.9.2" }
+}
