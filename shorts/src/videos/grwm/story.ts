@@ -28,9 +28,9 @@ export const CEIL_VENT: V3 = [30, CEIL, -7.9]; // Dave hangs out of this one
 /** the apartment: x -43..-37, z -2.5..2.5, ceiling 2.6 */
 export const ACEIL = 2.6;
 export const A_BED: V3 = [-41.4, 0, -1.05];
-export const A_SINK: V3 = [-41.95, 0, 0.3];
+export const A_SINK: V3 = [-41.5, 0, 0.3];
 export const A_EAT: V3 = [-39.6, 0, 0.4];
-export const A_DRESS: V3 = [-38.9, 0, 0.95];
+export const A_DRESS: V3 = [-38.9, 0, 0.25];
 export const A_DOOR: V3 = [-37.7, 0, 1.55];
 export const ROACH: V3 = [-42.55, 0.985, -0.95];
 /** gridlock: road along z at x = -100, Trevor's car at the origin of the jam, facing -z */
@@ -40,7 +40,7 @@ export const CLIFF_X = -196;
 export const ISLAND: V3 = [-150, -24.6, 9.5];
 /** the street outside: facade at z = 0 facing +z, door at x = 80 */
 export const SX = 80;
-export const LAND: V3 = [81.25, 0.12, 2.5];
+export const LAND: V3 = [80.6, 0.12, 2.5];
 
 // ---------------- story beats (frames, from beats.json) ----------------
 export const B = { start: 0, h1: 8, h1E: 73, freeze: 73, h2: 86, h2E: 129, rewind: 129, h3: 148, h3E: 222, g1: 230, g1E: 250, splash: 250, g2: 266, g2E: 284, bite: 284, g3a: 304, g3aE: 320, sniff: 320, g3b: 335, g3bE: 366, n1a: 375, n1aE: 435, n1b: 438, n1bE: 521, n2a: 532, n2aE: 613, n2b: 616, n2bE: 682, dream: 682, c1: 885, c1E: 935, n3a: 946, n3aE: 990, n3b: 993, n3bE: 1025, door: 1025, d1: 1037, d1E: 1166, d2: 1174, d2E: 1323, n4: 1332, n4E: 1377, stand: 1377, s1a: 1396, s1aE: 1412, s1b: 1419, s1bE: 1514, r1: 1525, r1E: 1597, r2: 1604, r2E: 1685, r3: 1693, r3E: 1798, r4: 1806, r4E: 1875, r5: 1883, r5E: 1932, grab: 1932, r6: 1941, r6E: 2034, h1b: 2040, h1bE: 2105, toss: 2105, e1: 2165, e1E: 2270, n5a: 2280, n5aE: 2347, n5b: 2350, n5bE: 2391, end: 2391,
@@ -164,46 +164,46 @@ const CAMS: Record<number, Key[]> = {
   2: [{ f: 129, s: (f) => dolly([-41.3, 1.05, 1.35], [-41.4, 1.0, -1.05], pushK(f, 129, 0.0018), { fov: 52 }) },
     { f: B.h3 - 3, e: "out", dur: 10, s: (f) => dolly([-41.32, 1.1, 0.75], [-41.4, 1.05, -1.05], pushK(f, B.h3, 0.002), { fov: 46 }) }],
   // 3: skincare: the phone propped on the mirror
-  3: [{ f: 227, s: (f) => dolly([-42.6, 1.5, 0.32], [-41.95, 1.42, 0.3], pushK(f, 227, 0.003), { fov: 46 }) }],
+  3: [{ f: 227, s: (f) => dolly([-42.82, 1.45, 0.34], [-41.5, 1.3, 0.3], pushK(f, 227, 0.003), { fov: 50 }) }],
   // 4: breakfast: the slice from the box
-  4: [{ f: 262, s: (f) => dolly([-39.55, 1.45, 1.55], [-39.6, 1.38, 0.4], pushK(f, 262, 0.003), { fov: 44 }) },
-    { f: B.bite - 3, e: "out", dur: 9, s: (f) => dolly([-39.56, 1.48, 1.2], [-39.6, 1.45, 0.4], pushK(f, B.bite, 0.002), { fov: 40, roll: 0.05 }) }],
+  4: [{ f: 262, s: (f) => dolly([-39.55, 1.45, 2.25], [-39.6, 1.3, 0.4], pushK(f, 262, 0.003), { fov: 46 }) },
+    { f: B.bite - 3, e: "out", dur: 9, s: (f) => dolly([-39.56, 1.48, 1.85], [-39.6, 1.38, 0.4], pushK(f, B.bite, 0.002), { fov: 42, roll: 0.05 }) }],
   // 5: outfit: the sniff test
-  5: [{ f: 300, s: (f) => dolly([-39.0, 1.4, 2.25], [-38.9, 1.25, 0.95], pushK(f, 300, 0.002), { fov: 46 }) },
-    { f: B.sniff - 3, e: "out", dur: 9, s: (f) => dolly([-38.95, 1.5, 1.85], [-38.9, 1.48, 0.95], pushK(f, B.sniff, 0.002), { fov: 40, roll: -0.05 }) }],
+  5: [{ f: 300, s: (f) => dolly([-39.0, 1.4, 2.3], [-38.9, 1.2, 0.25], pushK(f, 300, 0.002), { fov: 48 }) },
+    { f: B.sniff - 3, e: "out", dur: 9, s: (f) => dolly([-38.95, 1.5, 1.95], [-38.9, 1.38, 0.25], pushK(f, B.sniff, 0.002), { fov: 42, roll: -0.05 }) }],
   // 6: wide from the corner: the whole dump, Trevor at the door with his lanyard
-  6: [{ f: 372, s: (f) => dolly([-42.6, 2.1, 2.2], [-39.0, 0.9, -0.6], pushK(f, 372, 0.0015), { fov: 58 }) }],
+  6: [{ f: 372, s: (f) => dolly([-42.7, 2.15, -2.2], [-38.7, 0.95, 0.9], pushK(f, 372, 0.0015), { fov: 58 }) }],
   // 7: counter level: the roach on the pizza box
   7: [{ f: 438, s: (f) => dolly([-42.2, 1.12, -0.35], [-42.55, 1.03, -0.95], pushK(f, 438, 0.0025), { fov: 40 }) },
     { f: 470, e: "out", dur: 12, s: (f) => dolly([-42.38, 1.08, -0.62], [-42.55, 1.03, -0.95], pushK(f, 470, 0.002), { fov: 38, roll: 0.04 }) }],
   // 8: high over the jam, slow push down the line of cars
   8: [{ f: 528, s: (f) => dolly([-96.5, 7.5, 9.5], [-100, 0.6, -2], pushK(f, 528, 0.0018), { fov: 50 }) }],
   // 9: through the windshield: dead eyes
-  9: [{ f: 616, s: (f) => dolly([-100.32, 1.32, -2.4], [-100.32, 1.22, 0.35], pushK(f, 616, 0.0028), { fov: 38 }) }],
+  9: [{ f: 616, s: (f) => dolly([-100.32, 1.5, -2.6], [-100.32, 1.38, 0.42], pushK(f, 616, 0.0028), { fov: 38 }) }],
   // 10: the dream: through the windshield of the moving car, sunny, smiling
-  10: [{ f: 682, s: (f) => { const c = dreamCar(f); const k = pushK(f, 682, 0.002); return dolly(add(c.pos, [-0.32, 1.32, -2.4]), add(c.pos, [-0.32, 1.25, 0.35]), k, { fov: 40 }); } }],
+  10: [{ f: 682, s: (f) => { const c = dreamCar(f); const k = pushK(f, 682, 0.002); return dolly(add(c.pos, [-0.32, 1.5, -2.6]), add(c.pos, [-0.32, 1.38, 0.42]), k, { fov: 40 }); } }],
   // 11: wide from the side over the sea: the hard right, the launch
-  11: [{ f: 742, s: (f) => { const c = dreamCar(Math.min(f, 790)); return { pos: [-188, 4.5, 25], look: [c.pos[0] * 0.6 + -197 * 0.4, 0.6 + c.pos[1] * 0.5, c.pos[2] * 0.5 + 11 * 0.5], fov: 50, roll: -0.03 }; } }],
+  11: [{ f: 742, s: (f) => { const c = dreamCar(Math.min(f, 800)); return { pos: [-184, 3.5, 30], look: [c.pos[0] * 0.7 + -196 * 0.3, -2.5 + c.pos[1] * 0.5, c.pos[2] * 0.6 + 11 * 0.4], fov: 50, roll: -0.03 }; } }],
   // 12: chase: alongside the flying car, the island ahead
   12: [{ f: 808, s: (f) => { const c = dreamCar(f); return { pos: add(c.pos, [-1.5, 1.6, 6.5]), look: add(c.pos, [3.0, 0.2, -0.5]), fov: 48, roll: 0.06 }; } }],
   // 13: the beach CU
   13: [{ f: 848, s: (f) => dolly(add(ISLAND, [0.6, 1.25, 2.6]), add(ISLAND, [0, 0.95, 0]), pushK(f, 848, 0.003), { fov: 42 }) }],
   // 14: back in the jam (the honk), Trevor turns to us
-  14: [{ f: 874, s: (f) => dolly([-100.32, 1.32, -2.4], [-100.32, 1.22, 0.35], pushK(f, 874, 0.0022), { fov: 38, roll: 0.03 }) },
-    { f: B.c1 - 2, e: "out", dur: 10, s: (f) => dolly([-100.32, 1.3, -1.8], [-100.32, 1.25, 0.35], pushK(f, B.c1, 0.0025), { fov: 38 }) }],
+  14: [{ f: 874, s: (f) => dolly([-100.32, 1.5, -2.6], [-100.32, 1.38, 0.42], pushK(f, 874, 0.0022), { fov: 38, roll: 0.03 }) },
+    { f: B.c1 - 2, e: "out", dur: 10, s: (f) => dolly([-100.32, 1.48, -2.0], [-100.32, 1.4, 0.42], pushK(f, B.c1, 0.0025), { fov: 38 }) }],
   // 15: the cubicle: he slumps in; "Then Chad walked in" whip to the aisle
   15: [{ f: 946, s: (f) => dolly([28.2, 1.45, 4.4], [25.9, 1.05, 3.1], pushK(f, 946, 0.002), { fov: 46 }) },
     { f: B.n3b - 2, e: "out", dur: 10, s: (f) => dolly([27.4, 1.35, 3.0], [30.2, 1.35, 5.8], 1, { fov: 46 }) }],
   // 16: Chad marches up the aisle into Trevor's cubicle
-  16: [{ f: 1025, s: (f) => dolly([26.4, 1.25, 2.6], [29.3, 1.45, 4.2], pushK(f, 1025, 0.0015), { fov: 50 }) }],
+  16: [{ f: 1025, s: (f) => { const u = smooth((f - 1025) / 30); return dolly([26.2, 1.35, 2.3], [30.3 + (28.95 - 30.3) * u, 1.4, 5.8 + (3.25 - 5.8) * u], pushK(f, 1025, 0.0015), { fov: 50 }); } }],
   // 17: Chad CU, too close, too loud
   17: [{ f: 1166, s: (f) => dolly([27.0, 1.45, 3.0], [28.95, 1.55, 3.25], pushK(f, 1166, 0.002), { fov: 40, roll: -0.04 }) }],
   // 18: Trevor ECU: the twitch, punch-ins per word; the narrator whispers
-  18: [{ f: 1250, s: (f) => dolly([27.2, 1.32, 3.15], [25.9, 1.28, 3.1], pushK(f, 1250, 0.003, 0.012, 30), { fov: 38 }) },
-    { f: B.n4 - 2, e: "out", dur: 12, s: (f) => dolly([26.65, 1.32, 3.12], [25.9, 1.3, 3.1], pushK(f, B.n4, 0.002), { fov: 36, roll: 0.03 }) }],
+  18: [{ f: 1250, s: (f) => dolly([27.75, 1.32, 3.15], [25.9, 1.25, 3.1], pushK(f, 1250, 0.003, 0.01, 30), { fov: 40 }) },
+    { f: B.n4 - 2, e: "out", dur: 12, s: (f) => dolly([27.2, 1.32, 3.12], [25.9, 1.28, 3.1], pushK(f, B.n4, 0.002), { fov: 38, roll: 0.03 }) }],
   // 19: the snap: two-shot from the side, Trevor rises into frame
-  19: [{ f: 1377, s: (f) => dolly([27.6, 1.35, 5.6], [27.4, 1.45, 3.15], pushK(f, 1377, 0.0018), { fov: 46 }) },
-    { f: 1462, e: "out", dur: 10, s: (f) => dolly([27.0, 1.5, 4.6], [26.3, 1.55, 3.1], pushK(f, 1462, 0.002), { fov: 40, roll: 0.05 }) }],
+  19: [{ f: 1377, s: (f) => dolly([30.6, 1.55, 4.0], [27.3, 1.4, 3.1], pushK(f, 1377, 0.0018), { fov: 50 }) },
+    { f: 1462, e: "out", dur: 10, s: (f) => dolly([28.4, 1.55, 3.5], [25.9, 1.5, 3.1], pushK(f, 1462, 0.002), { fov: 42, roll: 0.05 }) }],
   // 20-24: the roast strut, each target a whip; the camera trucks backwards in front of Trevor
   20: [{ f: 1515, s: (f) => { const p = strutAt(f); return dolly(add(p, [0.9, 1.4, -2.6]), add(p, [-0.5, 1.35, 0.3]), 1, { fov: 46 }); } }],
   21: [{ f: 1600, s: (f) => { const p = strutAt(f); return dolly(add(p, [-0.9, 1.4, -2.4]), add(p, [0.55, 1.35, -0.1]), 1, { fov: 46 }); } }],
@@ -218,8 +218,8 @@ const CAMS: Record<number, Key[]> = {
   // 27: the front door from across the street; he flies out
   27: [{ f: 2105, s: (f) => dolly([82.5, 1.6, 10.5], [80.5, 1.2, 1.2], pushK(f, 2105, 0.002), { fov: 50 }) }],
   // 28-29: high over him on the pavement; the sun comes out, slow push
-  28: [{ f: 2128, s: (f) => dolly([81.9, 2.55, 4.6], [81.25, 0.3, 2.5], pushK(f, 2128, 0.0015), { fov: 44 }) }],
-  29: [{ f: 2141, s: (f) => dolly([81.9, 2.55, 4.6], [81.25, 0.3, 2.5], pushK(f, 2128, 0.0015) * pushK(f, 2160, 0.0012), { fov: 44 }) }],
+  28: [{ f: 2128, s: (f) => dolly([81.75, 0.95, 5.4], [81.55, 0.4, 2.5], pushK(f, 2128, 0.0015), { fov: 44 }) }],
+  29: [{ f: 2141, s: (f) => dolly([81.75, 0.95, 5.4], [81.55, 0.4, 2.5], pushK(f, 2128, 0.0015) * pushK(f, 2160, 0.0012), { fov: 44 }) }],
 };
 /** impact kicks: flip sign each frame, decay over 7 f */
 const KICKS: [number, number][] = [[B.freeze, 0.016], [B.splash, 0.01], [B.bite, 0.01], [B.sniff, 0.01], [B.launch, 0.012], [B.honk, 0.02], [B.door, 0.012],

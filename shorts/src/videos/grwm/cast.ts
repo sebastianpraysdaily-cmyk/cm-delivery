@@ -373,7 +373,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     }
     case 8: case 9: case 14: { // in the car
       const look = id === 14 && f >= B.c1 - 3;
-      put(out, cam, trev(TREVOR), TCAR[0] - 0.32, TCAR[2] + 0.42, t, { mode: "sit", y: 0.16, noBlob: true,
+      put(out, cam, trev(TREVOR), TCAR[0] - 0.32, TCAR[2] + 0.42, t, { mode: "sit", y: 0.42, noBlob: true,
         expr: id === 14 && f < B.honk + 10 ? "shock" : look ? talk(f, B.c1, B.c1E, "stern", "dead") : "dead", facing: look ? 0 : 0, pop: [B.honk + 1, B.c1 - 2] });
       if (id === 14 && f < B.honk + 8) { const k = Math.round(((f - B.honk) / 8) * 8) / 8; fxAt(out, `honk|${k}`, (p) => fxBurst(p, k, "#fff3b0", 12), TCAR[0], 1.4, TCAR[2] - 2.2, 1.6, 1.6); }
       break;
@@ -382,7 +382,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       const c = dreamCar(f), cs = Math.cos(c.yaw), sn = Math.sin(c.yaw);
       // driver seat offset (-0.32, 0.42) in car space; car heading -z rotated by yaw to the right
       const lx = -0.32, lz = 0.42, x = c.pos[0] + lx * cs - lz * -sn * -1, z = c.pos[2] + lz * cs + lx * sn;
-      put(out, cam, trev(TREVOR_DREAM), x, z, t, { mode: "sit", y: c.pos[1] + 0.16, noBlob: true, expr: f >= B.launch - 8 && f < B.launch + 30 ? "laugh" : "smile_closed", pop: [B.launch, B.wings] });
+      put(out, cam, trev(TREVOR_DREAM), x, z, t, { mode: "sit", y: c.pos[1] + 0.42, noBlob: true, expr: f >= B.launch - 8 && f < B.launch + 30 ? "laugh" : "smile_closed", pop: [B.launch, B.wings] });
       break;
     }
     case 13: // the beach

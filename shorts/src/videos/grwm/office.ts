@@ -237,6 +237,7 @@ export class World {
   private plant = new THREE.Group();
   private flames: THREE.Mesh[] = [];
   private printerLed!: THREE.MeshBasicMaterial;
+  private sets: Record<string, THREE.Group> = {};
   private dcar = new THREE.Group(); private wingL = new THREE.Group(); private wingR = new THREE.Group();
   private aptBulb!: THREE.MeshBasicMaterial; private ocean!: THREE.Mesh; private streetDoor = new THREE.Group();
   private frustum = new THREE.Frustum();
@@ -244,7 +245,7 @@ export class World {
   private M: Record<string, THREE.Material>;
 
   constructor() {
-    const R = this.root;
+    let R: THREE.Object3D = this.root;
     this.sun.castShadow = true;
     this.sun.shadow.mapSize.set(4096, 4096);
     R.add(this.sun, this.sun.target, this.hemi);
@@ -272,16 +273,19 @@ export class World {
       cardboard: mat("#c8a070"),
       cork: mat("#ffffff", { map: corkTex }), red: mat("#e04848"), paper: mat("#f7f7f2"), duct: mat("#c3c8ce"), ductIn: mat("#1a1c22"),
     };
+    const GO = new THREE.Group(), GA = new THREE.Group(), GT = new THREE.Group(), GC = new THREE.Group(), GS = new THREE.Group();
+    R.add(GO, GA, GT, GC, GS); this.sets = { office: GO, apt: GA, traffic: GT, coast: GC, street: GS };
+    R = GO;
     // floors (receive only)
     this.box(R, [0, -0.05, 0], [9.4, 0.1, 7.4], "vinyl", false, rep(vinylTex, 5, 4));
     this.box(R, [30, -0.05, -3], [24, 0.1, 32], "carpet", false, rep(carpetTex, 18, 24));
     this.breakRoom(R, [0, 0, 0], 1, true);
     this.office(R);
-    this.apartment(R);
-    this.traffic(R);
-    this.coast(R);
-    this.street(R);
-    R.traverse((o) => { if ((o as THREE.Mesh).isMesh && !o.userData.noShadow) { o.castShadow = !o.userData.noCast; o.receiveShadow = true; } });
+    this.apartment(GA);
+    this.traffic(GT);
+    this.coast(GC);
+    this.street(GS);
+    this.root.traverse((o) => { if ((o as THREE.Mesh).isMesh && !o.userData.noShadow) { o.castShadow = !o.userData.noCast; o.receiveShadow = true; } });
   }
 
   private box(parent: THREE.Object3D, pos: V3, size: V3, m: string | THREE.Material, cast = true, map?: THREE.Texture) {
@@ -596,23 +600,20 @@ export class World {
   private car(p: THREE.Object3D, pos: V3, col: string, yaw = 0, driver = false) {
     const g = new THREE.Group(); g.position.set(...pos); g.rotation.y = yaw; p.add(g);
     const body = mat(col);
-    this.box(g, [0, 0.62, 0], [1.72, 0.62, 3.9], body);                 // lower body
-    this.box(g, [0, 0.95, -1.45], [1.7, 0.06, 1.0], body);              // bonnet top
-    // cabin: 4 pillars + roof, open sides so we can see in
-    for (const [x, z] of [[-0.8, -0.75], [0.8, -0.75], [-0.8, 1.3], [0.8, 1.3]] as const) this.box(g, [x, 1.25, z], [0.08, 0.62, 0.1], body);
-    this.box(g, [0, 1.58, 0.28], [1.7, 0.07, 2.2], body);
-    this.box(g, [0, 1.25, 1.75], [1.7, 0.62, 0.12], body);              // tailgate
-    const glass = new THREE.MeshBasicMaterial({ color: "#bfe0f0", transparent: true, opacity: 0.18, depthWrite: false });
-    this.box(g, [0, 1.25, -0.78], [1.55, 0.58, 0.02], glass, false).layers.set(NOINK);
-    for (const x of [-0.95, 0.95]) for (const z of [-1.2, 1.2]) { const w = this.cyl(g, [x, 0.33, z], 0.33, 0.24, "black"); w.rotation.z = Math.PI / 2; }
+    this.box(g, [0, 0.6, 0], [1.76, 0.6, 3.9], body);                  // lower body (0.3..0.9)
+    for (const [x, z] of [[-0.82, -0.8], [0.82, -0.8], [-0.82, 1.35], [0.82, 1.35]] as const) this.box(g, [x, 1.3, z], [0.08, 0.8, 0.1], body);
+    this.box(g, [0, 1.73, 0.3], [1.76, 0.07, 2.3], body);              // roof
+    this.box(g, [0, 1.3, 1.8], [1.76, 0.8, 0.12], body);               // tailgate
+    const glass = new THREE.MeshBasicMaterial({ color: "#bfe0f0", transparent: true, opacity: 0.12, depthWrite: false });
+    this.box(g, [0, 1.3, -0.83], [1.6, 0.76, 0.02], glass, false).layers.set(NOINK);
+    for (const x of [-0.97, 0.97]) for (const z of [-1.2, 1.2]) { const w = this.cyl(g, [x, 0.33, z], 0.33, 0.24, "black"); w.rotation.z = Math.PI / 2; }
     for (const x of [-0.6, 0.6]) this.box(g, [x, 0.72, -1.96], [0.32, 0.14, 0.04], "white", false);
     for (const x of [-0.6, 0.6]) this.box(g, [x, 0.72, 1.96], [0.3, 0.12, 0.04], "red", false);
-    this.box(g, [0, 0.98, 0.4], [1.6, 0.06, 2.0], "dark", false);       // floor / seats base
     if (driver) {
-      this.box(g, [-0.32, 0.75, 0.62], [0.55, 0.5, 0.12], "chair");   // driver seat back (behind Trevor)
-      const wheel = new THREE.Mesh(new THREE.TorusGeometry(0.19, 0.03, 8, 24), this.M.black);
-      wheel.position.set(-0.32, 1.12, -0.32); wheel.rotation.x = -1.1; g.add(wheel);
-      this.box(g, [0, 1.0, -0.55], [1.6, 0.18, 0.3], "dark", false); // dashboard
+      this.box(g, [-0.32, 0.95, 0.75], [0.55, 0.7, 0.12], "chair");   // driver seat back (behind Trevor)
+      const wheel = new THREE.Mesh(new THREE.TorusGeometry(0.17, 0.028, 8, 24), this.M.black);
+      wheel.position.set(-0.32, 1.0, -0.42); wheel.rotation.x = -1.1; g.add(wheel);
+      this.box(g, [0, 0.95, -0.68], [1.6, 0.1, 0.25], "dark", false); // dashboard
     }
     return g;
   }
@@ -812,6 +813,7 @@ export class World {
     this.fireDoor.rotation.y = 0;
     this.bulb.color.setRGB(2.4 * k + 0.2, 2.1 * k + 0.15, 1.5 * k + 0.1);
     this.elevL.position.z = ELEV[2] - 0.3; this.elevR.position.z = ELEV[2] + 0.3;
+    for (const [k, g] of Object.entries(this.sets)) g.visible = k === s.set;
     // the daydream car
     const dc = dreamCar(f);
     this.dcar.visible = s.set === "coast" && id !== 13 || id === 13;
